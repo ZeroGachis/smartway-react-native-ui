@@ -1,19 +1,16 @@
 import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'smartway-react-native-ui';
+import { StyleSheet, View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { Button } from 'smartway-react-native-ui';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <PaperProvider>
+      <View style={styles.container}>
+        <Button icon="camera" mode="contained">Example</Button>
+      </View>
+    </PaperProvider>
   );
 }
 

@@ -26,8 +26,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "tsc": "tsc --project tsconfig.build.json",
-    "example": "npm run example"
+    "tsc": "tsc --project tsconfig.build.json"
   },
   "keywords": [
     "react-native",
