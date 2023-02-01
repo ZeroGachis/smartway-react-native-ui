@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { Button, theme } from 'smartway-react-native-ui';
+import { Button, Logo, theme } from 'smartway-react-native-ui';
 
 export default function App() {
 
@@ -9,6 +9,7 @@ export default function App() {
     <PaperProvider theme={theme}>
       <View style={styles.container}>
         <Button icon="camera" mode="contained">Example</Button>
+        <Logo size='small' />
       </View>
     </PaperProvider>
   );

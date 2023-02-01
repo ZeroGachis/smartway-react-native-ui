@@ -1,4 +1,4 @@
-import { Button } from './components';
+import { Button, Logo } from './components';
 import { theme } from './styles/themes';
 
-export { Button, theme };
+export { Button, Logo, theme };
