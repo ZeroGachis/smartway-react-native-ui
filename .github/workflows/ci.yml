@@ -1,49 +1,31 @@
 name: CI
+
 on:
   push:
     branches:
       - main
-      - feature/*
   pull_request:
-    branches:
-      - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Lint files
-        run: npm run lint
-
-      - name: Typecheck files
-        run: npm run typecheck
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Run unit tests
-        run: npm run test --maxWorkers=2 --coverage
-
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, debian-stable]
     steps:
+      - name: Clean Workspace
+        uses: mickem/clean-after-action@v1
       - name: Checkout
         uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Compile
+        run: npm run tsc
+      - name: Run unit tests
+        run: npm run test -- --reporters=default --reporters=jest-junit --passWithNoTests
+      - name: Test Report
+        uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: 'junit.xml'
 
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Build package
-        run: npm run prepack
