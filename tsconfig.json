@@ -4,9 +4,9 @@
     "paths": {
       "smartway-react-native-ui": ["./src/index"]
     },
-    "outDir": "lib",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "declaration": true,
     "esModuleInterop": true,
     "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
@@ -21,6 +21,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "outDir": "lib",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
