@@ -27,7 +27,7 @@ const smallSvg = `
 `;
 const SmallLogo = () => {
     return (
-        <SvgXml xml={smallSvg} width="100%" height="100%" />
+        <SvgXml xml={smallSvg} />
     );
 };
 
@@ -57,7 +57,7 @@ const mediumSvg = `
 `;
 const MediumLogo = () => {
     return (
-        <SvgXml xml={mediumSvg} width="100%" height="100%" />
+        <SvgXml xml={mediumSvg} />
     );
 };
 
