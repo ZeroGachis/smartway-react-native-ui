@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import type { TextStyle, ViewStyle } from "react-native";
 import { Button as BaseButton } from 'react-native-paper';
-import { useTheme } from "smartway-react-native-ui";
+import { useTheme } from "../../styles/themes";
 
 
 interface Props {

@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { StyleProp, Text, TextStyle } from "react-native";
-import { useTheme } from "smartway-react-native-ui";
+import { useTheme } from "../../styles/themes";
 
 interface HeadlineProps {
     size?: 'h1' | 'h2' | 'h3' | 'h4';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleProp, ViewStyle, StatusBar } from 'react-native';
-import { useTheme } from 'smartway-react-native-ui';
+import { useTheme } from "../styles/themes";
 
 type Props = {
     children?: React.ReactNode;
