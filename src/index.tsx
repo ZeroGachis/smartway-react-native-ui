@@ -1,4 +1,4 @@
-import { Button, Logo } from './components';
+import { Body, Button, Card, Headline, Icon, Logo, Screen } from './components';
 import { ThemeProvider, useTheme } from './styles/themes';
 
-export { Button, Logo, ThemeProvider, useTheme };
+export { Body, Button, Card, Headline, Icon, Logo, Screen, ThemeProvider, useTheme };
