@@ -17,25 +17,29 @@ export const Headline = ({size = 'h1', children, style}: HeadlineProps) => {
         headlineStyle = {
             fontSize: 28,
             lineHeight: 33,
+            fontFamily: 'PublicSans-Black'
         }
     }
     else if (size === 'h2') {
         headlineStyle = {
             fontSize: 24,
             lineHeight: 28,
+            fontFamily: 'PublicSans-ExtraBold'
         }
     }
     else if (size === 'h3') {
         headlineStyle = {
             fontSize: 20,
             lineHeight: 24,
+            fontFamily: 'PublicSans-Black',
         }
     } else if (size === 'h4') {
         headlineStyle = {
             fontSize: 18,
             lineHeight: 21,
             letterSpacing: 1,
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            fontFamily: 'PublicSans-Bold',
         }
     }
 

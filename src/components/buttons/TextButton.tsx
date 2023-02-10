@@ -22,6 +22,7 @@ export const TextButton = ({ children, style, labelStyle}: Props) => {
         color: theme.sw.colors.primary[400],
         fontSize: 16,
         lineHeight: 19,
+        fontFamily: 'PublicSans-Regular',
         ...labelStyle
     };
     return (
