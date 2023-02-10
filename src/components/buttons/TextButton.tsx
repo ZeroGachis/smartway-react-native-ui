@@ -6,8 +6,8 @@ import { useTheme } from "smartway-react-native-ui";
 
 interface Props {
     children?: ReactNode,
-    style: ViewStyle,
-    labelStyle: TextStyle,
+    style?: ViewStyle,
+    labelStyle?: TextStyle,
 }
 
 export const TextButton = ({ children, style, labelStyle}: Props) => {
