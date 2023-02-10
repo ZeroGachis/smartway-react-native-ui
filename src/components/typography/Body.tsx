@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { StyleProp, Text, TextStyle } from "react-native";
-import { useTheme } from "smartway-react-native-ui";
+import { useTheme } from "../../styles/themes";
 
 interface BodyProps {
     size?: 'default' | 'medium' | 'small',

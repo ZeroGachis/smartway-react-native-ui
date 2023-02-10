@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import React from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
-import { useTheme } from "smartway-react-native-ui";
+import { useTheme } from "../styles/themes";
 
 interface Props {
     children?: ReactNode,
