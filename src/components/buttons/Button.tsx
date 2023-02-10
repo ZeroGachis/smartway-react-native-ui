@@ -6,8 +6,8 @@ import { Button as BaseButton } from 'react-native-paper';
 interface ButtonProps {
     mode?: 'text';
     children?: ReactNode;
-    style: ViewStyle,
-    labelStyle: TextStyle
+    style?: ViewStyle,
+    labelStyle?: TextStyle
 }
 
 export const Button = ({ mode = 'text', children, style, labelStyle}: ButtonProps) => {
