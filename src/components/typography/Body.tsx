@@ -33,6 +33,7 @@ export const Body = ({ size = 'default', children, style }: BodyProps) => {
     bodyStyle = {
         ...bodyStyle,
         color: theme.sw.colors.neutral[800],
+        fontFamily: 'PublicSans-Regular',
         ...style,
     };
     return <Text style={bodyStyle}>{children}</Text>;

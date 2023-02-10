@@ -1,3 +1,3 @@
 export const fontConfig = {
-    fontFamily: 'Roboto'
+    fontFamily: 'PublicSans-Regular'
 };

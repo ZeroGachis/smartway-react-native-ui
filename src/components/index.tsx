@@ -1,4 +1,4 @@
-import { Button } from 'react-native-paper';
+import { Button } from './buttons/Button';
 import { Logo } from './logos/Logo';
 import { Screen } from './Screen';
 import { Headline } from './typography/Headline';
