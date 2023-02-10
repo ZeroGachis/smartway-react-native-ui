@@ -5,7 +5,7 @@ import { useTheme } from "smartway-react-native-ui";
 
 interface Props {
     children?: ReactNode,
-    style: ViewStyle
+    style?: ViewStyle
 };
 
 export const Card = ({children, style}: Props) => {
