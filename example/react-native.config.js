@@ -3,7 +3,7 @@ const pak = require('../package.json');
 
 module.exports = {
   dependencies: {
-    [pak.name]: {
+    ['smartway-react-native-ui']: {
       root: path.join(__dirname, '..'),
     },
   },

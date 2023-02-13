@@ -9,7 +9,7 @@ module.exports = {
       {
         extensions: ['.tsx', '.ts', '.js', '.json'],
         alias: {
-          [pak.name]: path.join(__dirname, '..', pak.source),
+          ['smartway-react-native-ui']: path.join(__dirname, '..', pak.source),
         },
       },
     ],
