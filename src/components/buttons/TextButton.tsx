@@ -1,19 +1,14 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import type { TextStyle, ViewStyle } from "react-native";
 import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from "../../styles/themes";
+import type { ButtonProps } from "./ButtonProps";
 
 
-interface Props {
-    children?: ReactNode,
-    style?: ViewStyle,
-    labelStyle?: TextStyle,
-}
-
-export const TextButton = ({ children, style, labelStyle}: Props) => {
+export const TextButton = ({ children, style, labelStyle}: ButtonProps) => {
     const theme = useTheme();
     const buttonstyle: ViewStyle = {
-        padding: 12,
+        padding: theme.sw.spacing.s,
         borderRadius: 0,
         ...style
     };

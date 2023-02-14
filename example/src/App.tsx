@@ -7,7 +7,8 @@ export default function App() {
   return (
     <ThemeProvider>
       <View style={styles.container}>
-        <Button icon="camera" mode="contained">Example</Button>
+        <Button mode="text">Text button</Button>
+        <Button mode="filled">Filled button</Button>
         <Logo size='small' />
       </View>
     </ThemeProvider>
