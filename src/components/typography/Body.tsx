@@ -5,7 +5,7 @@ import { useTheme } from "../../styles/themes";
 interface BodyProps {
     size?: 'default' | 'medium' | 'small',
     children?: ReactNode,
-    style: TextStyle,
+    style?: TextStyle,
 }
 
 export const Body = ({ size = 'default', children, style }: BodyProps) => {
