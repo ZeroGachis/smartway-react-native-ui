@@ -5,11 +5,9 @@ import { useTheme } from "../../styles/themes";
 import type { ButtonProps } from "./ButtonProps";
 
 
-export const FilledButton = ({ children, style, labelStyle }: ButtonProps) => {
+export const FilledButton = ({ children, style, labelStyle, onClick }: ButtonProps) => {
     const theme = useTheme();
     const buttonStyle: ViewStyle = {
-        paddingVertical: theme.sw.spacing.s,
-        paddingHorizontal: theme.sw.spacing.l,
         borderRadius: 8,
         backgroundColor: theme.sw.colors.primary[400],
         ...style,
@@ -20,6 +18,8 @@ export const FilledButton = ({ children, style, labelStyle }: ButtonProps) => {
         fontSize: 16,
         lineHeight: 19,
         color: theme.sw.colors.neutral[50],
+        paddingVertical: theme.sw.spacing.s,
+        paddingHorizontal: theme.sw.spacing.l,
         // Overrides default margin of Paper component
         marginVertical: 0,
         marginHorizontal: 0,
@@ -27,7 +27,7 @@ export const FilledButton = ({ children, style, labelStyle }: ButtonProps) => {
     };
 
     return (
-        <BaseButton style={buttonStyle} labelStyle={_labelStyle}>
+        <BaseButton style={buttonStyle} labelStyle={_labelStyle} onPress={onClick}>
             {children}
         </BaseButton>
     );

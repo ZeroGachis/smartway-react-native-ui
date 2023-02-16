@@ -6,17 +6,18 @@ import { FilledButton } from "./FilledButton";
 
 interface ButtonProps {
     mode?: 'text' | 'filled';
-    children?: ReactNode;
+    children?: ReactNode,
     style?: ViewStyle,
-    labelStyle?: TextStyle
+    labelStyle?: TextStyle,
+    onClick?: () => void,
 }
 
-export const Button = ({ mode = 'text', children, style, labelStyle}: ButtonProps) => {
+export const Button = ({ mode = 'text', children, style, labelStyle, onClick}: ButtonProps) => {
     if (mode === 'text') {
-        return <TextButton style={style} labelStyle={labelStyle}>{children}</TextButton>;
+        return <TextButton style={style} labelStyle={labelStyle} onClick={onClick}>{children}</TextButton>;
     }
     else if (mode === 'filled') {
-        return <FilledButton style={style} labelStyle={labelStyle}>{children}</FilledButton>
+        return <FilledButton style={style} labelStyle={labelStyle} onClick={onClick}>{children}</FilledButton>
     }
     else {
         return <BaseButton style={style} labelStyle={labelStyle}>{children}</BaseButton>;
