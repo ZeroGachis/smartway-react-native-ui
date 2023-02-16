@@ -5,10 +5,9 @@ import { useTheme } from "../../styles/themes";
 import type { ButtonProps } from "./ButtonProps";
 
 
-export const TextButton = ({ children, style, labelStyle}: ButtonProps) => {
+export const TextButton = ({ children, style, labelStyle, onClick}: ButtonProps) => {
     const theme = useTheme();
     const buttonstyle: ViewStyle = {
-        padding: theme.sw.spacing.s,
         borderRadius: 0,
         ...style
     };
@@ -18,10 +17,14 @@ export const TextButton = ({ children, style, labelStyle}: ButtonProps) => {
         fontSize: 16,
         lineHeight: 19,
         fontFamily: 'PublicSans-Regular',
+        padding: theme.sw.spacing.s,
+        // Overrides default margin of Paper component
+        marginVertical: 0,
+        marginHorizontal: 0,
         ...labelStyle
     };
     return (
-        <BaseButton mode="text" style={buttonstyle} labelStyle={_labelStyle}>
+        <BaseButton mode="text" style={buttonstyle} labelStyle={_labelStyle} onPress={onClick}>
             {children}
         </BaseButton>
     );
