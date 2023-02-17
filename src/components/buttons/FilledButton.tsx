@@ -2,10 +2,10 @@ import React from "react";
 import type { TextStyle, ViewStyle } from "react-native";
 import { Button as BaseButton } from "react-native-paper";
 import { useTheme } from "../../styles/themes";
-import type { ButtonProps } from "./ButtonProps";
+import type { BaseButtonProps } from "./BaseButtonProps";
 
 
-export const FilledButton = ({ children, style, labelStyle, onClick }: ButtonProps) => {
+export const FilledButton = ({ children, style, labelStyle, onClick }: BaseButtonProps) => {
     const theme = useTheme();
     const buttonStyle: ViewStyle = {
         borderRadius: 8,
