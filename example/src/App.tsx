@@ -1,40 +1,30 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, Dialog, Logo, ThemeProvider } from 'smartway-react-native-ui';
+import { ThemeProvider } from 'smartway-react-native-ui';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { HomeScreen } from './HomeScreen';
+import { ButtonsPage } from './Buttons/ButtonsPage';
+import { DialogPage } from './Dialog/DialogPage';
+
+export type RootStackParamList = {
+  Home: undefined,
+  Buttons: undefined,
+  Dialog: undefined,
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function App() {
-  const [modalVisible, setModalVisible] = React.useState<boolean>(false);
-
-  const showModal = () => {
-    setModalVisible(true);
-  }
-
-  const hideModal = () => {
-    setModalVisible(false);
-  }
 
   return (
     <ThemeProvider>
-      <View style={styles.container}>
-        <Button mode="text">Text button</Button>
-        <Button mode="filled">Filled button</Button>
-        <Button mode="filled" onClick={showModal}>Show modal</Button>
-        <Logo size='small' />
-        <Dialog visible={modalVisible} title={'Titre du dialog'} content={'Contenu texte'} onDismiss={hideModal} onConfirm={hideModal}/>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Buttons" component={ButtonsPage} />
+          <Stack.Screen name="Dialog" component={DialogPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
