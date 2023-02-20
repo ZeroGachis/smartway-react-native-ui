@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
-import { StyleProp, Text, TextStyle } from "react-native";
-import { useTheme } from "../../styles/themes";
+import React, { ReactNode } from 'react';
+import { StyleProp, Text, TextStyle } from 'react-native';
+import { useTheme } from '../../styles/themes';
 
 interface BodyProps {
-    size?: 'default' | 'medium' | 'small',
-    children?: ReactNode,
-    style?: TextStyle,
+    size?: 'default' | 'medium' | 'small';
+    children?: ReactNode;
+    style?: TextStyle;
 }
 
 export const Body = ({ size = 'default', children, style }: BodyProps) => {
@@ -16,14 +16,12 @@ export const Body = ({ size = 'default', children, style }: BodyProps) => {
             fontSize: 16,
             lineHeight: 19,
         };
-    }
-    else if (size === 'medium') {
+    } else if (size === 'medium') {
         bodyStyle = {
             fontSize: 14,
             lineHeight: 16,
         };
-    }
-    else if (size === 'small') {
+    } else if (size === 'small') {
         bodyStyle = {
             fontSize: 12,
             lineHeight: 14,
@@ -37,4 +35,4 @@ export const Body = ({ size = 'default', children, style }: BodyProps) => {
         ...style,
     };
     return <Text style={bodyStyle}>{children}</Text>;
-}
+};

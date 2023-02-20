@@ -1,28 +1,36 @@
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
-import { Button, Dialog, Screen } from "smartway-react-native-ui";
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import { Button, Dialog, Screen } from 'smartway-react-native-ui';
 
-export function DialogPage() {
+export const DialogPage = () => {
     const [modalVisible, setModalVisible] = useState<boolean>(false);
 
     const showModal = () => {
-      setModalVisible(true);
-    }
-  
+        setModalVisible(true);
+    };
+
     const hideModal = () => {
-      setModalVisible(false);
-    }
-    
+        setModalVisible(false);
+    };
+
     return (
         <Screen style={styles.container}>
-          <Button mode="text" onClick={showModal}>Click me</Button>
-          <Dialog visible={modalVisible} title={'Titre du dialog'} content={'Contenu texte'} onDismiss={hideModal} onConfirm={hideModal}/>
+            <Button mode="text" onClick={showModal}>
+                Click me
+            </Button>
+            <Dialog
+                visible={modalVisible}
+                title={'Titre du dialog'}
+                content={'Contenu texte'}
+                onDismiss={hideModal}
+                onConfirm={hideModal}
+            ></Dialog>
         </Screen>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-  },
+    container: {
+        alignItems: 'center',
+    },
 });

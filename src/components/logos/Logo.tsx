@@ -2,7 +2,6 @@ import React from 'react';
 import { SmallLogo } from './SmallLogo';
 import { MediumLogo } from './MediumLogo';
 
-
 interface Props {
     size?: 'small' | 'medium';
 }

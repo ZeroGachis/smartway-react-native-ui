@@ -26,7 +26,5 @@ const smallSvg = `
 `;
 
 export const SmallLogo = () => {
-    return (
-        <SvgXml xml={smallSvg} />
-    );
+    return <SvgXml xml={smallSvg} />;
 };
