@@ -1,28 +1,30 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, Logo, ThemeProvider } from 'smartway-react-native-ui';
+import { ThemeProvider } from 'smartway-react-native-ui';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { HomeScreen } from './HomeScreen';
+import { ButtonsPage } from './Buttons/ButtonsPage';
+import { DialogPage } from './Dialog/DialogPage';
+
+export type RootStackParamList = {
+  Home: undefined,
+  Buttons: undefined,
+  Dialog: undefined,
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function App() {
 
   return (
     <ThemeProvider>
-      <View style={styles.container}>
-        <Button icon="camera" mode="contained">Example</Button>
-        <Logo size='small' />
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Buttons" component={ButtonsPage} />
+          <Stack.Screen name="Dialog" component={DialogPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});

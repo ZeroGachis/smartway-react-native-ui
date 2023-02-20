@@ -1,19 +1,13 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import type { TextStyle, ViewStyle } from "react-native";
 import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from "../../styles/themes";
+import type { BaseButtonProps } from "./BaseButtonProps";
 
 
-interface Props {
-    children?: ReactNode,
-    style?: ViewStyle,
-    labelStyle?: TextStyle,
-}
-
-export const TextButton = ({ children, style, labelStyle}: Props) => {
+export const TextButton = ({ children, style, labelStyle, onClick}: BaseButtonProps) => {
     const theme = useTheme();
     const buttonstyle: ViewStyle = {
-        padding: 12,
         borderRadius: 0,
         ...style
     };
@@ -23,10 +17,14 @@ export const TextButton = ({ children, style, labelStyle}: Props) => {
         fontSize: 16,
         lineHeight: 19,
         fontFamily: 'PublicSans-Regular',
+        padding: theme.sw.spacing.s,
+        // Overrides default margin of Paper component
+        marginVertical: 0,
+        marginHorizontal: 0,
         ...labelStyle
     };
     return (
-        <BaseButton mode="text" style={buttonstyle} labelStyle={_labelStyle}>
+        <BaseButton mode="text" style={buttonstyle} labelStyle={_labelStyle} onPress={onClick}>
             {children}
         </BaseButton>
     );
