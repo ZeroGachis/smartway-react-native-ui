@@ -4,6 +4,7 @@
   "printWidth": 100,
   "tabWidth": 4,
   "trailingComma": "all",
+  "endOfLine": "crlf",
   "overrides": [
     {
       "files": "*.json",

@@ -1,24 +1,23 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+    push:
+        branches:
+            - main
+    pull_request:
 
 jobs:
-  build:
-    runs-on: [self-hosted, debian-stable]
-    steps:
-      - name: Clean Workspace
-        uses: mickem/clean-after-action@v1
-      - name: Checkout
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Compile
-        run: npm run tsc
-
+    build:
+        runs-on: [self-hosted, debian-stable]
+        steps:
+            - name: Clean Workspace
+              uses: mickem/clean-after-action@v1
+            - name: Checkout
+              uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            - name: Install dependencies
+              run: npm ci
+            - name: Compile
+              run: npm run tsc

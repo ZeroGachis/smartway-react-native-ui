@@ -23,24 +23,20 @@
     "sourceType": "module",
     "project": ["./tsconfig.json"],
     "ecmaFeatures": {
-        "jsx": true
+      "jsx": true
     }
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-hooks"
-  ],
+  "plugins": ["react", "@typescript-eslint", "react-hooks"],
   "rules": {
     "@typescript-eslint/semi": ["error", "always"],
     "@typescript-eslint/space-before-function-paren": 0,
     "prefer-arrow-callback": "error",
     "react/function-component-definition": [
-        "error",
-        { 
-            "namedComponents": "arrow-function",
-            "unnamedComponents": "arrow-function"
-        }
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
     ]
   },
   "ignorePatterns": ["*/*.config.js", "*.config.js"],
