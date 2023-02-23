@@ -1,11 +1,15 @@
 import React, { ReactNode } from 'react';
-import { configureFonts, MD3LightTheme, Provider as PaperProvider, useTheme as usePaperTheme } from 'react-native-paper';
+import {
+    configureFonts,
+    MD3LightTheme,
+    Provider as PaperProvider,
+    useTheme as usePaperTheme,
+} from 'react-native-paper';
 import { fontConfig } from './fonts';
-
 
 const theme = {
     ...MD3LightTheme,
-    fonts: configureFonts({config: fontConfig}),
+    fonts: configureFonts({ config: fontConfig }),
     sw: {
         colors: {
             primary: {
@@ -36,7 +40,7 @@ const theme = {
             xl: 32,
             xxl: 64,
         },
-    }
+    },
 };
 
 export type ThemType = typeof theme;

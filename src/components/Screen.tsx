@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleProp, ViewStyle, StatusBar } from 'react-native';
-import { useTheme } from "../styles/themes";
+import { useTheme } from '../styles/themes';
 
 type Props = {
     children?: React.ReactNode;
@@ -17,8 +17,10 @@ export const Screen = (props: Props) => {
         ...props.style,
     };
 
-    return <SafeAreaView style={style}>
-        <StatusBar backgroundColor={theme.sw.colors.neutral[300]} barStyle="dark-content"/>
-        {props.children}
-    </SafeAreaView>;
+    return (
+        <SafeAreaView style={style}>
+            <StatusBar backgroundColor={theme.sw.colors.neutral[300]} barStyle="dark-content" />
+            {props.children}
+        </SafeAreaView>
+    );
 };

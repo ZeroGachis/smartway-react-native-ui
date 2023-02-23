@@ -1,9 +1,8 @@
-import React from "react";
-import type { TextStyle, ViewStyle } from "react-native";
-import { Button as BaseButton } from "react-native-paper";
-import { useTheme } from "../../styles/themes";
-import type { BaseButtonProps } from "./BaseButtonProps";
-
+import React from 'react';
+import type { TextStyle, ViewStyle } from 'react-native';
+import { Button as BaseButton } from 'react-native-paper';
+import { useTheme } from '../../styles/themes';
+import type { BaseButtonProps } from './BaseButtonProps';
 
 export const FilledButton = ({ children, style, labelStyle, onClick }: BaseButtonProps) => {
     const theme = useTheme();
@@ -23,7 +22,7 @@ export const FilledButton = ({ children, style, labelStyle, onClick }: BaseButto
         // Overrides default margin of Paper component
         marginVertical: 0,
         marginHorizontal: 0,
-        ...labelStyle
+        ...labelStyle,
     };
 
     return (
@@ -31,4 +30,4 @@ export const FilledButton = ({ children, style, labelStyle, onClick }: BaseButto
             {children}
         </BaseButton>
     );
-}
+};

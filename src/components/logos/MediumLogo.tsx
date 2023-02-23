@@ -27,7 +27,5 @@ const mediumSvg = `
 `;
 
 export const MediumLogo = () => {
-    return (
-        <SvgXml xml={mediumSvg} />
-    );
+    return <SvgXml xml={mediumSvg} />;
 };
