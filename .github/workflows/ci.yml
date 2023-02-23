@@ -18,6 +18,10 @@ jobs:
               with:
                   node-version: 18
             - name: Install dependencies
-              run: npm ci
+              run: npm ci --ignore-scripts
+            - name: Rebuild & Prepare dependencies
+              run: npm rebuild && npm run prepare --if-present
+            - name: Run lint
+              run: npm run lint
             - name: Compile
               run: npm run tsc

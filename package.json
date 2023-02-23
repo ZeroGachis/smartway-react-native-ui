@@ -26,7 +26,8 @@
   ],
   "scripts": {
     "test": "jest",
-    "tsc": "tsc --project tsconfig.build.json"
+    "tsc": "tsc --project tsconfig.build.json",
+    "lint": "prettier --check ."
   },
   "keywords": [
     "react-native",
@@ -51,6 +52,7 @@
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "19.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^28.1.1",
