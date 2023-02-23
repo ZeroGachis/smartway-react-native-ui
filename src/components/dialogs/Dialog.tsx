@@ -14,17 +14,14 @@ interface DialogProps {
     actionsStyle?: ViewStyle;
     title: string;
     content: string;
-    dismissButtonLabel?: string;
-    confirmButtonLabel?: string;
+    dismissButtonLabel: string;
+    confirmButtonLabel: string;
     onDismiss: () => void;
     onConfirm: () => void;
 }
 
 export const Dialog = (props: DialogProps) => {
     const theme = useTheme();
-    const defaultDismissButtonLabel = 'Annuler';
-    const defaultConfirmButtonLabel = 'Ok';
-
     const _dialogStyle: ViewStyle = {
         borderRadius: theme.sw.spacing.l,
         padding: theme.sw.spacing.l,
@@ -58,10 +55,10 @@ export const Dialog = (props: DialogProps) => {
                 <Body style={_contentStyle}>{props.content}</Body>
                 <View style={_actionsStyle}>
                     <Button mode="text" onClick={props.onDismiss}>
-                        {props.dismissButtonLabel ?? defaultDismissButtonLabel}
+                        {props.dismissButtonLabel}
                     </Button>
                     <Button mode="filled" onClick={props.onConfirm}>
-                        {props.confirmButtonLabel ?? defaultConfirmButtonLabel}
+                        {props.confirmButtonLabel}
                     </Button>
                 </View>
             </View>
