@@ -22,6 +22,8 @@ export const DialogPage = () => {
                 visible={modalVisible}
                 title={'Titre du dialog'}
                 content={'Contenu texte'}
+                dismissButtonLabel={'Annuler'}
+                confirmButtonLabel={'Ok'}
                 onDismiss={hideModal}
                 onConfirm={hideModal}
             ></Dialog>
