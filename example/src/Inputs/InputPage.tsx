@@ -37,6 +37,14 @@ export const InputsPage = () => {
                 value={value}
                 onChangeText={handleChangeValue}
             />
+            <TextInput
+                placeHolder="placeholder"
+                disabled
+                label={'disabled'}
+                informationText={'info text'}
+                value={'some value'}
+                onChangeText={handleChangeValue}
+            />
         </Screen>
     );
 };

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Text, TextStyle, View, ViewStyle } from 'react-native';
-import { TextInput as BaseTextInput } from 'react-native-paper';
+import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 
-interface Props {
+interface Props extends TextInputProps {
     placeHolder: string;
     style?: ViewStyle;
     onChangeText?: (value: string) => void;
@@ -25,6 +25,7 @@ export const TextInput = ({
     disabled,
     label,
     informationText,
+    ...props
 }: Props) => {
     const theme = useTheme();
 
@@ -46,7 +47,7 @@ export const TextInput = ({
     };
 
     const _outlineStyle: ViewStyle = {
-        borderWidth: 1,
+        borderWidth: disabled ? 0 : 1,
         borderColor: isError
             ? theme.sw.colors.error.main
             : focused
@@ -63,6 +64,7 @@ export const TextInput = ({
         <View style={containerStyle}>
             <Text style={_labelStyle}>{label}</Text>
             <BaseTextInput
+                {...props}
                 disabled={disabled}
                 placeholder={placeHolder}
                 placeholderTextColor={theme.sw.colors.neutral[400]}
@@ -81,7 +83,6 @@ export const TextInput = ({
                 }}
                 value={value}
                 onChangeText={onChangeText}
-                underlineColor="transparent"
             />
             {isError ? (
                 renderError && renderError()
