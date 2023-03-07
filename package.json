@@ -72,7 +72,8 @@
     "react-native-paper": "*",
     "react-native-safe-area-context": "*",
     "react-native-svg": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
+    "react-native-icomoon": "*"
   },
   "jest": {
     "preset": "react-native",
@@ -81,7 +82,5 @@
       "<rootDir>/lib/"
     ]
   },
-  "dependencies": {
-    "react-native-icomoon": "^0.1.1"
-  }
+  "dependencies": {}
 }
