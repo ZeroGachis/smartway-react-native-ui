@@ -31,6 +31,10 @@ const theme = {
                 100: '#F9FAFB',
                 50: '#FFFFFF',
             },
+            error: {
+                main: '#FF5630',
+                50: '#FFE9D5',
+            },
         },
         spacing: {
             xs: 6,

@@ -20,11 +20,20 @@ export const HomeScreen = ({ navigation }: Props) => {
             </Button>
             <Button
                 mode="filled"
+                style={{ marginBottom: 12 }}
                 onClick={() => {
                     navigation.navigate('Dialog');
                 }}
             >
                 Dialogs
+            </Button>
+            <Button
+                mode="filled"
+                onClick={() => {
+                    navigation.navigate('Input');
+                }}
+            >
+                Inputs
             </Button>
             <Logo size="small" />
         </View>

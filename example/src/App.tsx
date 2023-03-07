@@ -5,11 +5,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { HomeScreen } from './HomeScreen';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
+import { InputsPage } from './Inputs/InputPage';
 
 export type RootStackParamList = {
     Home: undefined;
     Buttons: undefined;
     Dialog: undefined;
+    Input: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -22,6 +24,7 @@ const App = () => {
                     <Stack.Screen name="Home" component={HomeScreen} />
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
+                    <Stack.Screen name="Input" component={InputsPage} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>
