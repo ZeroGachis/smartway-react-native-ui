@@ -28,6 +28,8 @@ export const TextInput = ({
 }: Props) => {
     const theme = useTheme();
 
+    const [focused, setFocused] = useState<boolean>(false);
+
     const containerStyle: ViewStyle = {
         marginBottom: theme.sw.spacing.l,
         ...style,
@@ -41,6 +43,15 @@ export const TextInput = ({
     const _labelStyle: TextStyle = {
         color: theme.sw.colors.neutral[800],
         fontSize: 16,
+    };
+
+    const _outlineStyle: ViewStyle = {
+        borderWidth: 1,
+        borderColor: isError
+            ? theme.sw.colors.error.main
+            : focused
+            ? theme.sw.colors.neutral[800]
+            : theme.sw.colors.neutral[400],
     };
 
     const _infoTextStyle: TextStyle = {
@@ -58,12 +69,13 @@ export const TextInput = ({
                 style={_inputSyle}
                 textColor={theme.sw.colors.neutral[900]}
                 mode={'outlined'}
-                outlineColor={theme.sw.colors.neutral[400]}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
                 error={isError}
+                outlineStyle={_outlineStyle}
                 theme={{
                     roundness: 12,
                     colors: {
-                        primary: theme.sw.colors.neutral[800],
                         error: theme.sw.colors.error.main,
                     },
                 }}

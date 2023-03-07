@@ -16,8 +16,6 @@ export const InputsPage = () => {
         <Screen style={styles.container}>
             <TextInput
                 placeHolder="placeholder"
-                // isError
-                // renderError={renderError}
                 label={'Label'}
                 informationText={'info text'}
                 value={value}
@@ -28,6 +26,15 @@ export const InputsPage = () => {
                 label={'Label'}
                 informationText={'info text'}
                 value={'placeholder'}
+                onChangeText={handleChangeValue}
+            />
+            <TextInput
+                placeHolder="placeholder"
+                isError
+                renderError={renderError}
+                label={'With error'}
+                informationText={'info text'}
+                value={value}
                 onChangeText={handleChangeValue}
             />
         </Screen>
