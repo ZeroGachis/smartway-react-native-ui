@@ -80,5 +80,8 @@
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
+  },
+  "dependencies": {
+    "react-native-icomoon": "^0.1.1"
   }
 }
