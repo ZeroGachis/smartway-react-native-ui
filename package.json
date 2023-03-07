@@ -81,6 +81,5 @@
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
-  },
-  "dependencies": {}
+  }
 }
