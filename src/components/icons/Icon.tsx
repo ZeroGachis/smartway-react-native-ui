@@ -1,11 +1,13 @@
 import React from 'react';
-import type { IconProps } from './IconProps';
-import { QrIcon } from './QrIcon';
+import iconSet from '../../assets/fonts/selection.json';
+import IconMoon from 'react-native-icomoon';
+import type { IconName } from './IconProps';
 
-export const Icon = (props: IconProps) => {
-    if (props.name === 'qr') {
-        return <QrIcon {...props} />;
-    } else {
-        throw new Error(`Icon ${props.name} does not exist`);
-    }
+interface Props {
+    name: IconName;
+    size: number;
+}
+
+export const Icon = ({ name, size }: Props) => {
+    return <IconMoon iconSet={iconSet} name={name} size={size} />;
 };
