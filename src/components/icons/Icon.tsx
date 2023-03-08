@@ -6,8 +6,9 @@ import type { IconName } from './IconProps';
 interface Props {
     name: IconName;
     size: number;
+    color?: string;
 }
 
-export const Icon = ({ name, size }: Props) => {
-    return <IconMoon iconSet={iconSet} name={name} size={size} />;
+export const Icon = ({ name, size, color = '#212B36' }: Props) => {
+    return <IconMoon color={color} iconSet={iconSet} name={name} size={size} />;
 };

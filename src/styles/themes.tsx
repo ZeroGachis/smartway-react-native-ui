@@ -12,13 +12,6 @@ const theme = {
     fonts: configureFonts({ config: fontConfig }),
     sw: {
         colors: {
-            primary: {
-                800: '#225348',
-                600: '#017F63',
-                400: '#18A586',
-                200: '#31E3BC',
-                50: '#C5FCF0',
-            },
             neutral: {
                 900: '#1A2026',
                 800: '#212B36',
@@ -30,6 +23,28 @@ const theme = {
                 200: '#F4F6F8',
                 100: '#F9FAFB',
                 50: '#FFFFFF',
+            },
+            primary: {
+                800: '#225348',
+                600: '#017F63',
+                400: '#18A586',
+                200: '#31E3BC',
+                50: '#C5FCF0',
+            },
+            secondary: {
+                800: '#0A2482',
+                600: '#1635AE',
+                400: '#365CEE',
+                200: '#7499FE',
+                50: '#C5D0FC',
+            },
+            success: {
+                500: '#22c55e',
+                50: '#D8FBDE',
+            },
+            warning: {
+                500: '#f59e0b',
+                50: '#fffbeb',
             },
             error: {
                 main: '#FF5630',

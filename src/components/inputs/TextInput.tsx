@@ -2,29 +2,37 @@ import React, { useState } from 'react';
 import { Text, TextStyle, View, ViewStyle } from 'react-native';
 import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
+import { Icon } from '../icons/Icon';
+import type { IconName } from '../icons/IconProps';
 
 interface Props extends TextInputProps {
-    placeHolder: string;
     style?: ViewStyle;
-    onChangeText?: (value: string) => void;
-    value: string;
-    isError?: boolean;
-    renderError?: () => any;
-    disabled?: boolean;
     label: string;
-    informationText: string;
+    value: string;
+    onChangeText?: (value: string) => void;
+    isError?: boolean;
+    errorMessage?: string;
+    informationText?: string;
+    infoTextStyle?: TextStyle;
+    errorMessageStyle?: TextStyle;
+    errorIcon?: IconName;
+    errorIconSize?: number;
+    errorIconColor?: string;
 }
 
 export const TextInput = ({
-    placeHolder,
     style = {},
+    label,
     value,
     onChangeText,
     isError,
-    renderError,
-    disabled,
-    label,
+    errorMessage,
     informationText,
+    infoTextStyle,
+    errorMessageStyle,
+    errorIcon = 'dlc',
+    errorIconSize = 16,
+    errorIconColor,
     ...props
 }: Props) => {
     const theme = useTheme();
@@ -36,59 +44,71 @@ export const TextInput = ({
         ...style,
     };
 
-    const _inputSyle: TextStyle = {
+    const inputSyle: TextStyle = {
+        backgroundColor: theme.sw.colors.neutral[50],
         fontSize: 16,
         fontFamily: 'PublicSans-Regular',
     };
 
-    const _labelStyle: TextStyle = {
-        color: theme.sw.colors.neutral[800],
-        fontSize: 16,
-    };
-
-    const _outlineStyle: ViewStyle = {
-        borderWidth: disabled ? 0 : 1,
+    const outlineStyle: ViewStyle = {
+        borderWidth: 1,
         borderColor: isError
             ? theme.sw.colors.error.main
             : focused
-            ? theme.sw.colors.neutral[800]
+            ? theme.sw.colors.neutral[500]
             : theme.sw.colors.neutral[400],
     };
 
-    const _infoTextStyle: TextStyle = {
+    const informationTextStyle: TextStyle = {
         marginTop: theme.sw.spacing.xs,
-        color: theme.sw.colors.neutral[600],
+        color: value.length > 0 ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[600],
+        ...infoTextStyle,
+    };
+
+    const errorContainer: ViewStyle = {
+        flexDirection: 'row',
+        marginTop: theme.sw.spacing.xs,
+        alignItems: 'center',
+    };
+
+    const errorText: TextStyle = {
+        marginLeft: theme.sw.spacing.xs,
+        color: theme.sw.colors.error.main,
+        ...errorMessageStyle,
     };
 
     return (
         <View style={containerStyle}>
-            <Text style={_labelStyle}>{label}</Text>
             <BaseTextInput
                 {...props}
-                disabled={disabled}
-                placeholder={placeHolder}
-                placeholderTextColor={theme.sw.colors.neutral[400]}
-                style={_inputSyle}
+                label={label}
+                style={inputSyle}
                 textColor={theme.sw.colors.neutral[900]}
                 mode={'outlined'}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
                 error={isError}
-                outlineStyle={_outlineStyle}
+                outlineStyle={outlineStyle}
                 theme={{
                     roundness: 12,
                     colors: {
                         error: theme.sw.colors.error.main,
+                        text: theme.sw.colors.neutral[800],
+                        onSurfaceVariant: theme.sw.colors.neutral[500],
+                        primary: theme.sw.colors.neutral[800],
                     },
                 }}
                 value={value}
                 onChangeText={onChangeText}
             />
             {isError ? (
-                renderError && renderError()
-            ) : (
-                <Text style={_infoTextStyle}>{informationText}</Text>
-            )}
+                <View style={errorContainer}>
+                    <Icon color={errorIconColor} name={errorIcon} size={errorIconSize} />
+                    <Text style={errorText}>{errorMessage}</Text>
+                </View>
+            ) : informationText ? (
+                <Text style={informationTextStyle}>{informationText}</Text>
+            ) : null}
         </View>
     );
 };

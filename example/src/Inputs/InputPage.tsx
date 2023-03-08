@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { Screen, TextInput } from 'smartway-react-native-ui';
+import { StyleSheet, Text, View } from 'react-native';
+import { Icon, Screen, TextInput } from 'smartway-react-native-ui';
 
 export const InputsPage = () => {
     const [value, setValue] = useState('');
@@ -8,42 +8,22 @@ export const InputsPage = () => {
     const handleChangeValue = (value: string) => {
         setValue(value);
     };
-    const renderError = () => {
-        return <Text style={{ color: 'red' }}>Something went wrong.</Text>;
-    };
 
     return (
         <Screen style={styles.container}>
             <TextInput
-                placeHolder="placeholder"
                 label={'Label'}
-                informationText={'info text'}
+                informationText={'Information txt'}
                 value={value}
                 onChangeText={handleChangeValue}
             />
+            <TextInput label={'Label'} informationText={'Information txt'} value={'placeholder'} />
             <TextInput
-                placeHolder="placeholder"
-                label={'Label'}
-                informationText={'info text'}
-                value={'placeholder'}
-                onChangeText={handleChangeValue}
-            />
-            <TextInput
-                placeHolder="placeholder"
                 isError
-                renderError={renderError}
-                label={'With error'}
-                informationText={'info text'}
-                value={value}
-                onChangeText={handleChangeValue}
-            />
-            <TextInput
-                placeHolder="placeholder"
-                disabled
-                label={'disabled'}
-                informationText={'info text'}
-                value={'some value'}
-                onChangeText={handleChangeValue}
+                errorMessage="Error text with icon"
+                label={'Label'}
+                value={'placeholder'}
+                informationText={'Information txt'}
             />
         </Screen>
     );
