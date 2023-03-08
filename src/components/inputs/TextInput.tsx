@@ -3,9 +3,7 @@ import { TextStyle, View, ViewStyle } from 'react-native';
 import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { IconName } from '../icons/IconProps';
-import { TextIndication } from './TextIndication';
-
-export type TextType = 'error' | 'warning' | 'information';
+import { TextIndication, TextType } from './TextIndication';
 
 interface Props extends TextInputProps {
     style?: ViewStyle;

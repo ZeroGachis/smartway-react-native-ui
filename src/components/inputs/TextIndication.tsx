@@ -3,8 +3,7 @@ import { Text, TextStyle, View, ViewStyle } from 'react-native';
 import { Icon } from '../icons/Icon';
 import { useTheme } from '../../styles/themes';
 import type { IconName } from '../icons/IconProps';
-import type { TextType } from './TextInput';
-
+export type TextType = 'error' | 'warning' | 'information';
 interface Props {
     text: string;
     type: TextType;
