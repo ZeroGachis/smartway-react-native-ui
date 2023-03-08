@@ -13,17 +13,30 @@ export const InputsPage = () => {
         <Screen style={styles.container}>
             <TextInput
                 label={'Label'}
-                informationText={'Information txt'}
+                text={'Information txt'}
                 value={value}
                 onChangeText={handleChangeValue}
+                textType={'information'}
             />
-            <TextInput label={'Label'} informationText={'Information txt'} value={'placeholder'} />
             <TextInput
-                isError
-                errorMessage="Error text with icon"
+                text={'warning text'}
+                label={'Label'}
+                textType={'warning'}
+                value={'placeholder'}
+            />
+            <TextInput
+                text={'warning text with icon'}
+                icon={'dlc'}
+                label={'Label'}
+                textType={'warning'}
+                value={'placeholder'}
+            />
+            <TextInput
                 label={'Label'}
                 value={'placeholder'}
-                informationText={'Information txt'}
+                text={'error text'}
+                icon={'dlc'}
+                textType={'error'}
             />
         </Screen>
     );

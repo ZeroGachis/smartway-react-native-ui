@@ -1,38 +1,34 @@
 import React, { useState } from 'react';
-import { Text, TextStyle, View, ViewStyle } from 'react-native';
+import { TextStyle, View, ViewStyle } from 'react-native';
 import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
-import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
+import { TextIndication } from './TextIndication';
+
+export type TextType = 'error' | 'warning' | 'information';
 
 interface Props extends TextInputProps {
     style?: ViewStyle;
     label: string;
     value: string;
+    text?: string;
+    textType: TextType;
+    icon?: IconName;
     onChangeText?: (value: string) => void;
-    isError?: boolean;
-    errorMessage?: string;
-    informationText?: string;
-    infoTextStyle?: TextStyle;
-    errorMessageStyle?: TextStyle;
-    errorIcon?: IconName;
-    errorIconSize?: number;
-    errorIconColor?: string;
+    iconSize?: number;
+    iconColor?: string;
 }
 
 export const TextInput = ({
-    style = {},
+    style,
     label,
     value,
+    text,
+    textType,
+    icon,
     onChangeText,
-    isError,
-    errorMessage,
-    informationText,
-    infoTextStyle,
-    errorMessageStyle,
-    errorIcon = 'dlc',
-    errorIconSize = 16,
-    errorIconColor,
+    iconSize,
+    iconColor,
     ...props
 }: Props) => {
     const theme = useTheme();
@@ -52,29 +48,12 @@ export const TextInput = ({
 
     const outlineStyle: ViewStyle = {
         borderWidth: 1,
-        borderColor: isError
-            ? theme.sw.colors.error.main
-            : focused
-            ? theme.sw.colors.neutral[500]
-            : theme.sw.colors.neutral[400],
-    };
-
-    const informationTextStyle: TextStyle = {
-        marginTop: theme.sw.spacing.xs,
-        color: value.length > 0 ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[600],
-        ...infoTextStyle,
-    };
-
-    const errorContainer: ViewStyle = {
-        flexDirection: 'row',
-        marginTop: theme.sw.spacing.xs,
-        alignItems: 'center',
-    };
-
-    const errorText: TextStyle = {
-        marginLeft: theme.sw.spacing.xs,
-        color: theme.sw.colors.error.main,
-        ...errorMessageStyle,
+        borderColor:
+            textType === 'error'
+                ? theme.sw.colors.error.main
+                : focused
+                ? theme.sw.colors.neutral[500]
+                : theme.sw.colors.neutral[400],
     };
 
     return (
@@ -87,7 +66,7 @@ export const TextInput = ({
                 mode={'outlined'}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
-                error={isError}
+                error={textType === 'error'}
                 outlineStyle={outlineStyle}
                 theme={{
                     roundness: 12,
@@ -101,14 +80,15 @@ export const TextInput = ({
                 value={value}
                 onChangeText={onChangeText}
             />
-            {isError ? (
-                <View style={errorContainer}>
-                    <Icon color={errorIconColor} name={errorIcon} size={errorIconSize} />
-                    <Text style={errorText}>{errorMessage}</Text>
-                </View>
-            ) : informationText ? (
-                <Text style={informationTextStyle}>{informationText}</Text>
-            ) : null}
+            {text && (
+                <TextIndication
+                    text={text}
+                    type={textType}
+                    icon={icon}
+                    iconSize={iconSize}
+                    iconColor={iconColor}
+                />
+            )}
         </View>
     );
 };
