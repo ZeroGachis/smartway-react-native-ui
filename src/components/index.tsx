@@ -5,6 +5,7 @@ import { Headline } from './typography/Headline';
 import { Body } from './typography/Body';
 import { Card } from './Card';
 import { Dialog } from './dialogs/Dialog';
+import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
 
-export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen };
+export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput };
