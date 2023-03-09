@@ -6,12 +6,14 @@ import { HomeScreen } from './HomeScreen';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
+import { KeyboardPage } from './Keyboard/KeyboardPage';
 
 export type RootStackParamList = {
     Home: undefined;
     Buttons: undefined;
     Dialog: undefined;
     Input: undefined;
+    Keyboard: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -25,6 +27,7 @@ const App = () => {
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
                     <Stack.Screen name="Input" component={InputsPage} />
+                    <Stack.Screen name="Keyboard" component={KeyboardPage} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>

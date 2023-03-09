@@ -35,6 +35,14 @@ export const HomeScreen = ({ navigation }: Props) => {
             >
                 Inputs
             </Button>
+            <Button
+                mode="filled"
+                onClick={() => {
+                    navigation.navigate('Keyboard');
+                }}
+            >
+                Inputs
+            </Button>
             <Logo size="small" />
         </View>
     );
