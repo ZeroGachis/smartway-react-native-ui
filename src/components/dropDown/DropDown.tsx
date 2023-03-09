@@ -3,14 +3,20 @@ import { ScrollView, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { List } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
+
+export type DropDownOption = {
+    name: string;
+    value: any;
+};
+
 interface Props {
     disabled?: boolean;
     error?: boolean;
     placeholder: string;
     label?: string;
-    options: any[];
-    setSelected: (item: any) => void;
-    selected: any;
+    options: DropDownOption[];
+    setSelected: (item: DropDownOption) => void;
+    selected?: DropDownOption;
     style?: ViewStyle;
     optionStyle?: ViewStyle;
 }
@@ -34,8 +40,8 @@ export const DropDown = ({
         setExpanded(!expanded);
     };
 
-    const handleChoose = (item: any) => {
-        setSelected(item);
+    const handleSelect = (option: DropDownOption) => {
+        setSelected(option);
         setExpanded(false);
     };
 
@@ -111,16 +117,16 @@ export const DropDown = ({
                         onPress={handlePress}
                         style={styles.accordion}
                         titleStyle={styles.accordionTitle}
-                        title={selected ? selected : placeholder}
+                        title={selected ? selected.name : placeholder}
                         right={() => <Icon name="arrow-up" />}
                     >
-                        {options.map((item, index: number) => (
+                        {options.map((option: DropDownOption, index: number) => (
                             <List.Item
                                 key={index}
                                 titleStyle={styles.optionTitle}
                                 style={styles.option}
-                                title={item}
-                                onPress={() => handleChoose(item)}
+                                title={option.name}
+                                onPress={() => handleSelect(option)}
                             />
                         ))}
                     </List.Accordion>
