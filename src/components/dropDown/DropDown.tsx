@@ -13,7 +13,6 @@ interface Props {
     disabled?: boolean;
     error?: boolean;
     placeholder: string;
-    label?: string;
     options: DropDownOption[];
     setSelected: (item: DropDownOption) => void;
     selected?: DropDownOption;
@@ -24,7 +23,6 @@ export const DropDown = ({
     disabled,
     error,
     placeholder,
-    label,
     options,
     setSelected,
     selected,
@@ -75,11 +73,7 @@ export const DropDown = ({
         container: {
             marginBottom: theme.sw.spacing.l,
         },
-        label: {
-            color: theme.sw.colors.neutral[800],
-            fontSize: 16,
-            lineHeight: 19,
-        },
+
         section: {
             borderWidth: 1,
             borderRadius: 8,
@@ -109,7 +103,6 @@ export const DropDown = ({
 
     return (
         <View style={styles.container}>
-            {label && <Text style={styles.label}>{label}</Text>}
             <List.Section style={styles.section}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <List.Accordion

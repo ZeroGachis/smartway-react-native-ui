@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { DropDown, Screen } from 'smartway-react-native-ui';
 
-type DropDownOption = {
+type DropDownOption<T = any> = {
     name: string;
-    value: any;
+    value: T;
 };
 
 export const DropDownPage = () => {
-    const [selected, setSelected] = useState<DropDownOption | undefined>(undefined);
+    const [selected, setSelected] = useState<DropDownOption>(undefined);
 
     const options = [
         { name: 'option 1', value: {} },
@@ -24,7 +24,6 @@ export const DropDownPage = () => {
                 options={options}
                 setSelected={setSelected}
                 selected={selected}
-                label={'Label'}
             />
             <DropDown
                 placeholder="Text"
@@ -39,7 +38,6 @@ export const DropDownPage = () => {
                 setSelected={setSelected}
                 selected={selected}
                 error
-                label={'Label'}
             />
         </Screen>
     );
