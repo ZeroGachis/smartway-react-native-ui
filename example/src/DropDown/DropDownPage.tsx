@@ -8,7 +8,7 @@ type DropDownOption<T = any> = {
 };
 
 export const DropDownPage = () => {
-    const [selected, setSelected] = useState<DropDownOption>(undefined);
+    const [selected, setSelected] = useState<DropDownOption>();
 
     const options = [
         { name: 'option 1', value: {} },
@@ -20,7 +20,7 @@ export const DropDownPage = () => {
     return (
         <Screen style={styles.container}>
             <DropDown
-                placeholder="Text"
+                placeholder="something"
                 options={options}
                 setSelected={setSelected}
                 selected={selected}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
 import { List } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
