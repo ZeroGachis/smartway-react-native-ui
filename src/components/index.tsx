@@ -7,6 +7,18 @@ import { Card } from './Card';
 import { Dialog } from './dialogs/Dialog';
 import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
+import { BottomSheet } from './bottomSheet/BottomSheet';
 import { DropDown } from './dropDown/DropDown';
-
-export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput, DropDown };
+export {
+    Body,
+    Button,
+    Card,
+    Dialog,
+    Headline,
+    Icon,
+    Logo,
+    Screen,
+    TextInput,
+    DropDown,
+    BottomSheet,
+};

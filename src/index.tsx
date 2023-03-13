@@ -8,6 +8,7 @@ import {
     Logo,
     TextInput,
     Screen,
+    BottomSheet,
     DropDown,
 } from './components';
 
@@ -25,4 +26,5 @@ export {
     DropDown,
     ThemeProvider,
     useTheme,
+    BottomSheet,
 };
