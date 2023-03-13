@@ -15,7 +15,7 @@ export const TogglePage = () => {
 
     return (
         <View style={styles.container}>
-            <Toggle withIcon isToggled={toggled} onValueChange={() => setToggled(!toggled)} />
+            <Toggle text="%" isToggled={toggled} onValueChange={() => setToggled(!toggled)} />
         </View>
     );
 };

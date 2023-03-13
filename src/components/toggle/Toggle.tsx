@@ -7,11 +7,11 @@ interface Props {
     isToggled: boolean;
     onValueChange: () => void;
     disabled?: boolean;
-    withIcon?: boolean;
     style?: ViewStyle;
+    text?: string;
 }
 
-export const Toggle = ({ isToggled, onValueChange, style, withIcon = false }: Props) => {
+export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
     const theme = useTheme();
 
     const getColors = () => {
@@ -97,7 +97,7 @@ export const Toggle = ({ isToggled, onValueChange, style, withIcon = false }: Pr
                             },
                         ]}
                     >
-                        {withIcon && <Text style={styles.percent}>%</Text>}
+                        {text && <Text style={styles.percent}>{text}</Text>}
                     </Animated.View>
                 </View>
             </TouchableOpacity>
