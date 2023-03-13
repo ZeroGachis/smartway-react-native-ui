@@ -45,6 +45,15 @@ export const HomeScreen = ({ navigation }: Props) => {
             >
                 DropDown
             </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('Toggle');
+                }}
+            >
+                Toggle
+            </Button>
             <Logo size="small" />
         </View>
     );
