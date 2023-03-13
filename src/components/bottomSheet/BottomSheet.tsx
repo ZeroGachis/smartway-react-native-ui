@@ -58,7 +58,7 @@ export const BottomSheet = ({
                 opacity={backDropOpacity}
             />
         ),
-        [],
+        [backDropOpacity],
     );
 
     const close = () => {
