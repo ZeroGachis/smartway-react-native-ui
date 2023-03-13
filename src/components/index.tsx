@@ -8,5 +8,6 @@ import { Dialog } from './dialogs/Dialog';
 import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
 import { DropDown } from './dropDown/DropDown';
+import { Toggle } from './toggle/Toggle';
 
-export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput, DropDown };
+export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput, DropDown, Toggle };
