@@ -29,11 +29,21 @@ export const HomeScreen = ({ navigation }: Props) => {
             </Button>
             <Button
                 mode="filled"
+                style={{ marginBottom: 12 }}
                 onClick={() => {
                     navigation.navigate('Input');
                 }}
             >
                 Inputs
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('DropDown');
+                }}
+            >
+                DropDown
             </Button>
             <Logo size="small" />
         </View>

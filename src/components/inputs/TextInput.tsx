@@ -7,6 +7,7 @@ import { TextIndication, TextType } from './TextIndication';
 
 interface Props extends TextInputProps {
     style?: ViewStyle;
+    inputStyles?: TextStyle;
     label: string;
     value: string;
     text?: string;
@@ -19,6 +20,7 @@ interface Props extends TextInputProps {
 
 export const TextInput = ({
     style,
+    inputStyles,
     label,
     value,
     text,
@@ -27,6 +29,7 @@ export const TextInput = ({
     onChangeText,
     iconSize,
     iconColor,
+
     ...props
 }: Props) => {
     const theme = useTheme();
@@ -38,10 +41,12 @@ export const TextInput = ({
         ...style,
     };
 
-    const inputSyle: TextStyle = {
+    const inputStyle: TextStyle = {
         backgroundColor: theme.sw.colors.neutral[50],
         fontSize: 16,
         fontFamily: 'PublicSans-Regular',
+        height: 56,
+        ...inputStyles,
     };
 
     const outlineStyle: ViewStyle = {
@@ -59,7 +64,7 @@ export const TextInput = ({
             <BaseTextInput
                 {...props}
                 label={label}
-                style={inputSyle}
+                style={inputStyle}
                 textColor={theme.sw.colors.neutral[900]}
                 mode={'outlined'}
                 onFocus={() => setFocused(true)}
@@ -67,7 +72,7 @@ export const TextInput = ({
                 error={textType === 'error'}
                 outlineStyle={outlineStyle}
                 theme={{
-                    roundness: 12,
+                    roundness: 8,
                     colors: {
                         error: theme.sw.colors.error.main,
                         text: theme.sw.colors.neutral[800],
