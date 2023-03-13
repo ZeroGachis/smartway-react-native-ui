@@ -35,6 +35,14 @@ export const HomeScreen = ({ navigation }: Props) => {
             >
                 Inputs
             </Button>
+            <Button
+                mode="filled"
+                onClick={() => {
+                    navigation.navigate('BottomSheet');
+                }}
+            >
+                BottomSheetPage
+            </Button>
             <Logo size="small" />
         </View>
     );
