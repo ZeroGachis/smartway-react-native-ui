@@ -12,8 +12,8 @@ type MenuOption = {
 
 interface Props {
     visible: boolean;
-    openMenu: () => void;
-    closeMenu: () => void;
+    onPress: () => void;
+    onDismiss: () => void;
     options: MenuOption[];
     icon: IconName;
     iconSize?: number;
@@ -25,8 +25,8 @@ interface Props {
 
 export const Menu = ({
     visible,
-    openMenu,
-    closeMenu,
+    onPress,
+    onDismiss,
     options,
     icon,
     style,
@@ -58,10 +58,10 @@ export const Menu = ({
             <BaseMenu
                 anchorPosition="bottom"
                 visible={visible}
-                onDismiss={closeMenu}
+                onDismiss={onDismiss}
                 contentStyle={styles.menu}
                 anchor={
-                    <Pressable hitSlop={8} onPress={openMenu}>
+                    <Pressable hitSlop={8} onPress={onPress}>
                         <Icon color={iconColor} size={iconSize} name={icon} />
                     </Pressable>
                 }

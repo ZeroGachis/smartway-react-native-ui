@@ -27,10 +27,10 @@ export const MenuPage = () => {
 
             <Menu
                 visible={visible}
-                openMenu={() => setVisible(true)}
-                closeMenu={() => setVisible(false)}
+                onPress={() => setVisible(true)}
+                onDismiss={() => setVisible(false)}
                 options={options}
-                menuIcon={'settings'}
+                icon={'settings'}
             />
         </View>
     );
