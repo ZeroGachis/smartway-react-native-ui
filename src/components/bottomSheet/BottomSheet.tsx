@@ -30,6 +30,7 @@ interface Props {
     handleIndicatorStyle?: ViewStyle;
     animationDuration?: number;
     animationConfigs?: WithSpringConfig | WithTimingConfig;
+    swipeable?: boolean;
 }
 export const BottomSheet = ({
     children,
@@ -41,6 +42,7 @@ export const BottomSheet = ({
     handleStyle,
     handleIndicatorStyle,
     animationConfigs = { duration: 200 },
+    swipeable = false,
 }: Props) => {
     const theme = useTheme();
     const bottomSheetRef = useRef<BaseBottomSheet>(null);
@@ -91,7 +93,7 @@ export const BottomSheet = ({
             ref={bottomSheetRef}
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
-            enablePanDownToClose
+            enablePanDownToClose={swipeable}
             style={[styles.contentContainer, contentStyle]}
             handleStyle={[{ paddingTop: theme.sw.spacing.xs }, handleStyle]}
             handleIndicatorStyle={styles.indicatorStyle}
