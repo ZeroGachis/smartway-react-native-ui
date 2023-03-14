@@ -5,6 +5,7 @@ import { useTheme } from '../styles/themes';
 type Props = {
     children?: React.ReactNode;
     style?: ViewStyle;
+    testID?: string;
 };
 
 export const Screen = (props: Props) => {
@@ -18,7 +19,7 @@ export const Screen = (props: Props) => {
     };
 
     return (
-        <SafeAreaView style={style}>
+        <SafeAreaView style={style} testID={props.testID}>
             <StatusBar backgroundColor={theme.sw.colors.neutral[300]} barStyle="dark-content" />
             {props.children}
         </SafeAreaView>
