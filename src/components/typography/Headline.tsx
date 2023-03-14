@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
-interface HeadlineProps {
+export interface HeadlineProps {
     size?: 'h1' | 'h2' | 'h3' | 'h4';
     children?: ReactNode;
     style?: TextStyle;

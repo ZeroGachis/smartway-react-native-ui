@@ -52,7 +52,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                     navigation.navigate('BottomSheet');
                 }}
             >
-                Bottom Sheet Page
+                Bottom Sheet
             </Button>
             <Logo size="small" />
         </View>

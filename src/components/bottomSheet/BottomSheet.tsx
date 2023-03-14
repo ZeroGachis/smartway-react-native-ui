@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { BottomSheetBackdrop, default as BaseBottomSheet } from '@gorhom/bottom-sheet';
 import { useTheme } from '../../styles/themes';
 import type { AnimateStyle, WithSpringConfig, WithTimingConfig } from 'react-native-reanimated';
+import { Headline, HeadlineProps } from '../typography/Headline';
 
-type ContentStyle = StyleProp<
+type ContentContainerStyle = StyleProp<
     AnimateStyle<
         Omit<
             ViewStyle,
@@ -25,12 +26,15 @@ interface Props {
     onClose: () => void;
     snapPoints?: (string | number)[];
     backDropOpacity?: number;
-    contentStyle?: ContentStyle;
+    contentContainerStyle?: ContentContainerStyle;
+    contentStyle?: ViewStyle;
     handleStyle?: ViewStyle;
     handleIndicatorStyle?: ViewStyle;
     animationDuration?: number;
     animationConfigs?: WithSpringConfig | WithTimingConfig;
     swipeable?: boolean;
+    title?: string;
+    titleProps?: HeadlineProps;
 }
 export const BottomSheet = ({
     children,
@@ -38,11 +42,14 @@ export const BottomSheet = ({
     onClose,
     snapPoints = ['40%'],
     backDropOpacity = 0.2,
+    contentContainerStyle,
     contentStyle,
     handleStyle,
     handleIndicatorStyle,
     animationConfigs = { duration: 200 },
     swipeable = false,
+    title,
+    titleProps,
 }: Props) => {
     const theme = useTheme();
     const bottomSheetRef = useRef<BaseBottomSheet>(null);
@@ -85,6 +92,10 @@ export const BottomSheet = ({
             backgroundColor: theme.sw.colors.neutral[400],
             ...handleIndicatorStyle,
         },
+        content: {
+            padding: theme.sw.spacing.m,
+            ...contentStyle,
+        },
     });
 
     return (
@@ -94,13 +105,16 @@ export const BottomSheet = ({
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
             enablePanDownToClose={swipeable}
-            style={[styles.contentContainer, contentStyle]}
+            style={[styles.contentContainer, contentContainerStyle]}
             handleStyle={[{ paddingTop: theme.sw.spacing.xs }, handleStyle]}
             handleIndicatorStyle={styles.indicatorStyle}
             backdropComponent={renderBackdrop}
             animationConfigs={animationConfigs}
         >
-            {children}
+            <View style={styles.content}>
+                <Headline {...titleProps}>{title}</Headline>
+                {children}
+            </View>
         </BaseBottomSheet>
     );
 };
