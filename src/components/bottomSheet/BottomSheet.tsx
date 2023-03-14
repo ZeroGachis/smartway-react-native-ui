@@ -77,7 +77,6 @@ export const BottomSheet = ({
         contentContainer: {
             overflow: 'hidden',
             borderRadius: 24,
-            contentStyle,
         },
 
         indicatorStyle: {
