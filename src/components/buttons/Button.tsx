@@ -30,7 +30,7 @@ export const Button = ({
         );
     } else {
         return (
-            <BaseButton style={style} labelStyle={labelStyle} testID={testID}>
+            <BaseButton style={style} labelStyle={labelStyle} onPress={onClick} testID={testID}>
                 {children}
             </BaseButton>
         );
