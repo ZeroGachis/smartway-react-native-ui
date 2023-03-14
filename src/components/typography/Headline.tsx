@@ -6,9 +6,10 @@ interface HeadlineProps {
     size?: 'h1' | 'h2' | 'h3' | 'h4';
     children?: ReactNode;
     style?: TextStyle;
+    testID?: string;
 }
 
-export const Headline = ({ size = 'h1', children, style }: HeadlineProps) => {
+export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps) => {
     const theme = useTheme();
 
     let headlineStyle: StyleProp<TextStyle> = {};
@@ -46,5 +47,9 @@ export const Headline = ({ size = 'h1', children, style }: HeadlineProps) => {
         ...style,
     };
 
-    return <Text style={headlineStyle}>{children}</Text>;
+    return (
+        <Text style={headlineStyle} testID={testID}>
+            {children}
+        </Text>
+    );
 };

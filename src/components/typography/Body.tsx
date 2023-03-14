@@ -6,9 +6,10 @@ interface BodyProps {
     size?: 'default' | 'medium' | 'small';
     children?: ReactNode;
     style?: TextStyle;
+    testID?: string;
 }
 
-export const Body = ({ size = 'default', children, style }: BodyProps) => {
+export const Body = ({ size = 'default', children, style, testID }: BodyProps) => {
     const theme = useTheme();
     let bodyStyle: StyleProp<TextStyle> = {};
     if (size === 'default') {
@@ -34,5 +35,9 @@ export const Body = ({ size = 'default', children, style }: BodyProps) => {
         fontFamily: 'PublicSans-Regular',
         ...style,
     };
-    return <Text style={bodyStyle}>{children}</Text>;
+    return (
+        <Text style={bodyStyle} testID={testID}>
+            {children}
+        </Text>
+    );
 };
