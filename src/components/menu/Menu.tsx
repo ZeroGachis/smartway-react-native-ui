@@ -15,7 +15,7 @@ interface Props {
     openMenu: () => void;
     closeMenu: () => void;
     options: MenuOption[];
-    menuIcon: IconName;
+    icon: IconName;
     iconSize?: number;
     iconColor?: string;
     style?: ViewStyle;
@@ -28,7 +28,7 @@ export const Menu = ({
     openMenu,
     closeMenu,
     options,
-    menuIcon,
+    icon,
     style,
     iconSize = 24,
     iconColor,
@@ -62,7 +62,7 @@ export const Menu = ({
                 contentStyle={styles.menu}
                 anchor={
                     <Pressable hitSlop={8} onPress={openMenu}>
-                        <Icon color={iconColor} size={iconSize} name={menuIcon} />
+                        <Icon color={iconColor} size={iconSize} name={icon} />
                     </Pressable>
                 }
             >
