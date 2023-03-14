@@ -21,6 +21,7 @@ export const Body = ({ size = 'default', children, style }: BodyProps) => {
             fontSize: 16,
             lineHeight: 19,
             fontWeight: '600',
+            fontFamily: 'PublicSans-SemiBold',
         };
     } else if (size === 'medium') {
         bodyStyle = {
@@ -35,9 +36,9 @@ export const Body = ({ size = 'default', children, style }: BodyProps) => {
     }
 
     bodyStyle = {
-        ...bodyStyle,
         color: theme.sw.colors.neutral[800],
         fontFamily: 'PublicSans-Regular',
+        ...bodyStyle,
         ...style,
     };
     return <Text style={bodyStyle}>{children}</Text>;
