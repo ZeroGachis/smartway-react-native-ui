@@ -9,6 +9,7 @@ import {
     TextInput,
     Screen,
     DropDown,
+    Menu,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -23,6 +24,7 @@ export {
     Screen,
     TextInput,
     DropDown,
+    Menu,
     ThemeProvider,
     useTheme,
 };
