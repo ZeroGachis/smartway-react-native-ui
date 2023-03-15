@@ -3,7 +3,7 @@ import { StyleProp, Text, TextStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
 interface BodyProps {
-    size?: 'default' | 'medium' | 'small';
+    size?: 'default' | 'semi-bold' | 'medium' | 'small';
     children?: ReactNode;
     style?: TextStyle;
     testID?: string;
@@ -16,6 +16,13 @@ export const Body = ({ size = 'default', children, style, testID }: BodyProps) =
         bodyStyle = {
             fontSize: 16,
             lineHeight: 19,
+        };
+    } else if (size == 'semi-bold') {
+        bodyStyle = {
+            fontSize: 16,
+            lineHeight: 19,
+            fontWeight: '600',
+            fontFamily: 'PublicSans-SemiBold',
         };
     } else if (size === 'medium') {
         bodyStyle = {
@@ -30,9 +37,9 @@ export const Body = ({ size = 'default', children, style, testID }: BodyProps) =
     }
 
     bodyStyle = {
-        ...bodyStyle,
         color: theme.sw.colors.neutral[800],
         fontFamily: 'PublicSans-Regular',
+        ...bodyStyle,
         ...style,
     };
     return (
