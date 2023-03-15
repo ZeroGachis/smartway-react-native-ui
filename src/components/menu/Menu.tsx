@@ -10,36 +10,36 @@ type MenuOption = {
     onPress: () => void;
 };
 
-export interface MenuProps {
-    menuVisible: boolean;
-    onMenuPress: () => void;
-    onMenuDismiss: () => void;
-    menuOptions: MenuOption[];
-    menuIcon: IconName;
-    menuIconSize?: number;
-    menuIconColor?: string;
+interface Props {
+    visible: boolean;
+    onPress: () => void;
+    onDismiss: () => void;
+    options: MenuOption[];
+    icon: IconName;
+    iconSize?: number;
+    iconColor?: string;
+    style?: ViewStyle;
     menuStyle?: ViewStyle;
-    menuContainerStyle?: ViewStyle;
-    menuOptionStyle?: ViewStyle;
+    optionStyle?: ViewStyle;
 }
 
 export const Menu = ({
-    menuVisible,
-    onMenuPress,
-    onMenuDismiss,
-    menuOptions,
-    menuIcon,
-    menuIconSize = 24,
-    menuIconColor,
+    visible,
+    onPress,
+    onDismiss,
+    options,
+    icon,
+    style,
+    iconSize = 24,
+    iconColor,
     menuStyle,
-    menuContainerStyle,
-    menuOptionStyle,
-}: MenuProps) => {
+    optionStyle,
+}: Props) => {
     const theme = useTheme();
     const styles = StyleSheet.create({
         container: {
             justifyContent: 'center',
-            ...menuContainerStyle,
+            ...style,
         },
         menu: {
             paddingVertical: theme.sw.spacing.l,
@@ -49,7 +49,7 @@ export const Menu = ({
         },
         option: {
             paddingHorizontal: theme.sw.spacing.l,
-            ...menuOptionStyle,
+            ...optionStyle,
         },
     });
 
@@ -57,16 +57,16 @@ export const Menu = ({
         <View style={styles.container}>
             <BaseMenu
                 anchorPosition="bottom"
-                visible={menuVisible}
-                onDismiss={onMenuDismiss}
+                visible={visible}
+                onDismiss={onDismiss}
                 contentStyle={styles.menu}
                 anchor={
-                    <Pressable hitSlop={8} onPress={onMenuPress}>
-                        <Icon color={menuIconColor} size={menuIconSize} name={menuIcon} />
+                    <Pressable hitSlop={8} onPress={onPress}>
+                        <Icon color={iconColor} size={iconSize} name={icon} />
                     </Pressable>
                 }
             >
-                {menuOptions.map((option: MenuOption, index: number) => (
+                {options.map((option: MenuOption, index: number) => (
                     <BaseMenu.Item
                         style={styles.option}
                         key={index}

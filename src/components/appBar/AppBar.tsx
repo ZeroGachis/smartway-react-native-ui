@@ -2,16 +2,16 @@ import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { Appbar as BaseAppBar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
-import { Menu, MenuProps } from '../menu/Menu';
 import { Headline } from '../typography/Headline';
 
-interface Props extends MenuProps {
+interface Props {
     text: string;
     onPress: () => void;
     iconName?: string;
     style?: ViewStyle;
+    children?: JSX.Element;
 }
-export const AppBar = ({ text, onPress, iconName = 'arrow-left', style, ...props }: Props) => {
+export const AppBar = ({ text, onPress, iconName = 'arrow-left', style, children }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -26,9 +26,6 @@ export const AppBar = ({ text, onPress, iconName = 'arrow-left', style, ...props
         appBar: {
             backgroundColor: theme.sw.colors.neutral[50],
         },
-        menu: {
-            paddingRight: theme.sw.spacing.m,
-        },
     });
     return (
         <View style={styles.header}>
@@ -42,7 +39,7 @@ export const AppBar = ({ text, onPress, iconName = 'arrow-left', style, ...props
                 />
                 <Headline size="h3">{text}</Headline>
             </BaseAppBar>
-            <Menu {...props} />
+            {children}
         </View>
     );
 };

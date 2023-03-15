@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { AppBar, useTheme } from 'smartway-react-native-ui';
+import { AppBar, Menu, useTheme } from 'smartway-react-native-ui';
 
 export const AppBarPage = () => {
     const theme = useTheme();
@@ -15,16 +15,16 @@ export const AppBarPage = () => {
 
     return (
         <View>
-            <AppBar
-                menuIcon="more"
-                onMenuDismiss={() => setMenuVisible(false)}
-                menuVisible={setMenu}
-                onPress={() => {}}
-                menuContainerStyle={{ paddingRight: theme.sw.spacing.m }}
-                onMenuPress={() => setMenuVisible(true)}
-                menuOptions={menuOptions}
-                text={'Title'}
-            />
+            <AppBar onPress={() => {}} text={'Title'}>
+                <Menu
+                    icon="more"
+                    onDismiss={() => setMenuVisible(false)}
+                    visible={setMenu}
+                    style={{ paddingRight: theme.sw.spacing.m }}
+                    onPress={() => setMenuVisible(true)}
+                    options={menuOptions}
+                />
+            </AppBar>
         </View>
     );
 };
