@@ -44,7 +44,7 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
         inputRange: [0, 1],
         outputRange: [50, 10],
     });
-    const fade = animatedValue.interpolate({
+    const animateColors = animatedValue.interpolate({
         inputRange: [0, 1],
         outputRange: [theme.sw.colors.neutral[400], theme.sw.colors.success[500]],
     });
@@ -75,6 +75,7 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
             height: 22.5,
             backgroundColor: 'white',
             borderRadius: 12.5,
+            zIndex: 1,
         },
         percentContainer: {
             color: theme.sw.colors.neutral[600],
@@ -90,7 +91,9 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
     return (
         <View style={styles.container}>
             <Pressable onPress={onValueChange}>
-                <Animated.View style={[styles.toggleContainer, style, { backgroundColor: fade }]}>
+                <Animated.View
+                    style={[styles.toggleContainer, style, { backgroundColor: animateColors }]}
+                >
                     <Animated.View
                         style={[
                             styles.toggleWheelStyle,

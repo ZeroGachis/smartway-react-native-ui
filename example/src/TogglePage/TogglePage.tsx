@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Toggle } from 'smartway-react-native-ui';
 
 export const TogglePage = () => {
-    const [toggled, setToggled] = useState<boolean>(true);
+    const [toggled, setToggled] = useState<boolean>(false);
 
     const styles = StyleSheet.create({
         container: {
