@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import { Animated, Easing, Text, TouchableOpacity, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
@@ -14,7 +14,13 @@ interface Props {
 export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
     const theme = useTheme();
 
-    const getColors = () => {
+    const [fadeAnim] = useState(new Animated.Value(0));
+
+    React.useEffect(() => {
+        Animated.timing(fadeAnim, { toValue: 1, useNativeDriver: true });
+    }, []);
+
+    const getColor = () => {
         if (isToggled) {
             return {
                 backgroundColor: theme.sw.colors.success[500],
@@ -27,7 +33,7 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
         };
     };
 
-    const { backgroundColor, color } = getColors();
+    const { color } = getColor();
 
     const animatedValue = new Animated.Value(0);
     const moveToggle = animatedValue.interpolate({
@@ -38,6 +44,11 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
         inputRange: [0, 1],
         outputRange: [50, 10],
     });
+    const fade = animatedValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [theme.sw.colors.neutral[400], theme.sw.colors.success[500]],
+    });
+
     animatedValue.setValue(isToggled ? 0 : 1);
 
     Animated.timing(animatedValue, {
@@ -58,7 +69,6 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
             paddingVertical: theme.sw.spacing.xs,
             borderRadius: 50,
             justifyContent: 'center',
-            backgroundColor,
         },
         toggleWheelStyle: {
             width: 22.5,
@@ -79,8 +89,8 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={onValueChange}>
-                <View style={[styles.toggleContainer, style]}>
+            <Pressable onPress={onValueChange}>
+                <Animated.View style={[styles.toggleContainer, style, { backgroundColor: fade }]}>
                     <Animated.View
                         style={[
                             styles.toggleWheelStyle,
@@ -99,8 +109,8 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
                     >
                         {text && <Text style={styles.percent}>{text}</Text>}
                     </Animated.View>
-                </View>
-            </TouchableOpacity>
+                </Animated.View>
+            </Pressable>
         </View>
     );
 };
