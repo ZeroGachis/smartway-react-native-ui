@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { Appbar as BaseAppBar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Menu, MenuProps } from '../menu/Menu';
@@ -32,7 +32,6 @@ export const AppBar = ({ text, onPress, iconName = 'arrow-left', style, ...props
     });
     return (
         <View style={styles.header}>
-            <StatusBar backgroundColor={theme.sw.colors.neutral[50]} barStyle={'dark-content'} />
             <BaseAppBar style={styles.appBar}>
                 <BaseAppBar.Action
                     style={styles.appBarStyle}

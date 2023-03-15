@@ -23,7 +23,7 @@ export const AppBarPage = () => {
                 menuContainerStyle={{ paddingRight: theme.sw.spacing.m }}
                 onMenuPress={() => setMenuVisible(true)}
                 menuOptions={menuOptions}
-                headLineText={'Title'}
+                text={'Title'}
             />
         </View>
     );
