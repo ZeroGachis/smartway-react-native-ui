@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StyleProp, ViewStyle, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, ViewStyle, StatusBar, StyleSheet } from 'react-native';
 import { useTheme } from '../styles/themes';
 
 type Props = {
