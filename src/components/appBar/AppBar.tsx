@@ -6,18 +6,12 @@ import { Menu, MenuProps } from '../menu/Menu';
 import { Headline } from '../typography/Headline';
 
 interface Props extends MenuProps {
-    headLineText: string;
+    text: string;
     onPress: () => void;
     iconName?: string;
-    appBarStyle?: ViewStyle;
+    style?: ViewStyle;
 }
-export const AppBar = ({
-    headLineText,
-    onPress,
-    iconName = 'arrow-left',
-    appBarStyle,
-    ...props
-}: Props) => {
+export const AppBar = ({ text, onPress, iconName = 'arrow-left', style, ...props }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -27,7 +21,7 @@ export const AppBar = ({
             backgroundColor: theme.sw.colors.neutral[50],
         },
         appBarStyle: {
-            ...appBarStyle,
+            ...style,
         },
         appBar: {
             backgroundColor: theme.sw.colors.neutral[50],
@@ -47,7 +41,7 @@ export const AppBar = ({
                     icon={iconName}
                     onPress={onPress}
                 />
-                <Headline size="h3">{headLineText}</Headline>
+                <Headline size="h3">{text}</Headline>
             </BaseAppBar>
             <Menu {...props} />
         </View>
