@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, ViewStyle } from 'react-native';
-import { Animated, Easing, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Easing, Text, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
 interface Props {
