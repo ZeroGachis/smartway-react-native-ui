@@ -4,7 +4,7 @@ import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';
 
-export const FilledButton = ({ children, style, labelStyle, onClick }: BaseButtonProps) => {
+export const FilledButton = ({ children, style, labelStyle, onClick, testID }: BaseButtonProps) => {
     const theme = useTheme();
     const buttonStyle: ViewStyle = {
         borderRadius: 8,
@@ -26,7 +26,7 @@ export const FilledButton = ({ children, style, labelStyle, onClick }: BaseButto
     };
 
     return (
-        <BaseButton style={buttonStyle} labelStyle={_labelStyle} onPress={onClick}>
+        <BaseButton style={buttonStyle} labelStyle={_labelStyle} onPress={onClick} testID={testID}>
             {children}
         </BaseButton>
     );

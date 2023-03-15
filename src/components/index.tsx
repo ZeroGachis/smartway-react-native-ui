@@ -9,5 +9,19 @@ import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
 import { DropDown } from './dropDown/DropDown';
 import { Toggle } from './toggle/Toggle';
+import { Menu } from './menu/Menu';
 
-export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput, DropDown, Toggle };
+export {
+    Body,
+    Button,
+    Card,
+    Dialog,
+    Headline,
+    Icon,
+    Logo,
+    Screen,
+    TextInput,
+    DropDown,
+    Toggle,
+    Menu,
+};

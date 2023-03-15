@@ -6,4 +6,5 @@ export interface BaseButtonProps {
     style?: ViewStyle;
     labelStyle?: TextStyle;
     onClick?: () => void;
+    testID?: string;
 }

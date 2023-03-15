@@ -49,15 +49,15 @@ export const Dialog = (props: DialogProps) => {
     return (
         <BaseDialog visible={props.visible} onDismiss={props.onDismiss}>
             <View style={_dialogStyle}>
-                <Headline size="h2" style={_titleStyle}>
+                <Headline size="h2" style={_titleStyle} testID={'PopupTitle'}>
                     {props.title}
                 </Headline>
                 <Body style={_contentStyle}>{props.content}</Body>
                 <View style={_actionsStyle}>
-                    <Button mode="text" onClick={props.onDismiss}>
+                    <Button mode="text" onClick={props.onDismiss} testID={'PopupDismissButton'}>
                         {props.dismissButtonLabel}
                     </Button>
-                    <Button mode="filled" onClick={props.onConfirm}>
+                    <Button mode="filled" onClick={props.onConfirm} testID={'PopupConfirmButton'}>
                         {props.confirmButtonLabel}
                     </Button>
                 </View>
