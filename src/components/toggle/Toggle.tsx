@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, ViewStyle } from 'react-native';
-import { Animated, Easing, Text, View } from 'react-native';
+import { Pressable, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Animated, Easing, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
+import { Body } from '../typography/Body';
 
 interface Props {
     isToggled: boolean;
@@ -9,9 +10,10 @@ interface Props {
     disabled?: boolean;
     style?: ViewStyle;
     text?: string;
+    textStyle?: TextStyle;
 }
 
-export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
+export const Toggle = ({ isToggled, onValueChange, style, text, textStyle }: Props) => {
     const theme = useTheme();
 
     const [fadeAnim] = useState(new Animated.Value(0));
@@ -82,9 +84,9 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
             position: 'absolute',
             right: 0,
         },
-        percent: {
+        text: {
             color,
-            fontSize: 16,
+            ...textStyle,
         },
     });
 
@@ -110,7 +112,7 @@ export const Toggle = ({ isToggled, onValueChange, style, text }: Props) => {
                             },
                         ]}
                     >
-                        {text && <Text style={styles.percent}>{text}</Text>}
+                        {text && <Body style={styles.text}>{text}</Body>}
                     </Animated.View>
                 </Animated.View>
             </Pressable>
