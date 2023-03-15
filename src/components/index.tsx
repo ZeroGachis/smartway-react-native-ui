@@ -9,5 +9,19 @@ import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
 import { DropDown } from './dropDown/DropDown';
 import { Menu } from './menu/Menu';
+import { AppBar } from './appBar/AppBar';
 
-export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput, DropDown, Menu };
+export {
+    Body,
+    Button,
+    Card,
+    Dialog,
+    Headline,
+    Icon,
+    Logo,
+    Screen,
+    TextInput,
+    DropDown,
+    Menu,
+    AppBar,
+};
