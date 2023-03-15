@@ -7,7 +7,7 @@ import { TextIndication, TextType } from './TextIndication';
 
 interface Props extends TextInputProps {
     style?: ViewStyle;
-    label: string;
+    label?: string;
     value: string;
     text?: string;
     textType: TextType;
@@ -15,6 +15,7 @@ interface Props extends TextInputProps {
     onChangeText?: (value: string) => void;
     iconSize?: number;
     iconColor?: string;
+    isFocused?: (focused: boolean) => void;
 }
 
 export const TextInput = ({
@@ -27,12 +28,13 @@ export const TextInput = ({
     onChangeText,
     iconSize,
     iconColor,
+    isFocused,
     ...props
 }: Props) => {
     const theme = useTheme();
 
     const [focused, setFocused] = useState<boolean>(false);
-
+    isFocused && isFocused(focused);
     const containerStyle: ViewStyle = {
         marginBottom: theme.sw.spacing.l,
         ...style,

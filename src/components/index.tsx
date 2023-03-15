@@ -7,5 +7,6 @@ import { Card } from './Card';
 import { Dialog } from './dialogs/Dialog';
 import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
+import { Keyboard } from './keyboard/Keyboard';
 
-export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput };
+export { Body, Button, Card, Dialog, Headline, Icon, Logo, Screen, TextInput, Keyboard };
