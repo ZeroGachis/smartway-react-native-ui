@@ -11,6 +11,7 @@ import { BottomSheet } from './bottomSheet/BottomSheet';
 import { DropDown } from './dropDown/DropDown';
 import { Menu } from './menu/Menu';
 import { AppBar } from './appBar/AppBar';
+import { Scan } from './scan/Scan';
 
 export {
     Body,
@@ -26,4 +27,5 @@ export {
     BottomSheet,
     Menu,
     AppBar,
+    Scan,
 };

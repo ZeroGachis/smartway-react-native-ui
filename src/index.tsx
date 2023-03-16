@@ -12,6 +12,7 @@ import {
     DropDown,
     Menu,
     AppBar,
+    Scan,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -31,4 +32,5 @@ export {
     ThemeProvider,
     useTheme,
     BottomSheet,
+    Scan,
 };
