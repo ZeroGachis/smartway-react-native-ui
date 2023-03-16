@@ -1,91 +1,105 @@
-import React, { useState } from 'react';
-import { Alert, Dimensions, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Dimensions, TouchableOpacity, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
+import type { IconName } from '../icons/IconProps';
 const { height: SCREEN_HEIGHT } = Dimensions.get('screen');
+
+type KeyboardAction = 'type' | 'delete' | 'submit';
+interface KeyboardData {
+    value?: string;
+    action: KeyboardAction;
+    icon?: IconName;
+    iconColor?: string;
+}
 
 interface Props {
     inputValue: string;
     setInputValue: (text: string) => void;
+    onSubmit: () => void;
+    disabled?: boolean;
+    style?: ViewStyle;
 }
 
-export const Keyboard = ({ inputValue, setInputValue }: Props) => {
+export const Keyboard = ({ inputValue, setInputValue, onSubmit, disabled, style }: Props) => {
     const theme = useTheme();
 
-    const handlePress = (input: string) => {
-        setInputValue(inputValue + input);
+    const keyboardData: KeyboardData[] = [
+        { value: '1', action: 'type' },
+        { value: '2', action: 'type' },
+        { value: '3', action: 'type' },
+        { value: '4', action: 'type' },
+        { value: '5', action: 'type' },
+        { value: '6', action: 'type' },
+        { value: '7', action: 'type' },
+        { value: '8', action: 'type' },
+        { value: '9', action: 'type' },
+        { action: 'delete', icon: 'backspace', iconColor: theme.sw.colors.neutral[500] },
+        { value: '0', action: 'submit' },
+        { action: 'submit', icon: 'keyboard-tab', iconColor: theme.sw.colors.primary[400] },
+    ];
+
+    const handlePress = (action: KeyboardAction, input?: string) => {
+        switch (action) {
+            case 'type':
+                if (disabled) break;
+                setInputValue(inputValue + input);
+                break;
+            case 'delete':
+                handleDelete();
+                break;
+            case 'submit':
+                onSubmit();
+        }
     };
     const handleDelete = () => {
         setInputValue(inputValue.slice(0, -1));
     };
 
     const styles = StyleSheet.create({
+        container: {
+            ...style,
+        },
         button: {
             height: SCREEN_HEIGHT * 0.0671,
-            width: '30%',
-            margin: theme.sw.spacing.xs,
+            width: '33.3%',
+            justifyContent: 'center',
+            backgroundColor: 'white',
         },
         buttonLabel: {
             fontSize: 24,
             textAlign: 'center',
-            justifyContent: 'center',
             color: theme.sw.colors.neutral[700],
         },
-        buttonRow: {
-            flexDirection: 'row',
+        icon: {
             justifyContent: 'center',
+            alignItems: 'center',
+        },
+        buttonRow: {
+            flex: 1,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
         },
     });
 
     return (
-        <View style={{}}>
+        <View style={styles.container}>
             <View style={styles.buttonRow}>
-                <TouchableOpacity style={[styles.button]} onPress={() => handlePress('1')}>
-                    <Text style={styles.buttonLabel}>1</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('2')}>
-                    <Text style={styles.buttonLabel}>2</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('3')}>
-                    <Text style={styles.buttonLabel}>3</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.buttonRow}>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('4')}>
-                    <Text style={styles.buttonLabel}>4</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('5')}>
-                    <Text style={styles.buttonLabel}>5</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('6')}>
-                    <Text style={styles.buttonLabel}>6</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.buttonRow}>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('7')}>
-                    <Text style={styles.buttonLabel}>7</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('8')}>
-                    <Text style={styles.buttonLabel}>8</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('9')}>
-                    <Text style={styles.buttonLabel}>9</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.buttonRow}>
-                <TouchableOpacity style={styles.button} onPress={handleDelete}>
-                    <Text style={styles.buttonLabel}>
-                        <Icon size={28} color={theme.sw.colors.neutral[500]} name="backspace" />
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => handlePress('0')}>
-                    <Text style={styles.buttonLabel}>0</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.button]} onPress={() => Alert.alert("Let's go")}>
-                    <Text style={styles.buttonLabel}>
-                        <Icon color={theme.sw.colors.success[500]} size={28} name="keyboard-tab" />
-                    </Text>
-                </TouchableOpacity>
+                {keyboardData.map((item, index) => (
+                    <TouchableOpacity
+                        key={index}
+                        style={[styles.button]}
+                        onPress={() => handlePress(item.action, item.value)}
+                    >
+                        {item.icon ? (
+                            <View style={styles.icon}>
+                                <Icon name={item.icon} color={item.iconColor} size={24} />
+                            </View>
+                        ) : (
+                            <Text style={styles.buttonLabel}>{item.value}</Text>
+                        )}
+                    </TouchableOpacity>
+                ))}
             </View>
         </View>
     );
