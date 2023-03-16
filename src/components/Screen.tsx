@@ -1,27 +1,34 @@
 import React from 'react';
-import { SafeAreaView, StyleProp, ViewStyle, StatusBar } from 'react-native';
+import { SafeAreaView, ViewStyle, StatusBar, StyleSheet } from 'react-native';
 import { useTheme } from '../styles/themes';
 
 type Props = {
     children?: React.ReactNode;
     style?: ViewStyle;
     testID?: string;
+    statusBarColor?: string;
 };
 
-export const Screen = (props: Props) => {
+export const Screen = ({ children, style, testID, statusBarColor }: Props) => {
     const theme = useTheme();
-    const style: StyleProp<ViewStyle> = {
-        flex: 1,
-        backgroundColor: theme.sw.colors.neutral[300],
-        paddingLeft: theme.sw.spacing.m,
-        paddingRight: theme.sw.spacing.m,
-        ...props.style,
-    };
+
+    const styles = StyleSheet.create({
+        screen: {
+            flex: 1,
+            backgroundColor: theme.sw.colors.neutral[300],
+            paddingLeft: theme.sw.spacing.m,
+            paddingRight: theme.sw.spacing.m,
+            ...style,
+        },
+    });
 
     return (
-        <SafeAreaView style={style} testID={props.testID}>
-            <StatusBar backgroundColor={theme.sw.colors.neutral[300]} barStyle="dark-content" />
-            {props.children}
+        <SafeAreaView style={styles.screen} testID={testID}>
+            <StatusBar
+                backgroundColor={statusBarColor ? statusBarColor : theme.sw.colors.neutral[50]}
+                barStyle="dark-content"
+            />
+            {children}
         </SafeAreaView>
     );
 };

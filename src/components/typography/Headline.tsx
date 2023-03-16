@@ -30,6 +30,7 @@ export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps
             fontSize: 20,
             lineHeight: 24,
             fontFamily: 'PublicSans-Black',
+            fontWeight: '700',
         };
     } else if (size === 'h4') {
         headlineStyle = {

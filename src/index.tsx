@@ -10,6 +10,7 @@ import {
     Screen,
     DropDown,
     Menu,
+    AppBar,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -25,6 +26,7 @@ export {
     TextInput,
     DropDown,
     Menu,
+    AppBar,
     ThemeProvider,
     useTheme,
 };
