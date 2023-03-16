@@ -8,6 +8,7 @@ import {
     Logo,
     TextInput,
     Screen,
+    BottomSheet,
     DropDown,
     Toggle,
     Menu,
@@ -31,4 +32,5 @@ export {
     AppBar,
     ThemeProvider,
     useTheme,
+    BottomSheet,
 };

@@ -7,6 +7,7 @@ import { Card } from './Card';
 import { Dialog } from './dialogs/Dialog';
 import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
+import { BottomSheet } from './bottomSheet/BottomSheet';
 import { DropDown } from './dropDown/DropDown';
 import { Toggle } from './toggle/Toggle';
 import { Menu } from './menu/Menu';
@@ -23,6 +24,7 @@ export {
     Screen,
     TextInput,
     DropDown,
+    BottomSheet,
     Toggle,
     Menu,
     AppBar,
