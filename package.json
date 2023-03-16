@@ -1,6 +1,6 @@
 {
   "name": "@zerogachis/smartway-react-native-ui",
-  "version": "0.4.1",
+  "version": "0.4.5",
   "description": "test",
   "source": "src/index",
   "main": "lib/index.js",
@@ -69,11 +69,14 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
+    "react-native-icomoon": "*",
     "react-native-paper": "*",
     "react-native-safe-area-context": "*",
     "react-native-svg": "*",
     "react-native-vector-icons": "*",
-    "react-native-icomoon": "*"
+    "@gorhom/bottom-sheet": "*",
+    "react-native-gesture-handler": "*",
+    "react-native-reanimated": "*"
   },
   "jest": {
     "preset": "react-native",

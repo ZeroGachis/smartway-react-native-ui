@@ -9,7 +9,12 @@ import {
     TextInput,
     Keyboard,
     Screen,
+    BottomSheet,
+    DropDown,
+    Menu,
+    AppBar,
 } from './components';
+
 import { ThemeProvider, useTheme } from './styles/themes';
 export {
     Body,
@@ -22,6 +27,10 @@ export {
     Screen,
     TextInput,
     Keyboard,
+    DropDown,
+    Menu,
+    AppBar,
     ThemeProvider,
     useTheme,
+    BottomSheet,
 };
