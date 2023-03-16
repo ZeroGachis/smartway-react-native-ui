@@ -10,6 +10,8 @@ import {
     Screen,
     BottomSheet,
     DropDown,
+    Menu,
+    AppBar,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -24,6 +26,8 @@ export {
     Screen,
     TextInput,
     DropDown,
+    Menu,
+    AppBar,
     ThemeProvider,
     useTheme,
     BottomSheet,
