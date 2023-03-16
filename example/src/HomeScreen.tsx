@@ -58,6 +58,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                 mode="filled"
                 style={{ marginBottom: 12 }}
                 onClick={() => {
+                    navigation.navigate('Toggle');
+                }}
+            >
+                Toggle
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
                     navigation.navigate('AppBar');
                 }}
             >

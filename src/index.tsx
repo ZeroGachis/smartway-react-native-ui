@@ -10,6 +10,7 @@ import {
     Screen,
     BottomSheet,
     DropDown,
+    Toggle,
     Menu,
     AppBar,
 } from './components';
@@ -26,6 +27,7 @@ export {
     Screen,
     TextInput,
     DropDown,
+    Toggle,
     Menu,
     AppBar,
     ThemeProvider,
