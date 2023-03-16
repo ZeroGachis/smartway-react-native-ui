@@ -29,6 +29,7 @@ export const HomeScreen = ({ navigation }: Props) => {
             </Button>
             <Button
                 mode="filled"
+                style={{ marginBottom: 12 }}
                 onClick={() => {
                     navigation.navigate('Input');
                 }}
@@ -37,11 +38,12 @@ export const HomeScreen = ({ navigation }: Props) => {
             </Button>
             <Button
                 mode="filled"
+                style={{ marginBottom: 12 }}
                 onClick={() => {
                     navigation.navigate('Keyboard');
                 }}
             >
-                Inputs
+                Keyboard
             </Button>
             <Logo size="small" />
         </View>

@@ -10,12 +10,15 @@ export const KeyboardPage = () => {
     const [bottomInputValue, setBottomValue] = useState<string>('');
 
     useEffect(() => {
-        if (upperInputValue.length === 1) {
+        if (
+            (upperInputFocused && upperInputValue.length === 1) ||
+            (bottomInputFocused && bottomInputValue.length === 1)
+        ) {
             setDisabled(true);
         } else {
             setDisabled(false);
         }
-    }, [upperInputValue]);
+    }, [upperInputFocused, bottomInputFocused, upperInputValue, bottomInputValue]);
 
     const styles = StyleSheet.create({
         container: {

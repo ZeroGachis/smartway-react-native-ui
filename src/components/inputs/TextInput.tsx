@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextStyle, View, ViewStyle } from 'react-native';
 import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
@@ -34,7 +34,11 @@ export const TextInput = ({
     const theme = useTheme();
 
     const [focused, setFocused] = useState<boolean>(false);
-    isFocused && isFocused(focused);
+
+    useEffect(() => {
+        isFocused && isFocused(focused);
+    }, [focused]);
+
     const containerStyle: ViewStyle = {
         marginBottom: theme.sw.spacing.l,
         ...style,

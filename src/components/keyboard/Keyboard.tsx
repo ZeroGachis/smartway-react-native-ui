@@ -64,7 +64,7 @@ export const Keyboard = ({ inputValue, setInputValue, onSubmit, disabled, style 
             height: SCREEN_HEIGHT * 0.0671,
             width: '33.3%',
             justifyContent: 'center',
-            backgroundColor: 'white',
+            backgroundColor: theme.sw.colors.neutral[50],
         },
         buttonLabel: {
             fontSize: 24,
