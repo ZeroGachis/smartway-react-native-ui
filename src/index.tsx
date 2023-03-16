@@ -11,6 +11,7 @@ import {
     DropDown,
     Toggle,
     Menu,
+    AppBar,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -27,6 +28,7 @@ export {
     DropDown,
     Toggle,
     Menu,
+    AppBar,
     ThemeProvider,
     useTheme,
 };

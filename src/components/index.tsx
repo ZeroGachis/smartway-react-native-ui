@@ -10,6 +10,7 @@ import { Icon } from './icons/Icon';
 import { DropDown } from './dropDown/DropDown';
 import { Toggle } from './toggle/Toggle';
 import { Menu } from './menu/Menu';
+import { AppBar } from './appBar/AppBar';
 
 export {
     Body,
@@ -24,4 +25,5 @@ export {
     DropDown,
     Toggle,
     Menu,
+    AppBar,
 };

@@ -42,13 +42,13 @@ export const Menu = ({
             ...style,
         },
         menu: {
-            paddingVertical: 24,
+            paddingVertical: theme.sw.spacing.l,
             backgroundColor: theme.sw.colors.neutral[50],
             borderRadius: 8,
             ...menuStyle,
         },
         option: {
-            paddingHorizontal: 24,
+            paddingHorizontal: theme.sw.spacing.l,
             ...optionStyle,
         },
     });

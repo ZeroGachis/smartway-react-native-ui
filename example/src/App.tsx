@@ -9,6 +9,7 @@ import { InputsPage } from './Inputs/InputPage';
 import { DropDownPage } from './DropDown/DropDownPage';
 import { TogglePage } from './TogglePage/TogglePage';
 import { MenuPage } from './Menu/MenuPage';
+import { AppBarPage } from './AppBar/AppBarPage';
 
 export type RootStackParamList = {
     Home: undefined;
@@ -18,6 +19,7 @@ export type RootStackParamList = {
     DropDown: undefined;
     Toggle: undefined;
     Menu: undefined;
+    AppBar: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -34,6 +36,11 @@ const App = () => {
                     <Stack.Screen name="DropDown" component={DropDownPage} />
                     <Stack.Screen name="Toggle" component={TogglePage} />
                     <Stack.Screen name="Menu" component={MenuPage} />
+                    <Stack.Screen
+                        options={{ headerShown: false }}
+                        name="AppBar"
+                        component={AppBarPage}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>
