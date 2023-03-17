@@ -1,26 +1,12 @@
 import React from 'react';
-import {
-    Dimensions,
-    TouchableOpacity,
-    StyleSheet,
-    Text,
-    View,
-    ViewStyle,
-    Pressable,
-} from 'react-native';
+import { Dimensions, StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
-import { Icon } from '../icons/Icon';
-import type { IconName } from '../icons/IconProps';
+import { DeleteButton } from './DeleteButton';
+import { NumberButton } from './NumberButton';
+import { SubmitButton } from './SubmitButton';
 const { height: SCREEN_HEIGHT } = Dimensions.get('screen');
 
 export type KeyboardActions = 'none' | 'type' | 'delete' | 'submit';
-interface KeyboardData {
-    value?: string;
-    action: KeyboardActions;
-    icon?: IconName;
-    iconColor?: string;
-}
-
 export interface KeyboardState {
     value?: string;
     action: KeyboardActions;
@@ -34,25 +20,10 @@ interface Props {
 export const Keyboard = ({ setInputValue, style }: Props) => {
     const theme = useTheme();
 
-    const keyboardData: KeyboardData[] = [
-        { value: '1', action: 'type' },
-        { value: '2', action: 'type' },
-        { value: '3', action: 'type' },
-        { value: '4', action: 'type' },
-        { value: '5', action: 'type' },
-        { value: '6', action: 'type' },
-        { value: '7', action: 'type' },
-        { value: '8', action: 'type' },
-        { value: '9', action: 'type' },
-        { action: 'delete', icon: 'backspace', iconColor: theme.sw.colors.neutral[500] },
-        { value: '0', action: 'submit' },
-        { action: 'submit', icon: 'keyboard-tab', iconColor: theme.sw.colors.primary[400] },
-    ];
-
-    const handlePress = (input: string, action: KeyboardActions) => {
+    const handlePress = (action: KeyboardActions, value?: string) => {
         switch (action) {
             case 'type':
-                setInputValue({ action: 'type', value: input });
+                setInputValue({ action: 'type', value });
                 break;
             case 'delete':
                 setInputValue({ action: 'delete' });
@@ -77,10 +48,7 @@ export const Keyboard = ({ setInputValue, style }: Props) => {
             textAlign: 'center',
             color: theme.sw.colors.neutral[700],
         },
-        icon: {
-            justifyContent: 'center',
-            alignItems: 'center',
-        },
+
         buttonRow: {
             flex: 1,
             flexDirection: 'row',
@@ -91,21 +59,18 @@ export const Keyboard = ({ setInputValue, style }: Props) => {
     return (
         <View style={styles.container}>
             <View style={styles.buttonRow}>
-                {keyboardData.map((item, index) => (
-                    <Pressable
-                        key={index}
-                        style={[styles.button]}
-                        onPress={() => handlePress(item.value, item.action)}
-                    >
-                        {item.icon ? (
-                            <View style={styles.icon}>
-                                <Icon name={item.icon} color={item.iconColor} size={24} />
-                            </View>
-                        ) : (
-                            <Text style={styles.buttonLabel}>{item.value}</Text>
-                        )}
-                    </Pressable>
-                ))}
+                <NumberButton value="1" onPress={handlePress} />
+                <NumberButton value="2" onPress={handlePress} />
+                <NumberButton value="3" onPress={handlePress} />
+                <NumberButton value="4" onPress={handlePress} />
+                <NumberButton value="5" onPress={handlePress} />
+                <NumberButton value="6" onPress={handlePress} />
+                <NumberButton value="7" onPress={handlePress} />
+                <NumberButton value="8" onPress={handlePress} />
+                <NumberButton value="9" onPress={handlePress} />
+                <DeleteButton onPress={handlePress} />
+                <NumberButton value="0" onPress={handlePress} />
+                <SubmitButton onPress={handlePress} />
             </View>
         </View>
     );
