@@ -10,7 +10,7 @@ interface Props {
     style?: ViewStyle;
 }
 
-export const Scan = ({ text, state, style }: Props) => {
+export const ScanInput = ({ text, state, style }: Props) => {
     const theme = useTheme();
 
     const getColors = () => {

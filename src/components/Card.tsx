@@ -14,7 +14,6 @@ interface Props {
     titleColor: string;
     style?: ViewStyle;
     disabled?: boolean;
-    withClose?: boolean;
     onClose?: () => void;
 }
 
@@ -25,7 +24,6 @@ export const Card = ({
     titleColor,
     bottomChildren,
     disabled,
-    withClose = false,
     onClose,
 }: Props) => {
     const theme = useTheme();
@@ -64,7 +62,7 @@ export const Card = ({
 
     return (
         <View style={styles.container}>
-            {withClose && (
+            {onClose && (
                 <TouchableOpacity style={styles.close} onPress={onClose}>
                     <Icon name="close-fill" size={20} />
                 </TouchableOpacity>

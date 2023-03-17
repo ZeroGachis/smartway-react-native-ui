@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Card, Icon, Scan, Screen, TextInput, useTheme } from 'smartway-react-native-ui';
+import { Card, Icon, ScanInput, Screen, TextInput, useTheme } from 'smartway-react-native-ui';
 
 export const CardPage = () => {
     const theme = useTheme();
@@ -9,8 +9,7 @@ export const CardPage = () => {
     return (
         <Screen style={styles.container}>
             <Card
-                withClose
-                bottomChildren={<Scan text="Scanner ou saisir un gencode" state="default" />}
+                bottomChildren={<ScanInput text="Scanner ou saisir un gencode" state="default" />}
                 title="Texte action possible"
                 titleColor={theme.sw.colors.neutral[500]}
             >
