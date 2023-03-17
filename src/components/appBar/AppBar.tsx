@@ -48,11 +48,10 @@ export const AppBar = ({
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#ECF0F4',
+            backgroundColor: theme.sw.colors.neutral[300],
             ...style,
         },
         body: {
-            fontWeight: '700',
             paddingRight: theme.sw.spacing.m,
         },
     });
