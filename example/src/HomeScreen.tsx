@@ -49,10 +49,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                 mode="filled"
                 style={{ marginBottom: 12 }}
                 onClick={() => {
-                    navigation.navigate('Menu');
+                    navigation.navigate('BottomSheet');
                 }}
             >
-                Menu
+                BottomSheet
             </Button>
             <Button
                 mode="filled"
@@ -62,6 +62,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                 }}
             >
                 AppBar
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('Menu');
+                }}
+            >
+                Menu
             </Button>
             <Logo size="small" />
         </View>
