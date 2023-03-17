@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { KeyboardActions } from './Keyboard';
