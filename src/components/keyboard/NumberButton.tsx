@@ -1,9 +1,7 @@
 import React from 'react';
-import { Dimensions, Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import type { KeyboardActions } from './Keyboard';
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('screen');
 
 interface Props {
     value: string;
@@ -15,8 +13,7 @@ export const NumberButton = ({ value, onPress }: Props) => {
 
     const styles = StyleSheet.create({
         button: {
-            height: SCREEN_HEIGHT * 0.0671,
-            width: '33.3%',
+            flex: 1,
             justifyContent: 'center',
             backgroundColor: theme.sw.colors.neutral[50],
         },

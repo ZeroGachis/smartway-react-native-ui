@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, StyleSheet, TextInput as TextInputRN, View } from 'react-native';
+import { Alert, StyleSheet, TextInput as TextInputRN } from 'react-native';
 import { Keyboard, Screen } from 'smartway-react-native-ui';
-import type { KeyboardActions, KeyboardState } from 'src/components/keyboard/Keyboard';
+import type { KeyboardState } from 'src/components/keyboard/Keyboard';
 
 interface Inputs {
     upperInput: string;
@@ -39,7 +39,9 @@ export const KeyboardPage = () => {
     }, [value]);
 
     const styles = StyleSheet.create({
-        container: {},
+        container: {
+            backgroundColor: 'white',
+        },
     });
 
     return (
@@ -57,8 +59,12 @@ export const KeyboardPage = () => {
                     showSoftInputOnFocus={false}
                     style={{ borderWidth: 2, margin: 10 }}
                 />
+                <Keyboard
+                    setInputValue={setValue}
+                    style={{ position: 'absolute', bottom: 0, alignSelf: 'center' }}
+                    height={200}
+                />
             </Screen>
-            <Keyboard setInputValue={setValue} style={{ position: 'absolute', bottom: 0 }} />
         </>
     );
 };

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View, ViewStyle } from 'react-native';
-import { useTheme } from '../../styles/themes';
+import { StyleSheet, View, ViewStyle } from 'react-native';
+
 import { DeleteButton } from './DeleteButton';
 import { NumberButton } from './NumberButton';
 import { SubmitButton } from './SubmitButton';
-const { height: SCREEN_HEIGHT } = Dimensions.get('screen');
 
 export type KeyboardActions = 'none' | 'type' | 'delete' | 'submit';
 export interface KeyboardState {
@@ -13,13 +12,11 @@ export interface KeyboardState {
 }
 interface Props {
     setInputValue: ({ value }: KeyboardState) => void;
-    disabled?: boolean;
     style?: ViewStyle;
+    height: number;
 }
 
-export const Keyboard = ({ setInputValue, style }: Props) => {
-    const theme = useTheme();
-
+export const Keyboard = ({ setInputValue, style, height }: Props) => {
     const handlePress = (action: KeyboardActions, value?: string) => {
         switch (action) {
             case 'type':
@@ -36,38 +33,34 @@ export const Keyboard = ({ setInputValue, style }: Props) => {
     const styles = StyleSheet.create({
         container: {
             ...style,
-        },
-        button: {
-            height: SCREEN_HEIGHT * 0.0671,
-            width: '33.3%',
-            justifyContent: 'center',
-            backgroundColor: theme.sw.colors.neutral[50],
-        },
-        buttonLabel: {
-            fontSize: 24,
-            textAlign: 'center',
-            color: theme.sw.colors.neutral[700],
+            width: '100%',
+            height,
         },
 
-        buttonRow: {
-            flex: 1,
+        keyboardRow: {
             flexDirection: 'row',
-            flexWrap: 'wrap',
+            height: '25%',
         },
     });
 
     return (
         <View style={styles.container}>
-            <View style={styles.buttonRow}>
+            <View style={styles.keyboardRow}>
                 <NumberButton value="1" onPress={handlePress} />
                 <NumberButton value="2" onPress={handlePress} />
                 <NumberButton value="3" onPress={handlePress} />
+            </View>
+            <View style={styles.keyboardRow}>
                 <NumberButton value="4" onPress={handlePress} />
                 <NumberButton value="5" onPress={handlePress} />
                 <NumberButton value="6" onPress={handlePress} />
+            </View>
+            <View style={styles.keyboardRow}>
                 <NumberButton value="7" onPress={handlePress} />
                 <NumberButton value="8" onPress={handlePress} />
                 <NumberButton value="9" onPress={handlePress} />
+            </View>
+            <View style={styles.keyboardRow}>
                 <DeleteButton onPress={handlePress} />
                 <NumberButton value="0" onPress={handlePress} />
                 <SubmitButton onPress={handlePress} />

@@ -1,10 +1,8 @@
 import React from 'react';
-import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { KeyboardActions } from './Keyboard';
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('screen');
 
 interface Props {
     onPress: (action: KeyboardActions) => void;
@@ -15,8 +13,7 @@ export const DeleteButton = ({ onPress }: Props) => {
 
     const styles = StyleSheet.create({
         button: {
-            height: SCREEN_HEIGHT * 0.0671,
-            width: '33.3%',
+            flex: 1,
             justifyContent: 'center',
             backgroundColor: theme.sw.colors.neutral[50],
         },
