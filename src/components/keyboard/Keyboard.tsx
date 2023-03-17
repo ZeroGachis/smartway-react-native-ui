@@ -1,27 +1,37 @@
 import React from 'react';
-import { Dimensions, TouchableOpacity, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import {
+    Dimensions,
+    TouchableOpacity,
+    StyleSheet,
+    Text,
+    View,
+    ViewStyle,
+    Pressable,
+} from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 const { height: SCREEN_HEIGHT } = Dimensions.get('screen');
 
-type KeyboardAction = 'type' | 'delete' | 'submit';
+export type KeyboardActions = 'none' | 'type' | 'delete' | 'submit';
 interface KeyboardData {
     value?: string;
-    action: KeyboardAction;
+    action: KeyboardActions;
     icon?: IconName;
     iconColor?: string;
 }
 
+export interface KeyboardState {
+    value?: string;
+    action: KeyboardActions;
+}
 interface Props {
-    inputValue: string;
-    setInputValue: (text: string) => void;
-    onSubmit: () => void;
+    setInputValue: ({ value }: KeyboardState) => void;
     disabled?: boolean;
     style?: ViewStyle;
 }
 
-export const Keyboard = ({ inputValue, setInputValue, onSubmit, disabled, style }: Props) => {
+export const Keyboard = ({ setInputValue, style }: Props) => {
     const theme = useTheme();
 
     const keyboardData: KeyboardData[] = [
@@ -39,21 +49,17 @@ export const Keyboard = ({ inputValue, setInputValue, onSubmit, disabled, style 
         { action: 'submit', icon: 'keyboard-tab', iconColor: theme.sw.colors.primary[400] },
     ];
 
-    const handlePress = (action: KeyboardAction, input?: string) => {
+    const handlePress = (input: string, action: KeyboardActions) => {
         switch (action) {
             case 'type':
-                if (disabled) break;
-                setInputValue(inputValue + input);
+                setInputValue({ action: 'type', value: input });
                 break;
             case 'delete':
-                handleDelete();
+                setInputValue({ action: 'delete' });
                 break;
             case 'submit':
-                onSubmit();
+                setInputValue({ action: 'submit' });
         }
-    };
-    const handleDelete = () => {
-        setInputValue(inputValue.slice(0, -1));
     };
 
     const styles = StyleSheet.create({
@@ -86,10 +92,10 @@ export const Keyboard = ({ inputValue, setInputValue, onSubmit, disabled, style 
         <View style={styles.container}>
             <View style={styles.buttonRow}>
                 {keyboardData.map((item, index) => (
-                    <TouchableOpacity
+                    <Pressable
                         key={index}
                         style={[styles.button]}
-                        onPress={() => handlePress(item.action, item.value)}
+                        onPress={() => handlePress(item.value, item.action)}
                     >
                         {item.icon ? (
                             <View style={styles.icon}>
@@ -98,7 +104,7 @@ export const Keyboard = ({ inputValue, setInputValue, onSubmit, disabled, style 
                         ) : (
                             <Text style={styles.buttonLabel}>{item.value}</Text>
                         )}
-                    </TouchableOpacity>
+                    </Pressable>
                 ))}
             </View>
         </View>

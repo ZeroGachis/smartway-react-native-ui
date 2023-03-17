@@ -1,61 +1,64 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Keyboard, TextInput } from 'smartway-react-native-ui';
+import { Alert, StyleSheet, TextInput as TextInputRN, View } from 'react-native';
+import { Keyboard, Screen } from 'smartway-react-native-ui';
+import type { KeyboardActions, KeyboardState } from 'src/components/keyboard/Keyboard';
+
+interface Inputs {
+    upperInput: string;
+    bottomInput: string;
+}
 
 export const KeyboardPage = () => {
-    const [disabled, setDisabled] = useState<boolean>(false);
-    const [upperInputValue, setUpperValue] = useState<string>('');
-    const [upperInputFocused, setUpperFocused] = useState(false);
-    const [bottomInputFocused, setBottomFocused] = useState(false);
-    const [bottomInputValue, setBottomValue] = useState<string>('');
+    const [focusedInput, setFocusedInput] = useState<string>('');
+    const [value, setValue] = useState<KeyboardState>({ value: '', action: 'none' });
+    const [inputValues, setValues] = useState<Inputs>({ upperInput: '', bottomInput: '' });
+
+    const onChangeTextHandler = ({ value, action }: KeyboardState) => {
+        switch (action) {
+            case 'none':
+                break;
+            case 'type':
+                setValues((prevState) => ({
+                    ...prevState,
+                    [focusedInput]: prevState[focusedInput as keyof Inputs] + value,
+                }));
+                break;
+            case 'delete':
+                setValues((prevState) => ({
+                    ...prevState,
+                    [focusedInput]: prevState[focusedInput as keyof Inputs].slice(0, -1),
+                }));
+                break;
+            case 'submit':
+                Alert.alert('You pressed submit');
+        }
+    };
 
     useEffect(() => {
-        if (
-            (upperInputFocused && upperInputValue.length === 1) ||
-            (bottomInputFocused && bottomInputValue.length === 1)
-        ) {
-            setDisabled(true);
-        } else {
-            setDisabled(false);
-        }
-    }, [upperInputFocused, bottomInputFocused, upperInputValue, bottomInputValue]);
+        onChangeTextHandler(value);
+    }, [value]);
 
     const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            padding: 16,
-        },
+        container: {},
     });
 
     return (
         <>
-            <View style={styles.container}>
-                <TextInput
+            <Screen style={styles.container}>
+                <TextInputRN
+                    onFocus={() => setFocusedInput('upperInput')}
                     showSoftInputOnFocus={false}
-                    textType="information"
-                    value={upperInputValue}
-                    onChangeText={setUpperValue}
-                    style={{ width: 60 }}
-                    maxLength={1}
-                    isFocused={setUpperFocused}
+                    style={{ borderWidth: 2, margin: 10 }}
+                    value={inputValues.upperInput}
                 />
-                <TextInput
+                <TextInputRN
+                    value={inputValues.bottomInput}
+                    onFocus={() => setFocusedInput('bottomInput')}
                     showSoftInputOnFocus={false}
-                    textType="information"
-                    value={bottomInputValue}
-                    onChangeText={setBottomValue}
-                    style={{ width: 60 }}
-                    maxLength={1}
-                    isFocused={setBottomFocused}
+                    style={{ borderWidth: 2, margin: 10 }}
                 />
-            </View>
-            <Keyboard
-                inputValue={bottomInputFocused ? bottomInputValue : upperInputValue}
-                setInputValue={bottomInputFocused ? setBottomValue : setUpperValue}
-                onSubmit={() => console.log('You pressed submit ')}
-                disabled={disabled}
-                style={{ position: 'absolute', bottom: 0 }}
-            />
+            </Screen>
+            <Keyboard setInputValue={setValue} style={{ position: 'absolute', bottom: 0 }} />
         </>
     );
 };

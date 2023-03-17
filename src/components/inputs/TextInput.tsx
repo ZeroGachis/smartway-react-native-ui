@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TextStyle, View, ViewStyle } from 'react-native';
 import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
@@ -8,7 +8,6 @@ import { TextIndication, TextType } from './TextIndication';
 interface Props extends TextInputProps {
     style?: ViewStyle;
     label?: string;
-    inputStyles?: TextStyle;
     value: string;
     text?: string;
     textType: TextType;
@@ -16,12 +15,10 @@ interface Props extends TextInputProps {
     onChangeText?: (value: string) => void;
     iconSize?: number;
     iconColor?: string;
-    isFocused?: (focused: boolean) => void;
 }
 
 export const TextInput = ({
     style,
-    inputStyles,
     label,
     value,
     text,
@@ -30,28 +27,21 @@ export const TextInput = ({
     onChangeText,
     iconSize,
     iconColor,
-    isFocused,
     ...props
 }: Props) => {
     const theme = useTheme();
 
     const [focused, setFocused] = useState<boolean>(false);
 
-    useEffect(() => {
-        isFocused && isFocused(focused);
-    }, [focused]);
-
     const containerStyle: ViewStyle = {
         marginBottom: theme.sw.spacing.l,
         ...style,
     };
 
-    const inputStyle: TextStyle = {
+    const inputSyle: TextStyle = {
         backgroundColor: theme.sw.colors.neutral[50],
         fontSize: 16,
         fontFamily: 'PublicSans-Regular',
-        height: 56,
-        ...inputStyles,
     };
 
     const outlineStyle: ViewStyle = {
@@ -59,7 +49,7 @@ export const TextInput = ({
         borderColor:
             textType === 'error'
                 ? theme.sw.colors.error.main
-                : focused || value.length > 0
+                : focused
                 ? theme.sw.colors.neutral[500]
                 : theme.sw.colors.neutral[400],
     };
@@ -69,7 +59,7 @@ export const TextInput = ({
             <BaseTextInput
                 {...props}
                 label={label}
-                style={inputStyle}
+                style={inputSyle}
                 textColor={theme.sw.colors.neutral[900]}
                 mode={'outlined'}
                 onFocus={() => setFocused(true)}
@@ -77,7 +67,7 @@ export const TextInput = ({
                 error={textType === 'error'}
                 outlineStyle={outlineStyle}
                 theme={{
-                    roundness: 8,
+                    roundness: 12,
                     colors: {
                         error: theme.sw.colors.error.main,
                         text: theme.sw.colors.neutral[800],
