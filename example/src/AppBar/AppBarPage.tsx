@@ -1,12 +1,17 @@
+import type { NavigationProp } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
-import { AppBar, Menu, useTheme } from 'smartway-react-native-ui';
+import { AppBar, BottomSheet, Button, Menu, Screen, useTheme } from 'smartway-react-native-ui';
 import type { DropDownOption } from 'src/components/dropDown/DropDown';
 
-export const AppBarPage = () => {
+interface Props {
+    navigation: NavigationProp<any>;
+}
+
+export const AppBarPage = ({ navigation }: Props) => {
     const theme = useTheme();
     const [setMenu, setMenuVisible] = useState(false);
-
+    const [selected, setSelected] = useState<DropDownOption>();
+    const [isOpened, setOpened] = useState<boolean>(false);
     const menuOptions = [
         { title: 'option 1', onPress: () => console.log('option') },
         { title: 'option 2', onPress: () => console.log('option') },
@@ -20,15 +25,18 @@ export const AppBarPage = () => {
         { value: 'Option 3' },
         { value: 'Option 4' },
     ];
-    const [selected, setSelected] = useState<DropDownOption>();
+
+    const goBack = () => {
+        navigation.goBack();
+    };
 
     useEffect(() => {
         setSelected(options[0]);
     }, []);
 
     return (
-        <View style={{ backgroundColor: 'white', flex: 1 }}>
-            <AppBar onPress={() => {}} label={'Title'}>
+        <Screen style={{ backgroundColor: theme.sw.colors.neutral[50] }}>
+            <AppBar onPress={goBack} label={'Title'}>
                 <Menu
                     icon="more"
                     onDismiss={() => setMenuVisible(false)}
@@ -38,7 +46,7 @@ export const AppBarPage = () => {
                     options={menuOptions}
                 />
             </AppBar>
-            <AppBar onPress={() => console.log('f')} label={selected?.value} type="accordion">
+            <AppBar onPress={() => setOpened(true)} label={selected?.value} type="accordion">
                 <Menu
                     icon="settings"
                     onDismiss={() => setMenuVisible(false)}
@@ -48,6 +56,16 @@ export const AppBarPage = () => {
                     options={menuOptions}
                 />
             </AppBar>
-        </View>
+            <BottomSheet
+                snapPoints={['40%']}
+                swipeable={true}
+                title="Title"
+                titleProps={{ style: { textAlign: 'center', marginBottom: theme.sw.spacing.s } }}
+                isOpened={isOpened}
+                onClose={() => setOpened(false)}
+            >
+                <Button mode="filled">Option</Button>
+            </BottomSheet>
+        </Screen>
     );
 };
