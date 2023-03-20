@@ -13,6 +13,7 @@ import {
     Toggle,
     Menu,
     AppBar,
+    EANInput,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -33,4 +34,5 @@ export {
     ThemeProvider,
     useTheme,
     BottomSheet,
+    EANInput,
 };
