@@ -12,7 +12,7 @@ import {
     DropDown,
     Menu,
     AppBar,
-    ScanInput,
+    EANInput,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -32,5 +32,5 @@ export {
     ThemeProvider,
     useTheme,
     BottomSheet,
-    ScanInput,
+    EANInput,
 };
