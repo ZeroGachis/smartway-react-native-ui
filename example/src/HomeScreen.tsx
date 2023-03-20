@@ -54,6 +54,51 @@ export const HomeScreen = ({ navigation }: Props) => {
             >
                 SnackBar
             </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('Toggle');
+                }}
+            >
+                Toggle
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('AppBar');
+                }}
+            >
+                AppBar
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('Menu');
+                }}
+            >
+                Menu
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('Card');
+                }}
+            >
+                Card
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('BottomSheet');
+                }}
+            >
+                BottomSheet
+            </Button>
             <Logo size="small" />
         </View>
     );

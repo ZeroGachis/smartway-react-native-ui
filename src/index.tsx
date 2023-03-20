@@ -8,8 +8,13 @@ import {
     Logo,
     TextInput,
     Screen,
+    BottomSheet,
     DropDown,
     SnackBar,
+    Toggle,
+    Menu,
+    AppBar,
+    EANInput,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -25,6 +30,11 @@ export {
     TextInput,
     DropDown,
     SnackBar,
+    Toggle,
+    Menu,
+    AppBar,
     ThemeProvider,
     useTheme,
+    BottomSheet,
+    EANInput,
 };

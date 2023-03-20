@@ -8,7 +8,7 @@ import { TextIndication, TextType } from './TextIndication';
 interface Props extends TextInputProps {
     style?: ViewStyle;
     inputStyles?: TextStyle;
-    label: string;
+    label?: string;
     value: string;
     text?: string;
     textType: TextType;
@@ -54,7 +54,7 @@ export const TextInput = ({
         borderColor:
             textType === 'error'
                 ? theme.sw.colors.error.main
-                : focused
+                : focused || value.length > 0
                 ? theme.sw.colors.neutral[500]
                 : theme.sw.colors.neutral[400],
     };
