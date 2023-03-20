@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { DropDown, Screen } from 'smartway-react-native-ui';
-
-type DropDownOption<T = any> = {
-    name: string;
-    value: T;
-};
+import type { DropDownOption } from 'src/components/dropDown/DropDown';
 
 export const DropDownPage = () => {
     const [selected, setSelected] = useState<DropDownOption>();
 
-    const options = [
-        { name: 'option 1', value: {} },
-        { name: 'option 2', value: {} },
-        { name: 'option 3', value: {} },
-        { name: 'option 4', value: {} },
+    const options: DropDownOption[] = [
+        { value: 'Option 1' },
+        { value: 'Option 2' },
+        { value: 'Option 3' },
+        { value: 'Option 4' },
     ];
 
     return (
