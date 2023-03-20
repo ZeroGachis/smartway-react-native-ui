@@ -14,6 +14,7 @@ interface Props {
     style?: ViewStyle;
     children?: JSX.Element;
     type?: AppBarType;
+    isBottomSheetOpened?: boolean;
 }
 export const AppBar = ({
     label,
@@ -22,6 +23,7 @@ export const AppBar = ({
     style,
     children,
     type = 'default',
+    isBottomSheetOpened,
 }: Props) => {
     const theme = useTheme();
 
@@ -53,6 +55,9 @@ export const AppBar = ({
         },
         body: {
             paddingRight: theme.sw.spacing.m,
+            color: isBottomSheetOpened
+                ? theme.sw.colors.neutral[500]
+                : theme.sw.colors.neutral[800],
         },
     });
 
@@ -76,8 +81,17 @@ export const AppBar = ({
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
-                    <Body style={styles.body}>{label}</Body>
-                    <Icon name="arrow-down" />
+                    <Body size="semi-bold" style={styles.body}>
+                        {label}
+                    </Body>
+                    <Icon
+                        color={
+                            isBottomSheetOpened
+                                ? theme.sw.colors.neutral[500]
+                                : theme.sw.colors.neutral[800]
+                        }
+                        name="arrow-down"
+                    />
                 </TouchableOpacity>
                 {children}
             </View>

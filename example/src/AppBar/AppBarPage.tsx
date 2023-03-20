@@ -46,7 +46,12 @@ export const AppBarPage = ({ navigation }: Props) => {
                     options={menuOptions}
                 />
             </AppBar>
-            <AppBar onPress={() => setOpened(true)} label={selected?.value} type="accordion">
+            <AppBar
+                onPress={() => setOpened(true)}
+                label={selected?.value}
+                isBottomSheetOpened={isOpened}
+                type="accordion"
+            >
                 <Menu
                     icon="settings"
                     onDismiss={() => setMenuVisible(false)}
