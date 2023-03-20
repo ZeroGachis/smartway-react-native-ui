@@ -8,6 +8,7 @@ import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
 import { BottomSheetPage } from './BottomSheet/BottomSheetPage';
 import { DropDownPage } from './DropDown/DropDownPage';
+import { SnackBarPage } from './SnackBar/SnackBarPage';
 import { TogglePage } from './TogglePage/TogglePage';
 import { MenuPage } from './Menu/MenuPage';
 import { AppBarPage } from './AppBar/AppBarPage';
@@ -20,6 +21,7 @@ export type RootStackParamList = {
     Input: undefined;
     BottomSheet: undefined;
     DropDown: undefined;
+    SnackBar: undefined;
     Toggle: undefined;
     Menu: undefined;
     AppBar: undefined;
@@ -43,6 +45,7 @@ const App = () => {
                         component={BottomSheetPage}
                     />
                     <Stack.Screen name="DropDown" component={DropDownPage} />
+                    <Stack.Screen name="SnackBar" component={SnackBarPage} />
                     <Stack.Screen name="Toggle" component={TogglePage} />
                     <Stack.Screen name="Menu" component={MenuPage} />
                     <Stack.Screen

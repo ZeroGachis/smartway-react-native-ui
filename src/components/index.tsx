@@ -9,6 +9,7 @@ import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
 import { BottomSheet } from './bottomSheet/BottomSheet';
 import { DropDown } from './dropDown/DropDown';
+import { SnackBar } from './snackBar/SnackBar';
 import { Toggle } from './toggle/Toggle';
 import { Menu } from './menu/Menu';
 import { AppBar } from './appBar/AppBar';
@@ -30,4 +31,5 @@ export {
     Menu,
     AppBar,
     EANInput,
+    SnackBar,
 };
