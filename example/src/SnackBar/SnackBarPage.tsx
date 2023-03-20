@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, SnackBar } from 'smartway-react-native-ui';
 
 export const SnackBarPage = () => {
     const [isVisible, setVisible] = useState<boolean>(false);
 
-    const message1 =
+    const message =
         'Single line of text may be a long text on multiple line. It’s possible with a short action.';
 
     return (
@@ -14,16 +14,15 @@ export const SnackBarPage = () => {
             <SnackBar
                 visible={isVisible}
                 actionLabel="Action"
-                onPress={() => setVisible(false)}
-                withIcon
-                message={message1}
+                onDismiss={() => setVisible(false)}
+                iconName="close"
+                message={message}
             />
-
             <SnackBar
                 visible={isVisible}
                 actionLabel="Long Action"
-                onPress={() => setVisible(false)}
-                message={message1}
+                onDismiss={() => setVisible(false)}
+                message={message}
             />
         </View>
     );

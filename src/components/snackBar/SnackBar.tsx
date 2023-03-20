@@ -9,17 +9,17 @@ interface Props {
     visible: boolean;
     message: string;
     actionLabel?: string;
-    withIcon?: boolean;
     iconName?: IconName;
-    onPress: () => void;
+    onDismiss: () => void;
+    duration?: number;
 }
 
 export const SnackBar = ({
     message,
-    withIcon = false,
-    onPress,
+    onDismiss,
     actionLabel,
     iconName = 'close',
+    duration,
     visible,
 }: Props) => {
     const theme = useTheme();
@@ -45,7 +45,7 @@ export const SnackBar = ({
                     flexDirection: 'row',
                     justifyContent: 'flex-end',
                     marginRight: theme.sw.spacing.xl,
-                    marginTop: 12,
+                    marginTop: theme.sw.spacing.s,
                 },
             };
         }
@@ -62,23 +62,30 @@ export const SnackBar = ({
             backgroundColor: theme.sw.colors.neutral[800],
         },
 
-        acionLabel: {
+        message: {
             flex: 1,
             color: theme.sw.colors.neutral[50],
-            marginRight: 32,
+            marginRight: theme.sw.spacing.xl,
+        },
+        actionLabel: {
+            color: theme.sw.colors.primary[50],
+            marginRight: theme.sw.spacing.l,
         },
     });
 
     return (
         <View style={styles.container}>
-            <Snackbar onDismiss={onPress} visible={visible} style={styles.snackBar}>
+            <Snackbar
+                duration={duration}
+                visible={visible}
+                onDismiss={onDismiss}
+                style={styles.snackBar}
+            >
                 <View style={messageContainer as ViewStyle}>
-                    <Text style={styles.acionLabel}>{message}</Text>
-                    <Pressable hitSlop={8} style={actionContainer as ViewStyle} onPress={onPress}>
-                        {actionLabel && (
-                            <Text style={{ color: '#B3E0D6', marginRight: 24 }}>{actionLabel}</Text>
-                        )}
-                        {withIcon && <Icon name={iconName} color="#B3E0D6" />}
+                    <Text style={styles.message}>{message}</Text>
+                    <Pressable hitSlop={8} style={actionContainer as ViewStyle} onPress={onDismiss}>
+                        {actionLabel && <Text style={styles.actionLabel}>{actionLabel}</Text>}
+                        {iconName && <Icon name={iconName} color={theme.sw.colors.primary[50]} />}
                     </Pressable>
                 </View>
             </Snackbar>
