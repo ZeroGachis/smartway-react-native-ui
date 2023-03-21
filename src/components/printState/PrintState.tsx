@@ -34,6 +34,7 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
             borderColor: 'rgba(255, 86, 48, 0.5)',
             borderWidth: 1,
             borderRadius: 8,
+            paddingHorizontal: theme.sw.spacing.s,
         },
         iconContainer: {
             flexDirection: 'row',
@@ -50,7 +51,6 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
                 labelStyle={{ color: theme.sw.colors.error.main }}
                 style={styles.buttonStyle}
                 onClick={onPress}
-                mode="text"
             >
                 {buttonLabel}
             </Button>
