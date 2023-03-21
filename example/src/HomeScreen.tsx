@@ -49,10 +49,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                 mode="filled"
                 style={{ marginBottom: 12 }}
                 onClick={() => {
-                    navigation.navigate('BottomSheet');
+                    navigation.navigate('SnackBar');
                 }}
             >
-                BottomSheet
+                SnackBar
             </Button>
             <Button
                 mode="filled"
@@ -88,7 +88,25 @@ export const HomeScreen = ({ navigation }: Props) => {
                     navigation.navigate('PrintState');
                 }}
             >
-                Print State
+                PrintState
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('BottomSheet');
+                }}
+            >
+                BottomSheet
+            </Button>
+            <Button
+                mode="filled"
+                style={{ marginBottom: 12 }}
+                onClick={() => {
+                    navigation.navigate('Card');
+                }}
+            >
+                Card
             </Button>
             <Logo size="small" />
         </View>

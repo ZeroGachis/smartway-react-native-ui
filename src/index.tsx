@@ -10,10 +10,12 @@ import {
     Screen,
     BottomSheet,
     DropDown,
+    SnackBar,
     Toggle,
     Menu,
     AppBar,
     PrintState,
+    EANInput,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -28,6 +30,7 @@ export {
     Screen,
     TextInput,
     DropDown,
+    SnackBar,
     Toggle,
     Menu,
     AppBar,
@@ -35,4 +38,5 @@ export {
     useTheme,
     BottomSheet,
     PrintState,
+    EANInput,
 };

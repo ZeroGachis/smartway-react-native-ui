@@ -8,7 +8,7 @@ import { TextIndication, TextType } from './TextIndication';
 interface Props extends TextInputProps {
     style?: ViewStyle;
     inputStyles?: TextStyle;
-    label: string;
+    label?: string;
     value: string;
     text?: string;
     textType: TextType;
