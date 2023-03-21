@@ -5,28 +5,39 @@ import { DeleteButton } from './DeleteButton';
 import { NumberButton } from './NumberButton';
 import { SubmitButton } from './SubmitButton';
 
-export type KeyboardActions = 'none' | 'type' | 'delete' | 'submit';
+export type KeyboardActions = 'type' | 'delete' | 'submit';
 export interface KeyboardState {
     value?: string;
     action: KeyboardActions;
 }
 interface Props {
-    setInputValue: ({ value }: KeyboardState) => void;
     style?: ViewStyle;
     height: number;
+    focusedInput: string;
+    setValues: React.Dispatch<React.SetStateAction<any>>;
+    onSubmit: () => void;
 }
 
-export const Keyboard = ({ setInputValue, style, height }: Props) => {
+export const Keyboard = ({ style, height, focusedInput, setValues, onSubmit }: Props) => {
     const handlePress = (action: KeyboardActions, value?: string) => {
+        if (!focusedInput) {
+            return;
+        }
         switch (action) {
             case 'type':
-                setInputValue({ action: 'type', value });
+                setValues((prevState) => ({
+                    ...prevState,
+                    [focusedInput]: prevState[focusedInput] + value,
+                }));
                 break;
             case 'delete':
-                setInputValue({ action: 'delete' });
+                setValues((prevState) => ({
+                    ...prevState,
+                    [focusedInput]: prevState[focusedInput].slice(0, -1),
+                }));
                 break;
             case 'submit':
-                setInputValue({ action: 'submit' });
+                onSubmit();
         }
     };
 

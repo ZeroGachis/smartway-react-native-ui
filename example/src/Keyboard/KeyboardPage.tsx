@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, StyleSheet, TextInput as TextInputRN } from 'react-native';
 import { Keyboard, Screen } from 'smartway-react-native-ui';
-import type { KeyboardState } from 'src/components/keyboard/Keyboard';
 
 interface Inputs {
     upperInput: string;
@@ -10,39 +9,7 @@ interface Inputs {
 
 export const KeyboardPage = () => {
     const [focusedInput, setFocusedInput] = useState<string>('');
-    const [value, setValue] = useState<KeyboardState>({ value: '', action: 'none' });
     const [inputValues, setValues] = useState<Inputs>({ upperInput: '', bottomInput: '' });
-
-    const onChangeTextHandler = ({ value, action }: KeyboardState) => {
-        switch (action) {
-            case 'none':
-                break;
-            case 'type':
-                setValues((prevState) => ({
-                    ...prevState,
-                    [focusedInput]: prevState[focusedInput as keyof Inputs] + value,
-                }));
-                break;
-            case 'delete':
-                setValues((prevState) => ({
-                    ...prevState,
-                    [focusedInput]: prevState[focusedInput as keyof Inputs].slice(0, -1),
-                }));
-                break;
-            case 'submit':
-                Alert.alert('You pressed submit');
-        }
-    };
-
-    useEffect(() => {
-        onChangeTextHandler(value);
-    }, [value]);
-
-    const styles = StyleSheet.create({
-        container: {
-            backgroundColor: 'white',
-        },
-    });
 
     return (
         <>
@@ -54,17 +21,25 @@ export const KeyboardPage = () => {
                     value={inputValues.upperInput}
                 />
                 <TextInputRN
+                    showSoftInputOnFocus={false}
                     value={inputValues.bottomInput}
                     onFocus={() => setFocusedInput('bottomInput')}
-                    showSoftInputOnFocus={false}
                     style={{ borderWidth: 2, margin: 10 }}
                 />
                 <Keyboard
-                    setInputValue={setValue}
                     style={{ position: 'absolute', bottom: 0, alignSelf: 'center' }}
                     height={200}
+                    focusedInput={focusedInput}
+                    setValues={setValues}
+                    onSubmit={() => Alert.alert(inputValues.bottomInput, inputValues.upperInput)}
                 />
             </Screen>
         </>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: 'white',
+    },
+});
