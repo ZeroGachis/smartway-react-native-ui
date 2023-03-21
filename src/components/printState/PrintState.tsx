@@ -19,7 +19,7 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
             width: '100%',
             flexDirection: 'row',
             alignItems: 'center',
-            padding: 24,
+            padding: theme.sw.spacing.l,
             backgroundColor: theme.sw.colors.neutral[50],
             borderRadius: 24,
             justifyContent: 'space-between',
@@ -35,10 +35,14 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
             borderWidth: 1,
             borderRadius: 8,
         },
+        iconContainer: {
+            flexDirection: 'row',
+            alignItems: 'center',
+        },
     });
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={styles.iconContainer}>
                 <Icon size={24} name="print" />
                 <Text style={styles.text}>{text}</Text>
             </View>
