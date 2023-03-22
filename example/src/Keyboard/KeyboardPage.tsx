@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Alert, StyleSheet, TextInput as TextInputRN } from 'react-native';
-import { Keyboard, Screen } from 'smartway-react-native-ui';
+import { Alert, StyleSheet } from 'react-native';
+import { Keyboard, Screen, TextInput, useTheme } from 'smartway-react-native-ui';
 
 interface Inputs {
     upperInput: string;
@@ -8,23 +8,31 @@ interface Inputs {
 }
 
 export const KeyboardPage = () => {
+    const theme = useTheme();
+
     const [focusedInput, setFocusedInput] = useState<string>('');
     const [inputValues, setValues] = useState<Inputs>({ upperInput: '', bottomInput: '' });
+
+    const styles = StyleSheet.create({
+        container: {
+            backgroundColor: theme.sw.colors.neutral[50],
+        },
+    });
 
     return (
         <>
             <Screen style={styles.container}>
-                <TextInputRN
+                <TextInput
                     onFocus={() => setFocusedInput('upperInput')}
                     showSoftInputOnFocus={false}
-                    style={{ borderWidth: 2, margin: 10 }}
                     value={inputValues.upperInput}
+                    textType={'information'}
                 />
-                <TextInputRN
+                <TextInput
                     showSoftInputOnFocus={false}
                     value={inputValues.bottomInput}
                     onFocus={() => setFocusedInput('bottomInput')}
-                    style={{ borderWidth: 2, margin: 10 }}
+                    textType={'information'}
                 />
                 <Keyboard
                     style={{ position: 'absolute', bottom: 0, alignSelf: 'center' }}
@@ -37,9 +45,3 @@ export const KeyboardPage = () => {
         </>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'white',
-    },
-});

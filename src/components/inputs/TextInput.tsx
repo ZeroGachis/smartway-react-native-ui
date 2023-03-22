@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TextStyle, View, ViewStyle } from 'react-native';
+import React, { useRef } from 'react';
+import { TextStyle, View, ViewStyle, TextInput as TextInputRN } from 'react-native';
 import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { IconName } from '../icons/IconProps';
@@ -33,7 +33,7 @@ export const TextInput = ({
 }: Props) => {
     const theme = useTheme();
 
-    const [focused, setFocused] = useState<boolean>(false);
+    const inputRef = useRef<TextInputRN>(null);
 
     const containerStyle: ViewStyle = {
         marginBottom: theme.sw.spacing.l,
@@ -53,7 +53,7 @@ export const TextInput = ({
         borderColor:
             textType === 'error'
                 ? theme.sw.colors.error.main
-                : focused || value.length > 0
+                : inputRef.current?.isFocused() || value.length > 0
                 ? theme.sw.colors.neutral[500]
                 : theme.sw.colors.neutral[400],
     };
@@ -62,12 +62,11 @@ export const TextInput = ({
         <View style={containerStyle}>
             <BaseTextInput
                 {...props}
+                ref={inputRef}
                 label={label}
                 style={inputSyle}
                 textColor={theme.sw.colors.neutral[900]}
                 mode={'outlined'}
-                onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
                 error={textType === 'error'}
                 outlineStyle={outlineStyle}
                 theme={{
