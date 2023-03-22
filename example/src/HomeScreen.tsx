@@ -126,6 +126,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                 >
                     Card
                 </Button>
+                <Button
+                    mode="filled"
+                    style={styles.button}
+                    onClick={() => {
+                        navigation.navigate('Keyboard');
+                    }}
+                >
+                    Keyboard
+                </Button>
             </ScrollView>
         </View>
     );

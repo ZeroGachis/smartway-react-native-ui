@@ -7,6 +7,7 @@ import { Card } from './Card';
 import { Dialog } from './dialogs/Dialog';
 import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
+import { Keyboard } from './keyboard/Keyboard';
 import { BottomSheet } from './bottomSheet/BottomSheet';
 import { DropDown } from './dropDown/DropDown';
 import { SnackBar } from './snackBar/SnackBar';
@@ -31,6 +32,7 @@ export {
     Toggle,
     Menu,
     AppBar,
+    Keyboard,
     PrintState,
     EANInput,
     SnackBar,

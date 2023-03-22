@@ -81,4 +81,6 @@ export type IconName =
     | 'telephone'
     | 'user'
     | 'users'
-    | 'window';
+    | 'window'
+    | 'keyboard-tab'
+    | 'backspace';
