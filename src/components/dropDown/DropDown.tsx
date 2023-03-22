@@ -3,11 +3,11 @@ import { ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
 import { List } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
+import type { IconName } from '../icons/IconProps';
 
-export type DropDownOption = {
-    name: string;
-    value: any;
-};
+export interface DropDownOption {
+    value: string;
+}
 
 interface Props {
     disabled?: boolean;
@@ -18,6 +18,9 @@ interface Props {
     selected?: DropDownOption;
     style?: ViewStyle;
     optionStyle?: ViewStyle;
+    containerStyle?: ViewStyle;
+    accordionStyle?: ViewStyle;
+    icon?: IconName;
 }
 export const DropDown = ({
     disabled,
@@ -28,6 +31,9 @@ export const DropDown = ({
     selected,
     style,
     optionStyle,
+    containerStyle,
+    accordionStyle,
+    icon = 'arrow-up',
 }: Props) => {
     const theme = useTheme();
     const [expanded, setExpanded] = useState(false);
@@ -50,12 +56,6 @@ export const DropDown = ({
                 borderColor: theme.sw.colors.neutral[400],
             };
         }
-        if (disabled) {
-            return {
-                color: theme.sw.colors.neutral[800],
-                borderColor: 'transparent',
-            };
-        }
         if (error) {
             return {
                 color: theme.sw.colors.error.main,
@@ -71,7 +71,7 @@ export const DropDown = ({
 
     const styles = StyleSheet.create({
         container: {
-            marginBottom: theme.sw.spacing.l,
+            ...containerStyle,
         },
 
         section: {
@@ -85,11 +85,13 @@ export const DropDown = ({
         accordion: {
             backgroundColor: theme.sw.colors.neutral[50],
             paddingVertical: theme.sw.spacing.s,
+            ...accordionStyle,
         },
         accordionTitle: {
             color: color,
             fontWeight: 'bold',
             fontSize: 16,
+            alignSelf: 'center',
         },
         option: {
             ...optionStyle,
@@ -110,15 +112,15 @@ export const DropDown = ({
                         onPress={handlePress}
                         style={styles.accordion}
                         titleStyle={styles.accordionTitle}
-                        title={selected ? selected.name : placeholder}
-                        right={() => <Icon name="arrow-up" />}
+                        title={selected ? selected.value : placeholder}
+                        right={() => <Icon name={icon} />}
                     >
                         {options.map((option: DropDownOption, index: number) => (
                             <List.Item
                                 key={index}
                                 titleStyle={styles.optionTitle}
                                 style={styles.option}
-                                title={option.name}
+                                title={option.value}
                                 onPress={() => handleSelect(option)}
                             />
                         ))}

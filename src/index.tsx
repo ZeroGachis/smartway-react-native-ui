@@ -11,8 +11,11 @@ import {
     Screen,
     BottomSheet,
     DropDown,
+    SnackBar,
+    Toggle,
     Menu,
     AppBar,
+    EANInput,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -28,9 +31,12 @@ export {
     TextInput,
     Keyboard,
     DropDown,
+    SnackBar,
+    Toggle,
     Menu,
     AppBar,
     ThemeProvider,
     useTheme,
     BottomSheet,
+    EANInput,
 };

@@ -10,8 +10,11 @@ import { Icon } from './icons/Icon';
 import { Keyboard } from './keyboard/Keyboard';
 import { BottomSheet } from './bottomSheet/BottomSheet';
 import { DropDown } from './dropDown/DropDown';
+import { SnackBar } from './snackBar/SnackBar';
+import { Toggle } from './toggle/Toggle';
 import { Menu } from './menu/Menu';
 import { AppBar } from './appBar/AppBar';
+import { EANInput } from './EANInput/EANInput';
 
 export {
     Body,
@@ -25,7 +28,10 @@ export {
     TextInput,
     DropDown,
     BottomSheet,
+    Toggle,
     Menu,
     AppBar,
     Keyboard,
+    EANInput,
+    SnackBar,
 };
