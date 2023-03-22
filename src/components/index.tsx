@@ -13,6 +13,7 @@ import { SnackBar } from './snackBar/SnackBar';
 import { Toggle } from './toggle/Toggle';
 import { Menu } from './menu/Menu';
 import { AppBar } from './appBar/AppBar';
+import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 
 export {
@@ -30,6 +31,7 @@ export {
     Toggle,
     Menu,
     AppBar,
+    PrintState,
     EANInput,
     SnackBar,
 };

@@ -14,6 +14,7 @@ import {
     Toggle,
     Menu,
     AppBar,
+    PrintState,
     EANInput,
 } from './components';
 
@@ -36,5 +37,6 @@ export {
     ThemeProvider,
     useTheme,
     BottomSheet,
+    PrintState,
     EANInput,
 };
