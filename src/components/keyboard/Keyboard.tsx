@@ -25,13 +25,13 @@ export const Keyboard = ({ style, height, focusedInput, setValues, onSubmit }: P
         }
         switch (action) {
             case 'type':
-                setValues((prevState) => ({
+                setValues((prevState: any) => ({
                     ...prevState,
                     [focusedInput]: prevState[focusedInput] + value,
                 }));
                 break;
             case 'delete':
-                setValues((prevState) => ({
+                setValues((prevState: any) => ({
                     ...prevState,
                     [focusedInput]: prevState[focusedInput].slice(0, -1),
                 }));
