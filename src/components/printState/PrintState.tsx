@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../..//styles/themes';
 import { Button } from '../buttons/Button';
 import { Icon } from '../icons/Icon';
+import { Body } from '../typography/Body';
 
 interface Props {
     text: string;
@@ -45,7 +46,7 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
         <View style={styles.container}>
             <View style={styles.iconContainer}>
                 <Icon size={24} name="print" />
-                <Text style={styles.text}>{text}</Text>
+                <Body style={styles.text}>{text}</Body>
             </View>
             <Button
                 labelStyle={{ color: theme.sw.colors.error.main }}
