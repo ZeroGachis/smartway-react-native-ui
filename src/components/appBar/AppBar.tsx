@@ -14,7 +14,7 @@ interface Props {
     style?: ViewStyle;
     children?: JSX.Element;
     type?: AppBarType;
-    isBottomSheetOpened?: boolean;
+    disabled?: boolean;
 }
 export const AppBar = ({
     label,
@@ -23,7 +23,7 @@ export const AppBar = ({
     style,
     children,
     type = 'default',
-    isBottomSheetOpened,
+    disabled,
 }: Props) => {
     const theme = useTheme();
 
@@ -55,9 +55,7 @@ export const AppBar = ({
         },
         body: {
             paddingRight: theme.sw.spacing.m,
-            color: isBottomSheetOpened
-                ? theme.sw.colors.neutral[500]
-                : theme.sw.colors.neutral[800],
+            color: disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[800],
         },
     });
 
@@ -86,9 +84,7 @@ export const AppBar = ({
                     </Body>
                     <Icon
                         color={
-                            isBottomSheetOpened
-                                ? theme.sw.colors.neutral[500]
-                                : theme.sw.colors.neutral[800]
+                            disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[800]
                         }
                         name="arrow-down"
                     />
