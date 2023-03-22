@@ -18,8 +18,8 @@ export const SnackBar = ({
     message,
     onDismiss,
     actionLabel,
-    iconName,
-    duration = 4000,
+    iconName = 'close',
+    duration,
     visible,
 }: Props) => {
     const theme = useTheme();
