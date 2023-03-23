@@ -1,29 +1,33 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Button, SnackBar } from 'smartway-react-native-ui';
+import type { SnackBarProps } from 'src/components/snackBar/SnackBar';
 
 export const SnackBarPage = () => {
-    const [isVisible, setVisible] = useState<boolean>(false);
+    const [snackBarProps, setSnackBar] = useState<Omit<SnackBarProps, 'setSnackBar'>>({
+        visible: false,
+        message: '',
+        actionLabel: '',
+        iconName: undefined,
+        onDismiss: undefined,
+        duration: 4000,
+    });
 
-    const message =
-        'Single line of text may be a long text on multiple line. It’s possible with a short action.';
+    const openSnackBar = () => {
+        setSnackBar({
+            visible: true,
+            message: 'Placeholder text',
+            actionLabel: 'Hello',
+            iconName: 'add-picture',
+            onDismiss: () => console.log(''),
+            duration: 4000,
+        });
+    };
 
     return (
         <View style={{ flex: 1 }}>
-            <Button onClick={() => setVisible(true)}>open SnackBar</Button>
-            <SnackBar
-                visible={isVisible}
-                actionLabel="Action"
-                onDismiss={() => setVisible(false)}
-                iconName="close"
-                message={message}
-            />
-            <SnackBar
-                visible={isVisible}
-                actionLabel="Long Action"
-                onDismiss={() => setVisible(false)}
-                message={message}
-            />
+            <Button onClick={openSnackBar}>open SnackBar</Button>
+            <SnackBar {...snackBarProps} setSnackBar={setSnackBar} />
         </View>
     );
 };

@@ -5,13 +5,14 @@ import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 
-interface Props {
+export interface SnackBarProps {
     visible: boolean;
     message: string;
     actionLabel?: string;
     iconName?: IconName;
-    onDismiss: () => void;
+    onDismiss?: () => void;
     duration?: number;
+    setSnackBar: (props: Omit<SnackBarProps, 'setSnackBar'>) => void;
 }
 
 export const SnackBar = ({
@@ -21,8 +22,25 @@ export const SnackBar = ({
     iconName,
     duration = 4000,
     visible,
-}: Props) => {
+    setSnackBar,
+}: SnackBarProps) => {
     const theme = useTheme();
+
+    const handleDismiss = () => {
+        onDismiss?.();
+        clearState();
+    };
+
+    const clearState = () => {
+        setSnackBar({
+            visible: false,
+            message: '',
+            actionLabel: '',
+            iconName: undefined,
+            onDismiss: undefined,
+            duration: 4000,
+        });
+    };
 
     const getStyles = () => {
         if (actionLabel && actionLabel.length < 10) {
@@ -78,15 +96,27 @@ export const SnackBar = ({
             <Snackbar
                 duration={duration}
                 visible={visible}
-                onDismiss={onDismiss}
+                onDismiss={handleDismiss}
                 style={styles.snackBar}
             >
                 <View style={messageContainer as ViewStyle}>
                     <Text style={styles.message}>{message}</Text>
-                    <Pressable hitSlop={8} style={actionContainer as ViewStyle} onPress={onDismiss}>
+                    <Pressable
+                        hitSlop={8}
+                        style={actionContainer as ViewStyle}
+                        onPress={handleDismiss}
+                    >
                         {actionLabel && <Text style={styles.actionLabel}>{actionLabel}</Text>}
-                        {iconName && <Icon name={iconName} color={theme.sw.colors.primary[50]} />}
                     </Pressable>
+                    {iconName && (
+                        <Pressable
+                            hitSlop={8}
+                            style={actionContainer as ViewStyle}
+                            onPress={clearState}
+                        >
+                            <Icon name={iconName} color={theme.sw.colors.primary[50]} />
+                        </Pressable>
+                    )}
                 </View>
             </Snackbar>
         </View>
