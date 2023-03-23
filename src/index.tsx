@@ -17,6 +17,7 @@ import {
     AppBar,
     PrintState,
     EANInput,
+    Tab,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -41,4 +42,5 @@ export {
     BottomSheet,
     PrintState,
     EANInput,
+    Tab,
 };
