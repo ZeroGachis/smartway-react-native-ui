@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
-
 import { Icon } from '../icons/Icon';
 import { TextInput } from '../inputs/TextInput';
 import { Body } from '../typography/Body';
