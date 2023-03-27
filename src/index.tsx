@@ -1,7 +1,7 @@
 import {
     Body,
     Button,
-    Card,
+    ActionCard,
     Dialog,
     Headline,
     Icon,
@@ -17,13 +17,14 @@ import {
     AppBar,
     PrintState,
     EANInput,
+    Card,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
 export {
     Body,
     Button,
-    Card,
+    ActionCard,
     Dialog,
     Headline,
     Icon,
@@ -41,4 +42,5 @@ export {
     BottomSheet,
     PrintState,
     EANInput,
+    Card,
 };
