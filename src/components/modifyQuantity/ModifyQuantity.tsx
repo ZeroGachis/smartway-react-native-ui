@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import { TextInput } from '../inputs/TextInput';
@@ -59,18 +59,19 @@ export const ModifyQuantity = ({ text, onAdd, onMinus, style, inputValue }: Prop
                 <Body style={styles.text}>{text}</Body>
             </View>
             <View style={styles.inputContainer}>
-                <TouchableOpacity onPress={onMinus}>
-                    <Icon size={28} name="minus" />
-                </TouchableOpacity>
+                <Pressable hitSlop={8} onPress={onMinus}>
+                    <Icon size={28} name="minus-fill" />
+                </Pressable>
                 <TextInput
                     style={styles.input}
                     inputStyles={styles.inputText}
                     value={inputValue}
                     textType={'information'}
                 />
-                <TouchableOpacity onPress={onAdd}>
-                    <Icon size={28} name="add" />
-                </TouchableOpacity>
+
+                <Pressable onPress={onAdd} hitSlop={8}>
+                    <Icon size={28} name="add-fill" />
+                </Pressable>
             </View>
         </View>
     );

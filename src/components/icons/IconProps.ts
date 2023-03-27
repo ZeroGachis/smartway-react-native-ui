@@ -83,4 +83,6 @@ export type IconName =
     | 'users'
     | 'window'
     | 'keyboard-tab'
-    | 'backspace';
+    | 'backspace'
+    | 'add-fill'
+    | 'minus-fill';
