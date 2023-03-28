@@ -23,13 +23,13 @@ export const ModifyQuantityPage = () => {
 
     return (
         <Screen style={styles.container}>
-            <ModifyQuantity onMinus={onMinus} onAdd={onAdd} text={'Stick'} inputValue={value} />
             <ModifyQuantity
-                disabled
+                minValue={0}
+                maxValue={6}
                 onMinus={onMinus}
                 onAdd={onAdd}
                 text={'Stick'}
-                inputValue={'0'}
+                inputValue={value}
             />
         </Screen>
     );

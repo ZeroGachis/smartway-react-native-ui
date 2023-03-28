@@ -9,7 +9,8 @@ import { Body } from '../typography/Body';
 interface Props {
     text: string;
     onAdd: () => void;
-    disabled?: boolean;
+    minValue: number;
+    maxValue: number;
     onMinus: () => void;
     style?: ViewStyle;
     inputValue: string;
@@ -22,10 +23,14 @@ export const ModifyQuantity = ({
     onMinus,
     style,
     inputValue,
-    disabled,
+    minValue,
+    maxValue,
     icon = 'etiquette',
 }: Props) => {
     const theme = useTheme();
+
+    const minusDisabled = minValue >= parseInt(inputValue);
+    const addDisabled = maxValue <= parseInt(inputValue);
 
     const styles = StyleSheet.create({
         container: {
@@ -70,10 +75,10 @@ export const ModifyQuantity = ({
                 <Body style={styles.text}>{text}</Body>
             </View>
             <View style={styles.inputContainer}>
-                <Pressable disabled={disabled} hitSlop={8} onPress={onMinus}>
+                <Pressable disabled={minusDisabled} hitSlop={8} onPress={onMinus}>
                     <Icon
                         size={28}
-                        color={disabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}
+                        color={minusDisabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}
                         name="minus-fill"
                     />
                 </Pressable>
@@ -84,8 +89,12 @@ export const ModifyQuantity = ({
                     textType={'information'}
                 />
 
-                <Pressable onPress={onAdd} hitSlop={8}>
-                    <Icon size={28} color={theme.sw.colors.neutral[800]} name="add-fill" />
+                <Pressable disabled={addDisabled} onPress={onAdd} hitSlop={8}>
+                    <Icon
+                        size={28}
+                        color={addDisabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}
+                        name="add-fill"
+                    />
                 </Pressable>
             </View>
         </View>
