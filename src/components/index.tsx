@@ -3,7 +3,7 @@ import { Logo } from './logos/Logo';
 import { Screen } from './Screen';
 import { Headline } from './typography/Headline';
 import { Body } from './typography/Body';
-import { Card } from './Card';
+import { ActionCard } from './Card';
 import { Dialog } from './dialogs/Dialog';
 import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';
@@ -17,11 +17,13 @@ import { AppBar } from './appBar/AppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
+import { Card } from './card/Card';
+import { Tab } from './tab/Tab';
 
 export {
     Body,
     Button,
-    Card,
+    ActionCard,
     Dialog,
     Headline,
     Icon,
@@ -38,4 +40,6 @@ export {
     EANInput,
     SnackBar,
     ModifyQuantity,
+    Card,
+    Tab,
 };

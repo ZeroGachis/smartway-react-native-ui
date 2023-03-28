@@ -10,14 +10,14 @@ import { Body } from './typography/Body';
 interface Props {
     children?: ReactNode;
     bottomChildren: ReactNode;
-    title: string;
+    title?: string;
     titleColor: string;
     style?: ViewStyle;
     disabled?: boolean;
     onClose?: () => void;
 }
 
-export const Card = ({
+export const ActionCard = ({
     children,
     style,
     title,

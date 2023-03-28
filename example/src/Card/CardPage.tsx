@@ -1,47 +1,68 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Card, Icon, EANInput, Screen, TextInput, useTheme } from 'smartway-react-native-ui';
+import { Body, Button, Card, Headline, Icon, Screen, useTheme } from 'smartway-react-native-ui';
 
 export const CardPage = () => {
     const theme = useTheme();
-
-    const [scanValue, setValue] = useState('');
-
-    console.log(scanValue, 'scanValue');
-
+    const style = StyleSheet.create({
+        container: {
+            marginTop: theme.sw.spacing.m,
+        },
+        card: {
+            paddingHorizontal: theme.sw.spacing.m,
+            paddingVertical: theme.sw.spacing.l,
+        },
+        textContent: {
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: theme.sw.spacing.xl,
+        },
+        iconContainer: {
+            alignItems: 'center',
+            height: 100,
+            justifyContent: 'center',
+            width: 100,
+        },
+        title: {
+            textAlign: 'center',
+            color: theme.sw.colors.neutral[700],
+            marginTop: theme.sw.spacing.s,
+        },
+        body: {
+            marginTop: theme.sw.spacing.s,
+            textAlign: 'center',
+            color: theme.sw.colors.neutral[600],
+        },
+        bodyBold: {
+            fontFamily: 'PublicSans-SemiBold',
+            color: theme.sw.colors.neutral[700],
+        },
+        button: {
+            marginTop: theme.sw.spacing.l,
+        },
+    });
     return (
-        <Screen style={styles.container}>
-            <Card
-                title="Texte action possible"
-                titleColor={theme.sw.colors.neutral[500]}
-                bottomChildren={
-                    <EANInput
-                        value={scanValue}
-                        onChangeText={(text) => {
-                            setValue(text);
-                        }}
-                        placeholder="Scanner ou saisir un gencode"
-                    />
-                }
-            >
-                <View style={{ alignItems: 'center' }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Icon size={24} name="close" />
-                        <TextInput
-                            textType="information"
-                            value="0"
-                            style={{ marginBottom: 0, marginLeft: 12 }}
-                            inputStyles={{ fontSize: 28, textAlign: 'center' }}
-                        />
-                    </View>
+        <Screen style={style.container}>
+            <Card style={style.card}>
+                <View style={style.iconContainer}>
+                    <Icon name="qr" size={48} />
                 </View>
+                <View style={style.textContent}>
+                    <Body style={{ ...style.body, ...style.bodyBold }}>welcome</Body>
+                    <Headline size="h3" style={style.title}>
+                        {}
+                    </Headline>
+                    <Body style={style.body}>Update your data</Body>
+                </View>
+                <Button
+                    testID="tag_enrollment_start_button"
+                    style={style.button}
+                    mode="filled"
+                    onClick={() => {}}
+                >
+                    start
+                </Button>
             </Card>
         </Screen>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 16,
-    },
-});
