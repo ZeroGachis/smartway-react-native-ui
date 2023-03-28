@@ -8,7 +8,7 @@ export const ModifyQuantityPage = () => {
     const styles = StyleSheet.create({
         container: {
             alignItems: 'center',
-            marginTop: theme.sw.spacing.m,
+            paddingTop: theme.sw.spacing.m,
         },
     });
 
