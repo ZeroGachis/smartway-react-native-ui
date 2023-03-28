@@ -17,6 +17,7 @@ import {
     AppBar,
     PrintState,
     EANInput,
+    ModifyQuantity,
     Card,
     Tab,
 } from './components';
@@ -43,6 +44,7 @@ export {
     BottomSheet,
     PrintState,
     EANInput,
+    ModifyQuantity,
     Card,
     Tab,
 };

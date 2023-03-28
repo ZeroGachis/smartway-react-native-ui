@@ -139,6 +139,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                     mode="filled"
                     style={styles.button}
                     onClick={() => {
+                        navigation.navigate('ModifyQuantity');
+                    }}
+                >
+                    ModifyQuantity
+                </Button>
+                <Button
+                    mode="filled"
+                    style={styles.button}
+                    onClick={() => {
                         navigation.navigate('Card');
                     }}
                 >

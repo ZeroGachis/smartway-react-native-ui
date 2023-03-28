@@ -16,6 +16,7 @@ import { AppBarPage } from './AppBar/AppBarPage';
 import { PrintPage } from './PrintStatePage/PrintPage';
 import { ActionCardPage } from './ActionCard/ActionCardPage';
 import { CardPage } from './Card/CardPage';
+import { ModifyQuantityPage } from './ModifyQuantity/ModifyQuantityPage';
 import { TabPage } from './Tab/TabPage';
 
 export type RootStackParamList = {
@@ -33,6 +34,7 @@ export type RootStackParamList = {
     PrintState: undefined;
     ActionCard: undefined;
     Card: undefined;
+    ModifyQuantity: undefined;
     Tab: undefined;
 };
 
@@ -58,6 +60,7 @@ const App = () => {
                     <Stack.Screen name="Toggle" component={TogglePage} />
                     <Stack.Screen name="Menu" component={MenuPage} />
                     <Stack.Screen name="PrintState" component={PrintPage} />
+                    <Stack.Screen name="ModifyQuantity" component={ModifyQuantityPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}
                         name="AppBar"

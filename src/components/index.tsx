@@ -16,6 +16,7 @@ import { Menu } from './menu/Menu';
 import { AppBar } from './appBar/AppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
+import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
 import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 
@@ -38,6 +39,7 @@ export {
     PrintState,
     EANInput,
     SnackBar,
+    ModifyQuantity,
     Card,
     Tab,
 };
