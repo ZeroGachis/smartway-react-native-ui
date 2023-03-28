@@ -8,12 +8,13 @@ import { Body } from '../typography/Body';
 interface Props {
     text: string;
     onAdd: () => void;
+    disabled?: boolean;
     onMinus: () => void;
     style?: ViewStyle;
     inputValue: string;
 }
 
-export const ModifyQuantity = ({ text, onAdd, onMinus, style, inputValue }: Props) => {
+export const ModifyQuantity = ({ text, onAdd, onMinus, style, inputValue, disabled }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -59,8 +60,12 @@ export const ModifyQuantity = ({ text, onAdd, onMinus, style, inputValue }: Prop
                 <Body style={styles.text}>{text}</Body>
             </View>
             <View style={styles.inputContainer}>
-                <Pressable hitSlop={8} onPress={onMinus}>
-                    <Icon size={28} name="minus-fill" />
+                <Pressable disabled={disabled} hitSlop={8} onPress={onMinus}>
+                    <Icon
+                        size={28}
+                        color={disabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}
+                        name="minus-fill"
+                    />
                 </Pressable>
                 <TextInput
                     style={styles.input}
@@ -70,7 +75,7 @@ export const ModifyQuantity = ({ text, onAdd, onMinus, style, inputValue }: Prop
                 />
 
                 <Pressable onPress={onAdd} hitSlop={8}>
-                    <Icon size={28} name="add-fill" />
+                    <Icon size={28} color={theme.sw.colors.neutral[800]} name="add-fill" />
                 </Pressable>
             </View>
         </View>
