@@ -18,6 +18,7 @@ import {
     PrintState,
     EANInput,
     Card,
+    Tab,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -43,4 +44,5 @@ export {
     PrintState,
     EANInput,
     Card,
+    Tab,
 };

@@ -17,6 +17,7 @@ import { AppBar } from './appBar/AppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 import { Card } from './card/Card';
+import { Tab } from './tab/Tab';
 
 export {
     Body,
@@ -38,4 +39,5 @@ export {
     EANInput,
     SnackBar,
     Card,
+    Tab,
 };
