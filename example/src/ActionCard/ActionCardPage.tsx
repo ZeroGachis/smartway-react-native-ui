@@ -7,7 +7,11 @@ export const ActionCardPage = () => {
 
     const [scanValue, setValue] = useState('');
 
-    console.log(scanValue, 'scanValue');
+    const styles = StyleSheet.create({
+        container: {
+            paddingTop: theme.sw.spacing.m,
+        },
+    });
 
     return (
         <Screen style={styles.container}>
@@ -39,9 +43,3 @@ export const ActionCardPage = () => {
         </Screen>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 16,
-    },
-});
