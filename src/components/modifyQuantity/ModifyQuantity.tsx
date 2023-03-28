@@ -13,7 +13,7 @@ interface Props {
     maxValue: number;
     onMinus: () => void;
     style?: ViewStyle;
-    inputValue: string;
+    inputValue: number;
     icon?: IconName;
 }
 
@@ -29,8 +29,8 @@ export const ModifyQuantity = ({
 }: Props) => {
     const theme = useTheme();
 
-    const minusDisabled = minValue >= parseInt(inputValue);
-    const addDisabled = maxValue <= parseInt(inputValue);
+    const minusDisabled = minValue >= inputValue;
+    const addDisabled = maxValue <= inputValue;
 
     const styles = StyleSheet.create({
         container: {
@@ -85,7 +85,8 @@ export const ModifyQuantity = ({
                 <TextInput
                     style={styles.input}
                     inputStyles={styles.inputText}
-                    value={inputValue}
+                    value={''}
+                    quantity={inputValue}
                     textType={'information'}
                 />
 

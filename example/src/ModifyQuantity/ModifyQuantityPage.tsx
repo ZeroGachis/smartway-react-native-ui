@@ -12,13 +12,13 @@ export const ModifyQuantityPage = () => {
         },
     });
 
-    const [value, setValue] = useState<string>('0');
+    const [value, setValue] = useState<number>(0);
 
     const onAdd = () => {
-        setValue((parseInt(value) + 1).toString());
+        setValue(value + 1);
     };
     const onMinus = () => {
-        setValue((parseInt(value) - 1).toString());
+        setValue(value - 1);
     };
 
     return (
