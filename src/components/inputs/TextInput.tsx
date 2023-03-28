@@ -10,7 +10,6 @@ interface Props extends TextInputProps {
     inputStyles?: TextStyle;
     label?: string;
     value: string;
-    quantity?: number;
     text?: string;
     textType: TextType;
     icon?: IconName;
@@ -30,7 +29,6 @@ export const TextInput = ({
     iconSize,
     iconColor,
     inputStyles,
-    quantity,
     ...props
 }: Props) => {
     const theme = useTheme();
@@ -80,7 +78,7 @@ export const TextInput = ({
                         primary: theme.sw.colors.neutral[800],
                     },
                 }}
-                value={quantity !== undefined ? quantity.toString() : value}
+                value={value}
                 onChangeText={onChangeText}
             />
             {text && (

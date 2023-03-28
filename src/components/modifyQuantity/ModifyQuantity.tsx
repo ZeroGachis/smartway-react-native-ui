@@ -8,10 +8,10 @@ import { Body } from '../typography/Body';
 
 interface Props {
     text: string;
-    onAdd: () => void;
+    value: number;
+    onValueChange: (value: number) => void;
     minValue: number;
     maxValue: number;
-    onMinus: () => void;
     style?: ViewStyle;
     inputValue: number;
     icon?: IconName;
@@ -19,8 +19,8 @@ interface Props {
 
 export const ModifyQuantity = ({
     text,
-    onAdd,
-    onMinus,
+    onValueChange,
+    value,
     style,
     inputValue,
     minValue,
@@ -28,6 +28,13 @@ export const ModifyQuantity = ({
     icon = 'etiquette',
 }: Props) => {
     const theme = useTheme();
+
+    const onAdd = () => {
+        onValueChange(value + 1);
+    };
+    const onMinus = () => {
+        onValueChange(value - 1);
+    };
 
     const minusDisabled = minValue >= inputValue;
     const addDisabled = maxValue <= inputValue;
@@ -61,7 +68,6 @@ export const ModifyQuantity = ({
             marginHorizontal: theme.sw.spacing.l,
         },
         inputText: {
-            fontSize: 28,
             textAlign: 'center',
             justifyContent: 'center',
         },
@@ -83,10 +89,10 @@ export const ModifyQuantity = ({
                     />
                 </Pressable>
                 <TextInput
+                    showSoftInputOnFocus={false}
                     style={styles.input}
                     inputStyles={styles.inputText}
-                    value={''}
-                    quantity={inputValue}
+                    value={inputValue.toString()}
                     textType={'information'}
                 />
 

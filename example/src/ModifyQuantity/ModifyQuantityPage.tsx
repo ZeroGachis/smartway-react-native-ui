@@ -14,20 +14,13 @@ export const ModifyQuantityPage = () => {
 
     const [value, setValue] = useState<number>(0);
 
-    const onAdd = () => {
-        setValue(value + 1);
-    };
-    const onMinus = () => {
-        setValue(value - 1);
-    };
-
     return (
         <Screen style={styles.container}>
             <ModifyQuantity
+                onValueChange={setValue}
+                value={value}
                 minValue={0}
                 maxValue={6}
-                onMinus={onMinus}
-                onAdd={onAdd}
                 text={'Stick'}
                 inputValue={value}
             />
