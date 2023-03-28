@@ -121,10 +121,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                     mode="filled"
                     style={styles.button}
                     onClick={() => {
-                        navigation.navigate('Card');
+                        navigation.navigate('ActionCard');
                     }}
                 >
-                    Card
+                    ActionCard
                 </Button>
                 <Button
                     mode="filled"
@@ -134,6 +134,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                     }}
                 >
                     Keyboard
+                </Button>
+                <Button
+                    mode="filled"
+                    style={styles.button}
+                    onClick={() => {
+                        navigation.navigate('Card');
+                    }}
+                >
+                    Card
                 </Button>
                 <Button
                     mode="filled"

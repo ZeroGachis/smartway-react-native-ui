@@ -14,6 +14,7 @@ import { TogglePage } from './TogglePage/TogglePage';
 import { MenuPage } from './Menu/MenuPage';
 import { AppBarPage } from './AppBar/AppBarPage';
 import { PrintPage } from './PrintStatePage/PrintPage';
+import { ActionCardPage } from './ActionCard/ActionCardPage';
 import { CardPage } from './Card/CardPage';
 import { TabPage } from './Tab/TabPage';
 
@@ -30,6 +31,7 @@ export type RootStackParamList = {
     Menu: undefined;
     AppBar: undefined;
     PrintState: undefined;
+    ActionCard: undefined;
     Card: undefined;
     Tab: undefined;
 };
@@ -63,9 +65,10 @@ const App = () => {
                     />
                     <Stack.Screen
                         options={{ headerShown: false }}
-                        name="Card"
-                        component={CardPage}
+                        name="ActionCard"
+                        component={ActionCardPage}
                     />
+                    <Stack.Screen name="Card" component={CardPage} />
                     <Stack.Screen name="Tab" component={TabPage} />
                 </Stack.Navigator>
             </NavigationContainer>
