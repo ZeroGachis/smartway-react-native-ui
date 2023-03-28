@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
+import type { IconName } from '../icons/IconProps';
 import { TextInput } from '../inputs/TextInput';
 import { Body } from '../typography/Body';
 
@@ -12,9 +13,18 @@ interface Props {
     onMinus: () => void;
     style?: ViewStyle;
     inputValue: string;
+    icon?: IconName;
 }
 
-export const ModifyQuantity = ({ text, onAdd, onMinus, style, inputValue, disabled }: Props) => {
+export const ModifyQuantity = ({
+    text,
+    onAdd,
+    onMinus,
+    style,
+    inputValue,
+    disabled,
+    icon = 'etiquette',
+}: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -55,7 +65,7 @@ export const ModifyQuantity = ({ text, onAdd, onMinus, style, inputValue, disabl
         <View style={styles.container}>
             <View style={styles.iconContainer}>
                 <View style={{ transform: [{ rotate: '225deg' }] }}>
-                    <Icon size={24} name="etiquette" color={theme.sw.colors.neutral[600]} />
+                    <Icon size={24} name={icon} color={theme.sw.colors.neutral[600]} />
                 </View>
                 <Body style={styles.text}>{text}</Body>
             </View>

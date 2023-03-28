@@ -25,7 +25,7 @@ export const ModifyQuantityPage = () => {
         <Screen style={styles.container}>
             <ModifyQuantity onMinus={onMinus} onAdd={onAdd} text={'Stick'} inputValue={value} />
             <ModifyQuantity
-                minusDisabled={true}
+                disabled
                 onMinus={onMinus}
                 onAdd={onAdd}
                 text={'Stick'}
