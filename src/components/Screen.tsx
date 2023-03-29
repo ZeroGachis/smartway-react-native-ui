@@ -15,7 +15,7 @@ export const Screen = ({ children, style, testID, statusBarColor }: Props) => {
     const styles = StyleSheet.create({
         screen: {
             flex: 1,
-            backgroundColor: theme.sw.colors.neutral[300],
+            backgroundColor: theme.sw.colors.neutral[50],
             paddingLeft: theme.sw.spacing.m,
             paddingRight: theme.sw.spacing.m,
             ...style,

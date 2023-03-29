@@ -6,7 +6,7 @@ export const CardPage = () => {
     const theme = useTheme();
     const style = StyleSheet.create({
         container: {
-            marginTop: theme.sw.spacing.m,
+            paddingTop: theme.sw.spacing.m,
         },
         card: {
             paddingHorizontal: theme.sw.spacing.m,
