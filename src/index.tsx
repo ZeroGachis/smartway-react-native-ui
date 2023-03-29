@@ -20,6 +20,7 @@ import {
     ModifyQuantity,
     Card,
     Tab,
+    Label,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -47,4 +48,5 @@ export {
     ModifyQuantity,
     Card,
     Tab,
+    Label,
 };

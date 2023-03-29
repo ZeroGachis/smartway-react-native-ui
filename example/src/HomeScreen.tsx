@@ -162,6 +162,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                 >
                     Tab
                 </Button>
+                <Button
+                    mode="filled"
+                    style={styles.button}
+                    onClick={() => {
+                        navigation.navigate('Label');
+                    }}
+                >
+                    Label
+                </Button>
             </ScrollView>
         </View>
     );

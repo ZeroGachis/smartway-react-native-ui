@@ -19,6 +19,7 @@ import { EANInput } from './EANInput/EANInput';
 import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
 import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
+import { Label } from './label/Label';
 
 export {
     Body,
@@ -42,4 +43,5 @@ export {
     ModifyQuantity,
     Card,
     Tab,
+    Label,
 };
