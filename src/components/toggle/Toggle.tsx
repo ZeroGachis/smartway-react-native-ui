@@ -66,7 +66,7 @@ export const Toggle = ({ isToggled, onValueChange, style, text, textStyle }: Pro
         const backgroundColor = interpolateColor(
             progress.value,
             [0, 1],
-            [theme.sw.colors.success[500], theme.sw.colors.neutral[400]],
+            [theme.sw.colors.success[400], theme.sw.colors.neutral[400]],
         );
         return {
             backgroundColor,
