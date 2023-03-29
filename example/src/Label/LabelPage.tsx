@@ -22,7 +22,12 @@ export const LabelPage = () => {
                 textColor={theme.sw.colors.secondary[600]}
                 text="Label"
             />
-            <Label style={styles.label} text="Label" />
+            <Label
+                style={styles.label}
+                text="Label"
+                bgColor={theme.sw.colors.primary[400]}
+                textColor={theme.sw.colors.neutral[50]}
+            />
             <Label style={styles.label} text="Label" />
         </Screen>
     );
