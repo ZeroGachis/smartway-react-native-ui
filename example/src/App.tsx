@@ -18,6 +18,7 @@ import { ActionCardPage } from './ActionCard/ActionCardPage';
 import { CardPage } from './Card/CardPage';
 import { ModifyQuantityPage } from './ModifyQuantity/ModifyQuantityPage';
 import { TabPage } from './Tab/TabPage';
+import { LabelPage } from './Label/LabelPage';
 
 export type RootStackParamList = {
     Home: undefined;
@@ -36,6 +37,7 @@ export type RootStackParamList = {
     Card: undefined;
     ModifyQuantity: undefined;
     Tab: undefined;
+    Label: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -73,6 +75,7 @@ const App = () => {
                     />
                     <Stack.Screen name="Card" component={CardPage} />
                     <Stack.Screen name="Tab" component={TabPage} />
+                    <Stack.Screen name="Label" component={LabelPage} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>
