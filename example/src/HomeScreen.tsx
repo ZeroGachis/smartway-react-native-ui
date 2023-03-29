@@ -171,6 +171,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                 >
                     Label
                 </Button>
+                <Button
+                    mode="filled"
+                    style={styles.button}
+                    onClick={() => {
+                        navigation.navigate('ProductPage');
+                    }}
+                >
+                    Product
+                </Button>
             </ScrollView>
         </View>
     );

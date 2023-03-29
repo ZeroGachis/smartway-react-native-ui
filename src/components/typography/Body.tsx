@@ -7,9 +7,10 @@ interface BodyProps {
     children?: ReactNode;
     style?: TextStyle;
     testID?: string;
+    numberOfLines?: number;
 }
 
-export const Body = ({ size = 'default', children, style, testID }: BodyProps) => {
+export const Body = ({ size = 'default', children, style, testID, numberOfLines }: BodyProps) => {
     const theme = useTheme();
     let bodyStyle: StyleProp<TextStyle> = {};
     if (size === 'default') {
@@ -43,7 +44,7 @@ export const Body = ({ size = 'default', children, style, testID }: BodyProps) =
         ...style,
     };
     return (
-        <Text style={bodyStyle} testID={testID}>
+        <Text style={bodyStyle} numberOfLines={numberOfLines} testID={testID}>
             {children}
         </Text>
     );
