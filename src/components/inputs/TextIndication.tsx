@@ -19,9 +19,9 @@ export const TextIndication = ({ text, type, icon, iconSize, iconColor }: Props)
             case 'information':
                 return theme.sw.colors.neutral[600];
             case 'warning':
-                return theme.sw.colors.warning[500];
+                return theme.sw.colors.warning[400];
             case 'error':
-                return theme.sw.colors.error.main;
+                return theme.sw.colors.error[400];
         }
     };
 
