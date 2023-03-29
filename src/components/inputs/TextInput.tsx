@@ -52,7 +52,7 @@ export const TextInput = ({
         borderWidth: 1,
         borderColor:
             textType === 'error'
-                ? theme.sw.colors.error.main
+                ? theme.sw.colors.error[400]
                 : inputRef.current?.isFocused() || value.length > 0
                 ? theme.sw.colors.neutral[500]
                 : theme.sw.colors.neutral[400],
@@ -72,7 +72,7 @@ export const TextInput = ({
                 theme={{
                     roundness: 8,
                     colors: {
-                        error: theme.sw.colors.error.main,
+                        error: theme.sw.colors.error[400],
                         text: theme.sw.colors.neutral[800],
                         onSurfaceVariant: theme.sw.colors.neutral[500],
                         primary: theme.sw.colors.neutral[800],
