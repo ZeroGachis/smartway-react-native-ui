@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-
-import { Body, BottomSheet, Product, Screen, useTheme } from 'smartway-react-native-ui';
+import React from 'react';
+import { Product, Screen, useTheme } from 'smartway-react-native-ui';
 
 export const ProductPage = () => {
     const theme = useTheme();
-    const [isOpened, setOpened] = useState<booelan>(false);
 
     return (
         <Screen style={{ backgroundColor: theme.sw.colors.neutral[50] }}>
@@ -16,7 +14,9 @@ export const ProductPage = () => {
                 finalPrice={'1.75€'}
                 initialPrice={'2,50€'}
                 quantity={3}
-                onPress={() => setOpened(true)}
+                onPress={() => {
+                    return;
+                }}
             />
             <Product
                 label="Crème dessert chocolat avec billes et chocolat avec billes et"
@@ -26,7 +26,9 @@ export const ProductPage = () => {
                 finalPrice={'1.75€'}
                 initialPrice={'2,50€'}
                 quantity={3}
-                onPress={() => setOpened(true)}
+                onPress={() => {
+                    return;
+                }}
             />
             <Product
                 label="Crème dessert chocolat avec billes et chocolat avec billes et"
@@ -36,11 +38,10 @@ export const ProductPage = () => {
                 finalPrice={'1.75€'}
                 initialPrice={'2,50€'}
                 quantity={3}
-                onPress={() => setOpened(true)}
+                onPress={() => {
+                    return;
+                }}
             />
-            <BottomSheet isOpened={isOpened} onClose={() => setOpened(false)}>
-                <Body>You opened bottom sheet!</Body>
-            </BottomSheet>
         </Screen>
     );
 };
