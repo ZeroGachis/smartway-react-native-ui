@@ -21,6 +21,7 @@ import {
     Card,
     Tab,
     Label,
+    Product,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -49,4 +50,5 @@ export {
     Card,
     Tab,
     Label,
+    Product,
 };
