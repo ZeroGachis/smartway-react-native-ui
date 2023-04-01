@@ -14,14 +14,14 @@ export const SnackBarPage = () => {
             <SnackBar
                 visible={isVisible}
                 actionLabel="Action"
-                onDismiss={() => setVisible(false)}
+                onClose={() => setVisible(false)}
                 iconName="close"
                 message={message}
             />
             <SnackBar
                 visible={isVisible}
                 actionLabel="Long Action"
-                onDismiss={() => setVisible(false)}
+                onClose={() => setVisible(false)}
                 message={message}
             />
         </View>

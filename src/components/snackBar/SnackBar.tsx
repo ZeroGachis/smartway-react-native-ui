@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Pressable, ViewStyle } from 'react-native';
 import { Snackbar } from 'react-native-paper';
-import { useTheme } from 'src/styles/themes';
+import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 
