@@ -13,7 +13,6 @@ interface Props {
     minValue: number;
     maxValue: number;
     style?: ViewStyle;
-    inputValue: number;
     icon?: IconName;
 }
 
@@ -22,7 +21,6 @@ export const ModifyQuantity = ({
     onValueChange,
     value,
     style,
-    inputValue,
     minValue,
     maxValue,
     icon = 'etiquette',
@@ -36,8 +34,8 @@ export const ModifyQuantity = ({
         onValueChange(value - 1);
     };
 
-    const minusDisabled = minValue >= inputValue;
-    const addDisabled = maxValue <= inputValue;
+    const minusDisabled = minValue >= value;
+    const addDisabled = maxValue <= value;
 
     const styles = StyleSheet.create({
         container: {
@@ -49,6 +47,8 @@ export const ModifyQuantity = ({
             borderRadius: 24,
             justifyContent: 'space-between',
             elevation: 1,
+            borderWidth: 1,
+            borderColor: theme.sw.colors.neutral[200],
             ...style,
         },
         text: {
@@ -92,7 +92,7 @@ export const ModifyQuantity = ({
                     showSoftInputOnFocus={false}
                     style={styles.input}
                     inputStyles={styles.inputText}
-                    value={inputValue.toString()}
+                    value={value.toString()}
                     textType={'information'}
                 />
 
