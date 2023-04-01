@@ -2,10 +2,10 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
-import { useTheme } from '../styles/themes';
-import { Icon } from './icons/Icon';
+import { useTheme } from '../../styles/themes';
+import { Icon } from '../icons/Icon';
 
-import { Body } from './typography/Body';
+import { Body } from '../typography/Body';
 
 interface Props {
     children?: ReactNode;
@@ -47,6 +47,7 @@ export const ActionCard = ({
         title: {
             color: titleColor,
             paddingTop: theme.sw.spacing.m,
+            textAlign: 'center',
         },
         divider: {
             height: 1,
