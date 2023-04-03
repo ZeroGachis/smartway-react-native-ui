@@ -4,7 +4,7 @@ import { useTheme } from '../..//styles/themes';
 import { Label } from '../label/Label';
 import { Body } from '../typography/Body';
 
-interface Props {
+export interface ProductProps {
     label: string;
     scanDate: string;
     initialPrice: string;
@@ -12,7 +12,7 @@ interface Props {
     quantity: number;
     discount: string;
     finalPrice: string;
-    onPress: () => void;
+    onPress?: () => void;
 }
 
 export const Product = ({
@@ -24,7 +24,7 @@ export const Product = ({
     discount,
     finalPrice,
     onPress,
-}: Props) => {
+}: ProductProps) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({

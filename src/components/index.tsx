@@ -3,7 +3,7 @@ import { Logo } from './logos/Logo';
 import { Screen } from './Screen';
 import { Headline } from './typography/Headline';
 import { Body } from './typography/Body';
-import { ActionCard } from './Card';
+import { ActionCard } from './actionCard/ActionCard';
 import { Dialog } from './dialogs/Dialog';
 import { TextInput } from './inputs/TextInput';
 import { Icon } from './icons/Icon';

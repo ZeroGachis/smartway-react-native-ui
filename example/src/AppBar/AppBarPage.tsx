@@ -35,13 +35,18 @@ export const AppBarPage = ({ navigation }: Props) => {
     }, []);
 
     return (
-        <Screen style={{ backgroundColor: theme.sw.colors.neutral[50] }}>
-            <AppBar onPress={goBack} label={'Title'}>
+        <Screen style={{ backgroundColor: theme.sw.colors.neutral[50], paddingTop: 16 }}>
+            <AppBar
+                style={{ paddingBottom: theme.sw.spacing.m }}
+                onPress={goBack}
+                iconName="arrow-back"
+                label={'Title'}
+                onIconPress={goBack}
+            >
                 <Menu
                     icon="more"
                     onDismiss={() => setMenuVisible(false)}
                     visible={setMenu}
-                    style={{ paddingRight: theme.sw.spacing.m }}
                     onPress={() => setMenuVisible(true)}
                     options={menuOptions}
                 />
@@ -49,7 +54,8 @@ export const AppBarPage = ({ navigation }: Props) => {
             <AppBar
                 onPress={() => setOpened(true)}
                 label={selected?.value}
-                isBottomSheetOpened={isOpened}
+                disabled={isOpened}
+                iconName="arrow-back"
                 type="accordion"
             >
                 <Menu

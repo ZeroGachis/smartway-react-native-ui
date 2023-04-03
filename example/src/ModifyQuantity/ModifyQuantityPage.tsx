@@ -4,6 +4,7 @@ import { ModifyQuantity, Screen, useTheme } from 'smartway-react-native-ui';
 
 export const ModifyQuantityPage = () => {
     const theme = useTheme();
+    const [value, setValue] = useState<number>(0);
 
     const styles = StyleSheet.create({
         container: {
@@ -11,8 +12,6 @@ export const ModifyQuantityPage = () => {
             paddingTop: theme.sw.spacing.m,
         },
     });
-
-    const [value, setValue] = useState<number>(0);
 
     return (
         <Screen style={styles.container}>
@@ -22,7 +21,6 @@ export const ModifyQuantityPage = () => {
                 minValue={0}
                 maxValue={6}
                 text={'Stick'}
-                inputValue={value}
             />
         </Screen>
     );

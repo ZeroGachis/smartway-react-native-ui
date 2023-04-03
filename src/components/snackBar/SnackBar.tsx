@@ -1,74 +1,42 @@
 import React from 'react';
-import { View, StyleSheet, Text, Pressable, ViewStyle } from 'react-native';
-import { Snackbar } from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
+import { Button, Snackbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
+import { Body } from '../typography/Body';
 
 interface Props {
     visible: boolean;
     message: string;
-    actionLabel?: string;
     iconName?: IconName;
-    onDismiss: () => void;
     duration?: number;
+    onDismiss: () => void;
+    action?: Omit<React.ComponentProps<typeof Button>, 'children'> & {
+        label: string;
+    };
 }
 
 export const SnackBar = ({
     message,
-    onDismiss,
-    actionLabel,
     iconName,
     duration = 4000,
     visible,
+    onDismiss,
+    action,
 }: Props) => {
     const theme = useTheme();
-
-    const getStyles = () => {
-        if (actionLabel && actionLabel.length < 10) {
-            return {
-                messageContainer: {
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                },
-                actionContainer: {
-                    flexDirection: 'row',
-                },
-            };
-        } else {
-            return {
-                messageContainer: {
-                    flexDirection: 'column',
-                },
-                actionContainer: {
-                    flexDirection: 'row',
-                    justifyContent: 'flex-end',
-                    marginRight: theme.sw.spacing.xl,
-                    marginTop: theme.sw.spacing.s,
-                },
-            };
-        }
-    };
-
-    const { messageContainer, actionContainer } = getStyles();
 
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            justifyContent: 'space-between',
         },
         snackBar: {
             backgroundColor: theme.sw.colors.neutral[800],
+            flexDirection: action?.label && action?.label.length > 10 ? 'column' : 'row',
         },
-
         message: {
-            flex: 1,
             color: theme.sw.colors.neutral[50],
-            marginRight: theme.sw.spacing.xl,
-        },
-        actionLabel: {
-            color: theme.sw.colors.primary[50],
             marginRight: theme.sw.spacing.l,
         },
     });
@@ -80,14 +48,18 @@ export const SnackBar = ({
                 visible={visible}
                 onDismiss={onDismiss}
                 style={styles.snackBar}
+                action={action && { ...action, textColor: theme.sw.colors.primary[200] }}
+                {...(iconName && {
+                    onIconPress: onDismiss,
+                    icon: () => (
+                        <Icon name={iconName} size={16} color={theme.sw.colors.primary[50]} />
+                    ),
+                })}
+                theme={{ colors: { inverseOnSurface: theme.sw.colors.primary[50] } }}
             >
-                <View style={messageContainer as ViewStyle}>
-                    <Text style={styles.message}>{message}</Text>
-                    <Pressable hitSlop={8} style={actionContainer as ViewStyle} onPress={onDismiss}>
-                        {actionLabel && <Text style={styles.actionLabel}>{actionLabel}</Text>}
-                        {iconName && <Icon name={iconName} color={theme.sw.colors.primary[50]} />}
-                    </Pressable>
-                </View>
+                <Body size="medium" style={styles.message}>
+                    {message}
+                </Body>
             </Snackbar>
         </View>
     );

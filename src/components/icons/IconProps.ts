@@ -85,4 +85,5 @@ export type IconName =
     | 'keyboard-tab'
     | 'backspace'
     | 'add-fill'
-    | 'minus-fill';
+    | 'minus-fill'
+    | 'arrow-back';

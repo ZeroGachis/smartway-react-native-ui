@@ -5,7 +5,7 @@ import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 
-type MenuOption = {
+export type MenuOption = {
     title: string;
     onPress: () => void;
 };

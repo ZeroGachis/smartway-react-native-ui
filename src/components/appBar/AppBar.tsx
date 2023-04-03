@@ -1,16 +1,18 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { Appbar as BaseAppBar } from 'react-native-paper';
+import { Pressable, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
+import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
 import { Headline } from '../typography/Headline';
 
 type AppBarType = 'default' | 'accordion';
 interface Props {
     label?: string;
-    onPress: () => void;
-    iconName?: string;
+    onPress?: () => void;
+    onIconPress?: () => void;
+    iconName?: IconName;
     style?: ViewStyle;
     children?: JSX.Element;
     type?: AppBarType;
@@ -19,7 +21,8 @@ interface Props {
 export const AppBar = ({
     label,
     onPress,
-    iconName = 'arrow-left',
+    onIconPress,
+    iconName = 'arrow-back',
     style,
     children,
     type = 'default',
@@ -32,16 +35,20 @@ export const AppBar = ({
             justifyContent: 'space-between',
             flexDirection: 'row',
             backgroundColor: theme.sw.colors.neutral[50],
-        },
-        appBarStyle: {
             ...style,
         },
+
         appBar: {
             backgroundColor: theme.sw.colors.neutral[50],
+        },
+        appBarAction: {
+            justifyContent: 'center',
+            marginRight: theme.sw.spacing.s,
         },
         container: {
             flexDirection: 'row',
             justifyContent: 'center',
+            ...style,
         },
         touchableOpacity: {
             paddingHorizontal: theme.sw.spacing.l,
@@ -62,16 +69,14 @@ export const AppBar = ({
     if (type === 'default') {
         return (
             <View style={styles.header}>
-                <BaseAppBar style={styles.appBar}>
-                    <BaseAppBar.Action
-                        style={styles.appBarStyle}
-                        color={theme.sw.colors.neutral[800]}
-                        size={theme.sw.spacing.l}
-                        icon={iconName}
-                        onPress={onPress}
-                    />
+                <View style={styles.container}>
+                    {onIconPress && (
+                        <Pressable onPress={onPress} style={styles.appBarAction}>
+                            <Icon size={20} name={iconName} />
+                        </Pressable>
+                    )}
                     <Headline size="h3">{label}</Headline>
-                </BaseAppBar>
+                </View>
                 {children}
             </View>
         );
