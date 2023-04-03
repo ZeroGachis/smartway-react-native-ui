@@ -11,6 +11,7 @@ type AppBarType = 'default' | 'accordion';
 interface Props {
     label?: string;
     onPress?: () => void;
+    onIconPress?: () => void;
     iconName?: IconName;
     style?: ViewStyle;
     children?: JSX.Element;
@@ -20,6 +21,7 @@ interface Props {
 export const AppBar = ({
     label,
     onPress,
+    onIconPress,
     iconName = 'arrow-back',
     style,
     children,
@@ -68,7 +70,7 @@ export const AppBar = ({
         return (
             <View style={styles.header}>
                 <View style={styles.container}>
-                    {onPress && (
+                    {onIconPress && (
                         <Pressable onPress={onPress} style={styles.appBarAction}>
                             <Icon size={20} name={iconName} />
                         </Pressable>
