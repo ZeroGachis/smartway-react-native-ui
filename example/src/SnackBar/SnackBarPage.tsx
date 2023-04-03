@@ -15,12 +15,13 @@ export const SnackBarPage = () => {
                 visible={isVisible}
                 actionLabel="Action"
                 onClose={() => setVisible(false)}
+                callBack={() => console.log('callBack')}
                 iconName="close"
                 message={message}
             />
             <SnackBar
                 visible={isVisible}
-                actionLabel="Long Action"
+                iconName="close"
                 onClose={() => setVisible(false)}
                 message={message}
             />

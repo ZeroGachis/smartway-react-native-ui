@@ -10,14 +10,14 @@ interface Props {
     message: string;
     actionLabel?: string;
     iconName?: IconName;
-    onDismiss?: () => void;
+    callBack?: () => void;
     duration?: number;
     onClose: () => void;
 }
 
 export const SnackBar = ({
     message,
-    onDismiss,
+    callBack,
     actionLabel,
     iconName,
     duration = 4000,
@@ -25,6 +25,11 @@ export const SnackBar = ({
     onClose,
 }: Props) => {
     const theme = useTheme();
+
+    const handleCallBack = () => {
+        callBack?.();
+        onClose();
+    };
 
     const getStyles = () => {
         if ((actionLabel && actionLabel.length < 15) || !actionLabel) {
@@ -87,9 +92,11 @@ export const SnackBar = ({
                 <View style={messageContainer as ViewStyle}>
                     <Text style={styles.message}>{message}</Text>
                     <View style={actionContainer as ViewStyle}>
-                        <Pressable hitSlop={8} onPress={onDismiss}>
-                            {actionLabel && <Text style={styles.actionLabel}>{actionLabel}</Text>}
-                        </Pressable>
+                        {callBack && (
+                            <Pressable hitSlop={8} onPress={handleCallBack}>
+                                <Text style={styles.actionLabel}>{actionLabel}</Text>
+                            </Pressable>
+                        )}
                         {iconName && (
                             <Pressable hitSlop={8} onPress={onClose}>
                                 <Icon name={iconName} color={theme.sw.colors.primary[50]} />
