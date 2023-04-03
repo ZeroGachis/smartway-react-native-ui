@@ -21,10 +21,19 @@ export const SnackBarPage = () => {
             />
             <SnackBar
                 visible={isVisible}
+                actionLabel="Longer action"
+                onClose={() => setVisible(false)}
+                callBack={() => console.log('callBack')}
+                iconName="close"
+                message={message}
+            />
+            <SnackBar
+                visible={isVisible}
                 iconName="close"
                 onClose={() => setVisible(false)}
                 message={message}
             />
+            <SnackBar visible={isVisible} onClose={() => setVisible(false)} message={message} />
         </View>
     );
 };

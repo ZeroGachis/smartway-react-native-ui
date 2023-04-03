@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Text, Pressable, ViewStyle } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Snackbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
+import { Body } from '../typography/Body';
 
 interface Props {
     visible: boolean;
@@ -31,52 +32,16 @@ export const SnackBar = ({
         onClose();
     };
 
-    const getStyles = () => {
-        if ((actionLabel && actionLabel.length < 15) || !actionLabel) {
-            return {
-                messageContainer: {
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                },
-                actionContainer: {
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                },
-            };
-        } else {
-            return {
-                messageContainer: {
-                    flexDirection: 'column',
-                },
-                actionContainer: {
-                    flexDirection: 'row',
-                    justifyContent: 'flex-end',
-
-                    width: '100%',
-                    marginRight: theme.sw.spacing.xl,
-                    marginTop: theme.sw.spacing.s,
-                },
-            };
-        }
-    };
-
-    const { messageContainer, actionContainer } = getStyles();
-
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            justifyContent: 'space-between',
         },
         snackBar: {
             backgroundColor: theme.sw.colors.neutral[800],
+            flexDirection: actionLabel && actionLabel.length > 10 ? 'column' : 'row',
         },
         message: {
-            flex: 1,
             color: theme.sw.colors.neutral[50],
-            marginRight: theme.sw.spacing.xl,
-        },
-        actionLabel: {
-            color: theme.sw.colors.primary[50],
             marginRight: theme.sw.spacing.l,
         },
     });
@@ -88,22 +53,24 @@ export const SnackBar = ({
                 visible={visible}
                 onDismiss={onClose}
                 style={styles.snackBar}
+                {...(callBack && {
+                    action: {
+                        textColor: theme.sw.colors.primary[200],
+                        label: actionLabel || '',
+                        onPress: handleCallBack,
+                    },
+                })}
+                {...(iconName && {
+                    onIconPress: onClose,
+                    icon: () => (
+                        <Icon name={iconName} size={16} color={theme.sw.colors.primary[50]} />
+                    ),
+                })}
+                theme={{ colors: { inverseOnSurface: theme.sw.colors.primary[50] } }}
             >
-                <View style={messageContainer as ViewStyle}>
-                    <Text style={styles.message}>{message}</Text>
-                    <View style={actionContainer as ViewStyle}>
-                        {callBack && (
-                            <Pressable hitSlop={8} onPress={handleCallBack}>
-                                <Text style={styles.actionLabel}>{actionLabel}</Text>
-                            </Pressable>
-                        )}
-                        {iconName && (
-                            <Pressable hitSlop={8} onPress={onClose}>
-                                <Icon name={iconName} color={theme.sw.colors.primary[50]} />
-                            </Pressable>
-                        )}
-                    </View>
-                </View>
+                <Body size="medium" style={styles.message}>
+                    {message}
+                </Body>
             </Snackbar>
         </View>
     );
