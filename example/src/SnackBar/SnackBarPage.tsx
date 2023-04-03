@@ -14,7 +14,7 @@ export const SnackBarPage = () => {
             <SnackBar
                 visible={isVisible}
                 actionLabel="Action"
-                onClose={() => setVisible(false)}
+                onDismiss={() => setVisible(false)}
                 callBack={() => console.log('callBack')}
                 iconName="close"
                 message={message}
@@ -22,7 +22,7 @@ export const SnackBarPage = () => {
             <SnackBar
                 visible={isVisible}
                 actionLabel="Longer action"
-                onClose={() => setVisible(false)}
+                onDismiss={() => setVisible(false)}
                 callBack={() => console.log('callBack')}
                 iconName="close"
                 message={message}
@@ -30,10 +30,10 @@ export const SnackBarPage = () => {
             <SnackBar
                 visible={isVisible}
                 iconName="close"
-                onClose={() => setVisible(false)}
+                onDismiss={() => setVisible(false)}
                 message={message}
             />
-            <SnackBar visible={isVisible} onClose={() => setVisible(false)} message={message} />
+            <SnackBar visible={isVisible} onDismiss={() => setVisible(false)} message={message} />
         </View>
     );
 };

@@ -13,7 +13,7 @@ interface Props {
     iconName?: IconName;
     callBack?: () => void;
     duration?: number;
-    onClose: () => void;
+    onDismiss: () => void;
 }
 
 export const SnackBar = ({
@@ -23,13 +23,13 @@ export const SnackBar = ({
     iconName,
     duration = 4000,
     visible,
-    onClose,
+    onDismiss,
 }: Props) => {
     const theme = useTheme();
 
     const handleCallBack = () => {
         callBack?.();
-        onClose();
+        onDismiss();
     };
 
     const styles = StyleSheet.create({
@@ -51,7 +51,7 @@ export const SnackBar = ({
             <Snackbar
                 duration={duration}
                 visible={visible}
-                onDismiss={onClose}
+                onDismiss={onDismiss}
                 style={styles.snackBar}
                 {...(callBack && {
                     action: {
@@ -61,7 +61,7 @@ export const SnackBar = ({
                     },
                 })}
                 {...(iconName && {
-                    onIconPress: onClose,
+                    onIconPress: onDismiss,
                     icon: () => (
                         <Icon name={iconName} size={16} color={theme.sw.colors.primary[50]} />
                     ),
