@@ -13,17 +13,19 @@ export const SnackBarPage = () => {
             <Button onClick={() => setVisible(true)}>open SnackBar</Button>
             <SnackBar
                 visible={isVisible}
-                actionLabel="Action"
                 onDismiss={() => setVisible(false)}
-                callBack={() => console.log('callBack')}
                 iconName="close"
                 message={message}
             />
             <SnackBar
                 visible={isVisible}
-                actionLabel="Longer action"
+                action={{
+                    label: 'Longer action',
+                    onPress: () => {
+                        console.log('callBack');
+                    },
+                }}
                 onDismiss={() => setVisible(false)}
-                callBack={() => console.log('callBack')}
                 iconName="close"
                 message={message}
             />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Snackbar } from 'react-native-paper';
+import { Button, Snackbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
@@ -9,28 +9,23 @@ import { Body } from '../typography/Body';
 interface Props {
     visible: boolean;
     message: string;
-    actionLabel?: string;
     iconName?: IconName;
-    callBack?: () => void;
     duration?: number;
     onDismiss: () => void;
+    action?: Omit<React.ComponentProps<typeof Button>, 'children'> & {
+        label: string;
+    };
 }
 
 export const SnackBar = ({
     message,
-    callBack,
-    actionLabel,
     iconName,
     duration = 4000,
     visible,
     onDismiss,
+    action,
 }: Props) => {
     const theme = useTheme();
-
-    const handleCallBack = () => {
-        callBack?.();
-        onDismiss();
-    };
 
     const styles = StyleSheet.create({
         container: {
@@ -38,7 +33,7 @@ export const SnackBar = ({
         },
         snackBar: {
             backgroundColor: theme.sw.colors.neutral[800],
-            flexDirection: actionLabel && actionLabel.length > 10 ? 'column' : 'row',
+            flexDirection: action?.label && action?.label.length > 10 ? 'column' : 'row',
         },
         message: {
             color: theme.sw.colors.neutral[50],
@@ -53,13 +48,7 @@ export const SnackBar = ({
                 visible={visible}
                 onDismiss={onDismiss}
                 style={styles.snackBar}
-                {...(callBack && {
-                    action: {
-                        textColor: theme.sw.colors.primary[200],
-                        label: actionLabel || '',
-                        onPress: handleCallBack,
-                    },
-                })}
+                action={action && { ...action, textColor: theme.sw.colors.primary[200] }}
                 {...(iconName && {
                     onIconPress: onDismiss,
                     icon: () => (
