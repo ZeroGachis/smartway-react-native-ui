@@ -71,7 +71,7 @@ export const AppBar = ({
             <View style={styles.header}>
                 <View style={styles.container}>
                     {onIconPress && (
-                        <Pressable onPress={onPress} style={styles.appBarAction}>
+                        <Pressable onPress={onIconPress} style={styles.appBarAction}>
                             <Icon size={20} name={iconName} />
                         </Pressable>
                     )}
