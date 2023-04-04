@@ -9,7 +9,6 @@ interface Props {
 
 export const AppBarPage = ({ navigation }: Props) => {
     const theme = useTheme();
-    const [setMenu, setMenuVisible] = useState(false);
     const [selected, setSelected] = useState<DropDownOption>();
     const [isOpened, setOpened] = useState<boolean>(false);
     const menuOptions = [
@@ -38,18 +37,11 @@ export const AppBarPage = ({ navigation }: Props) => {
         <Screen style={{ backgroundColor: theme.sw.colors.neutral[50], paddingTop: 16 }}>
             <AppBar
                 style={{ paddingBottom: theme.sw.spacing.m }}
-                onPress={goBack}
                 iconName="arrow-back"
                 label={'Title'}
                 onIconPress={goBack}
             >
-                <Menu
-                    icon="more"
-                    onDismiss={() => setMenuVisible(false)}
-                    visible={setMenu}
-                    onPress={() => setMenuVisible(true)}
-                    options={menuOptions}
-                />
+                <Menu icon="more" options={menuOptions} />
             </AppBar>
             <AppBar
                 onPress={() => setOpened(true)}
@@ -60,10 +52,7 @@ export const AppBarPage = ({ navigation }: Props) => {
             >
                 <Menu
                     icon="settings"
-                    onDismiss={() => setMenuVisible(false)}
-                    visible={setMenu}
                     style={{ position: 'absolute', right: 16, top: 12 }}
-                    onPress={() => setMenuVisible(true)}
                     options={menuOptions}
                 />
             </AppBar>
