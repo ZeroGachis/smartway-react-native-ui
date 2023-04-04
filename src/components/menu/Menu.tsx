@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 import { Menu as BaseMenu } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
@@ -11,9 +11,6 @@ export type MenuOption = {
 };
 
 interface Props {
-    visible: boolean;
-    onPress: () => void;
-    onDismiss: () => void;
     options: MenuOption[];
     icon: IconName;
     iconSize?: number;
@@ -24,9 +21,6 @@ interface Props {
 }
 
 export const Menu = ({
-    visible,
-    onPress,
-    onDismiss,
     options,
     icon,
     style,
@@ -35,6 +29,8 @@ export const Menu = ({
     menuStyle,
     optionStyle,
 }: Props) => {
+    const [menuVisible, setVisibility] = useState<boolean>(false);
+
     const theme = useTheme();
     const styles = StyleSheet.create({
         container: {
@@ -57,11 +53,11 @@ export const Menu = ({
         <View style={styles.container}>
             <BaseMenu
                 anchorPosition="bottom"
-                visible={visible}
-                onDismiss={onDismiss}
+                visible={menuVisible}
+                onDismiss={() => setVisibility(false)}
                 contentStyle={styles.menu}
                 anchor={
-                    <Pressable hitSlop={8} onPress={onPress}>
+                    <Pressable hitSlop={8} onPress={() => setVisibility(true)}>
                         <Icon color={iconColor} size={iconSize} name={icon} />
                     </Pressable>
                 }
@@ -70,7 +66,10 @@ export const Menu = ({
                     <BaseMenu.Item
                         style={styles.option}
                         key={index}
-                        onPress={option.onPress}
+                        onPress={() => {
+                            option.onPress();
+                            setVisibility(false);
+                        }}
                         title={option.title}
                     />
                 ))}
