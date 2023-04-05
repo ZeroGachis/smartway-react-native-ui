@@ -43,6 +43,7 @@ export const TextInput = ({
     const inputSyle: TextStyle = {
         backgroundColor: theme.sw.colors.neutral[50],
         fontSize: 16,
+        lineHeight: 19,
         fontFamily: 'PublicSans-Regular',
         height: 56,
         ...inputStyles,
