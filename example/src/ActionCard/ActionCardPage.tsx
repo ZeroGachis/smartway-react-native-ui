@@ -35,7 +35,7 @@ export const ActionCardPage = () => {
                             textType="information"
                             value="0"
                             style={{ marginBottom: 0, marginLeft: 12 }}
-                            inputStyles={{ fontSize: 28, textAlign: 'center' }}
+                            inputStyles={{ fontSize: 28, lineHeight: 33, textAlign: 'center' }}
                         />
                     </View>
                 </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../..//styles/themes';
 import { Label } from '../label/Label';
 import { Body } from '../typography/Body';
@@ -13,6 +13,7 @@ export interface ProductProps {
     discount: string;
     finalPrice: string;
     onPress?: () => void;
+    style?: StyleProp<ViewStyle>;
 }
 
 export const Product = ({
@@ -24,6 +25,7 @@ export const Product = ({
     discount,
     finalPrice,
     onPress,
+    style,
 }: ProductProps) => {
     const theme = useTheme();
 
@@ -58,6 +60,7 @@ export const Product = ({
             color: theme.sw.colors.neutral[500],
         },
         labels: {
+            width: '100%',
             flexDirection: 'row',
             justifyContent: 'space-between',
         },
@@ -69,10 +72,11 @@ export const Product = ({
         },
         date: {
             color: theme.sw.colors.neutral[500],
+            alignSelf: 'center',
         },
     });
     return (
-        <Pressable onPress={onPress} style={styles.container}>
+        <Pressable onPress={onPress} style={[styles.container, style]}>
             <View style={styles.picture}>
                 <View style={styles.quantityContainer}>
                     <Body size="small">{`x${quantity}`}</Body>
@@ -102,6 +106,7 @@ export const Product = ({
                             text={finalPrice}
                         />
                     </View>
+
                     <Body size="small" style={styles.date}>
                         {scanDate}
                     </Body>

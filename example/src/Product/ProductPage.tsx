@@ -7,7 +7,7 @@ export const ProductPage = () => {
     return (
         <Screen style={{ backgroundColor: theme.sw.colors.neutral[50] }}>
             <Product
-                label="Crème dessert chocolat avec billes et chocolat avec billes et"
+                label="Crème dessert chocolatt"
                 barcode="978020137962"
                 scanDate={'16:40'}
                 discount={'30%'}
