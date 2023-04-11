@@ -44,9 +44,12 @@
     "@ZeroGachis:registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.2",
+    "@testing-library/jest-native": "^5.3.0",
+    "@testing-library/react-native": "^11.5.0",
+    "@types/jest": "^28.1.8",
     "@types/react": "~17.0.21",
-    "@types/react-native": "0.70.0",
+    "@types/react-native": "^0.70.0",
+    "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "eslint": "^8.34.0",
@@ -55,34 +58,29 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^28.1.1",
     "jest-junit": "^15.0.0",
     "pod-install": "^0.1.0",
     "prettier": "2.8.4",
     "react": "18.1.0",
     "react-native": "0.70.6",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   },
   "resolutions": {
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
+    "@gorhom/bottom-sheet": "*",
     "react": "*",
     "react-native": "*",
+    "react-native-gesture-handler": "*",
     "react-native-icomoon": "*",
     "react-native-paper": "*",
+    "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
     "react-native-svg": "*",
-    "react-native-vector-icons": "*",
-    "@gorhom/bottom-sheet": "*",
-    "react-native-gesture-handler": "*",
-    "react-native-reanimated": "*"
-  },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
+    "react-native-vector-icons": "*"
   }
 }
