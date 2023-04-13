@@ -14,7 +14,7 @@ const jestConfig: JestConfigWithTsJest = {
         ],
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-    setupFiles: ['./node_modules/react-native-gesture-handler/jestSetup.js'],
+    setupFiles: ['./node_modules/react-native-gesture-handler/jestSetup.js', './setup.js'],
 };
 
 export default jestConfig;
