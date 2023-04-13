@@ -1,10 +1,9 @@
 import type { ReactNode } from 'react';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
+import { Button } from '../buttons/Button';
 import { Icon } from '../icons/Icon';
-
 import { Body } from '../typography/Body';
 
 interface Props {
@@ -15,6 +14,7 @@ interface Props {
     style?: ViewStyle;
     disabled?: boolean;
     onClose?: () => void;
+    buttonTestID?: string;
 }
 
 export const ActionCard = ({
@@ -25,6 +25,7 @@ export const ActionCard = ({
     bottomChildren,
     disabled,
     onClose,
+    buttonTestID,
 }: Props) => {
     const theme = useTheme();
 
@@ -64,9 +65,9 @@ export const ActionCard = ({
     return (
         <View style={styles.container}>
             {onClose && (
-                <TouchableOpacity style={styles.close} onPress={onClose}>
+                <Button style={styles.close} onClick={onClose} testID={buttonTestID}>
                     <Icon name="close-fill" size={20} />
-                </TouchableOpacity>
+                </Button>
             )}
             <Body size="semi-bold" style={styles.title}>
                 {title}
