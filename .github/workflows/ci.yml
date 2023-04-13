@@ -8,7 +8,7 @@ on:
 
 jobs:
     build:
-        runs-on: [self-hosted, debian-stable]
+        runs-on: ubuntu-latest
         steps:
             - name: Clean Workspace
               uses: mickem/clean-after-action@v1

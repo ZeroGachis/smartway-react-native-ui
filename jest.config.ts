@@ -13,6 +13,7 @@ const jestConfig: JestConfigWithTsJest = {
             },
         ],
     },
+    testMatch: ['**/?(*.)test.(ts|tsx)'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     setupFiles: [
         './node_modules/react-native-gesture-handler/jestSetup.js',
