@@ -25,3 +25,5 @@ jobs:
               run: npm run lint
             - name: Compile
               run: npm run tsc
+            - name: Compile
+              run: npm run test
