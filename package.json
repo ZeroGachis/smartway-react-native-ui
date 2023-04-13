@@ -27,8 +27,7 @@
   "scripts": {
     "test": "jest --coverage",
     "tsc": "tsc --project tsconfig.build.json",
-    "lint": "prettier --check .",
-    "test:ci": "node_modules/.bin/jest"
+    "lint": "prettier --check ."
   },
   "keywords": [
     "react-native",
