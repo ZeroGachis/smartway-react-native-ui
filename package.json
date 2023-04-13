@@ -25,7 +25,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest -u --coverage",
     "tsc": "tsc --project tsconfig.build.json",
     "lint": "prettier --check ."
   },
