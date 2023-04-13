@@ -166,7 +166,7 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
           style={
             {
               "alignItems": "center",
-              "paddingBottom": 16,
+              "paddingBottom": 32,
             }
           }
         >
