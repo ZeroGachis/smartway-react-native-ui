@@ -10,9 +10,10 @@ interface Props {
     buttonLabel: string;
     onPress: () => void;
     style?: ViewStyle;
+    testID?: string;
 }
 
-export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
+export const PrintState = ({ text, buttonLabel, onPress, style, testID }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -51,7 +52,8 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
             <Button
                 labelStyle={{ color: theme.sw.colors.error[400] }}
                 style={styles.buttonStyle}
-                onClick={onPress}
+                onPress={onPress}
+                testID={testID}
             >
                 {buttonLabel}
             </Button>

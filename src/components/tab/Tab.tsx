@@ -9,9 +9,10 @@ interface Props {
     onPress: () => void;
     style?: ViewStyle;
     textStyle?: TextStyle;
+    testID?: string;
 }
 
-export const Tab = ({ selected, text, onPress, style, textStyle }: Props) => {
+export const Tab = ({ selected, text, onPress, style, textStyle, testID }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -33,7 +34,7 @@ export const Tab = ({ selected, text, onPress, style, textStyle }: Props) => {
     });
 
     return (
-        <TouchableOpacity style={styles.tab} onPress={onPress}>
+        <TouchableOpacity style={styles.tab} testID={testID} onPress={onPress}>
             <Body style={styles.text}>{text}</Body>
         </TouchableOpacity>
     );

@@ -5,6 +5,6 @@ export interface BaseButtonProps {
     children?: ReactNode;
     style?: ViewStyle;
     labelStyle?: TextStyle;
-    onClick?: () => void;
+    onPress?: () => void;
     testID?: string;
 }

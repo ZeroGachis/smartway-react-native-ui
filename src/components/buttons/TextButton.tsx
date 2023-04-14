@@ -4,7 +4,7 @@ import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';
 
-export const TextButton = ({ children, style, labelStyle, onClick, testID }: BaseButtonProps) => {
+export const TextButton = ({ children, style, labelStyle, onPress, testID }: BaseButtonProps) => {
     const theme = useTheme();
     const buttonstyle: ViewStyle = {
         borderRadius: 0,
@@ -27,7 +27,7 @@ export const TextButton = ({ children, style, labelStyle, onClick, testID }: Bas
             mode="text"
             style={buttonstyle}
             labelStyle={_labelStyle}
-            onPress={onClick}
+            onPress={onPress}
             testID={testID}
         >
             {children}

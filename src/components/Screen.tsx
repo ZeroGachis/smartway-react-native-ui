@@ -9,7 +9,7 @@ type Props = {
     statusBarColor?: string;
 };
 
-export const Screen = ({ children, style, testID, statusBarColor }: Props) => {
+export const Screen = ({ children, style, statusBarColor, testID }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({

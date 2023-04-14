@@ -54,10 +54,10 @@ export const Dialog = (props: DialogProps) => {
                 </Headline>
                 <Body style={_contentStyle}>{props.content}</Body>
                 <View style={_actionsStyle}>
-                    <Button mode="text" onClick={props.onDismiss} testID={'PopupDismissButton'}>
+                    <Button mode="text" onPress={props.onDismiss} testID={'PopupDismissButton'}>
                         {props.dismissButtonLabel}
                     </Button>
-                    <Button mode="filled" onClick={props.onConfirm} testID={'PopupConfirmButton'}>
+                    <Button mode="filled" onPress={props.onConfirm} testID={'PopupConfirmButton'}>
                         {props.confirmButtonLabel}
                     </Button>
                 </View>

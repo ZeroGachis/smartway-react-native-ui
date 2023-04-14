@@ -30,7 +30,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Buttons');
                     }}
                 >
@@ -39,7 +39,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Dialog');
                     }}
                 >
@@ -48,7 +48,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Input');
                     }}
                 >
@@ -57,7 +57,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('DropDown');
                     }}
                 >
@@ -66,7 +66,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('SnackBar');
                     }}
                 >
@@ -75,7 +75,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Toggle');
                     }}
                 >
@@ -84,7 +84,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('AppBar');
                     }}
                 >
@@ -93,7 +93,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Menu');
                     }}
                 >
@@ -102,7 +102,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('PrintState');
                     }}
                 >
@@ -111,7 +111,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('BottomSheet');
                     }}
                 >
@@ -120,7 +120,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('ActionCard');
                     }}
                 >
@@ -129,7 +129,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Keyboard');
                     }}
                 >
@@ -138,7 +138,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('ModifyQuantity');
                     }}
                 >
@@ -147,7 +147,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Card');
                     }}
                 >
@@ -156,7 +156,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Tab');
                     }}
                 >
@@ -165,7 +165,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('Label');
                     }}
                 >
@@ -174,7 +174,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                 <Button
                     mode="filled"
                     style={styles.button}
-                    onClick={() => {
+                    onPress={() => {
                         navigation.navigate('ProductPage');
                     }}
                 >

@@ -13,24 +13,24 @@ export const Button = ({
     children,
     style,
     labelStyle,
-    onClick,
+    onPress,
     testID,
 }: ButtonProps) => {
     if (mode === 'text') {
         return (
-            <TextButton style={style} labelStyle={labelStyle} onClick={onClick} testID={testID}>
+            <TextButton style={style} labelStyle={labelStyle} onPress={onPress} testID={testID}>
                 {children}
             </TextButton>
         );
     } else if (mode === 'filled') {
         return (
-            <FilledButton style={style} labelStyle={labelStyle} onClick={onClick} testID={testID}>
+            <FilledButton style={style} labelStyle={labelStyle} onPress={onPress} testID={testID}>
                 {children}
             </FilledButton>
         );
     } else {
         return (
-            <BaseButton style={style} labelStyle={labelStyle} onPress={onClick} testID={testID}>
+            <BaseButton style={style} labelStyle={labelStyle} onPress={onPress} testID={testID}>
                 {children}
             </BaseButton>
         );

@@ -21,6 +21,8 @@ interface Props {
     containerStyle?: ViewStyle;
     accordionStyle?: ViewStyle;
     icon?: IconName;
+    testID?: string;
+    optionTestID?: string;
 }
 export const DropDown = ({
     disabled,
@@ -34,6 +36,8 @@ export const DropDown = ({
     containerStyle,
     accordionStyle,
     icon = 'arrow-up',
+    testID,
+    optionTestID,
 }: Props) => {
     const theme = useTheme();
     const [expanded, setExpanded] = useState(false);
@@ -109,6 +113,7 @@ export const DropDown = ({
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <List.Accordion
                         expanded={expanded}
+                        testID={testID}
                         onPress={handlePress}
                         style={styles.accordion}
                         titleStyle={styles.accordionTitle}
@@ -118,6 +123,7 @@ export const DropDown = ({
                         {options.map((option: DropDownOption, index: number) => (
                             <List.Item
                                 key={index}
+                                testID={optionTestID}
                                 titleStyle={styles.optionTitle}
                                 style={styles.option}
                                 title={option.value}

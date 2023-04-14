@@ -14,6 +14,8 @@ interface Props {
     maxValue: number;
     style?: ViewStyle;
     icon?: IconName;
+    minusTestID?: string;
+    plusTestID?: string;
 }
 
 export const ModifyQuantity = ({
@@ -24,6 +26,8 @@ export const ModifyQuantity = ({
     minValue,
     maxValue,
     icon = 'etiquette',
+    minusTestID,
+    plusTestID,
 }: Props) => {
     const theme = useTheme();
 
@@ -81,7 +85,12 @@ export const ModifyQuantity = ({
                 <Body style={styles.text}>{text}</Body>
             </View>
             <View style={styles.inputContainer}>
-                <Pressable disabled={minusDisabled} hitSlop={8} onPress={onMinus}>
+                <Pressable
+                    disabled={minusDisabled}
+                    hitSlop={8}
+                    testID={minusTestID}
+                    onPress={onMinus}
+                >
                     <Icon
                         size={28}
                         color={minusDisabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}
@@ -96,7 +105,7 @@ export const ModifyQuantity = ({
                     textType={'information'}
                 />
 
-                <Pressable disabled={addDisabled} onPress={onAdd} hitSlop={8}>
+                <Pressable testID={plusTestID} disabled={addDisabled} onPress={onAdd} hitSlop={8}>
                     <Icon
                         size={28}
                         color={addDisabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}

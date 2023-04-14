@@ -17,9 +17,10 @@ interface Props {
     style?: ViewStyle;
     text?: string;
     textStyle?: TextStyle;
+    testID?: string;
 }
 
-export const Toggle = ({ isToggled, onValueChange, style, text, textStyle }: Props) => {
+export const Toggle = ({ isToggled, onValueChange, style, text, textStyle, testID }: Props) => {
     const theme = useTheme();
     const knobTranslate = useSharedValue(0);
     const textTranslate = useSharedValue(0);
@@ -97,7 +98,7 @@ export const Toggle = ({ isToggled, onValueChange, style, text, textStyle }: Pro
     });
 
     return (
-        <TouchableWithoutFeedback onPress={onValueChange}>
+        <TouchableWithoutFeedback testID={testID} onPress={onValueChange}>
             <Animated.View style={[styles.container, backgroundColorStyle]}>
                 <Animated.View style={[styles.knob, moveKnob]} />
                 <Animated.Text style={[styles.text, moveText]}>{text}</Animated.Text>

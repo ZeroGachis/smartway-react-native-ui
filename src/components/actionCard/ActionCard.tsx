@@ -65,7 +65,7 @@ export const ActionCard = ({
     return (
         <View style={styles.container}>
             {onClose && (
-                <Button style={styles.close} onClick={onClose} testID={buttonTestID}>
+                <Button style={styles.close} onPress={onClose} testID={buttonTestID}>
                     <Icon name="close-fill" size={20} />
                 </Button>
             )}

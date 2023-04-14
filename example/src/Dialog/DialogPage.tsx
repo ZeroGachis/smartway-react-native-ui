@@ -15,7 +15,7 @@ export const DialogPage = () => {
 
     return (
         <Screen style={styles.container}>
-            <Button mode="text" onClick={showModal}>
+            <Button mode="text" onPress={showModal}>
                 Click me
             </Button>
             <Dialog

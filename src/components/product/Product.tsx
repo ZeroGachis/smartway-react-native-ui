@@ -14,6 +14,7 @@ export interface ProductProps {
     finalPrice: string;
     onPress?: () => void;
     style?: StyleProp<ViewStyle>;
+    testID?: string;
 }
 
 export const Product = ({
@@ -26,6 +27,7 @@ export const Product = ({
     finalPrice,
     onPress,
     style,
+    testID,
 }: ProductProps) => {
     const theme = useTheme();
 
@@ -76,7 +78,7 @@ export const Product = ({
         },
     });
     return (
-        <Pressable onPress={onPress} style={[styles.container, style]}>
+        <Pressable onPress={onPress} testID={testID} style={[styles.container, style]}>
             <View style={styles.picture}>
                 <View style={styles.quantityContainer}>
                     <Body size="small">{`x${quantity}`}</Body>

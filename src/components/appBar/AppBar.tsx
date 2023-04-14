@@ -17,6 +17,7 @@ interface Props {
     children?: JSX.Element;
     type?: AppBarType;
     disabled?: boolean;
+    buttonTestID?: string;
 }
 export const AppBar = ({
     label,
@@ -27,6 +28,7 @@ export const AppBar = ({
     children,
     type = 'default',
     disabled,
+    buttonTestID,
 }: Props) => {
     const theme = useTheme();
 
@@ -37,7 +39,6 @@ export const AppBar = ({
             backgroundColor: theme.sw.colors.neutral[50],
             ...style,
         },
-
         appBar: {
             backgroundColor: theme.sw.colors.neutral[50],
         },
@@ -71,7 +72,11 @@ export const AppBar = ({
             <View style={styles.header}>
                 <View style={styles.container}>
                     {onIconPress && (
-                        <Pressable onPress={onIconPress} style={styles.appBarAction}>
+                        <Pressable
+                            onPress={onIconPress}
+                            testID={buttonTestID}
+                            style={styles.appBarAction}
+                        >
                             <Icon size={20} name={iconName} />
                         </Pressable>
                     )}
@@ -83,7 +88,11 @@ export const AppBar = ({
     } else {
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
+                <TouchableOpacity
+                    onPress={onPress}
+                    testID={buttonTestID}
+                    style={styles.touchableOpacity}
+                >
                     <Body size="semi-bold" style={styles.body}>
                         {label}
                     </Body>

@@ -58,7 +58,7 @@ export const CardPage = () => {
                     testID="tag_enrollment_start_button"
                     style={style.button}
                     mode="filled"
-                    onClick={() => {}}
+                    onPress={() => {}}
                 >
                     start
                 </Button>

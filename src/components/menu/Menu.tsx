@@ -18,6 +18,8 @@ interface Props {
     style?: ViewStyle;
     menuStyle?: ViewStyle;
     optionStyle?: ViewStyle;
+    testID?: string;
+    optionTestID?: string;
 }
 
 export const Menu = ({
@@ -28,6 +30,8 @@ export const Menu = ({
     iconColor,
     menuStyle,
     optionStyle,
+    testID,
+    optionTestID,
 }: Props) => {
     const [menuVisible, setVisibility] = useState<boolean>(false);
 
@@ -52,6 +56,7 @@ export const Menu = ({
     return (
         <View style={styles.container}>
             <BaseMenu
+                testID={testID}
                 anchorPosition="bottom"
                 visible={menuVisible}
                 onDismiss={() => setVisibility(false)}
@@ -64,6 +69,7 @@ export const Menu = ({
             >
                 {options.map((option: MenuOption, index: number) => (
                     <BaseMenu.Item
+                        testID={optionTestID}
                         style={styles.option}
                         key={index}
                         onPress={() => {
