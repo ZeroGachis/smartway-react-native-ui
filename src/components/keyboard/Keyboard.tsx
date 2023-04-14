@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 
 import { DeleteButton } from './DeleteButton';
@@ -14,11 +14,21 @@ interface Props {
     style?: ViewStyle;
     height: number;
     focusedInput: string;
-    setValues: React.Dispatch<React.SetStateAction<any>>;
+    setValues: Dispatch<SetStateAction<any>>;
     onSubmit: () => void;
+    submitButtonTestID?: string;
+    deleteButtonTestID?: string;
 }
 
-export const Keyboard = ({ style, height, focusedInput, setValues, onSubmit }: Props) => {
+export const Keyboard = ({
+    style,
+    height,
+    focusedInput,
+    setValues,
+    onSubmit,
+    submitButtonTestID,
+    deleteButtonTestID,
+}: Props) => {
     const handlePress = (action: KeyboardActions, value?: string) => {
         if (!focusedInput) {
             return;
@@ -72,9 +82,9 @@ export const Keyboard = ({ style, height, focusedInput, setValues, onSubmit }: P
                 <NumberButton value="9" onPress={handlePress} />
             </View>
             <View style={styles.keyboardRow}>
-                <DeleteButton onPress={handlePress} />
+                <DeleteButton testID={deleteButtonTestID} onPress={handlePress} />
                 <NumberButton value="0" onPress={handlePress} />
-                <SubmitButton onPress={handlePress} />
+                <SubmitButton testID={submitButtonTestID} onPress={handlePress} />
             </View>
         </View>
     );

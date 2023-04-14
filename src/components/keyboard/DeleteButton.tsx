@@ -6,9 +6,10 @@ import type { KeyboardActions } from './Keyboard';
 
 interface Props {
     onPress: (action: KeyboardActions) => void;
+    testID?: string;
 }
 
-export const DeleteButton = ({ onPress }: Props) => {
+export const DeleteButton = ({ onPress, testID }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -24,7 +25,7 @@ export const DeleteButton = ({ onPress }: Props) => {
     });
 
     return (
-        <Pressable style={[styles.button]} onPress={() => onPress('delete')}>
+        <Pressable testID={testID} style={[styles.button]} onPress={() => onPress('delete')}>
             <View style={styles.icon}>
                 <Icon name={'backspace'} color={theme.sw.colors.neutral[500]} size={24} />
             </View>

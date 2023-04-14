@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MODULE | ActionCard component renders correctly 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#F4F6F8",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "elevation": 2,
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "black",
+            "fontFamily": "PublicSans-SemiBold",
+            "fontSize": 16,
+            "fontWeight": "600",
+            "lineHeight": 19,
+            "paddingTop": 16,
+            "textAlign": "center",
+          }
+        }
+      />
+      <View
+        style={
+          {
+            "padding": 16,
+          }
+        }
+      />
+      <View
+        style={
+          {
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "backgroundColor": "#F4F6F8",
+              "height": 1,
+              "marginVertical": 32,
+              "width": "100%",
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "paddingBottom": 32,
+            }
+          }
+        >
+          <View>
+            <Text>
+              Test
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RNCSafeAreaProvider>
+`;
+
+exports[`MODULE | ActionCard component renders correctly in disabled state 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F9FAFB",
+          "borderColor": "#E5EAEE",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "elevation": 2,
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "black",
+            "fontFamily": "PublicSans-SemiBold",
+            "fontSize": 16,
+            "fontWeight": "600",
+            "lineHeight": 19,
+            "paddingTop": 16,
+            "textAlign": "center",
+          }
+        }
+      />
+      <View
+        style={
+          {
+            "padding": 16,
+          }
+        }
+      />
+      <View
+        style={
+          {
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "backgroundColor": "#F4F6F8",
+              "height": 1,
+              "marginVertical": 32,
+              "width": "100%",
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "paddingBottom": 32,
+            }
+          }
+        >
+          <View>
+            <Text>
+              Test
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RNCSafeAreaProvider>
+`;

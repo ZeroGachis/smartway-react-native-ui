@@ -6,9 +6,10 @@ import type { KeyboardActions } from './Keyboard';
 
 interface Props {
     onPress: (action: KeyboardActions) => void;
+    testID?: string;
 }
 
-export const SubmitButton = ({ onPress }: Props) => {
+export const SubmitButton = ({ onPress, testID }: Props) => {
     const theme = useTheme();
 
     const styles = StyleSheet.create({
@@ -25,7 +26,7 @@ export const SubmitButton = ({ onPress }: Props) => {
     });
 
     return (
-        <Pressable style={[styles.button]} onPress={() => onPress('submit')}>
+        <Pressable testID={testID} style={[styles.button]} onPress={() => onPress('submit')}>
             <View style={styles.icon}>
                 <Icon name={'keyboard-tab'} color={theme.sw.colors.primary[400]} size={24} />
             </View>
