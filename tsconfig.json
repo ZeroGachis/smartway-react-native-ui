@@ -27,5 +27,5 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["src", "example"]
+  "include": ["src", "example", "./.eslintrc.json"]
 }
