@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';

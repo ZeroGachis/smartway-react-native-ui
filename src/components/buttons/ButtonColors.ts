@@ -3,7 +3,7 @@ import type { ButtonStatus } from './BaseButtonProps';
 
 export const getButtonColors = (
     theme: ThemType,
-    status: ButtonStatus,
+    status?: ButtonStatus,
     disabled?: boolean,
 ): string => {
     if (disabled) {

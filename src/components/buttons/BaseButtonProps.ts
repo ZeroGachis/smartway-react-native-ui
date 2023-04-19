@@ -16,5 +16,5 @@ export interface BaseButtonProps {
     onClick?: () => void;
     testID?: string;
     disabled?: boolean;
-    status: ButtonStatus;
+    status?: ButtonStatus;
 }
