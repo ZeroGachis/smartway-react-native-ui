@@ -3,6 +3,7 @@ import { StyleSheet, ViewStyle } from 'react-native';
 import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';
+import { getButtonColors } from './ButtonColors';
 
 export const FilledButton = ({
     children,
@@ -15,27 +16,13 @@ export const FilledButton = ({
 }: BaseButtonProps) => {
     const theme = useTheme();
 
-    const getbackgroundColor = (): ViewStyle['backgroundColor'] => {
-        switch (status) {
-            case 'primary':
-                return theme.sw.colors.primary[400];
-            case 'information':
-                return theme.sw.colors.information[400];
-            case 'success':
-                return theme.sw.colors.success[400];
-            case 'warning':
-                return theme.sw.colors.warning[400];
-            case 'error':
-                return theme.sw.colors.error[400];
-            default:
-                return theme.sw.colors.neutral[700];
-        }
-    };
+    const buttonColor = getButtonColors(theme, status, disabled);
+    const transparencyValue = '3D';
 
     const styles = StyleSheet.create({
         button: {
             borderRadius: 8,
-            backgroundColor: disabled ? '#919EAB3D' : getbackgroundColor(),
+            backgroundColor: disabled ? buttonColor + transparencyValue : buttonColor,
             ...style,
         },
         label: {

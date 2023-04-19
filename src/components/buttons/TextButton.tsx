@@ -3,6 +3,7 @@ import { StyleSheet, TextStyle } from 'react-native';
 import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';
+import { getButtonColors } from './ButtonColors';
 
 export const TextButton = ({
     children,
@@ -15,25 +16,7 @@ export const TextButton = ({
 }: BaseButtonProps) => {
     const theme = useTheme();
 
-    const getLabelColor = (): TextStyle['color'] => {
-        if (disabled) {
-            return '#919EABCC';
-        }
-        switch (status) {
-            case 'primary':
-                return theme.sw.colors.primary[400];
-            case 'information':
-                return theme.sw.colors.information[400];
-            case 'success':
-                return theme.sw.colors.success[400];
-            case 'warning':
-                return theme.sw.colors.warning[400];
-            case 'error':
-                return theme.sw.colors.error[400];
-            default:
-                return theme.sw.colors.neutral[700];
-        }
-    };
+    const buttonColor = getButtonColors(theme, status, disabled);
 
     const styles = StyleSheet.create({
         button: {
@@ -41,7 +24,7 @@ export const TextButton = ({
             ...style,
         },
         label: {
-            color: getLabelColor(),
+            color: buttonColor,
             fontSize: 16,
             lineHeight: 26,
             fontFamily: 'PublicSans-Regular',

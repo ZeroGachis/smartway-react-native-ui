@@ -1,6 +1,5 @@
 import React from 'react';
 import { TextButton } from './TextButton';
-import { Button as BaseButton } from 'react-native-paper';
 import { FilledButton } from './FilledButton';
 import type { BaseButtonProps } from './BaseButtonProps';
 import { OutlinedButton } from './OutlinedButton';
@@ -45,7 +44,7 @@ export const Button = ({
                 {children}
             </FilledButton>
         );
-    } else if (mode === 'outlined') {
+    } else {
         return (
             <OutlinedButton
                 status={status}
@@ -57,18 +56,6 @@ export const Button = ({
             >
                 {children}
             </OutlinedButton>
-        );
-    } else {
-        return (
-            <BaseButton
-                style={style}
-                disabled={disabled}
-                labelStyle={labelStyle}
-                onPress={onClick}
-                testID={testID}
-            >
-                {children}
-            </BaseButton>
         );
     }
 };

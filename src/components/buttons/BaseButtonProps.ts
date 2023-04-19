@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { TextStyle, ViewStyle } from 'react-native';
 
-type ButtonStatus =
+export type ButtonStatus =
     | 'default'
     | 'primary'
     | 'information'
@@ -16,5 +16,5 @@ export interface BaseButtonProps {
     onClick?: () => void;
     testID?: string;
     disabled?: boolean;
-    status?: ButtonStatus;
+    status: ButtonStatus;
 }
