@@ -5,7 +5,7 @@ import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';
 import { getButtonColors } from './ButtonColors';
 
-export const TextButton = ({
+export const OutlinedButton = ({
     children,
     style,
     labelStyle,
@@ -16,30 +16,32 @@ export const TextButton = ({
 }: BaseButtonProps) => {
     const theme = useTheme();
 
+    const transparencyValue = '7A';
     const buttonColor = getButtonColors(theme, status, disabled);
 
     const styles = StyleSheet.create({
         button: {
-            borderRadius: 0,
+            borderRadius: 8,
+            borderWidth: 1,
+            borderColor: buttonColor + transparencyValue,
             ...style,
         },
         label: {
-            color: buttonColor,
+            fontFamily: 'PublicSans-Regular',
             fontSize: 16,
             lineHeight: 26,
-            fontFamily: 'PublicSans-Regular',
-            padding: theme.sw.spacing.s,
             fontWeight: 'bold',
-            // Overrides default margin of Paper component
+            paddingVertical: theme.sw.spacing.s,
+            paddingHorizontal: theme.sw.spacing.l,
             marginVertical: 0,
             marginHorizontal: 0,
+            color: buttonColor,
             ...labelStyle,
         },
     });
 
     return (
         <BaseButton
-            mode="text"
             style={styles.button}
             labelStyle={styles.label}
             onPress={onClick}

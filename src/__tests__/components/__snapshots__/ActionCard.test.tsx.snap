@@ -24,65 +24,92 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
     <View
       style={
         {
-          "alignItems": "center",
-          "backgroundColor": "#FFFFFF",
-          "borderColor": "#F4F6F8",
-          "borderRadius": 20,
-          "borderWidth": 1,
-          "elevation": 2,
-          "width": "100%",
+          "shadowColor": "#919EAB1F",
+          "shadowOffset": {
+            "height": 12,
+            "width": 0,
+          },
+          "shadowOpacity": 0.12,
+          "shadowRadius": 24,
         }
       }
     >
-      <Text
-        style={
-          {
-            "color": "black",
-            "fontFamily": "PublicSans-SemiBold",
-            "fontSize": 16,
-            "fontWeight": "600",
-            "lineHeight": 19,
-            "paddingTop": 16,
-            "textAlign": "center",
-          }
-        }
-      />
       <View
         style={
           {
-            "padding": 16,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "width": "100%",
+            "shadowColor": "#919EAB80",
+            "shadowOffset": {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 2,
           }
         }
       >
         <View
           style={
             {
-              "backgroundColor": "#F4F6F8",
-              "height": 1,
-              "marginVertical": 32,
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#E5EAEE",
+              "borderRadius": 20,
+              "borderWidth": 1,
               "width": "100%",
             }
           }
-        />
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "paddingBottom": 32,
-            }
-          }
         >
-          <View>
-            <Text>
-              Test
-            </Text>
+          <Text
+            style={
+              {
+                "color": "black",
+                "fontFamily": "PublicSans-SemiBold",
+                "fontSize": 16,
+                "fontWeight": "600",
+                "lineHeight": 19,
+                "paddingTop": 16,
+                "textAlign": "center",
+              }
+            }
+          />
+          <View
+            style={
+              {
+                "padding": 16,
+              }
+            }
+          />
+          <View
+            style={
+              {
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "#F4F6F8",
+                  "height": 1,
+                  "marginVertical": 32,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "paddingBottom": 32,
+                }
+              }
+            >
+              <View>
+                <Text>
+                  Test
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>
@@ -115,65 +142,92 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
     <View
       style={
         {
-          "alignItems": "center",
-          "backgroundColor": "#F9FAFB",
-          "borderColor": "#E5EAEE",
-          "borderRadius": 20,
-          "borderWidth": 1,
-          "elevation": 2,
-          "width": "100%",
+          "shadowColor": "#919EAB1F",
+          "shadowOffset": {
+            "height": 12,
+            "width": 0,
+          },
+          "shadowOpacity": 0.12,
+          "shadowRadius": 24,
         }
       }
     >
-      <Text
-        style={
-          {
-            "color": "black",
-            "fontFamily": "PublicSans-SemiBold",
-            "fontSize": 16,
-            "fontWeight": "600",
-            "lineHeight": 19,
-            "paddingTop": 16,
-            "textAlign": "center",
-          }
-        }
-      />
       <View
         style={
           {
-            "padding": 16,
-          }
-        }
-      />
-      <View
-        style={
-          {
-            "width": "100%",
+            "shadowColor": "#919EAB80",
+            "shadowOffset": {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 2,
           }
         }
       >
         <View
           style={
             {
-              "backgroundColor": "#F4F6F8",
-              "height": 1,
-              "marginVertical": 32,
+              "alignItems": "center",
+              "backgroundColor": "#F9FAFB",
+              "borderColor": "#E5EAEE",
+              "borderRadius": 20,
+              "borderWidth": 1,
               "width": "100%",
             }
           }
-        />
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "paddingBottom": 32,
-            }
-          }
         >
-          <View>
-            <Text>
-              Test
-            </Text>
+          <Text
+            style={
+              {
+                "color": "black",
+                "fontFamily": "PublicSans-SemiBold",
+                "fontSize": 16,
+                "fontWeight": "600",
+                "lineHeight": 19,
+                "paddingTop": 16,
+                "textAlign": "center",
+              }
+            }
+          />
+          <View
+            style={
+              {
+                "padding": 16,
+              }
+            }
+          />
+          <View
+            style={
+              {
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "#F4F6F8",
+                  "height": 1,
+                  "marginVertical": 32,
+                  "width": "100%",
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "paddingBottom": 32,
+                }
+              }
+            >
+              <View>
+                <Text>
+                  Test
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>

@@ -1,32 +1,51 @@
 import React from 'react';
-import type { TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Button as BaseButton } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';
+import { getButtonColors } from './ButtonColors';
 
-export const FilledButton = ({ children, style, labelStyle, onClick, testID }: BaseButtonProps) => {
+export const FilledButton = ({
+    children,
+    style,
+    labelStyle,
+    onClick,
+    testID,
+    disabled,
+    status,
+}: BaseButtonProps) => {
     const theme = useTheme();
-    const buttonStyle: ViewStyle = {
-        borderRadius: 8,
-        backgroundColor: theme.sw.colors.primary[400],
-        ...style,
-    };
 
-    const _labelStyle: TextStyle = {
-        fontFamily: 'PublicSans-Regular',
-        fontSize: 16,
-        lineHeight: 19,
-        color: theme.sw.colors.neutral[50],
-        paddingVertical: theme.sw.spacing.s,
-        paddingHorizontal: theme.sw.spacing.l,
-        // Overrides default margin of Paper component
-        marginVertical: 0,
-        marginHorizontal: 0,
-        ...labelStyle,
-    };
+    const buttonColor = getButtonColors(theme, status, disabled);
+    const transparencyValue = '3D';
+
+    const styles = StyleSheet.create({
+        button: {
+            borderRadius: 8,
+            backgroundColor: disabled ? buttonColor + transparencyValue : buttonColor,
+            ...style,
+        },
+        label: {
+            fontFamily: 'PublicSans-Regular',
+            fontSize: 16,
+            lineHeight: 26,
+            color: disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[50],
+            paddingVertical: theme.sw.spacing.s,
+            paddingHorizontal: theme.sw.spacing.l,
+            fontWeight: 'bold',
+            marginVertical: 0,
+            marginHorizontal: 0,
+            ...labelStyle,
+        },
+    });
 
     return (
-        <BaseButton style={buttonStyle} labelStyle={_labelStyle} onPress={onClick} testID={testID}>
+        <BaseButton
+            style={styles.button}
+            labelStyle={styles.label}
+            onPress={onClick}
+            testID={testID}
+        >
             {children}
         </BaseButton>
     );

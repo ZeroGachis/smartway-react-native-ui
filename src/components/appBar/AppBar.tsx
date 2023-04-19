@@ -63,6 +63,7 @@ export const AppBar = ({
         body: {
             paddingRight: theme.sw.spacing.m,
             color: disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[800],
+            lineHeight: 26,
         },
     });
 
