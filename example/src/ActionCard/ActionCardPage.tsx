@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { ActionCard, Icon, EANInput, Screen, TextInput, useTheme } from 'smartway-react-native-ui';
 
 export const ActionCardPage = () => {
@@ -7,14 +7,8 @@ export const ActionCardPage = () => {
 
     const [scanValue, setValue] = useState('');
 
-    const styles = StyleSheet.create({
-        container: {
-            paddingTop: theme.sw.spacing.m,
-        },
-    });
-
     return (
-        <Screen style={styles.container}>
+        <Screen>
             <ActionCard
                 title="Texte action possible"
                 titleColor={theme.sw.colors.neutral[500]}
@@ -35,7 +29,11 @@ export const ActionCardPage = () => {
                             textType="information"
                             value="0"
                             style={{ marginBottom: 0, marginLeft: 12 }}
-                            inputStyles={{ fontSize: 28, lineHeight: 33, textAlign: 'center' }}
+                            inputStyles={{
+                                fontSize: 28,
+                                lineHeight: 33,
+                                textAlign: 'center',
+                            }}
                         />
                     </View>
                 </View>
