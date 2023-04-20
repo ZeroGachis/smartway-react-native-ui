@@ -11,6 +11,9 @@ interface Props {
 export const Card = ({ children, style }: Props) => {
     const theme = useTheme();
 
+    const bigShadowTransparency = '1F';
+    const smallShadowTransparency = '33';
+
     const styles = StyleSheet.create({
         container: {
             backgroundColor: theme.sw.colors.neutral[50],
@@ -22,7 +25,7 @@ export const Card = ({ children, style }: Props) => {
             ...style,
         },
         bigShadow: {
-            shadowColor: '#919EAB1F',
+            shadowColor: theme.sw.colors.neutral[500] + bigShadowTransparency,
             shadowOffset: {
                 width: 0,
                 height: 12,
@@ -31,7 +34,7 @@ export const Card = ({ children, style }: Props) => {
             shadowRadius: 24,
         },
         smallShadow: {
-            shadowColor: '#919EAB33',
+            shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
             shadowOffset: {
                 width: 0,
                 height: 0,
