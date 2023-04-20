@@ -16,7 +16,7 @@ interface DialogProps {
     content: string;
     dismissButtonLabel?: string;
     confirmButtonLabel: string;
-    onDismiss: () => void;
+    onDismiss?: () => void;
     onConfirm: () => void;
 }
 
