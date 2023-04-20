@@ -16,6 +16,7 @@ interface Props extends TextInputProps {
     onChangeText?: (value: string) => void;
     iconSize?: number;
     iconColor?: string;
+    textColor?: string;
 }
 
 export const TextInput = ({
@@ -29,6 +30,7 @@ export const TextInput = ({
     iconSize,
     iconColor,
     inputStyles,
+    textColor,
     ...props
 }: Props) => {
     const theme = useTheme();
@@ -66,7 +68,7 @@ export const TextInput = ({
                 ref={inputRef}
                 label={label}
                 style={inputSyle}
-                textColor={theme.sw.colors.neutral[900]}
+                textColor={textColor || theme.sw.colors.neutral[900]}
                 mode={'outlined'}
                 error={textType === 'error'}
                 outlineStyle={outlineStyle}

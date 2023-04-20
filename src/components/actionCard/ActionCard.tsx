@@ -30,6 +30,9 @@ export const ActionCard = ({
 }: Props) => {
     const theme = useTheme();
 
+    const bigShadowTransparency = '1F';
+    const smallShadowTransparency = '80';
+
     const styles = StyleSheet.create({
         container: {
             backgroundColor: disabled ? theme.sw.colors.neutral[100] : theme.sw.colors.neutral[50],
@@ -61,7 +64,7 @@ export const ActionCard = ({
             alignItems: 'center',
         },
         bigShadow: {
-            shadowColor: '#919EAB1F',
+            shadowColor: theme.sw.colors.neutral[500] + bigShadowTransparency,
             shadowOffset: {
                 width: 0,
                 height: 12,
@@ -70,7 +73,7 @@ export const ActionCard = ({
             shadowRadius: 24,
         },
         smallShadow: {
-            shadowColor: '#919EAB80',
+            shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
             shadowOffset: {
                 width: 0,
                 height: 0,
