@@ -11,6 +11,7 @@ interface Props extends TextInputProps {
     label?: string;
     value: string;
     text?: string;
+    placeholder?: string;
     textType: TextType;
     icon?: IconName;
     onChangeText?: (value: string) => void;
@@ -24,6 +25,7 @@ export const TextInput = ({
     label,
     value,
     text,
+    placeholder,
     textType,
     icon,
     onChangeText,
@@ -82,6 +84,7 @@ export const TextInput = ({
                     },
                 }}
                 value={value}
+                placeholder={placeholder}
                 onChangeText={onChangeText}
             />
             {text && (
