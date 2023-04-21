@@ -3,7 +3,6 @@ import { ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
 import { List } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
-import type { IconName } from '../icons/IconProps';
 
 export interface DropDownOption {
     value: string;
@@ -20,8 +19,8 @@ interface Props {
     optionStyle?: ViewStyle;
     containerStyle?: ViewStyle;
     accordionStyle?: ViewStyle;
-    icon?: IconName;
 }
+
 export const DropDown = ({
     disabled,
     error,
@@ -33,7 +32,6 @@ export const DropDown = ({
     optionStyle,
     containerStyle,
     accordionStyle,
-    icon = 'arrow-up',
 }: Props) => {
     const theme = useTheme();
     const [expanded, setExpanded] = useState(false);
@@ -89,17 +87,17 @@ export const DropDown = ({
         },
         accordionTitle: {
             color: color,
-            fontWeight: 'bold',
+            fontFamily: 'PublicSans-Regular',
             fontSize: 16,
-            alignSelf: 'center',
+            textAlign: 'left',
         },
         option: {
             ...optionStyle,
         },
         optionTitle: {
-            fontWeight: 'bold',
             color: theme.sw.colors.neutral[800],
             fontSize: 16,
+            textAlign: 'left',
         },
     });
 
@@ -113,7 +111,9 @@ export const DropDown = ({
                         style={styles.accordion}
                         titleStyle={styles.accordionTitle}
                         title={selected ? selected.value : placeholder}
-                        right={() => <Icon name={icon} />}
+                        right={() =>
+                            expanded ? <Icon name="arrow-up" /> : <Icon name="arrow-down" />
+                        }
                     >
                         {options.map((option: DropDownOption, index: number) => (
                             <List.Item
