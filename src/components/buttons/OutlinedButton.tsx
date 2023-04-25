@@ -9,7 +9,7 @@ export const OutlinedButton = ({
     children,
     style,
     labelStyle,
-    onClick,
+    onPress,
     status,
     disabled,
     testID,
@@ -44,7 +44,7 @@ export const OutlinedButton = ({
         <BaseButton
             style={styles.button}
             labelStyle={styles.label}
-            onPress={onClick}
+            onPress={onPress}
             testID={testID}
         >
             {children}
