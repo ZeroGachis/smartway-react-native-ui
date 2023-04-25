@@ -11,11 +11,13 @@ interface Props extends TextInputProps {
     label?: string;
     value: string;
     text?: string;
+    placeholder?: string;
     textType: TextType;
     icon?: IconName;
     onChangeText?: (value: string) => void;
     iconSize?: number;
     iconColor?: string;
+    textColor?: string;
 }
 
 export const TextInput = ({
@@ -23,12 +25,14 @@ export const TextInput = ({
     label,
     value,
     text,
+    placeholder,
     textType,
     icon,
     onChangeText,
     iconSize,
     iconColor,
     inputStyles,
+    textColor,
     ...props
 }: Props) => {
     const theme = useTheme();
@@ -66,7 +70,7 @@ export const TextInput = ({
                 ref={inputRef}
                 label={label}
                 style={inputSyle}
-                textColor={theme.sw.colors.neutral[900]}
+                textColor={textColor || theme.sw.colors.neutral[900]}
                 mode={'outlined'}
                 error={textType === 'error'}
                 outlineStyle={outlineStyle}
@@ -80,6 +84,7 @@ export const TextInput = ({
                     },
                 }}
                 value={value}
+                placeholder={placeholder}
                 onChangeText={onChangeText}
             />
             {text && (

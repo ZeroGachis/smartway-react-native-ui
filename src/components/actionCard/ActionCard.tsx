@@ -5,6 +5,7 @@ import { useTheme } from '../../styles/themes';
 import { Button } from '../buttons/Button';
 import { Icon } from '../icons/Icon';
 import { Body } from '../typography/Body';
+import DropShadow from 'react-native-drop-shadow';
 
 interface Props {
     children?: ReactNode;
@@ -29,16 +30,18 @@ export const ActionCard = ({
 }: Props) => {
     const theme = useTheme();
 
+    const bigShadowTransparency = '1F';
+    const smallShadowTransparency = '80';
+
     const styles = StyleSheet.create({
         container: {
             backgroundColor: disabled ? theme.sw.colors.neutral[100] : theme.sw.colors.neutral[50],
             borderWidth: 1,
-            borderColor: disabled ? theme.sw.colors.neutral[400] : theme.sw.colors.neutral[200],
+            borderColor: disabled ? theme.sw.colors.neutral[400] : theme.sw.colors.neutral[400],
             width: '100%',
             borderRadius: 20,
             alignItems: 'center',
             ...style,
-            elevation: 2,
         },
         close: {
             position: 'absolute',
@@ -60,25 +63,47 @@ export const ActionCard = ({
             paddingBottom: theme.sw.spacing.xl,
             alignItems: 'center',
         },
+        bigShadow: {
+            shadowColor: theme.sw.colors.neutral[500] + bigShadowTransparency,
+            shadowOffset: {
+                width: 0,
+                height: 12,
+            },
+            shadowOpacity: 0.12,
+            shadowRadius: 24,
+        },
+        smallShadow: {
+            shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
+            shadowOffset: {
+                width: 0,
+                height: 0,
+            },
+            shadowOpacity: 0.2,
+            shadowRadius: 2,
+        },
     });
 
     return (
-        <View style={styles.container}>
-            {onClose && (
-                <Button style={styles.close} onPress={onClose} testID={buttonTestID}>
-                    <Icon name="close-fill" size={20} />
-                </Button>
-            )}
-            <Body size="semi-bold" style={styles.title}>
-                {title}
-            </Body>
-            <View style={{ padding: theme.sw.spacing.m }}>{children}</View>
-            {bottomChildren && (
-                <View style={{ width: '100%' }}>
-                    <View style={styles.divider} />
-                    <View style={styles.bottomChildren}>{bottomChildren}</View>
+        <DropShadow style={styles.bigShadow}>
+            <DropShadow style={styles.smallShadow}>
+                <View style={styles.container}>
+                    {onClose && (
+                        <Button style={styles.close} onPress={onClose} testID={buttonTestID}>
+                            <Icon name="close-fill" size={20} />
+                        </Button>
+                    )}
+                    <Body size="semi-bold" style={styles.title}>
+                        {title}
+                    </Body>
+                    <View style={{ padding: theme.sw.spacing.m }}>{children}</View>
+                    {bottomChildren && (
+                        <View style={{ width: '100%' }}>
+                            <View style={styles.divider} />
+                            <View style={styles.bottomChildren}>{bottomChildren}</View>
+                        </View>
+                    )}
                 </View>
-            )}
-        </View>
+            </DropShadow>
+        </DropShadow>
     );
 };

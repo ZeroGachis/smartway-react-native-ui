@@ -1,6 +1,6 @@
 import React from 'react';
-import { TextStyle, View, ViewStyle } from 'react-native';
-import { Dialog as BaseDialog } from 'react-native-paper';
+import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { Dialog as BaseDialog, Portal } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Button } from '../buttons/Button';
 import { Body } from '../typography/Body';
@@ -14,54 +14,83 @@ interface DialogProps {
     actionsStyle?: ViewStyle;
     title: string;
     content: string;
-    dismissButtonLabel: string;
+    dismissButtonLabel?: string;
     confirmButtonLabel: string;
-    onDismiss: () => void;
+    onDismiss?: () => void;
     onConfirm: () => void;
 }
 
 export const Dialog = (props: DialogProps) => {
     const theme = useTheme();
-    const _dialogStyle: ViewStyle = {
-        borderRadius: theme.sw.spacing.l,
-        padding: theme.sw.spacing.l,
-        marginTop: 0,
-        backgroundColor: theme.sw.colors.neutral[50],
-        ...props.style,
-    };
 
-    const _titleStyle: TextStyle = {
-        marginBottom: theme.sw.spacing.l,
-        ...props.titleStyle,
-    };
-
-    const _contentStyle: ViewStyle = {
-        marginBottom: theme.sw.spacing.l,
-        ...props.contentStyle,
-    };
-
-    const _actionsStyle: ViewStyle = {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        ...props.actionsStyle,
-    };
+    const styles = StyleSheet.create({
+        dialog: {
+            borderRadius: theme.sw.spacing.l,
+            padding: theme.sw.spacing.l,
+            paddingTop: theme.sw.spacing.xl,
+            marginTop: 0,
+            backgroundColor: theme.sw.colors.neutral[50],
+            ...props.style,
+        },
+        title: {
+            marginBottom: theme.sw.spacing.l,
+            ...props.titleStyle,
+        },
+        content: {
+            marginBottom: theme.sw.spacing.l,
+            color: theme.sw.colors.neutral[600],
+            ...props.contentStyle,
+        },
+        actions: {
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            ...props.actionsStyle,
+        },
+        leftOption: {
+            color: theme.sw.colors.neutral[800],
+            fontWeight: 'bold',
+            marginRight: theme.sw.spacing.m,
+        },
+        rightOption: {
+            flex: props.dismissButtonLabel ? 0 : 1,
+        },
+    });
 
     return (
-        <BaseDialog visible={props.visible} onDismiss={props.onDismiss}>
-            <View style={_dialogStyle}>
-                <Headline size="h2" style={_titleStyle} testID={'PopupTitle'}>
-                    {props.title}
-                </Headline>
-                <Body style={_contentStyle}>{props.content}</Body>
-                <View style={_actionsStyle}>
-                    <Button mode="text" onPress={props.onDismiss} testID={'PopupDismissButton'}>
-                        {props.dismissButtonLabel}
-                    </Button>
-                    <Button mode="filled" onPress={props.onConfirm} testID={'PopupConfirmButton'}>
-                        {props.confirmButtonLabel}
-                    </Button>
+        <Portal>
+            <BaseDialog
+                theme={{ colors: { backdrop: '#1A2026B2' } }}
+                visible={props.visible}
+                onDismiss={props.onDismiss}
+            >
+                <View style={styles.dialog}>
+                    <Headline size="h3" style={styles.title} testID={'PopupTitle'}>
+                        {props.title}
+                    </Headline>
+                    <Body style={styles.content}>{props.content}</Body>
+                    <View style={styles.actions}>
+                        {props.onDismiss && props.dismissButtonLabel && (
+                            <Button
+                                labelStyle={styles.leftOption}
+                                mode="text"
+                                onPress={props.onDismiss}
+                                testID={'PopupDismissButton'}
+                            >
+                                {props.dismissButtonLabel}
+                            </Button>
+                        )}
+
+                        <Button
+                            mode="filled"
+                            onPress={props.onConfirm}
+                            testID={'PopupConfirmButton'}
+                            style={styles.rightOption}
+                        >
+                            {props.confirmButtonLabel}
+                        </Button>
+                    </View>
                 </View>
-            </View>
-        </BaseDialog>
+            </BaseDialog>
+        </Portal>
     );
 };

@@ -1,11 +1,11 @@
 import React from 'react';
 import { TextButton } from './TextButton';
-import { Button as BaseButton } from 'react-native-paper';
 import { FilledButton } from './FilledButton';
 import type { BaseButtonProps } from './BaseButtonProps';
+import { OutlinedButton } from './OutlinedButton';
 
 interface ButtonProps extends BaseButtonProps {
-    mode?: 'text' | 'filled';
+    mode?: 'filled' | 'outlined' | 'text';
 }
 
 export const Button = ({
@@ -14,25 +14,48 @@ export const Button = ({
     style,
     labelStyle,
     onPress,
+    status = 'primary',
+    disabled,
     testID,
 }: ButtonProps) => {
     if (mode === 'text') {
         return (
-            <TextButton style={style} labelStyle={labelStyle} onPress={onPress} testID={testID}>
+            <TextButton
+                status={status}
+                style={style}
+                labelStyle={labelStyle}
+                onPress={onPress}
+                testID={testID}
+                disabled={disabled}
+            >
                 {children}
             </TextButton>
         );
     } else if (mode === 'filled') {
         return (
-            <FilledButton style={style} labelStyle={labelStyle} onPress={onPress} testID={testID}>
+            <FilledButton
+                status={status}
+                style={style}
+                labelStyle={labelStyle}
+                onPress={onPress}
+                testID={testID}
+                disabled={disabled}
+            >
                 {children}
             </FilledButton>
         );
     } else {
         return (
-            <BaseButton style={style} labelStyle={labelStyle} onPress={onPress} testID={testID}>
+            <OutlinedButton
+                status={status}
+                style={style}
+                labelStyle={labelStyle}
+                onPress={onPress}
+                testID={testID}
+                disabled={disabled}
+            >
                 {children}
-            </BaseButton>
+            </OutlinedButton>
         );
     }
 };

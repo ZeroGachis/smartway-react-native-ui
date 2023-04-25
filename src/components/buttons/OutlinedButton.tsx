@@ -5,36 +5,37 @@ import { useTheme } from '../../styles/themes';
 import type { BaseButtonProps } from './BaseButtonProps';
 import { getButtonColors } from './ButtonColors';
 
-export const FilledButton = ({
+export const OutlinedButton = ({
     children,
     style,
     labelStyle,
-    onPress,
-    testID,
-    disabled,
+    onClick,
     status,
+    disabled,
+    testID,
 }: BaseButtonProps) => {
     const theme = useTheme();
 
+    const transparencyValue = '7A';
     const buttonColor = getButtonColors(theme, status, disabled);
-    const transparencyValue = '3D';
 
     const styles = StyleSheet.create({
         button: {
             borderRadius: 8,
-            backgroundColor: disabled ? buttonColor + transparencyValue : buttonColor,
+            borderWidth: 1,
+            borderColor: buttonColor + transparencyValue,
             ...style,
         },
         label: {
             fontFamily: 'PublicSans-Regular',
             fontSize: 16,
             lineHeight: 26,
-            color: disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[50],
+            fontWeight: 'bold',
             paddingVertical: theme.sw.spacing.s,
             paddingHorizontal: theme.sw.spacing.l,
-            fontWeight: 'bold',
             marginVertical: 0,
             marginHorizontal: 0,
+            color: buttonColor,
             ...labelStyle,
         },
     });
@@ -43,7 +44,7 @@ export const FilledButton = ({
         <BaseButton
             style={styles.button}
             labelStyle={styles.label}
-            onPress={onPress}
+            onPress={onClick}
             testID={testID}
         >
             {children}

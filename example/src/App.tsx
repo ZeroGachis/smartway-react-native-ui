@@ -48,7 +48,12 @@ const App = () => {
     return (
         <ThemeProvider>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
+                <Stack.Navigator
+                    screenOptions={{
+                        contentStyle: { backgroundColor: '#FFF' },
+                    }}
+                    initialRouteName="Home"
+                >
                     <Stack.Screen name="Home" component={HomeScreen} />
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
