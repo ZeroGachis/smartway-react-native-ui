@@ -60,6 +60,12 @@ export const DropDown = ({
                 borderColor: theme.sw.colors.error[400],
             };
         }
+        if (selected) {
+            return {
+                color: theme.sw.colors.neutral[800],
+                borderColor: theme.sw.colors.neutral[400],
+            };
+        }
         return {
             color: theme.sw.colors.neutral[500],
             borderColor: theme.sw.colors.neutral[400],
