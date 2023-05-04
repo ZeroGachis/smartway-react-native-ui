@@ -1,102 +1,69 @@
-import React from 'react';
-import { Pressable, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-
+import React, { ReactNode } from 'react';
+import { Appbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
-import { Icon } from '../icons/Icon';
-import type { IconName } from '../icons/IconProps';
-import { Body } from '../typography/Body';
+import type { ViewStyle } from 'react-native';
 import { Headline } from '../typography/Headline';
+import { Button } from '../buttons/Button';
+import type { IconSource } from 'react-native-paper/lib/typescript/src/components/Icon';
 
-type AppBarType = 'default' | 'accordion';
 interface Props {
-    label?: string;
-    onPress?: () => void;
-    onIconPress?: () => void;
-    iconName?: IconName;
+    size?: 'small' | 'medium' | 'large' | 'center-aligned';
+    title: ReactNode;
+    onTitlePress?: () => void;
+    subtitle?: string;
+    onSubtitlePress?: () => void;
+    firstIconName?: IconSource;
+    onFirstIconPress?: () => void;
+    secondIconName?: IconSource;
+    onSecondIconPress?: () => void;
+    onBack?: () => void;
     style?: ViewStyle;
-    children?: JSX.Element;
-    type?: AppBarType;
-    disabled?: boolean;
 }
+
 export const AppBar = ({
-    label,
-    onPress,
-    onIconPress,
-    iconName = 'arrow-back',
+    size = 'small',
+    title,
+    onTitlePress,
+    subtitle,
+    onSubtitlePress,
+    firstIconName,
+    secondIconName,
+    onFirstIconPress,
+    onSecondIconPress,
+    onBack,
     style,
-    children,
-    type = 'default',
-    disabled,
 }: Props) => {
     const theme = useTheme();
 
-    const styles = StyleSheet.create({
-        header: {
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            backgroundColor: theme.sw.colors.neutral[50],
-            ...style,
-        },
-
-        appBar: {
-            backgroundColor: theme.sw.colors.neutral[50],
-        },
-        appBarAction: {
-            justifyContent: 'center',
-            marginRight: theme.sw.spacing.s,
-        },
-        container: {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            ...style,
-        },
-        touchableOpacity: {
-            paddingHorizontal: theme.sw.spacing.l,
-            paddingVertical: theme.sw.spacing.m,
-            borderRadius: 8,
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: theme.sw.colors.neutral[300],
-            ...style,
-        },
-        body: {
-            paddingRight: theme.sw.spacing.m,
-            color: disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[800],
-            lineHeight: 26,
-        },
-    });
-
-    if (type === 'default') {
-        return (
-            <View style={styles.header}>
-                <View style={styles.container}>
-                    {onIconPress && (
-                        <Pressable onPress={onIconPress} style={styles.appBarAction}>
-                            <Icon size={20} name={iconName} />
-                        </Pressable>
-                    )}
-                    <Headline size="h3">{label}</Headline>
-                </View>
-                {children}
-            </View>
-        );
-    } else {
-        return (
-            <View style={styles.container}>
-                <TouchableOpacity onPress={onPress} style={styles.touchableOpacity}>
-                    <Body size="semi-bold" style={styles.body}>
-                        {label}
-                    </Body>
-                    <Icon
-                        color={
-                            disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[800]
-                        }
-                        name="arrow-down"
-                    />
-                </TouchableOpacity>
-                {children}
-            </View>
-        );
-    }
+    const getIconColor = () => {
+        return theme.sw.colors.neutral[600];
+    };
+    return (
+        <Appbar.Header mode={size} style={style}>
+            {onBack !== undefined && <Appbar.BackAction onPress={onBack} />}
+            <Appbar.Content
+                title={typeof title === 'string' ? <Headline size="h2">{title}</Headline> : title}
+                onPress={onTitlePress}
+            />
+            {subtitle !== undefined && (
+                <Button mode="text" onClick={onSubtitlePress}>
+                    {subtitle}
+                </Button>
+            )}
+            {secondIconName !== undefined && (
+                <Appbar.Action
+                    icon={secondIconName}
+                    onPress={onSecondIconPress}
+                    color={getIconColor()}
+                />
+            )}
+            {firstIconName !== undefined && (
+                <Appbar.Action
+                    icon={firstIconName}
+                    onPress={onFirstIconPress}
+                    color={getIconColor()}
+                />
+            )}
+        </Appbar.Header>
+    );
 };
