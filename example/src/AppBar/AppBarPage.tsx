@@ -1,7 +1,7 @@
 import type { NavigationProp } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import { AppBar, BottomSheet, Button, Menu, Screen, useTheme } from 'smartway-react-native-ui';
-import type { DropDownOption } from 'src/components/dropDown/DropDown';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { AppBar, BottomSheet, Button, Screen, useTheme } from 'smartway-react-native-ui';
 
 interface Props {
     navigation: NavigationProp<any>;
@@ -9,53 +9,53 @@ interface Props {
 
 export const AppBarPage = ({ navigation }: Props) => {
     const theme = useTheme();
-    const [selected, setSelected] = useState<DropDownOption>();
     const [isOpened, setOpened] = useState<boolean>(false);
-    const menuOptions = [
-        { title: 'option 1', onPress: () => console.log('option') },
-        { title: 'option 2', onPress: () => console.log('option') },
-        { title: 'option 3', onPress: () => console.log('option') },
-        { title: 'option 4', onPress: () => console.log('option') },
-    ];
-
-    const options: DropDownOption[] = [
-        { value: 'Revalorisation auto' },
-        { value: 'Option 2' },
-        { value: 'Option 3' },
-        { value: 'Option 4' },
-    ];
 
     const goBack = () => {
         navigation.goBack();
     };
 
-    useEffect(() => {
-        setSelected(options[0]);
-    }, []);
+    const menu = (
+        <View>
+            <Button mode="outlined" onClick={() => setOpened(true)}>
+                {'Revalorisation'}
+            </Button>
+        </View>
+    );
 
     return (
         <Screen style={{ backgroundColor: theme.sw.colors.neutral[50], paddingTop: 16 }}>
             <AppBar
-                style={{ paddingBottom: theme.sw.spacing.m }}
-                iconName="arrow-back"
-                label={'Title'}
-                onIconPress={goBack}
-            >
-                <Menu icon="more" options={menuOptions} />
-            </AppBar>
+                onTitlePress={() => setOpened(true)}
+                onBack={goBack}
+                title="Title"
+                subtitle="Label"
+                firstIconName="dots-vertical"
+                secondIconName="dots-vertical"
+            />
             <AppBar
-                onPress={() => setOpened(true)}
-                label={selected?.value}
-                disabled={isOpened}
-                iconName="arrow-back"
-                type="accordion"
-            >
-                <Menu
-                    icon="settings"
-                    style={{ position: 'absolute', right: 16, top: 12 }}
-                    options={menuOptions}
-                />
-            </AppBar>
+                size="medium"
+                onTitlePress={() => setOpened(true)}
+                onBack={goBack}
+                title="Title"
+                subtitle="Long Label"
+                firstIconName="dots-vertical"
+                secondIconName="dots-vertical"
+            />
+            <AppBar
+                size="center-aligned"
+                onTitlePress={() => setOpened(true)}
+                onBack={goBack}
+                title="Title"
+                firstIconName="dots-vertical"
+            />
+            <AppBar
+                size="center-aligned"
+                onTitlePress={() => setOpened(true)}
+                onBack={goBack}
+                title={menu}
+                firstIconName="cog"
+            />
             <BottomSheet
                 snapPoints={['40%']}
                 swipeable={true}
@@ -64,7 +64,9 @@ export const AppBarPage = ({ navigation }: Props) => {
                 isOpened={isOpened}
                 onClose={() => setOpened(false)}
             >
-                <Button mode="filled">Option</Button>
+                <Button mode="filled" onClick={() => setOpened(false)}>
+                    Option
+                </Button>
             </BottomSheet>
         </Screen>
     );
