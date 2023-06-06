@@ -17,7 +17,9 @@ describe('MODULE | ActionCard', () => {
                             <Text>Test</Text>
                         </View>
                     }
-                />
+                >
+                    {'Test children'}
+                </ActionCard>
             </ThemeProvider>,
         ).toJSON();
         expect(tree).toMatchSnapshot();
@@ -33,7 +35,9 @@ describe('MODULE | ActionCard', () => {
                             <Text>Test</Text>
                         </View>
                     }
-                />
+                >
+                    {'Test children'}
+                </ActionCard>
             </ThemeProvider>,
         ).toJSON();
         expect(tree).toMatchSnapshot();
@@ -50,7 +54,9 @@ describe('MODULE | ActionCard', () => {
                         </View>
                     }
                     buttonTestID={mockedTestID}
-                />
+                >
+                    {'Test children'}
+                </ActionCard>
             </ThemeProvider>,
         );
 
