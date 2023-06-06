@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
 import React from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
-import { Button } from '../buttons/Button';
 import { Icon } from '../icons/Icon';
 import { Body } from '../typography/Body';
 import DropShadow from 'react-native-drop-shadow';
@@ -50,17 +49,17 @@ export const ActionCard = ({
         },
         title: {
             color: titleColor,
-            paddingTop: theme.sw.spacing.m,
+            paddingBottom: theme.sw.spacing.m,
             textAlign: 'center',
         },
         divider: {
             height: 1,
             width: '100%',
             backgroundColor: theme.sw.colors.neutral[200],
-            marginVertical: theme.sw.spacing.xl,
+            marginTop: theme.sw.spacing.m,
+            marginBottom: theme.sw.spacing.xs,
         },
         bottomChildren: {
-            paddingBottom: theme.sw.spacing.xl,
             alignItems: 'center',
         },
         bigShadow: {
@@ -87,15 +86,11 @@ export const ActionCard = ({
         <DropShadow style={styles.bigShadow}>
             <DropShadow style={styles.smallShadow}>
                 <View style={styles.container}>
-                    {onClose && (
-                        <Button style={styles.close} onClick={onClose} testID={buttonTestID}>
-                            <Icon name="close-fill" size={20} />
-                        </Button>
-                    )}
-                    <Body size="semi-bold" style={styles.title}>
-                        {title}
-                    </Body>
-                    <View style={{ padding: theme.sw.spacing.m }}>{children}</View>
+                    <Body style={styles.title}>{title}</Body>
+                    <Pressable style={styles.close} onPress={onClose} testID={buttonTestID}>
+                        <Icon name="close-fill" size={20} />
+                    </Pressable>
+                    <View>{children}</View>
                     {bottomChildren && (
                         <View style={{ width: '100%' }}>
                             <View style={styles.divider} />

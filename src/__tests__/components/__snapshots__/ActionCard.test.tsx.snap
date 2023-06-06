@@ -63,22 +63,17 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
             style={
               {
                 "color": "black",
-                "fontFamily": "PublicSans-SemiBold",
+                "fontFamily": "PublicSans-Regular",
                 "fontSize": 16,
-                "fontWeight": "600",
                 "lineHeight": 19,
-                "paddingTop": 16,
+                "paddingBottom": 16,
                 "textAlign": "center",
               }
             }
           />
-          <View
-            style={
-              {
-                "padding": 16,
-              }
-            }
-          />
+          <View>
+            Test children
+          </View>
           <View
             style={
               {
@@ -91,7 +86,8 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
                 {
                   "backgroundColor": "#F4F6F8",
                   "height": 1,
-                  "marginVertical": 32,
+                  "marginBottom": 6,
+                  "marginTop": 16,
                   "width": "100%",
                 }
               }
@@ -100,7 +96,6 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "paddingBottom": 32,
                 }
               }
             >
@@ -181,22 +176,17 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
             style={
               {
                 "color": "black",
-                "fontFamily": "PublicSans-SemiBold",
+                "fontFamily": "PublicSans-Regular",
                 "fontSize": 16,
-                "fontWeight": "600",
                 "lineHeight": 19,
-                "paddingTop": 16,
+                "paddingBottom": 16,
                 "textAlign": "center",
               }
             }
           />
-          <View
-            style={
-              {
-                "padding": 16,
-              }
-            }
-          />
+          <View>
+            Test children
+          </View>
           <View
             style={
               {
@@ -209,7 +199,8 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
                 {
                   "backgroundColor": "#F4F6F8",
                   "height": 1,
-                  "marginVertical": 32,
+                  "marginBottom": 6,
+                  "marginTop": 16,
                   "width": "100%",
                 }
               }
@@ -218,7 +209,6 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
               style={
                 {
                   "alignItems": "center",
-                  "paddingBottom": 32,
                 }
               }
             >
