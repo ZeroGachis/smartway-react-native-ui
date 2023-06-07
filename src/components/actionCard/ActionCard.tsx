@@ -7,13 +7,14 @@ import { Body } from '../typography/Body';
 import DropShadow from 'react-native-drop-shadow';
 
 interface Props {
-    children?: ReactNode;
+    children: ReactNode;
     bottomChildren: ReactNode;
     title?: string;
     titleColor: string;
     style?: ViewStyle;
     disabled?: boolean;
-    onClose?: () => void;
+    onClear?: () => void;
+    displayClear?: boolean;
     buttonTestID?: string;
 }
 
@@ -24,7 +25,8 @@ export const ActionCard = ({
     titleColor,
     bottomChildren,
     disabled,
-    onClose,
+    onClear,
+    displayClear = false,
     buttonTestID,
 }: Props) => {
     const theme = useTheme();
@@ -87,16 +89,17 @@ export const ActionCard = ({
             <DropShadow style={styles.smallShadow}>
                 <View style={styles.container}>
                     <Body style={styles.title}>{title}</Body>
-                    <Pressable style={styles.close} onPress={onClose} testID={buttonTestID}>
-                        <Icon name="close-fill" size={20} />
-                    </Pressable>
-                    <View>{children}</View>
-                    {bottomChildren && (
-                        <View style={{ width: '100%' }}>
-                            <View style={styles.divider} />
-                            <View style={styles.bottomChildren}>{bottomChildren}</View>
-                        </View>
+                    {displayClear && (
+                        <Pressable style={styles.close} onPress={onClear} testID={buttonTestID}>
+                            <Icon name="close-fill" size={20} />
+                        </Pressable>
                     )}
+                    <View>{children}</View>
+
+                    <View style={{ width: '100%' }}>
+                        <View style={styles.divider} />
+                        <View style={styles.bottomChildren}>{bottomChildren}</View>
+                    </View>
                 </View>
             </DropShadow>
         </DropShadow>
