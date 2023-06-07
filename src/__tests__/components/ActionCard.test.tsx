@@ -46,7 +46,8 @@ describe('MODULE | ActionCard', () => {
         const tree = render(
             <ThemeProvider>
                 <ActionCard
-                    onClose={mockedCallback}
+                    onClear={mockedCallback}
+                    displayClear={true}
                     titleColor={'black'}
                     bottomChildren={
                         <View>
