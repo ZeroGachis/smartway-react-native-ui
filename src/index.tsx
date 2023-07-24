@@ -23,7 +23,6 @@ import {
     Tab,
     Label,
     Product,
-    OrderItem,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -54,5 +53,4 @@ export {
     Tab,
     Label,
     Product,
-    OrderItem,
 };

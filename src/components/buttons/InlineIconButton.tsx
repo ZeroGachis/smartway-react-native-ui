@@ -3,7 +3,7 @@ import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { getButtonColors } from './ButtonColors';
 import type { BaseIconButtonProps } from './BaseIconButtonProps';
-import { Icon } from 'smartway-react-native-ui';
+import { Icon } from '../icons/Icon';
 
 export const InlineIconButton = ({
     size,
@@ -16,7 +16,6 @@ export const InlineIconButton = ({
     const theme = useTheme();
 
     const buttonColor = getButtonColors(theme, status, disabled);
-    const transparencyValue = '3D';
 
     const styles = StyleSheet.create({
         button: {

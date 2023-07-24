@@ -22,7 +22,6 @@ import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
 import { Product } from './product/Product';
-import { OrderItem } from './orderItem/OrderItem';
 
 export {
     Body,
@@ -49,5 +48,4 @@ export {
     Tab,
     Label,
     Product,
-    OrderItem,
 };

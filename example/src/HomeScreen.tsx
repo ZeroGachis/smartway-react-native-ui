@@ -180,15 +180,6 @@ export const HomeScreen = ({ navigation }: Props) => {
                 >
                     Product
                 </Button>
-                <Button
-                    mode="filled"
-                    style={styles.button}
-                    onClick={() => {
-                        navigation.navigate('OrderItemPage');
-                    }}
-                >
-                    OrderItem
-                </Button>
             </ScrollView>
         </View>
     );
