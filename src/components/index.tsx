@@ -1,4 +1,5 @@
 import { Button } from './buttons/Button';
+import { IconButton } from './buttons/IconButton';
 import { Logo } from './logos/Logo';
 import { Screen } from './Screen';
 import { Headline } from './typography/Headline';
@@ -26,6 +27,7 @@ import { OrderItem } from './orderItem/OrderItem';
 export {
     Body,
     Button,
+    IconButton,
     ActionCard,
     Dialog,
     Headline,

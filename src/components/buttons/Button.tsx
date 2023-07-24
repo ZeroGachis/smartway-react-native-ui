@@ -14,7 +14,7 @@ export const Button = ({
     style,
     labelStyle,
     onClick,
-    status = 'primary',
+    status,
     disabled,
     testID,
 }: ButtonProps) => {

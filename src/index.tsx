@@ -1,6 +1,7 @@
 import {
     Body,
     Button,
+    IconButton,
     ActionCard,
     Dialog,
     Headline,
@@ -29,6 +30,7 @@ import { ThemeProvider, useTheme } from './styles/themes';
 export {
     Body,
     Button,
+    IconButton,
     ActionCard,
     Dialog,
     Headline,
