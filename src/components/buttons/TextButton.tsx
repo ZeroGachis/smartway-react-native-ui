@@ -9,7 +9,7 @@ export const TextButton = ({
     children,
     style,
     labelStyle,
-    onClick,
+    onClick: onPress,
     status,
     disabled,
     testID,
@@ -42,7 +42,7 @@ export const TextButton = ({
             mode="text"
             style={styles.button}
             labelStyle={styles.label}
-            onPress={onClick}
+            onPress={onPress}
             testID={testID}
         >
             {children}

@@ -17,6 +17,7 @@ import { PrintPage } from './PrintStatePage/PrintPage';
 import { ActionCardPage } from './ActionCard/ActionCardPage';
 import { CardPage } from './Card/CardPage';
 import { ModifyQuantityPage } from './ModifyQuantity/ModifyQuantityPage';
+import { PlusMinusInputPage } from './PlusMinusInput/PlusMinusInputPage';
 import { TabPage } from './Tab/TabPage';
 import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
@@ -37,6 +38,7 @@ export type RootStackParamList = {
     ActionCard: undefined;
     Card: undefined;
     ModifyQuantity: undefined;
+    PlusMinusInput: undefined;
     Tab: undefined;
     Label: undefined;
     ProductPage: undefined;
@@ -70,6 +72,7 @@ const App = () => {
                     <Stack.Screen name="Menu" component={MenuPage} />
                     <Stack.Screen name="PrintState" component={PrintPage} />
                     <Stack.Screen name="ModifyQuantity" component={ModifyQuantityPage} />
+                    <Stack.Screen name="PlusMinusInput" component={PlusMinusInputPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}
                         name="AppBar"

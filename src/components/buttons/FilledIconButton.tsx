@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, Pressable, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { getButtonColors } from './ButtonColors';
 import type { BaseIconButtonProps } from './BaseIconButtonProps';
 import { Icon } from '../icons/Icon';
 
 export const FilledIconButton = ({
+    name,
     size,
     style,
     onClick,
@@ -31,14 +32,14 @@ export const FilledIconButton = ({
     });
 
     return (
-        <TouchableHighlight style={styles.button} onPress={onClick} testID={testID}>
+        <Pressable style={styles.button} onPress={onClick} testID={testID}>
             <View style={styles.icon}>
                 <Icon
-                    name="arrow-back"
+                    name={name}
                     size={size}
                     color={disabled ? theme.sw.colors.neutral[500] : theme.sw.colors.neutral[50]}
                 />
             </View>
-        </TouchableHighlight>
+        </Pressable>
     );
 };

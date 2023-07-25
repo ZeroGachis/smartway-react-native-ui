@@ -10,6 +10,7 @@ interface IconButtonProps extends BaseIconButtonProps {
 
 export const IconButton = ({
     mode = 'inline',
+    name,
     size = 20,
     style,
     onClick,
@@ -20,6 +21,7 @@ export const IconButton = ({
     if (mode === 'inline') {
         return (
             <InlineIconButton
+                name={name}
                 status={status}
                 size={size}
                 style={style}
@@ -31,6 +33,7 @@ export const IconButton = ({
     } else if (mode === 'filled') {
         return (
             <FilledIconButton
+                name={name}
                 status={status}
                 size={size}
                 style={style}
@@ -42,6 +45,7 @@ export const IconButton = ({
     } else {
         return (
             <OutlinedIconButton
+                name={name}
                 status={status}
                 size={size}
                 style={style}

@@ -148,6 +148,15 @@ export const HomeScreen = ({ navigation }: Props) => {
                     mode="filled"
                     style={styles.button}
                     onClick={() => {
+                        navigation.navigate('PlusMinusInput');
+                    }}
+                >
+                    PlusMinusInput
+                </Button>
+                <Button
+                    mode="filled"
+                    style={styles.button}
+                    onClick={() => {
                         navigation.navigate('Card');
                     }}
                 >

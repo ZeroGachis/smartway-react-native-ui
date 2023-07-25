@@ -14,6 +14,7 @@ export interface BaseButtonProps {
     style?: ViewStyle;
     labelStyle?: TextStyle;
     onClick?: () => void;
+    hitSlop?: number;
     testID?: string;
     disabled?: boolean;
     status?: ButtonStatus;

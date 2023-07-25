@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, TouchableHighlight, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { getButtonColors } from './ButtonColors';
 import type { BaseIconButtonProps } from './BaseIconButtonProps';
 import { Icon } from '../icons/Icon';
 
 export const InlineIconButton = ({
+    name,
     size,
     style,
     onClick,
@@ -29,10 +30,10 @@ export const InlineIconButton = ({
     });
 
     return (
-        <TouchableHighlight style={styles.button} onPress={onClick} testID={testID}>
+        <Pressable style={styles.button} onPress={onClick} testID={testID}>
             <View style={styles.icon}>
-                <Icon name="arrow-back" size={size} color={buttonColor} />
+                <Icon name={name} size={size} color={buttonColor} />
             </View>
-        </TouchableHighlight>
+        </Pressable>
     );
 };

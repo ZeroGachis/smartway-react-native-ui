@@ -39,39 +39,95 @@ export const ButtonsPage = () => {
                 </Button>
             </View>
             <View style={styles.buttonContainer}>
-                <IconButton style={styles.button} mode="filled" />
-                <IconButton style={styles.button} status="primary" mode="filled" />
-                <IconButton style={styles.button} disabled mode="filled" />
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButton style={styles.button} mode="inline" />
-                <IconButton style={styles.button} status="primary" mode="inline" />
-                <IconButton style={styles.button} disabled mode="inline" />
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButton style={styles.outlinedButton} mode="outlined" />
-                <IconButton style={styles.outlinedButton} status="primary" mode="outlined" />
-                <IconButton style={styles.outlinedButton} disabled mode="outlined" />
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButton style={smallStyles.button} size={10} mode="filled" />
-                <IconButton style={smallStyles.button} size={10} status="primary" mode="filled" />
-                <IconButton style={smallStyles.button} size={10} disabled mode="filled" />
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButton style={smallStyles.button} size={10} mode="inline" />
-                <IconButton style={smallStyles.button} size={10} status="primary" mode="inline" />
-                <IconButton style={smallStyles.button} size={10} disabled mode="inline" />
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButton style={smallStyles.outlinedButton} size={10} mode="outlined" />
+                <IconButton name="arrow-back" style={styles.button} mode="filled" />
                 <IconButton
+                    name="arrow-back"
+                    style={styles.button}
+                    status="primary"
+                    mode="filled"
+                />
+                <IconButton name="arrow-back" style={styles.button} disabled mode="filled" />
+            </View>
+            <View style={styles.buttonContainer}>
+                <IconButton name="arrow-back" style={styles.button} mode="inline" />
+                <IconButton
+                    name="arrow-back"
+                    style={styles.button}
+                    status="primary"
+                    mode="inline"
+                />
+                <IconButton name="arrow-back" style={styles.button} disabled mode="inline" />
+            </View>
+            <View style={styles.buttonContainer}>
+                <IconButton name="arrow-back" style={styles.outlinedButton} mode="outlined" />
+                <IconButton
+                    name="arrow-back"
+                    style={styles.outlinedButton}
+                    status="primary"
+                    mode="outlined"
+                />
+                <IconButton
+                    name="arrow-back"
+                    style={styles.outlinedButton}
+                    disabled
+                    mode="outlined"
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <IconButton name="arrow-back" style={smallStyles.button} size={10} mode="filled" />
+                <IconButton
+                    name="arrow-back"
+                    style={smallStyles.button}
+                    size={10}
+                    status="primary"
+                    mode="filled"
+                />
+                <IconButton
+                    name="arrow-back"
+                    style={smallStyles.button}
+                    size={10}
+                    disabled
+                    mode="filled"
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <IconButton name="arrow-back" style={smallStyles.button} size={10} mode="inline" />
+                <IconButton
+                    name="arrow-back"
+                    style={smallStyles.button}
+                    size={10}
+                    status="primary"
+                    mode="inline"
+                />
+                <IconButton
+                    name="arrow-back"
+                    style={smallStyles.button}
+                    size={10}
+                    disabled
+                    mode="inline"
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <IconButton
+                    name="arrow-back"
+                    style={smallStyles.outlinedButton}
+                    size={10}
+                    mode="outlined"
+                />
+                <IconButton
+                    name="arrow-back"
                     style={smallStyles.outlinedButton}
                     size={10}
                     status="primary"
                     mode="outlined"
                 />
-                <IconButton style={smallStyles.outlinedButton} size={10} disabled mode="outlined" />
+                <IconButton
+                    name="arrow-back"
+                    style={smallStyles.outlinedButton}
+                    size={10}
+                    disabled
+                    mode="outlined"
+                />
             </View>
         </Screen>
     );

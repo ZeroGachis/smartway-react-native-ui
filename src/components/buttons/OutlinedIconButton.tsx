@@ -1,17 +1,19 @@
 import React from 'react';
-import { StyleSheet, TouchableHighlight, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import type { BaseIconButtonProps } from './BaseIconButtonProps';
 import { getButtonColors } from './ButtonColors';
 import { Icon } from '../icons/Icon';
 
 export const OutlinedIconButton = ({
+    name,
     style,
     size,
     onClick,
     testID,
     disabled,
     status,
+    hitSlop = 0,
 }: BaseIconButtonProps) => {
     const theme = useTheme();
 
@@ -32,10 +34,10 @@ export const OutlinedIconButton = ({
     });
 
     return (
-        <TouchableHighlight style={styles.button} onPress={onClick} testID={testID}>
+        <Pressable style={styles.button} hitSlop={hitSlop} onPress={onClick} testID={testID}>
             <View style={styles.icon}>
-                <Icon name="arrow-back" size={size} color={buttonColor} />
+                <Icon name={name} size={size} color={buttonColor} />
             </View>
-        </TouchableHighlight>
+        </Pressable>
     );
 };
