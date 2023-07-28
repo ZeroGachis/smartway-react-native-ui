@@ -26,7 +26,7 @@ export const BottomSheetPage = () => {
 
     return (
         <View style={styles.container}>
-            <Button onClick={openBottomSheet}>Open bottom sheet</Button>
+            <Button onPress={openBottomSheet}>Open bottom sheet</Button>
             <BottomSheet
                 title={'title'}
                 titleProps={{ size: 'h2', style: { marginBottom: 12, textAlign: 'center' } }}
@@ -34,7 +34,7 @@ export const BottomSheetPage = () => {
                 isOpened={isOpened}
             >
                 <View>
-                    <Button onClick={closeBottomSheet} style={styles.button} mode="filled">
+                    <Button onPress={closeBottomSheet} style={styles.button} mode="filled">
                         Close Bottom Sheet
                     </Button>
                     <Button style={styles.button} mode="filled">

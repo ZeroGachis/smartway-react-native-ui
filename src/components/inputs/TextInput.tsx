@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { TextStyle, View, ViewStyle, TextInput as TextInputRN } from 'react-native';
+import { Pressable, TextStyle, View, ViewStyle, TextInput as TextInputRN } from 'react-native';
 import { TextInput as BaseTextInput, TextInputProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import type { IconName } from '../icons/IconProps';
@@ -64,38 +64,44 @@ export const TextInput = ({
     };
 
     return (
-        <View style={containerStyle}>
-            <BaseTextInput
-                {...props}
-                ref={inputRef}
-                label={label}
-                style={inputSyle}
-                textColor={textColor || theme.sw.colors.neutral[900]}
-                mode={'outlined'}
-                error={textType === 'error'}
-                outlineStyle={outlineStyle}
-                theme={{
-                    roundness: 8,
-                    colors: {
-                        error: theme.sw.colors.error[400],
-                        text: theme.sw.colors.neutral[800],
-                        onSurfaceVariant: theme.sw.colors.neutral[500],
-                        primary: theme.sw.colors.neutral[800],
-                    },
-                }}
-                value={value}
-                placeholder={placeholder}
-                onChangeText={onChangeText}
-            />
-            {text && (
-                <TextIndication
-                    text={text}
-                    type={textType}
-                    icon={icon}
-                    iconSize={iconSize}
-                    iconColor={iconColor}
+        <Pressable
+            onPress={() => {
+                inputRef.current?.focus();
+            }}
+        >
+            <View style={containerStyle} pointerEvents="none">
+                <BaseTextInput
+                    {...props}
+                    ref={inputRef}
+                    label={label}
+                    style={inputSyle}
+                    textColor={textColor || theme.sw.colors.neutral[900]}
+                    mode={'outlined'}
+                    error={textType === 'error'}
+                    outlineStyle={outlineStyle}
+                    theme={{
+                        roundness: 8,
+                        colors: {
+                            error: theme.sw.colors.error[400],
+                            text: theme.sw.colors.neutral[800],
+                            onSurfaceVariant: theme.sw.colors.neutral[500],
+                            primary: theme.sw.colors.neutral[800],
+                        },
+                    }}
+                    value={value}
+                    placeholder={placeholder}
+                    onChangeText={onChangeText}
                 />
-            )}
-        </View>
+                {text && (
+                    <TextIndication
+                        text={text}
+                        type={textType}
+                        icon={icon}
+                        iconSize={iconSize}
+                        iconColor={iconColor}
+                    />
+                )}
+            </View>
+        </Pressable>
     );
 };

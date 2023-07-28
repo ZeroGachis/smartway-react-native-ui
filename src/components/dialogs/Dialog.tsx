@@ -73,7 +73,7 @@ export const Dialog = (props: DialogProps) => {
                             <Button
                                 labelStyle={styles.leftOption}
                                 mode="text"
-                                onClick={props.onDismiss}
+                                onPress={props.onDismiss}
                                 testID={'PopupDismissButton'}
                             >
                                 {props.dismissButtonLabel}
@@ -82,7 +82,7 @@ export const Dialog = (props: DialogProps) => {
 
                         <Button
                             mode="filled"
-                            onClick={props.onConfirm}
+                            onPress={props.onConfirm}
                             testID={'PopupConfirmButton'}
                             style={styles.rightOption}
                         >

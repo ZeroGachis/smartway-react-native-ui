@@ -36,6 +36,11 @@ export const PlusMinusInput = ({
     const onMinus = () => {
         if (!minusDisabled) onValueChange(value - 1);
     };
+    const onChangeText = (text: string) => {
+        const parsedValue = parseInt(text);
+        if (parsedValue && parsedValue >= minValue && parsedValue <= maxValue)
+            onValueChange(parsedValue);
+    };
 
     const minusDisabled = minValue >= value;
     const addDisabled = maxValue <= value;
@@ -68,11 +73,13 @@ export const PlusMinusInput = ({
         },
         input: {
             marginBottom: 0,
-            marginHorizontal: theme.sw.spacing.l,
+            marginHorizontal: theme.sw.spacing.xs,
         },
         inputText: {
             textAlign: 'center',
             justifyContent: 'center',
+            height: 38,
+            width: 46,
         },
     });
     return (
@@ -80,20 +87,23 @@ export const PlusMinusInput = ({
             <IconButton
                 mode={mode}
                 name={minusIcon}
-                onClick={onMinus}
+                onPress={onMinus}
                 disabled={minusDisabled}
             ></IconButton>
             <TextInput
                 showSoftInputOnFocus={showSoftInputOnFocus}
+                keyboardType="number-pad"
                 style={styles.input}
                 inputStyles={styles.inputText}
                 value={value.toString()}
+                onChangeText={onChangeText}
+                selectTextOnFocus={showSoftInputOnFocus}
                 textType={'information'}
             />
             <IconButton
                 mode={mode}
                 name={plusIcon}
-                onClick={onAdd}
+                onPress={onAdd}
                 disabled={addDisabled}
             ></IconButton>
         </View>
