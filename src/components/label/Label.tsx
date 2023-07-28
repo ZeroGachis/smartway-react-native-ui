@@ -36,7 +36,7 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
                       }
                     : labelColor === 'primary'
                     ? {
-                          backgroundColor: theme.sw.colors.primary[400],
+                          backgroundColor: theme.sw.colors.primary.main,
                           color: theme.sw.colors.neutral[50],
                       }
                     : labelColor === 'secondary'
@@ -73,7 +73,7 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
                       }
                     : labelColor === 'primary'
                     ? {
-                          backgroundColor: theme.sw.colors.primary[400] + transparencyValue,
+                          backgroundColor: theme.sw.colors.primary.main + transparencyValue,
                           color: theme.sw.colors.primary[600],
                       }
                     : labelColor === 'secondary'
@@ -110,8 +110,8 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
                       }
                     : labelColor === 'primary'
                     ? {
-                          borderColor: theme.sw.colors.primary[400],
-                          color: theme.sw.colors.primary[400],
+                          borderColor: theme.sw.colors.primary.main,
+                          color: theme.sw.colors.primary.main,
                       }
                     : labelColor === 'secondary'
                     ? {

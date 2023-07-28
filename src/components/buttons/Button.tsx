@@ -5,31 +5,36 @@ import { useTheme } from '../../styles/themes';
 
 type ButtonProps = React.ComponentProps<typeof ButtonBase>;
 interface customButtonProps extends ButtonProps {
-    scale?: 's' | 'm';
+    size?: 's' | 'm';
+    variant?: 'filled' | 'outlined' | 'text';
     status?: 'primary' | 'default';
 }
-export const Button = (buttonProps: customButtonProps) => {
+export const Button = (props: customButtonProps) => {
     const theme = useTheme();
+    const mode =
+        props.variant === 'filled' && props.status === 'primary'
+            ? 'contained-tonal'
+            : props.variant === 'filled'
+            ? 'contained'
+            : props.variant;
     const style = StyleSheet.create({
         button: {
-            borderRadius: buttonProps?.scale === 's' ? 14 : 18,
+            borderRadius: props?.size === 's' ? 14 : 18,
+            height: props?.size === 's' ? 38 : 48,
         },
         label: {
-            marginVertical: buttonProps?.scale === 's' ? 6 : 11,
-            marginHorizontal: buttonProps?.scale === 's' ? 16 : 22,
-            lineHeight: buttonProps?.scale === 's' ? 24 : 26,
-            fontSize: buttonProps?.scale === 's' ? 14 : 16,
+            marginVertical: props?.size === 's' ? 6 : 11,
+            marginHorizontal: props?.size === 's' ? 16 : 22,
+            lineHeight: props?.size === 's' ? 24 : 26,
+            fontSize: props?.size === 's' ? 14 : 16,
             fontWeight: '700',
         },
     });
     let customStyle = undefined;
-    if (
-        (buttonProps.mode === 'text' || buttonProps.mode === 'outlined') &&
-        buttonProps.status === 'primary'
-    ) {
+    if ((mode === 'text' || mode === 'outlined') && props.status === 'primary') {
         customStyle = StyleSheet.create({
             button: {
-                borderColor: theme.colors.secondaryContainer,
+                borderColor: theme.sw.colors.primary.main + theme.sw.transparency[48],
                 backgroundColor: '#ffffff',
             },
             label: {
@@ -37,25 +42,26 @@ export const Button = (buttonProps: customButtonProps) => {
             },
         });
     }
-    if (
-        buttonProps.mode === 'outlined' &&
-        (buttonProps.status === undefined || buttonProps.status === 'default')
-    ) {
+    if (mode === 'outlined' && (props.status === undefined || props.status === 'default')) {
         customStyle = StyleSheet.create({
             button: {
-                borderColor: buttonProps.disabled
+                borderColor: props.disabled
                     ? theme.sw.colors.neutral[500] + theme.sw.transparency[24]
                     : theme.sw.colors.neutral[800] + theme.sw.transparency[48],
             },
-            label: {},
+            label: {
+                color: props.disabled
+                    ? theme.colors.onSurfaceDisabled
+                    : theme.sw.colors.neutral[800],
+            },
         });
     }
     return (
         <ButtonBase
-            mode={buttonProps.mode ?? 'contained'}
-            {...buttonProps}
-            style={[style.button, buttonProps.style, customStyle ? customStyle.button : {}]}
-            labelStyle={[style.label, buttonProps.labelStyle, customStyle ? customStyle.label : {}]}
+            {...props}
+            mode={mode ?? 'contained'}
+            style={[style.button, props.style, customStyle ? customStyle.button : {}]}
+            labelStyle={[style.label, props.labelStyle, customStyle ? customStyle.label : {}]}
         />
     );
 };

@@ -22,7 +22,7 @@ export const PlusMinusInputPage = () => {
                 minValue={0}
                 maxValue={6}
                 minusIcon="minus"
-                plusIcon="add"
+                plusIcon="plus"
                 mode="outlined"
             />
         </Screen>

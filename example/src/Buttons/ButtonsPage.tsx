@@ -9,150 +9,189 @@ export const ButtonsPage = () => {
         <ThemeProvider>
             <Screen style={styles.container}>
                 <View>
-                    <Button style={styles.button} mode="contained">
+                    <Button style={styles.button} variant="filled">
                         Filled
                     </Button>
-                    <Button style={styles.button} mode="contained-tonal" status="primary">
+                    <Button style={styles.button} variant="filled" status="primary">
                         Filled
                     </Button>
-                    <Button style={styles.button} disabled mode="contained">
+                    <Button style={styles.button} disabled variant="filled">
                         Filled
                     </Button>
-                    <Button style={styles.button} scale="s" mode="contained">
+                    <Button style={styles.button} size="s" variant="filled">
                         Filled
                     </Button>
-                    <Button style={styles.button} scale="s" mode="contained-tonal" status="primary">
+                    <Button style={styles.button} size="s" variant="filled" status="primary">
                         Filled
                     </Button>
-                    <Button style={styles.button} scale="s" disabled mode="contained">
+                    <Button style={styles.button} size="s" disabled variant="filled">
                         Filled
                     </Button>
                 </View>
                 <View>
-                    <Button style={styles.button} mode="text">
+                    <Button style={styles.button} variant="text">
                         Text
                     </Button>
-                    <Button style={styles.button} mode="text" status="primary">
+                    <Button style={styles.button} variant="text" status="primary">
                         Text
                     </Button>
-                    <Button style={styles.button} disabled mode="text">
+                    <Button style={styles.button} disabled variant="text">
                         Text
                     </Button>
-                    <Button style={styles.button} scale="s" mode="text">
+                    <Button style={styles.button} size="s" variant="text">
                         Text
                     </Button>
-                    <Button style={styles.button} scale="s" mode="text" status="primary">
+                    <Button style={styles.button} size="s" variant="text" status="primary">
                         Text
                     </Button>
-                    <Button style={styles.button} scale="s" disabled mode="text">
+                    <Button style={styles.button} size="s" disabled variant="text">
                         Text
                     </Button>
                 </View>
                 <View>
-                    <Button style={styles.outlinedButton} mode="outlined">
+                    <Button style={styles.outlinedButton} variant="outlined">
                         Outlined
                     </Button>
-                    <Button style={styles.outlinedButton} mode="outlined" status="primary">
+                    <Button style={styles.outlinedButton} variant="outlined" status="primary">
                         Outlined
                     </Button>
-                    <Button style={styles.outlinedButton} disabled mode="outlined">
+                    <Button style={styles.outlinedButton} disabled variant="outlined">
                         Outlined
                     </Button>
-                    <Button style={styles.outlinedButton} scale="s" mode="outlined">
+                    <Button style={styles.outlinedButton} size="s" variant="outlined">
                         Outlined
                     </Button>
-                    <Button style={styles.outlinedButton} scale="s" mode="outlined" status="primary">
+                    <Button
+                        style={styles.outlinedButton}
+                        size="s"
+                        variant="outlined"
+                        status="primary"
+                    >
                         Outlined
                     </Button>
-                    <Button style={styles.outlinedButton} scale="s" disabled mode="outlined">
+                    <Button style={styles.outlinedButton} size="s" disabled variant="outlined">
                         Outlined
                     </Button>
                 </View>
                 <View>
-                    <IconButton icon="arrow-left" scale='m' mode="contained" />
+                    <IconButton icon="arrow-left" size="m" variant="filled" />
                     <IconButton
                         icon="arrow-left"
-                        style={styles.button} scale='m' mode="contained-tonal"
-                        status='primary'
-                    />
-                    <IconButton icon="arrow-left"
-                        style={styles.button} scale='m' disabled mode="contained" />
-                </View>
-                <View>
-                    <IconButton
-                        style={styles.button} icon="arrow-left" scale='m'  />
-                    <IconButton
                         style={styles.button}
-                        icon="arrow-left"
-                        scale='m'
-                        status='primary'
+                        size="m"
+                        variant="filled"
+                        status="primary"
                     />
                     <IconButton
-                        style={styles.button} icon="arrow-left" scale='m' disabled />
-                </View>
-                <View>
-                    <IconButton
-                        style={styles.button} icon="arrow-left" scale='m'  mode="outlined" />
-                    <IconButton
-                        style={styles.button}
                         icon="arrow-left"
-                        scale='m' mode="outlined"
-                        status='primary'
-                    />
-                    <IconButton
                         style={styles.button}
-                        icon="arrow-left"
-                        scale='m' mode="outlined"
+                        size="m"
                         disabled
+                        variant="filled"
                     />
                 </View>
                 <View>
-                    <IconButton icon="arrow-left" style={smallStyles.button} scale='s' mode="contained"  />
+                    <IconButton style={styles.button} icon="arrow-left" size="m" variant="icon" />
                     <IconButton
+                        style={styles.button}
                         icon="arrow-left"
-                        style={smallStyles.button}
-                        scale='s' mode="contained-tonal"
-                        status='primary'
+                        size="m"
+                        status="primary"
+                        variant="icon"
                     />
                     <IconButton
+                        style={styles.button}
                         icon="arrow-left"
-                        style={smallStyles.button}
-                        scale='s' mode="contained"
+                        size="m"
                         disabled
+                        variant="icon"
                     />
                 </View>
                 <View>
-                    <IconButton icon="arrow-left" style={smallStyles.button} scale='s' />
                     <IconButton
+                        style={styles.button}
                         icon="arrow-left"
-                        style={smallStyles.button}
-                        scale='s'
-                        status='primary'
+                        size="m"
+                        variant="outlined"
                     />
                     <IconButton
+                        style={styles.button}
                         icon="arrow-left"
-                        style={smallStyles.button}
-                        scale='s'
+                        size="m"
+                        variant="outlined"
+                        status="primary"
+                    />
+                    <IconButton
+                        style={styles.button}
+                        icon="arrow-left"
+                        size="m"
+                        variant="outlined"
                         disabled
                     />
                 </View>
                 <View>
                     <IconButton
                         icon="arrow-left"
+                        style={smallStyles.button}
+                        size="s"
+                        variant="filled"
+                    />
+                    <IconButton
+                        icon="arrow-left"
+                        style={smallStyles.button}
+                        size="s"
+                        variant="filled"
+                        status="primary"
+                    />
+                    <IconButton
+                        icon="arrow-left"
+                        style={smallStyles.button}
+                        size="s"
+                        variant="filled"
+                        disabled
+                    />
+                </View>
+                <View>
+                    <IconButton
+                        icon="arrow-left"
+                        style={smallStyles.button}
+                        size="s"
+                        variant="icon"
+                    />
+                    <IconButton
+                        icon="arrow-left"
+                        style={smallStyles.button}
+                        size="s"
+                        status="primary"
+                        variant="icon"
+                    />
+                    <IconButton
+                        icon="arrow-left"
+                        style={smallStyles.button}
+                        size="s"
+                        disabled
+                        variant="icon"
+                    />
+                </View>
+                <View>
+                    <IconButton
+                        icon="arrow-left"
                         style={smallStyles.outlinedButton}
-                        scale='s' mode="outlined"
+                        size="s"
+                        variant="outlined"
                     />
                     <IconButton
                         icon="arrow-left"
                         style={smallStyles.outlinedButton}
-                        scale='s' mode="outlined"
-                        status='primary'
-
+                        size="s"
+                        variant="outlined"
+                        status="primary"
                     />
                     <IconButton
                         icon="arrow-left"
                         style={smallStyles.outlinedButton}
-                        scale='s' mode="outlined"
+                        size="s"
+                        variant="outlined"
                         disabled
                     />
                 </View>
@@ -173,7 +212,7 @@ const styles = StyleSheet.create({
         margin: 6,
     },
     outlinedButton: {
-        margin: 5,
+        margin: 6,
     },
 });
 

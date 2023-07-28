@@ -28,7 +28,7 @@ export const SubmitButton = ({ onPress, testID }: Props) => {
     return (
         <Pressable testID={testID} style={[styles.button]} onPress={() => onPress('submit')}>
             <View style={styles.icon}>
-                <Icon name={'keyboard-tab'} color={theme.sw.colors.primary[400]} size={24} />
+                <Icon name={'keyboard-tab'} color={theme.sw.colors.primary.main} size={24} />
             </View>
         </Pressable>
     );

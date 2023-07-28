@@ -3,66 +3,71 @@ import { StyleSheet } from 'react-native';
 import { IconButton as IconButtonBase } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 
-type IconButtonProps = React.ComponentProps<typeof IconButtonBase>;
-interface customIconButtonProps extends IconButtonProps {
-    scale?: 's' | 'm';
+type BaseIconButtonProps = React.ComponentProps<typeof IconButtonBase>;
+type FilteredIconButtonProps = Pick<
+    BaseIconButtonProps,
+    Exclude<keyof BaseIconButtonProps, 'mode' | 'size'>
+>;
+interface customIconButtonProps extends FilteredIconButtonProps {
+    size?: 's' | 'm';
     status?: 'primary' | 'default';
+    variant?: 'filled' | 'outlined' | 'icon';
 }
 
-export const IconButton = (iconButtonProps: customIconButtonProps) => {
+export const IconButton = (props: customIconButtonProps) => {
     const theme = useTheme();
-    const size =
-        iconButtonProps.scale === 's' ? theme.sw.iconbuttonsize.s : theme.sw.iconbuttonsize.m;
+    const size = props.size === 's' ? theme.sw.iconbuttonsize.s : theme.sw.iconbuttonsize.m;
+    const mode =
+        props.variant === 'filled' && props.status === 'primary'
+            ? 'contained-tonal'
+            : props.variant === 'filled'
+            ? 'contained'
+            : props.variant === 'icon'
+            ? undefined
+            : props.variant;
     const style = StyleSheet.create({
         iconButton: {
             borderRadius: Number(size) * 0.6,
         },
     });
 
-    if (iconButtonProps.mode === 'contained-tonal') {
+    if (mode === 'contained-tonal') {
         style.iconButton = {
             ...style.iconButton,
             ...{ backgroundColor: theme.colors.surfaceDisabled },
         };
     }
-    let editedIconButtonProps = {
+    let editedProps = {
         iconColor: theme.sw.colors.neutral[800],
     };
-    if (iconButtonProps.mode === 'contained') {
-        editedIconButtonProps = {
+    if (mode === 'contained') {
+        editedProps = {
             iconColor: theme.colors.onPrimary,
         };
     }
-    if (iconButtonProps.mode === undefined || iconButtonProps.mode === 'outlined') {
-        editedIconButtonProps = {
-            iconColor: theme.sw.colors.neutral[600],
-        };
-    }
-    if (
-        (iconButtonProps.mode === undefined || iconButtonProps.mode === 'contained') &&
-        iconButtonProps.disabled &&
-        iconButtonProps.scale === 's'
-    ) {
-        style.iconButton = {
-            ...style.iconButton,
-            ...{ backgroundColor: theme.colors.onPrimary },
+    if (mode === undefined || mode === 'outlined') {
+        editedProps = {
+            iconColor:
+                props.status === 'default' || props.status === undefined
+                    ? theme.sw.colors.neutral[800]
+                    : theme.sw.colors.neutral[600],
         };
     }
 
-    if (iconButtonProps.mode === 'outlined') {
-        if (iconButtonProps.status === 'primary') {
+    if (mode === 'outlined') {
+        if (props.status === 'primary') {
             style.iconButton = {
                 ...style.iconButton,
                 ...{ borderColor: theme.sw.colors.neutral[500] + theme.sw.transparency[32] },
             };
         }
-        if (iconButtonProps.status === 'default' || iconButtonProps.status === undefined) {
+        if (props.status === 'default' || props.status === undefined) {
             style.iconButton = {
                 ...style.iconButton,
                 ...{ borderColor: theme.sw.colors.neutral[800] + theme.sw.transparency[48] },
             };
         }
-        if (iconButtonProps.disabled) {
+        if (props.disabled) {
             style.iconButton = {
                 ...style.iconButton,
                 ...{ borderColor: theme.sw.colors.neutral[500] + theme.sw.transparency[24] },
@@ -70,21 +75,11 @@ export const IconButton = (iconButtonProps: customIconButtonProps) => {
         }
     }
 
-    if (
-        iconButtonProps.disabled &&
-        iconButtonProps.mode === 'outlined' &&
-        iconButtonProps.scale === 's'
-    ) {
-        editedIconButtonProps = {
-            iconColor: theme.sw.colors.neutral[600],
-            ...{ backgroundColor: theme.colors.surfaceDisabled },
-        };
-    }
-
     return (
         <IconButtonBase
-            {...iconButtonProps}
-            {...editedIconButtonProps}
+            {...props}
+            {...editedProps}
+            mode={mode}
             style={style.iconButton}
             size={size}
         />

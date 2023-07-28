@@ -50,7 +50,7 @@ export const DropDown = ({
     const getColors = () => {
         if (expanded) {
             return {
-                color: theme.sw.colors.primary[400],
+                color: theme.sw.colors.primary.main,
                 borderColor: theme.sw.colors.neutral[400],
             };
         }

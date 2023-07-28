@@ -22,102 +22,118 @@ exports[`MODULE | TextInput component renders correctly 1`] = `
     }
   >
     <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
     >
       <View
+        pointerEvents="none"
         style={
           {
-            "fontFamily": "PublicSans-Regular",
+            "marginBottom": 24,
           }
         }
       >
         <View
-          pointerEvents="none"
           style={
-            [
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 6,
-              },
-              {
-                "backgroundColor": "#FFFFFF",
-                "borderColor": "rgba(121, 116, 126, 1)",
-                "borderRadius": 8,
-                "borderWidth": 1,
-              },
-              {
-                "borderColor": "#E5EAEE",
-                "borderWidth": 1,
-              },
-            ]
+            {
+              "fontFamily": "PublicSans-Regular",
+            }
           }
-          testID="text-input-outline"
-        />
-        <View>
+        >
           <View
+            pointerEvents="none"
             style={
               [
                 {
-                  "paddingBottom": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 6,
                 },
                 {
-                  "minHeight": 56,
-                  "paddingTop": 8,
+                  "backgroundColor": "#FFFFFF",
+                  "borderColor": "#2F4158",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                },
+                {
+                  "borderColor": "#E5EAEE",
+                  "borderWidth": 1,
                 },
               ]
             }
-          >
-            <TextInput
-              editable={true}
-              maxFontSizeMultiplier={1.5}
-              multiline={false}
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholderTextColor="#919EAB"
-              selectionColor="#212B36"
+            testID="text-input-outline"
+          />
+          <View>
+            <View
               style={
                 [
                   {
-                    "margin": 0,
-                    "zIndex": 1,
+                    "paddingBottom": 0,
                   },
                   {
-                    "height": 56,
+                    "minHeight": 56,
+                    "paddingTop": 8,
                   },
-                  {
-                    "paddingBottom": 18.5,
-                    "paddingTop": 18.5,
-                  },
-                  {
-                    "color": "#1A2026",
-                    "fontFamily": "PublicSans-Regular",
-                    "fontSize": 16,
-                    "fontWeight": undefined,
-                    "letterSpacing": 0.15,
-                    "lineHeight": 19,
-                    "paddingHorizontal": 16,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                  },
-                  false,
-                  [
-                    {},
-                  ],
-                  undefined,
                 ]
               }
-              testID="text-input-outlined"
-              underlineColorAndroid="transparent"
-              value=""
-            />
+            >
+              <TextInput
+                editable={true}
+                maxFontSizeMultiplier={1.5}
+                multiline={false}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#919EAB"
+                selectionColor="#212B36"
+                style={
+                  [
+                    {
+                      "margin": 0,
+                      "zIndex": 1,
+                    },
+                    {
+                      "height": 56,
+                    },
+                    {
+                      "paddingBottom": 18.5,
+                      "paddingTop": 18.5,
+                    },
+                    {
+                      "color": "#1A2026",
+                      "fontFamily": "PublicSans-Regular",
+                      "fontSize": 16,
+                      "fontWeight": undefined,
+                      "letterSpacing": 0.15,
+                      "lineHeight": 19,
+                      "paddingHorizontal": 16,
+                      "textAlign": "left",
+                      "textAlignVertical": "center",
+                    },
+                    false,
+                    [
+                      {},
+                    ],
+                    undefined,
+                  ]
+                }
+                testID="text-input-outlined"
+                underlineColorAndroid="transparent"
+                value=""
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -148,102 +164,118 @@ exports[`MODULE | TextInput component renders correctly when textType in error s
     }
   >
     <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
     >
       <View
+        pointerEvents="none"
         style={
           {
-            "fontFamily": "PublicSans-Regular",
+            "marginBottom": 24,
           }
         }
       >
         <View
-          pointerEvents="none"
           style={
-            [
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 6,
-              },
-              {
-                "backgroundColor": "#FFFFFF",
-                "borderColor": "#FF5630",
-                "borderRadius": 8,
-                "borderWidth": 2,
-              },
-              {
-                "borderColor": "#FF5630",
-                "borderWidth": 1,
-              },
-            ]
+            {
+              "fontFamily": "PublicSans-Regular",
+            }
           }
-          testID="text-input-outline"
-        />
-        <View>
+        >
           <View
+            pointerEvents="none"
             style={
               [
                 {
-                  "paddingBottom": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 6,
                 },
                 {
-                  "minHeight": 56,
-                  "paddingTop": 8,
+                  "backgroundColor": "#FFFFFF",
+                  "borderColor": "#FF5630",
+                  "borderRadius": 8,
+                  "borderWidth": 2,
+                },
+                {
+                  "borderColor": "#FF5630",
+                  "borderWidth": 1,
                 },
               ]
             }
-          >
-            <TextInput
-              editable={true}
-              maxFontSizeMultiplier={1.5}
-              multiline={false}
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholderTextColor="#919EAB"
-              selectionColor="#FF5630"
+            testID="text-input-outline"
+          />
+          <View>
+            <View
               style={
                 [
                   {
-                    "margin": 0,
-                    "zIndex": 1,
+                    "paddingBottom": 0,
                   },
                   {
-                    "height": 56,
+                    "minHeight": 56,
+                    "paddingTop": 8,
                   },
-                  {
-                    "paddingBottom": 18.5,
-                    "paddingTop": 18.5,
-                  },
-                  {
-                    "color": "#1A2026",
-                    "fontFamily": "PublicSans-Regular",
-                    "fontSize": 16,
-                    "fontWeight": undefined,
-                    "letterSpacing": 0.15,
-                    "lineHeight": 19,
-                    "paddingHorizontal": 16,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                  },
-                  false,
-                  [
-                    {},
-                  ],
-                  undefined,
                 ]
               }
-              testID="text-input-outlined"
-              underlineColorAndroid="transparent"
-              value=""
-            />
+            >
+              <TextInput
+                editable={true}
+                maxFontSizeMultiplier={1.5}
+                multiline={false}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#919EAB"
+                selectionColor="#FF5630"
+                style={
+                  [
+                    {
+                      "margin": 0,
+                      "zIndex": 1,
+                    },
+                    {
+                      "height": 56,
+                    },
+                    {
+                      "paddingBottom": 18.5,
+                      "paddingTop": 18.5,
+                    },
+                    {
+                      "color": "#1A2026",
+                      "fontFamily": "PublicSans-Regular",
+                      "fontSize": 16,
+                      "fontWeight": undefined,
+                      "letterSpacing": 0.15,
+                      "lineHeight": 19,
+                      "paddingHorizontal": 16,
+                      "textAlign": "left",
+                      "textAlignVertical": "center",
+                    },
+                    false,
+                    [
+                      {},
+                    ],
+                    undefined,
+                  ]
+                }
+                testID="text-input-outlined"
+                underlineColorAndroid="transparent"
+                value=""
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -274,124 +306,140 @@ exports[`MODULE | TextInput component renders correctly with bottom text 1`] = `
     }
   >
     <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
     >
       <View
+        pointerEvents="none"
         style={
           {
-            "fontFamily": "PublicSans-Regular",
+            "marginBottom": 24,
           }
         }
       >
         <View
-          pointerEvents="none"
-          style={
-            [
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 6,
-              },
-              {
-                "backgroundColor": "#FFFFFF",
-                "borderColor": "rgba(121, 116, 126, 1)",
-                "borderRadius": 8,
-                "borderWidth": 1,
-              },
-              {
-                "borderColor": "#E5EAEE",
-                "borderWidth": 1,
-              },
-            ]
-          }
-          testID="text-input-outline"
-        />
-        <View>
-          <View
-            style={
-              [
-                {
-                  "paddingBottom": 0,
-                },
-                {
-                  "minHeight": 56,
-                  "paddingTop": 8,
-                },
-              ]
-            }
-          >
-            <TextInput
-              editable={true}
-              maxFontSizeMultiplier={1.5}
-              multiline={false}
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholderTextColor="#919EAB"
-              selectionColor="#212B36"
-              style={
-                [
-                  {
-                    "margin": 0,
-                    "zIndex": 1,
-                  },
-                  {
-                    "height": 56,
-                  },
-                  {
-                    "paddingBottom": 18.5,
-                    "paddingTop": 18.5,
-                  },
-                  {
-                    "color": "#1A2026",
-                    "fontFamily": "PublicSans-Regular",
-                    "fontSize": 16,
-                    "fontWeight": undefined,
-                    "letterSpacing": 0.15,
-                    "lineHeight": 19,
-                    "paddingHorizontal": 16,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                  },
-                  false,
-                  [
-                    {},
-                  ],
-                  undefined,
-                ]
-              }
-              testID="text-input-outlined"
-              underlineColorAndroid="transparent"
-              value=""
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "marginTop": 6,
-          }
-        }
-      >
-        <Text
           style={
             {
-              "color": "#637381",
-              "marginLeft": 6,
+              "fontFamily": "PublicSans-Regular",
             }
           }
         >
-          test
-        </Text>
+          <View
+            pointerEvents="none"
+            style={
+              [
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 6,
+                },
+                {
+                  "backgroundColor": "#FFFFFF",
+                  "borderColor": "#2F4158",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                },
+                {
+                  "borderColor": "#E5EAEE",
+                  "borderWidth": 1,
+                },
+              ]
+            }
+            testID="text-input-outline"
+          />
+          <View>
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 0,
+                  },
+                  {
+                    "minHeight": 56,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <TextInput
+                editable={true}
+                maxFontSizeMultiplier={1.5}
+                multiline={false}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#919EAB"
+                selectionColor="#212B36"
+                style={
+                  [
+                    {
+                      "margin": 0,
+                      "zIndex": 1,
+                    },
+                    {
+                      "height": 56,
+                    },
+                    {
+                      "paddingBottom": 18.5,
+                      "paddingTop": 18.5,
+                    },
+                    {
+                      "color": "#1A2026",
+                      "fontFamily": "PublicSans-Regular",
+                      "fontSize": 16,
+                      "fontWeight": undefined,
+                      "letterSpacing": 0.15,
+                      "lineHeight": 19,
+                      "paddingHorizontal": 16,
+                      "textAlign": "left",
+                      "textAlignVertical": "center",
+                    },
+                    false,
+                    [
+                      {},
+                    ],
+                    undefined,
+                  ]
+                }
+                testID="text-input-outlined"
+                underlineColorAndroid="transparent"
+                value=""
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginTop": 6,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#637381",
+                "marginLeft": 6,
+              }
+            }
+          >
+            test
+          </Text>
+        </View>
       </View>
     </View>
   </View>

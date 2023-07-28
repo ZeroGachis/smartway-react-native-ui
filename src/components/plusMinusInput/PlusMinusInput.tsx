@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
-import type { IconName } from '../icons/IconProps';
 import { TextInput } from '../inputs/TextInput';
 import { IconButton } from '../buttons/IconButton';
 
@@ -11,10 +10,10 @@ interface Props {
     minValue: number;
     maxValue: number;
     style?: ViewStyle;
-    minusIcon?: IconName;
-    plusIcon?: IconName;
+    minusIcon?: string;
+    plusIcon?: string;
     showSoftInputOnFocus?: boolean;
-    mode?: 'filled' | 'outlined' | 'inline';
+    variant?: 'filled' | 'outlined';
 }
 
 export const PlusMinusInput = ({
@@ -25,7 +24,7 @@ export const PlusMinusInput = ({
     maxValue,
     minusIcon = 'minus-fill',
     plusIcon = 'add-fill',
-    mode = 'inline',
+    variant = 'filled',
     showSoftInputOnFocus = false,
 }: Props) => {
     const theme = useTheme();
@@ -85,8 +84,8 @@ export const PlusMinusInput = ({
     return (
         <View style={styles.inputContainer}>
             <IconButton
-                mode={mode}
-                name={minusIcon}
+                variant={variant}
+                icon={minusIcon}
                 onPress={onMinus}
                 disabled={minusDisabled}
             ></IconButton>
@@ -101,8 +100,8 @@ export const PlusMinusInput = ({
                 textType={'information'}
             />
             <IconButton
-                mode={mode}
-                name={plusIcon}
+                variant={variant}
+                icon={plusIcon}
                 onPress={onAdd}
                 disabled={addDisabled}
             ></IconButton>
