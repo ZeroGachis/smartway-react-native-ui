@@ -1,6 +1,7 @@
 import {
     Body,
     Button,
+    IconButton,
     ActionCard,
     Dialog,
     Headline,
@@ -18,6 +19,7 @@ import {
     PrintState,
     EANInput,
     ModifyQuantity,
+    PlusMinusInput,
     Card,
     Tab,
     Label,
@@ -28,6 +30,7 @@ import { ThemeProvider, useTheme } from './styles/themes';
 export {
     Body,
     Button,
+    IconButton,
     ActionCard,
     Dialog,
     Headline,
@@ -47,6 +50,7 @@ export {
     PrintState,
     EANInput,
     ModifyQuantity,
+    PlusMinusInput,
     Card,
     Tab,
     Label,

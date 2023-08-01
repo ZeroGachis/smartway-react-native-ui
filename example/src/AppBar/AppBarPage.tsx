@@ -17,7 +17,7 @@ export const AppBarPage = ({ navigation }: Props) => {
 
     const menu = (
         <View>
-            <Button mode="outlined" onClick={() => setOpened(true)}>
+            <Button mode="outlined" onPress={() => setOpened(true)}>
                 {'Revalorisation'}
             </Button>
         </View>
@@ -64,7 +64,7 @@ export const AppBarPage = ({ navigation }: Props) => {
                 isOpened={isOpened}
                 onClose={() => setOpened(false)}
             >
-                <Button mode="filled" onClick={() => setOpened(false)}>
+                <Button mode="filled" onPress={() => setOpened(false)}>
                     Option
                 </Button>
             </BottomSheet>

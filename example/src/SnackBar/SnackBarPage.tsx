@@ -10,7 +10,7 @@ export const SnackBarPage = () => {
 
     return (
         <View style={{ flex: 1 }}>
-            <Button onClick={() => setVisible(true)}>open SnackBar</Button>
+            <Button onPress={() => setVisible(true)}>open SnackBar</Button>
             <SnackBar
                 visible={isVisible}
                 onDismiss={() => setVisible(false)}

@@ -9,10 +9,10 @@ export const DialogPage = () => {
     return (
         <Screen style={styles.container}>
             <StatusBar backgroundColor={'transparent'} />
-            <Button mode="text" onClick={() => setSingleOptionDialog(true)}>
+            <Button mode="text" onPress={() => setSingleOptionDialog(true)}>
                 single option
             </Button>
-            <Button mode="text" onClick={() => setTwoOptionsDialog(true)}>
+            <Button mode="text" onPress={() => setTwoOptionsDialog(true)}>
                 two options
             </Button>
             <Dialog

@@ -46,7 +46,7 @@ export const AppBar = ({
                 onPress={onTitlePress}
             />
             {subtitle !== undefined && (
-                <Button mode="text" onClick={onSubtitlePress}>
+                <Button mode="text" onPress={onSubtitlePress}>
                     {subtitle}
                 </Button>
             )}

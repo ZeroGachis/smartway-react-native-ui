@@ -1,10 +1,10 @@
 import React from 'react';
-import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
-import { TextInput } from '../inputs/TextInput';
 import { Body } from '../typography/Body';
+import { PlusMinusInput } from '../plusMinusInput/PlusMinusInput';
 
 interface Props {
     text: string;
@@ -26,16 +26,6 @@ export const ModifyQuantity = ({
     icon = 'etiquette',
 }: Props) => {
     const theme = useTheme();
-
-    const onAdd = () => {
-        onValueChange(value + 1);
-    };
-    const onMinus = () => {
-        onValueChange(value - 1);
-    };
-
-    const minusDisabled = minValue >= value;
-    const addDisabled = maxValue <= value;
 
     const styles = StyleSheet.create({
         container: {
@@ -80,30 +70,12 @@ export const ModifyQuantity = ({
                 </View>
                 <Body style={styles.text}>{text}</Body>
             </View>
-            <View style={styles.inputContainer}>
-                <Pressable disabled={minusDisabled} hitSlop={8} onPress={onMinus}>
-                    <Icon
-                        size={28}
-                        color={minusDisabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}
-                        name="minus-fill"
-                    />
-                </Pressable>
-                <TextInput
-                    showSoftInputOnFocus={false}
-                    style={styles.input}
-                    inputStyles={styles.inputText}
-                    value={value.toString()}
-                    textType={'information'}
-                />
-
-                <Pressable disabled={addDisabled} onPress={onAdd} hitSlop={8}>
-                    <Icon
-                        size={28}
-                        color={addDisabled ? '#919EAB3D' : theme.sw.colors.neutral[800]}
-                        name="add-fill"
-                    />
-                </Pressable>
-            </View>
+            <PlusMinusInput
+                minValue={minValue}
+                maxValue={maxValue}
+                onValueChange={onValueChange}
+                value={value}
+            ></PlusMinusInput>
         </View>
     );
 };

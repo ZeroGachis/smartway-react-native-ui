@@ -10,7 +10,37 @@ import { fontConfig } from './fonts';
 const theme = {
     ...MD3LightTheme,
     fonts: configureFonts({ config: fontConfig }),
+    colors: {
+        ...MD3LightTheme.colors,
+        onPrimary: '#FFFFFF', // neutral 50
+        primary: '#2F4158', // neutral 700
+
+        onSecondaryContainer: '#FFFFFF', // neutral 50
+        secondaryContainer: '#18A586', // primary 400
+
+        onSurfaceVariant: '#FFFFFF', // neutral 50
+        surfaceVariant: '#2F4158', // neutral 700
+
+        onSurfaceDisabled: '#919EAB' + '50', // neutral 500
+        surfaceDisabled: '#919EAB' + '3D', // neutral 500
+
+        outline: '#2F4158', // neutral 700
+    },
     sw: {
+        transparency: {
+            80: 'CC',
+            48: '7A',
+            32: '52',
+            24: '3D',
+        },
+        iconbuttonsize: {
+            m: 32,
+            s: 22,
+        },
+        buttonsize: {
+            m: 26,
+            s: 24,
+        },
         colors: {
             neutral: {
                 900: '#1A2026',
@@ -27,7 +57,7 @@ const theme = {
             primary: {
                 800: '#225348',
                 600: '#017F63',
-                400: '#18A586',
+                main: '#18A586',
                 200: '#31E3BC',
                 50: '#C5FCF0',
             },

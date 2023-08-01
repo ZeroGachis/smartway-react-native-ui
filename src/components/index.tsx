@@ -1,4 +1,5 @@
 import { Button } from './buttons/Button';
+import { IconButton } from './buttons/IconButton';
 import { Logo } from './logos/Logo';
 import { Screen } from './Screen';
 import { Headline } from './typography/Headline';
@@ -17,6 +18,7 @@ import { AppBar } from './appBar/AppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
+import { PlusMinusInput } from './plusMinusInput/PlusMinusInput';
 import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
@@ -25,6 +27,7 @@ import { Product } from './product/Product';
 export {
     Body,
     Button,
+    IconButton,
     ActionCard,
     Dialog,
     Headline,
@@ -42,6 +45,7 @@ export {
     EANInput,
     SnackBar,
     ModifyQuantity,
+    PlusMinusInput,
     Card,
     Tab,
     Label,
