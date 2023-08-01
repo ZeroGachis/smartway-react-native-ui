@@ -57,7 +57,7 @@ export const TextField = ({
         borderWidth: 1,
         borderColor:
             textType === 'error'
-                ? theme.sw.colors.error[400]
+                ? theme.sw.colors.error['main']
                 : inputRef.current?.isFocused() || value.length > 0
                 ? theme.sw.colors.neutral[500]
                 : theme.sw.colors.neutral[400],
@@ -82,7 +82,7 @@ export const TextField = ({
                     theme={{
                         roundness: 8,
                         colors: {
-                            error: theme.sw.colors.error[400],
+                            error: theme.sw.colors.error['main'],
                             text: theme.sw.colors.neutral[800],
                             onSurfaceVariant: theme.sw.colors.neutral[500],
                             primary: theme.sw.colors.neutral[800],

@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
-import { TextInput } from '../inputs/TextInput';
 import { IconButton } from '../buttons/IconButton';
+import { QuantityField } from '../quantityField/QuantityField';
 
 interface Props {
     value: number;
@@ -17,15 +17,15 @@ interface Props {
 }
 
 export const PlusMinusInput = ({
-    onValueChange,
     value,
-    style,
+    onValueChange,
     minValue = 0,
     maxValue,
-    minusIcon = 'minus-fill',
-    plusIcon = 'add-fill',
-    variant = 'filled',
+    style,
+    minusIcon = 'minus',
+    plusIcon = 'plus',
     showSoftInputOnFocus = false,
+    variant = 'filled',
 }: Props) => {
     const theme = useTheme();
 
@@ -58,10 +58,6 @@ export const PlusMinusInput = ({
             borderColor: theme.sw.colors.neutral[200],
             ...style,
         },
-        text: {
-            marginLeft: theme.sw.spacing.s,
-            color: theme.sw.colors.neutral[800],
-        },
         iconContainer: {
             flexDirection: 'row',
             alignItems: 'center',
@@ -69,16 +65,6 @@ export const PlusMinusInput = ({
         inputContainer: {
             alignItems: 'center',
             flexDirection: 'row',
-        },
-        input: {
-            marginBottom: 0,
-            marginHorizontal: theme.sw.spacing.xs,
-        },
-        inputText: {
-            textAlign: 'center',
-            justifyContent: 'center',
-            height: 38,
-            width: 46,
         },
     });
     return (
@@ -88,23 +74,16 @@ export const PlusMinusInput = ({
                 icon={minusIcon}
                 onPress={onMinus}
                 disabled={minusDisabled}
-            ></IconButton>
-            <TextInput
+            />
+            <QuantityField
                 showSoftInputOnFocus={showSoftInputOnFocus}
                 keyboardType="number-pad"
-                style={styles.input}
-                inputStyles={styles.inputText}
                 value={value.toString()}
                 onChangeText={onChangeText}
                 selectTextOnFocus={showSoftInputOnFocus}
-                textType={'information'}
+                mode="outlined"
             />
-            <IconButton
-                variant={variant}
-                icon={plusIcon}
-                onPress={onAdd}
-                disabled={addDisabled}
-            ></IconButton>
+            <IconButton variant={variant} icon={plusIcon} onPress={onAdd} disabled={addDisabled} />
         </View>
     );
 };

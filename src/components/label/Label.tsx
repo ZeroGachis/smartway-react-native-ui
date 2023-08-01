@@ -60,7 +60,7 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
                           color: theme.sw.colors.neutral[800],
                       }
                     : {
-                          backgroundColor: theme.sw.colors.error[400],
+                          backgroundColor: theme.sw.colors.error['main'],
                           color: theme.sw.colors.neutral[50],
                       };
         }
@@ -97,7 +97,7 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
                           color: theme.sw.colors.warning[600],
                       }
                     : {
-                          backgroundColor: theme.sw.colors.error[400] + transparencyValue,
+                          backgroundColor: theme.sw.colors.error['main'] + transparencyValue,
                           color: theme.sw.colors.error[600],
                       };
         }
@@ -134,8 +134,8 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
                           color: theme.sw.colors.warning[400],
                       }
                     : {
-                          borderColor: theme.sw.colors.error[400],
-                          color: theme.sw.colors.error[400],
+                          borderColor: theme.sw.colors.error['main'],
+                          color: theme.sw.colors.error['main'],
                       };
         }
     };

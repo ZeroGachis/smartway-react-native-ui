@@ -23,7 +23,6 @@ export const PlusMinusInputPage = () => {
                 maxValue={6}
                 minusIcon="minus"
                 plusIcon="plus"
-                mode="outlined"
             />
         </Screen>
     );

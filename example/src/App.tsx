@@ -6,6 +6,7 @@ import { HomeScreen } from './HomeScreen';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
+import { QuantityFieldPage } from './QuantityField/QuantityFieldPage'
 import { KeyboardPage } from './Keyboard/KeyboardPage';
 import { BottomSheetPage } from './BottomSheet/BottomSheetPage';
 import { DropDownPage } from './DropDown/DropDownPage';
@@ -39,6 +40,7 @@ export type RootStackParamList = {
     Card: undefined;
     ModifyQuantity: undefined;
     PlusMinusInput: undefined;
+    QuantityField: undefined;
     Tab: undefined;
     Label: undefined;
     ProductPage: undefined;
@@ -60,6 +62,7 @@ const App = () => {
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
                     <Stack.Screen name="Input" component={InputsPage} />
+                    <Stack.Screen name="QuantityField" component={QuantityFieldPage} />
                     <Stack.Screen name="Keyboard" component={KeyboardPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}

@@ -59,6 +59,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
+                            navigation.navigate('QuantityField');
+                        }}
+                    >
+                        QuantityField
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
                             navigation.navigate('DropDown');
                         }}
                     >

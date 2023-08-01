@@ -7,6 +7,7 @@ import { Body } from './typography/Body';
 import { ActionCard } from './actionCard/ActionCard';
 import { Dialog } from './dialogs/Dialog';
 import { TextField } from './fields/TextField';
+import { QuantityField } from './quantityField/QuantityField';
 import { Icon } from './icons/Icon';
 import { Keyboard } from './keyboard/Keyboard';
 import { BottomSheet } from './bottomSheet/BottomSheet';
@@ -34,7 +35,8 @@ export {
     Icon,
     Logo,
     Screen,
-    TextField as TextInput,
+    TextField,
+    QuantityField,
     DropDown,
     BottomSheet,
     Toggle,
