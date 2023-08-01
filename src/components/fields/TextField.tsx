@@ -20,7 +20,7 @@ interface Props extends TextInputProps {
     textColor?: string;
 }
 
-export const TextInput = ({
+export const TextField = ({
     style,
     label,
     value,
