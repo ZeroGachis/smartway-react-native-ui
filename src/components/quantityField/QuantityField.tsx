@@ -40,7 +40,6 @@ export const QuantityField = (props: QuantityFieldProps) => {
 
     const style = StyleSheet.create({
         input: {
-            marginHorizontal: 10,
             width: props?.size === 's' ? 43 : 72,
             height: props?.size === 's' ? 21 : 38,
             paddingVertical: props?.size === 's' ? 8 : 6,
@@ -67,12 +66,12 @@ export const QuantityField = (props: QuantityFieldProps) => {
     });
     return (
         <TextInput
-            style={style.input}
+            {...props}
+            style={[style.input, props.style]}
             outlineStyle={style.outline}
             contentStyle={style.content}
             keyboardType="number-pad"
             textAlign={'center'}
-            {...props}
         />
     );
 };
