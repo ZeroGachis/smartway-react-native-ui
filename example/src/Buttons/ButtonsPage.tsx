@@ -8,14 +8,16 @@ export const ButtonsPage = () => {
     return (
         <ThemeProvider>
             <Screen>
-                <View style={[
-                    styles.container,
-                    {
-                    flexDirection: 'column',
-                    },
-                ]}>
-                    <View style={{flexDirection: 'row', flexWrap: 'wrap'}} >
-                        <View >
+                <View
+                    style={[
+                        styles.container,
+                        {
+                            flexDirection: 'column',
+                        },
+                    ]}
+                >
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                        <View>
                             <Button style={styles.button} variant="filled">
                                 Filled
                             </Button>
@@ -30,14 +32,19 @@ export const ButtonsPage = () => {
                             <Button style={styles.button} size="s" variant="filled">
                                 Filled
                             </Button>
-                            <Button style={styles.button} size="s" variant="filled" status="primary">
+                            <Button
+                                style={styles.button}
+                                size="s"
+                                variant="filled"
+                                status="primary"
+                            >
                                 Filled
                             </Button>
                             <Button style={styles.button} size="s" disabled variant="filled">
                                 Filled
                             </Button>
                         </View>
-                        <View >
+                        <View>
                             <Button style={styles.button} variant="text">
                                 Text
                             </Button>
@@ -63,7 +70,11 @@ export const ButtonsPage = () => {
                             <Button style={styles.outlinedButton} variant="outlined">
                                 Outlined
                             </Button>
-                            <Button style={styles.outlinedButton} variant="outlined" status="primary">
+                            <Button
+                                style={styles.outlinedButton}
+                                variant="outlined"
+                                status="primary"
+                            >
                                 Outlined
                             </Button>
                             <Button style={styles.outlinedButton} disabled variant="outlined">
@@ -82,14 +93,24 @@ export const ButtonsPage = () => {
                             >
                                 Outlined
                             </Button>
-                            <Button style={styles.outlinedButton} size="s" disabled variant="outlined">
+                            <Button
+                                style={styles.outlinedButton}
+                                size="s"
+                                disabled
+                                variant="outlined"
+                            >
                                 Outlined
                             </Button>
                         </View>
                     </View>
-                    <View style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View>
-                            <IconButton icon="arrow-left" size="m" variant="filled" />
+                            <IconButton
+                                icon="arrow-left"
+                                style={styles.button}
+                                size="m"
+                                variant="filled"
+                            />
                             <IconButton
                                 icon="arrow-left"
                                 style={styles.button}
@@ -106,7 +127,12 @@ export const ButtonsPage = () => {
                             />
                         </View>
                         <View>
-                            <IconButton style={styles.button} icon="arrow-left" size="m" variant="icon" />
+                            <IconButton
+                                style={styles.button}
+                                icon="arrow-left"
+                                size="m"
+                                variant="icon"
+                            />
                             <IconButton
                                 style={styles.button}
                                 icon="arrow-left"

@@ -8,8 +8,8 @@ export const PlusMinusInputPage = () => {
 
     const styles = StyleSheet.create({
         container: {
+            flex: 0,
             alignItems: 'center',
-            paddingTop: theme.sw.spacing.m,
         },
     });
 
@@ -20,7 +20,7 @@ export const PlusMinusInputPage = () => {
                 showSoftInputOnFocus={true}
                 value={value}
                 minValue={0}
-                maxValue={6}
+                maxValue={999}
                 minusIcon="minus"
                 plusIcon="plus"
             />

@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { TextInput as FieldBase, TextInput } from 'react-native-paper';
+import { StyleSheet, TextInput, TextInputBase } from 'react-native';
 import { useTheme } from 'smartway-react-native-ui';
 
-type FieldBaseProps = React.ComponentProps<typeof FieldBase>;
+type FieldBaseProps = React.ComponentProps<typeof TextInputBase>;
 interface QuantityFieldProps extends FieldBaseProps {
     state?: 'readonly' | 'filled' | 'prefilled' | 'filled-focused' | 'prefilled-focused' | 'error';
     size?: 'm' | 's';
 }
+
 export const QuantityField = (props: QuantityFieldProps) => {
     const theme = useTheme();
 
@@ -40,36 +40,30 @@ export const QuantityField = (props: QuantityFieldProps) => {
 
     const style = StyleSheet.create({
         input: {
+            borderRadius: props?.size === 's' ? 10 : 18,
+            height: props?.size === 's' ? 38 : 48,
+            borderWidth: borderColor ? 1 : 0,
+            borderColor: borderColor,
+
             width: props?.size === 's' ? 43 : 72,
-            height: props?.size === 's' ? 21 : 38,
-            paddingVertical: props?.size === 's' ? 8 : 6,
-            fontSize: props?.size === 's' ? 18 : 32,
-        },
-        content: {
-            textAlign: 'center',
+
             color: textColor,
-            paddingVertical: 0,
-            paddingHorizontal: 0,
             fontStyle: 'normal',
             fontFamily: 'Public-Sans',
             fontWeight: '700',
-            alignItems: 'center',
-        },
-        outline: {
-            width: props?.size === 's' ? 43 : 72,
-            borderRadius: props?.size === 's' ? 10 : 18,
-            height: props?.size === 's' ? 37 : 50,
-            borderWidth: borderColor ? 1 : 0,
-            borderColor: borderColor,
+            fontSize: props?.size === 's' ? 18 : 32,
+            lineHeight: props?.size === 's' ? 38 : 48,
             backgroundColor: backgroundColor,
+            paddingVertical: 0,
+            marginVertical: 0,
         },
     });
     return (
         <TextInput
             {...props}
             style={[style.input, props.style]}
-            outlineStyle={style.outline}
-            contentStyle={style.content}
+            selectTextOnFocus={true}
+            selectionColor={theme.sw.colors.primary.main + theme.sw.transparency[16]}
             keyboardType="number-pad"
             textAlign={'center'}
         />

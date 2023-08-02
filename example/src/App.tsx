@@ -6,7 +6,7 @@ import { HomeScreen } from './HomeScreen';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
-import { QuantityFieldPage } from './QuantityField/QuantityFieldPage'
+import { QuantityFieldPage } from './QuantityField/QuantityFieldPage';
 import { KeyboardPage } from './Keyboard/KeyboardPage';
 import { BottomSheetPage } from './BottomSheet/BottomSheetPage';
 import { DropDownPage } from './DropDown/DropDownPage';

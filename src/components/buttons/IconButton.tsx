@@ -27,7 +27,9 @@ export const IconButton = (props: customIconButtonProps) => {
             : props.variant;
     const style = StyleSheet.create({
         iconButton: {
-            borderRadius: Number(size) * 0.6,
+            borderRadius: props.size === 's' ? 14 : 18,
+            padding: 0,
+            margin: 0,
         },
     });
 
@@ -80,7 +82,7 @@ export const IconButton = (props: customIconButtonProps) => {
             {...props}
             {...editedProps}
             mode={mode}
-            style={style.iconButton}
+            style={[style.iconButton, props.style]}
             size={size}
         />
     );
