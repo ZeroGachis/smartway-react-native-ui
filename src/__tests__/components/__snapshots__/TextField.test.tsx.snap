@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MODULE | TextInput component renders correctly 1`] = `
+exports[`MODULE | TextField component renders correctly 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
@@ -142,7 +142,7 @@ exports[`MODULE | TextInput component renders correctly 1`] = `
 </RNCSafeAreaProvider>
 `;
 
-exports[`MODULE | TextInput component renders correctly when textType in error state 1`] = `
+exports[`MODULE | TextField component renders correctly when textType in error state 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
@@ -284,7 +284,7 @@ exports[`MODULE | TextInput component renders correctly when textType in error s
 </RNCSafeAreaProvider>
 `;
 
-exports[`MODULE | TextInput component renders correctly with bottom text 1`] = `
+exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={

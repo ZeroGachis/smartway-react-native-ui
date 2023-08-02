@@ -21,7 +21,7 @@ const theme = {
         onSurfaceVariant: '#FFFFFF', // neutral 50
         surfaceVariant: '#2F4158', // neutral 700
 
-        onSurfaceDisabled: '#919EAB' + '50', // neutral 500
+        onSurfaceDisabled: '#919EAB', // neutral 500
         surfaceDisabled: '#919EAB' + '3D', // neutral 500
 
         outline: '#2F4158', // neutral 700

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TextInput, TextInputBase } from 'react-native';
-import { useTheme } from 'smartway-react-native-ui';
+import { useTheme } from '../../styles/themes';
 
 type FieldBaseProps = React.ComponentProps<typeof TextInputBase>;
 interface QuantityFieldProps extends FieldBaseProps {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { useTheme } from '../../styles/themes';
 import { IconButton } from '../buttons/IconButton';
 import { QuantityField } from '../quantityField/QuantityField';
 
@@ -14,6 +13,7 @@ interface Props {
     plusIcon?: string;
     showSoftInputOnFocus?: boolean;
     variant?: 'filled' | 'outlined';
+    size?: 'm' | 's';
 }
 
 export const PlusMinusInput = ({
@@ -26,6 +26,7 @@ export const PlusMinusInput = ({
     plusIcon = 'plus',
     showSoftInputOnFocus = false,
     variant = 'filled',
+    size = 'm',
 }: Props) => {
     const [tempValue, setTempValue] = useState<string>('0');
     const onAdd = () => {
@@ -75,6 +76,7 @@ export const PlusMinusInput = ({
                 variant={variant}
                 icon={minusIcon}
                 onPress={onMinus}
+                size={size}
                 disabled={minusDisabled}
             />
             <QuantityField
@@ -84,8 +86,15 @@ export const PlusMinusInput = ({
                 value={getDisplayedValue()}
                 onChangeText={onChangeText}
                 selectTextOnFocus={showSoftInputOnFocus}
+                size={size}
             />
-            <IconButton variant={variant} icon={plusIcon} onPress={onAdd} disabled={addDisabled} />
+            <IconButton
+                variant={variant}
+                icon={plusIcon}
+                onPress={onAdd}
+                disabled={addDisabled}
+                size={size}
+            />
         </View>
     );
 };

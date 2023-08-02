@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Icon, Screen, TextInput } from 'smartway-react-native-ui';
+import { StyleSheet } from 'react-native';
+import { Screen, TextField } from 'smartway-react-native-ui';
 
 export const InputsPage = () => {
     const [value, setValue] = useState('');
@@ -11,27 +11,27 @@ export const InputsPage = () => {
 
     return (
         <Screen style={styles.container}>
-            <TextInput
+            <TextField
                 label={'Label'}
                 text={'Information txt'}
                 value={value}
                 onChangeText={handleChangeValue}
                 textType={'information'}
             />
-            <TextInput
+            <TextField
                 text={'warning text'}
                 label={'Label'}
                 textType={'warning'}
                 value={'placeholder'}
             />
-            <TextInput
+            <TextField
                 text={'warning text with icon'}
                 icon={'dlc'}
                 label={'Label'}
                 textType={'warning'}
                 value={'placeholder'}
             />
-            <TextInput
+            <TextField
                 label={'Label'}
                 value={'placeholder'}
                 text={'error text'}

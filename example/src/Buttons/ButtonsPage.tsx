@@ -29,22 +29,6 @@ export const ButtonsPage = () => {
                             </Button>
                         </View>
                         <View>
-                            <Button style={styles.button} size="s" variant="filled">
-                                Filled
-                            </Button>
-                            <Button
-                                style={styles.button}
-                                size="s"
-                                variant="filled"
-                                status="primary"
-                            >
-                                Filled
-                            </Button>
-                            <Button style={styles.button} size="s" disabled variant="filled">
-                                Filled
-                            </Button>
-                        </View>
-                        <View>
                             <Button style={styles.button} variant="text">
                                 Text
                             </Button>
@@ -52,17 +36,6 @@ export const ButtonsPage = () => {
                                 Text
                             </Button>
                             <Button style={styles.button} disabled variant="text">
-                                Text
-                            </Button>
-                        </View>
-                        <View>
-                            <Button style={styles.button} size="s" variant="text">
-                                Text
-                            </Button>
-                            <Button style={styles.button} size="s" variant="text" status="primary">
-                                Text
-                            </Button>
-                            <Button style={styles.button} size="s" disabled variant="text">
                                 Text
                             </Button>
                         </View>
@@ -79,6 +52,33 @@ export const ButtonsPage = () => {
                             </Button>
                             <Button style={styles.outlinedButton} disabled variant="outlined">
                                 Outlined
+                            </Button>
+                        </View>
+                        <View>
+                            <Button style={styles.button} size="s" variant="filled">
+                                Filled
+                            </Button>
+                            <Button
+                                style={styles.button}
+                                size="s"
+                                variant="filled"
+                                status="primary"
+                            >
+                                Filled
+                            </Button>
+                            <Button style={styles.button} size="s" disabled variant="filled">
+                                Filled
+                            </Button>
+                        </View>
+                        <View>
+                            <Button style={styles.button} size="s" variant="text">
+                                Text
+                            </Button>
+                            <Button style={styles.button} size="s" variant="text" status="primary">
+                                Text
+                            </Button>
+                            <Button style={styles.button} size="s" disabled variant="text">
+                                Text
                             </Button>
                         </View>
                         <View>
