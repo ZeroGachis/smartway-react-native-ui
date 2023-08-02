@@ -11,6 +11,7 @@ export const QuantityFieldPage = () => {
         },
         quantityField: {
             marginHorizontal: 10,
+            marginVertical: 10,
         },
     });
 
@@ -20,38 +21,32 @@ export const QuantityFieldPage = () => {
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     size="m"
                     state="prefilled"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     state="prefilled-focused"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     state="filled-focused"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     state="filled"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     state="readonly"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     state="error"
                 />
             </View>
@@ -59,42 +54,36 @@ export const QuantityFieldPage = () => {
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     size="s"
                     state="prefilled"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     size="s"
                     state="prefilled-focused"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     size="s"
                     state="filled-focused"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     size="s"
                     state="filled"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     size="s"
                     state="readonly"
                 />
                 <QuantityField
                     style={styles.quantityField}
                     value="999"
-                    mode="outlined"
                     size="s"
                     state="error"
                 />
