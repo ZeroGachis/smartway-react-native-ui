@@ -22,7 +22,7 @@ jobs:
             - name: Rebuild & Prepare dependencies
               run: npm rebuild && npm run prepare --if-present
             - name: Run lint
-              run: npm run lint
+              run: npm run lint:check
             - name: Compile
               run: npm run tsc
             - name: Run tests

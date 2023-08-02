@@ -27,7 +27,8 @@
   "scripts": {
     "test": "jest",
     "tsc": "tsc --project tsconfig.build.json",
-    "lint": "prettier --check ."
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "keywords": [
     "react-native",
