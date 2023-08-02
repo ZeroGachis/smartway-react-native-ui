@@ -21,7 +21,7 @@ const theme = {
         onSurfaceVariant: '#FFFFFF', // neutral 50
         surfaceVariant: '#2F4158', // neutral 700
 
-        onSurfaceDisabled: '#919EAB' + '50', // neutral 500
+        onSurfaceDisabled: '#919EAB', // neutral 500
         surfaceDisabled: '#919EAB' + '3D', // neutral 500
 
         outline: '#2F4158', // neutral 700
@@ -32,6 +32,8 @@ const theme = {
             48: '7A',
             32: '52',
             24: '3D',
+            16: '29',
+            8: '14',
         },
         iconbuttonsize: {
             m: 32,
@@ -85,7 +87,7 @@ const theme = {
             },
             error: {
                 600: '#B71D18',
-                400: '#FF5630',
+                main: '#FF5630',
                 50: '#FFE9D5',
             },
         },

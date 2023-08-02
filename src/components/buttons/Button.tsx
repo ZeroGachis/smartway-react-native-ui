@@ -31,11 +31,21 @@ export const Button = (props: customButtonProps) => {
         },
     });
     let customStyle = undefined;
+    if (mode === 'contained' || mode === undefined) {
+        customStyle = StyleSheet.create({
+            button: {},
+            label: {
+                color: props.disabled
+                    ? theme.colors.onSurfaceDisabled
+                    : theme.sw.colors.neutral[50],
+            },
+        });
+    }
     if ((mode === 'text' || mode === 'outlined') && props.status === 'primary') {
         customStyle = StyleSheet.create({
             button: {
                 borderColor: theme.sw.colors.primary.main + theme.sw.transparency[48],
-                backgroundColor: '#ffffff',
+                backgroundColor: theme.sw.colors.neutral[50],
             },
             label: {
                 color: theme.colors.secondaryContainer,

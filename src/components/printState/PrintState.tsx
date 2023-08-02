@@ -49,7 +49,7 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
                 <Body style={styles.text}>{text}</Body>
             </View>
             <Button
-                labelStyle={{ color: theme.sw.colors.error[400] }}
+                labelStyle={{ color: theme.sw.colors.error['main'] }}
                 style={styles.buttonStyle}
                 onPress={onPress}
             >

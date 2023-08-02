@@ -1,16 +1,16 @@
 import React from 'react';
 import { fireEvent, render, act } from '@testing-library/react-native';
 import { ThemeProvider } from '../../styles/themes';
-import { TextInput } from '../../components';
+import { TextField } from '../../components';
 
 const mockedCallback = jest.fn();
 const mockedTestID = 'mockedTestID';
 
-describe('MODULE | TextInput', () => {
+describe('MODULE | TextField', () => {
     it('component renders correctly', () => {
         const tree = render(
             <ThemeProvider>
-                <TextInput textType="information" value="" />
+                <TextField textType="information" value="" />
             </ThemeProvider>,
         ).toJSON();
         expect(tree).toMatchSnapshot();
@@ -19,7 +19,7 @@ describe('MODULE | TextInput', () => {
     it('component renders correctly with bottom text', () => {
         const tree = render(
             <ThemeProvider>
-                <TextInput textType="information" value="" text="test" />
+                <TextField textType="information" value="" text="test" />
             </ThemeProvider>,
         ).toJSON();
         expect(tree).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('MODULE | TextInput', () => {
     it('component renders correctly when textType in error state', () => {
         const tree = render(
             <ThemeProvider>
-                <TextInput textType="error" value="" />
+                <TextField textType="error" value="" />
             </ThemeProvider>,
         ).toJSON();
         expect(tree).toMatchSnapshot();
@@ -37,7 +37,7 @@ describe('MODULE | TextInput', () => {
     it('fires callback when on input value change', async () => {
         const tree = render(
             <ThemeProvider>
-                <TextInput
+                <TextField
                     testID={mockedTestID}
                     textType="information"
                     value=""

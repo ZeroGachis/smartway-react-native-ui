@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { useTheme } from '../../styles/themes';
-import { TextInput } from '../inputs/TextInput';
 import { IconButton } from '../buttons/IconButton';
+import { QuantityField } from '../quantityField/QuantityField';
 
 interface Props {
     value: number;
@@ -14,31 +13,45 @@ interface Props {
     plusIcon?: string;
     showSoftInputOnFocus?: boolean;
     variant?: 'filled' | 'outlined';
+    size?: 'm' | 's';
 }
 
 export const PlusMinusInput = ({
-    onValueChange,
     value,
-    style,
+    onValueChange,
     minValue = 0,
     maxValue,
-    minusIcon = 'minus-fill',
-    plusIcon = 'add-fill',
-    variant = 'filled',
+    style,
+    minusIcon = 'minus',
+    plusIcon = 'plus',
     showSoftInputOnFocus = false,
+    variant = 'filled',
+    size = 'm',
 }: Props) => {
-    const theme = useTheme();
-
+    const [tempValue, setTempValue] = useState<string>('0');
     const onAdd = () => {
-        if (!addDisabled) onValueChange(value + 1);
+        if (!addDisabled) {
+            onValueChange(value + 1);
+            setTempValue((value + 1).toString());
+        }
     };
     const onMinus = () => {
-        if (!minusDisabled) onValueChange(value - 1);
+        if (!minusDisabled) {
+            onValueChange(value - 1);
+            setTempValue((value - 1).toString());
+        }
     };
     const onChangeText = (text: string) => {
-        const parsedValue = parseInt(text);
-        if (parsedValue && parsedValue >= minValue && parsedValue <= maxValue)
-            onValueChange(parsedValue);
+        if (text !== '') {
+            const parsedValue = parseInt(text);
+            if (parsedValue && parsedValue >= minValue && parsedValue <= maxValue) {
+                onValueChange(parsedValue);
+                setTempValue(text);
+            }
+        } else {
+            setTempValue('');
+            onValueChange(0);
+        }
     };
 
     const minusDisabled = minValue >= value;
@@ -46,65 +59,42 @@ export const PlusMinusInput = ({
 
     const styles = StyleSheet.create({
         container: {
-            width: '100%',
             flexDirection: 'row',
-            alignItems: 'center',
-            padding: theme.sw.spacing.l,
-            backgroundColor: theme.sw.colors.neutral[50],
-            borderRadius: 24,
-            justifyContent: 'space-between',
-            elevation: 1,
-            borderWidth: 1,
-            borderColor: theme.sw.colors.neutral[200],
             ...style,
         },
-        text: {
-            marginLeft: theme.sw.spacing.s,
-            color: theme.sw.colors.neutral[800],
-        },
-        iconContainer: {
-            flexDirection: 'row',
-            alignItems: 'center',
-        },
         inputContainer: {
-            alignItems: 'center',
-            flexDirection: 'row',
-        },
-        input: {
-            marginBottom: 0,
-            marginHorizontal: theme.sw.spacing.xs,
-        },
-        inputText: {
-            textAlign: 'center',
-            justifyContent: 'center',
-            height: 38,
-            width: 46,
+            marginHorizontal: 5,
+            flex: 0,
         },
     });
+    const getDisplayedValue = (): string => {
+        return tempValue.toString();
+    };
     return (
-        <View style={styles.inputContainer}>
+        <View style={styles.container}>
             <IconButton
                 variant={variant}
                 icon={minusIcon}
                 onPress={onMinus}
+                size={size}
                 disabled={minusDisabled}
-            ></IconButton>
-            <TextInput
+            />
+            <QuantityField
+                style={styles.inputContainer}
                 showSoftInputOnFocus={showSoftInputOnFocus}
                 keyboardType="number-pad"
-                style={styles.input}
-                inputStyles={styles.inputText}
-                value={value.toString()}
+                value={getDisplayedValue()}
                 onChangeText={onChangeText}
                 selectTextOnFocus={showSoftInputOnFocus}
-                textType={'information'}
+                size={size}
             />
             <IconButton
                 variant={variant}
                 icon={plusIcon}
                 onPress={onAdd}
                 disabled={addDisabled}
-            ></IconButton>
+                size={size}
+            />
         </View>
     );
 };

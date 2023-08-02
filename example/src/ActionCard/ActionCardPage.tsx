@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { ActionCard, Icon, EANInput, Screen, TextInput, useTheme } from 'smartway-react-native-ui';
+import { ActionCard, Icon, EANInput, Screen, TextField, useTheme } from 'smartway-react-native-ui';
 
 export const ActionCardPage = () => {
     const theme = useTheme();
@@ -25,7 +25,7 @@ export const ActionCardPage = () => {
                 <View style={{ alignItems: 'center' }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Icon size={24} name="close" />
-                        <TextInput
+                        <TextField
                             textType="information"
                             value="0"
                             style={{ marginBottom: 0, marginLeft: 12 }}

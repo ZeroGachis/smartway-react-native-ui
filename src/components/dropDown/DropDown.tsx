@@ -56,8 +56,8 @@ export const DropDown = ({
         }
         if (error) {
             return {
-                color: theme.sw.colors.error[400],
-                borderColor: theme.sw.colors.error[400],
+                color: theme.sw.colors.error['main'],
+                borderColor: theme.sw.colors.error['main'],
             };
         }
         if (selected) {

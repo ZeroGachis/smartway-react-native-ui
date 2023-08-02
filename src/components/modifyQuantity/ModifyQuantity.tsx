@@ -75,7 +75,7 @@ export const ModifyQuantity = ({
                 maxValue={maxValue}
                 onValueChange={onValueChange}
                 value={value}
-            ></PlusMinusInput>
+            />
         </View>
     );
 };

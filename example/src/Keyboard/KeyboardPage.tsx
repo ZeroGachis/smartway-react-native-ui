@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet } from 'react-native';
-import { Keyboard, Screen, TextInput, useTheme } from 'smartway-react-native-ui';
+import { Keyboard, Screen, TextField, useTheme } from 'smartway-react-native-ui';
 
 interface Inputs {
     upperInput: string;
@@ -22,13 +22,13 @@ export const KeyboardPage = () => {
     return (
         <>
             <Screen style={styles.container}>
-                <TextInput
+                <TextField
                     onFocus={() => setFocusedInput('upperInput')}
                     showSoftInputOnFocus={false}
                     value={inputValues.upperInput}
                     textType={'information'}
                 />
-                <TextInput
+                <TextField
                     showSoftInputOnFocus={false}
                     value={inputValues.bottomInput}
                     onFocus={() => setFocusedInput('bottomInput')}
