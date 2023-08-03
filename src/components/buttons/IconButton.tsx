@@ -2,16 +2,19 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { IconButton as IconButtonBase } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
+import { Icon } from '../icons/Icon';
+import type { IconName } from '../icons/IconProps';
 
 type BaseIconButtonProps = React.ComponentProps<typeof IconButtonBase>;
 type FilteredIconButtonProps = Pick<
     BaseIconButtonProps,
-    Exclude<keyof BaseIconButtonProps, 'mode' | 'size'>
+    Exclude<keyof BaseIconButtonProps, 'mode' | 'size' | 'icon'>
 >;
 interface customIconButtonProps extends FilteredIconButtonProps {
     size?: 's' | 'm';
     status?: 'primary' | 'default';
     variant?: 'filled' | 'outlined' | 'icon';
+    icon: IconName;
 }
 
 export const IconButton = (props: customIconButtonProps) => {
@@ -39,21 +42,19 @@ export const IconButton = (props: customIconButtonProps) => {
             ...{ backgroundColor: theme.colors.surfaceDisabled },
         };
     }
-    let editedProps = {
-        iconColor: theme.sw.colors.neutral[800],
-    };
+
+    let iconColor = theme.sw.colors.neutral[800];
     if (mode === 'contained') {
-        editedProps = {
-            iconColor: theme.colors.onPrimary,
-        };
+        iconColor = theme.colors.onPrimary;
     }
     if (mode === undefined || mode === 'outlined') {
-        editedProps = {
-            iconColor:
-                props.status === 'default' || props.status === undefined
-                    ? theme.sw.colors.neutral[800]
-                    : theme.sw.colors.neutral[600],
-        };
+        iconColor =
+            props.status === 'default' || props.status === undefined
+                ? theme.sw.colors.neutral[800]
+                : theme.sw.colors.neutral[600];
+    }
+    if (props.disabled) {
+        iconColor = theme.sw.colors.neutral[500];
     }
 
     if (mode === 'outlined') {
@@ -80,9 +81,9 @@ export const IconButton = (props: customIconButtonProps) => {
     return (
         <IconButtonBase
             {...props}
-            {...editedProps}
             mode={mode}
             style={[style.iconButton, props.style]}
+            icon={() => <Icon name={props.icon} size={size} color={iconColor} />}
             size={size}
         />
     );

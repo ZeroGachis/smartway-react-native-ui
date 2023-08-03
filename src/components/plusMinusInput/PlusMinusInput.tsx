@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
 import { QuantityField } from '../quantityField/QuantityField';
+import type { IconName } from '../icons/IconProps';
 
 interface Props {
     value: number;
@@ -9,8 +10,8 @@ interface Props {
     minValue: number;
     maxValue: number;
     style?: ViewStyle;
-    minusIcon?: string;
-    plusIcon?: string;
+    minusIcon?: IconName;
+    plusIcon?: IconName;
     showSoftInputOnFocus?: boolean;
     variant?: 'filled' | 'outlined';
     size?: 'm' | 's';
@@ -23,7 +24,7 @@ export const PlusMinusInput = ({
     maxValue,
     style,
     minusIcon = 'minus',
-    plusIcon = 'plus',
+    plusIcon = 'add',
     showSoftInputOnFocus = false,
     variant = 'filled',
     size = 'm',

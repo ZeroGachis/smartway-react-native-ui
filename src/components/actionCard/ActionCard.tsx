@@ -91,7 +91,7 @@ export const ActionCard = ({
                     <Body style={styles.title}>{title}</Body>
                     {displayClear && (
                         <Pressable style={styles.close} onPress={onClear} testID={buttonTestID}>
-                            <Icon name="close-fill" size={20} />
+                            <Icon name="close" size={20} />
                         </Pressable>
                     )}
                     <View>{children}</View>

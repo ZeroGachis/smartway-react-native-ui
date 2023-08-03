@@ -118,7 +118,7 @@ export const DropDown = ({
                         titleStyle={styles.accordionTitle}
                         title={selected ? selected.value : placeholder}
                         right={() =>
-                            expanded ? <Icon name="arrow-up" /> : <Icon name="arrow-down" />
+                            expanded ? <Icon name="expand-less" /> : <Icon name="expand-more" />
                         }
                     >
                         {options.map((option: DropDownOption, index: number) => (

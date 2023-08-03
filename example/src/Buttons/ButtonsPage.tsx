@@ -106,20 +106,20 @@ export const ButtonsPage = () => {
                     <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View>
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={styles.button}
                                 size="m"
                                 variant="filled"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={styles.button}
                                 size="m"
                                 variant="filled"
                                 status="primary"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={styles.button}
                                 size="m"
                                 disabled
@@ -129,20 +129,20 @@ export const ButtonsPage = () => {
                         <View>
                             <IconButton
                                 style={styles.button}
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 size="m"
                                 variant="icon"
                             />
                             <IconButton
                                 style={styles.button}
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 size="m"
                                 status="primary"
                                 variant="icon"
                             />
                             <IconButton
                                 style={styles.button}
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 size="m"
                                 disabled
                                 variant="icon"
@@ -151,20 +151,20 @@ export const ButtonsPage = () => {
                         <View>
                             <IconButton
                                 style={styles.button}
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 size="m"
                                 variant="outlined"
                             />
                             <IconButton
                                 style={styles.button}
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 size="m"
                                 variant="outlined"
                                 status="primary"
                             />
                             <IconButton
                                 style={styles.button}
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 size="m"
                                 variant="outlined"
                                 disabled
@@ -172,20 +172,20 @@ export const ButtonsPage = () => {
                         </View>
                         <View>
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.button}
                                 size="s"
                                 variant="filled"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.button}
                                 size="s"
                                 variant="filled"
                                 status="primary"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.button}
                                 size="s"
                                 variant="filled"
@@ -194,20 +194,20 @@ export const ButtonsPage = () => {
                         </View>
                         <View>
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.button}
                                 size="s"
                                 variant="icon"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.button}
                                 size="s"
                                 status="primary"
                                 variant="icon"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.button}
                                 size="s"
                                 disabled
@@ -216,20 +216,20 @@ export const ButtonsPage = () => {
                         </View>
                         <View>
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.outlinedButton}
                                 size="s"
                                 variant="outlined"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.outlinedButton}
                                 size="s"
                                 variant="outlined"
                                 status="primary"
                             />
                             <IconButton
-                                icon="arrow-left"
+                                icon="arrow-back"
                                 style={smallStyles.outlinedButton}
                                 size="s"
                                 variant="outlined"
