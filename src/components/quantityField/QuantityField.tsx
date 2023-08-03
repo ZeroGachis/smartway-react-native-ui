@@ -49,7 +49,7 @@ export const QuantityField = (props: QuantityFieldProps) => {
 
             color: textColor,
             fontStyle: 'normal',
-            fontFamily: 'Public-Sans',
+            fontFamily: 'PublicSans-Regular',
             fontWeight: '700',
             fontSize: props?.size === 's' ? 18 : 32,
             lineHeight: props?.size === 's' ? 38 : 48,

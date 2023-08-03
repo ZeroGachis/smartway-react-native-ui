@@ -24,31 +24,11 @@ export const QuantityFieldPage = () => {
                     size="m"
                     state="prefilled"
                 />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    state="prefilled-focused"
-                />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    state="filled-focused"
-                />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    state="filled"
-                />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    state="readonly"
-                />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    state="error"
-                />
+                <QuantityField style={styles.quantityField} value="999" state="prefilled-focused" />
+                <QuantityField style={styles.quantityField} value="999" state="filled-focused" />
+                <QuantityField style={styles.quantityField} value="999" state="filled" />
+                <QuantityField style={styles.quantityField} value="999" state="readonly" />
+                <QuantityField style={styles.quantityField} value="999" state="error" />
             </View>
             <View style={{ flexDirection: 'row' }}>
                 <QuantityField
@@ -69,24 +49,9 @@ export const QuantityFieldPage = () => {
                     size="s"
                     state="filled-focused"
                 />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    size="s"
-                    state="filled"
-                />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    size="s"
-                    state="readonly"
-                />
-                <QuantityField
-                    style={styles.quantityField}
-                    value="999"
-                    size="s"
-                    state="error"
-                />
+                <QuantityField style={styles.quantityField} value="999" size="s" state="filled" />
+                <QuantityField style={styles.quantityField} value="999" size="s" state="readonly" />
+                <QuantityField style={styles.quantityField} value="999" size="s" state="error" />
             </View>
         </Screen>
     );

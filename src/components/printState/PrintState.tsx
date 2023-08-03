@@ -45,7 +45,7 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
     return (
         <View style={styles.container}>
             <View style={styles.iconContainer}>
-                <Icon size={24} name="print" />
+                <Icon size={24} name="printer" />
                 <Body style={styles.text}>{text}</Body>
             </View>
             <Button

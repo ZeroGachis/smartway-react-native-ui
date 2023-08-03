@@ -24,8 +24,8 @@ export const PlusMinusInputPage = () => {
                         value={value}
                         minValue={0}
                         maxValue={999}
-                        minusIcon="arrow-left"
-                        plusIcon="arrow-right"
+                        minusIcon="arrow-back"
+                        plusIcon="arrow-forward"
                     />
                 </View>
                 <View>
