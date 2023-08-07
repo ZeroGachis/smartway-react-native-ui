@@ -1,0 +1,93 @@
+name: Build Design System Example App
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    build:
+        runs-on: [ubuntu-latest]
+        permissions:
+            id-token: write
+        defaults:
+            run:
+                working-directory: ./example
+        env:
+            smartway_keystore_name: smartway.keystore
+            node-version: 18
+            java-version: 11
+        steps:
+            - name: Tailscale
+              uses: tailscale/github-action@v2
+              with:
+                  authkey: ${{ secrets.TAILSCALE_AUTH_KEY }}
+                  version: ${{ vars.TAILSCALE_VERSION }}
+
+            - name: Import Secrets
+              id: secrets
+              uses: hashicorp/vault-action@v2
+              with:
+                  url: ${{ vars.VAULT_URL }}
+                  role: ${{ vars.VAULT_GITHUB_ACTIONS_ROLE }}
+                  method: jwt
+                  path: 'github-actions'
+                  secrets: |
+                      secret/data/smartapp/keystore KEYSTORE_PASSWORD | SMARTWAY_KEYSTORE_PASSWORD ;
+                      secret/data/smartapp/keystore KEYSTORE_PASSWORD | SMARTWAY_KEY_PASSWORD ;
+                      secret/data/smartapp/keystore KEY_ALIAS | SMARTWAY_KEY_ALIAS ;
+                      secret/data/github-actions-common/aws accessKey | AWS_ACCESS_KEY_ID ;
+                      secret/data/github-actions-common/aws secretKey | AWS_SECRET_ACCESS_KEY ;
+
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ env.node-version }}
+                  registry-url: 'https://npm.pkg.github.com'
+                  scope: '@ZeroGachis'
+
+            - name: Install lib dependencies
+              working-directory: .
+              run: npm ci --ignore-scripts
+
+            - uses: actions/setup-java@v3
+              with:
+                  distribution: 'temurin'
+                  java-version: ${{ env.java-version }}
+                  cache: 'gradle'
+
+            - name: Validate Gradle wrapper
+              uses: gradle/wrapper-validation-action@v1
+
+            - name: Setup Gradle
+              uses: gradle/gradle-build-action@v2
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v1-node16
+              with:
+                  aws-access-key-id: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: eu-west-1
+
+            - name: Get Smartway APK keystore
+              run: aws s3 cp s3://backup-zerogachis/github-actions/${{ env.smartway_keystore_name }} android/app/${{ env.smartway_keystore_name }}
+
+            - name: Install dependencies
+              run: npm install
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build Apk
+              working-directory: example/android/
+              run: ./gradlew assemblerelease
+              env:
+                  SMARTWAY_KEYSTORE_NAME: ${{ env.smartway_keystore_name }}
+
+            - name: Upload Apk
+              uses: actions/upload-artifact@v3
+              with:
+                  name: Design-system-samples-apk
+                  path: example/android/app/build/outputs/apk/**/app*.apk
