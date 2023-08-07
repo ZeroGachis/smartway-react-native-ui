@@ -23,6 +23,7 @@ import { TabPage } from './Tab/TabPage';
 import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
 import { ListPage } from './ListPage/ListPage';
+import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
 
 export type RootStackParamList = {
     Home: undefined;
@@ -46,6 +47,7 @@ export type RootStackParamList = {
     Label: undefined;
     ProductPage: undefined;
     ListPage: undefined;
+    TopAppBarPage: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -93,6 +95,7 @@ const App = () => {
                     <Stack.Screen name="Label" component={LabelPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />
                     <Stack.Screen name="ListPage" component={ListPage} />
+                    <Stack.Screen name="TopAppBarPage" component={TopAppBarPage} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>

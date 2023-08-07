@@ -192,6 +192,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                     >
                         List
                     </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
+                            navigation.navigate('TopAppBarPage');
+                        }}
+                    >
+                        TopAppBarPage
+                    </Button>
                 </Pressable>
             </ScrollView>
         </View>
