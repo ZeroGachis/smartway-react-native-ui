@@ -25,6 +25,7 @@ import {
     Tab,
     Label,
     Product,
+    Divider,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -57,4 +58,5 @@ export {
     Tab,
     Label,
     Product,
+    Divider,
 };

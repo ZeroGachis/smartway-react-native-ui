@@ -22,6 +22,7 @@ import { PlusMinusInputPage } from './PlusMinusInput/PlusMinusInputPage';
 import { TabPage } from './Tab/TabPage';
 import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
+import { ListPage } from './ListPage/ListPage';
 
 export type RootStackParamList = {
     Home: undefined;
@@ -44,6 +45,7 @@ export type RootStackParamList = {
     Tab: undefined;
     Label: undefined;
     ProductPage: undefined;
+    ListPage: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -90,6 +92,7 @@ const App = () => {
                     <Stack.Screen name="Tab" component={TabPage} />
                     <Stack.Screen name="Label" component={LabelPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />
+                    <Stack.Screen name="ListPage" component={ListPage} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>

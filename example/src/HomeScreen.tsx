@@ -184,6 +184,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                     >
                         Product
                     </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
+                            navigation.navigate('ListPage');
+                        }}
+                    >
+                        List
+                    </Button>
                 </Pressable>
             </ScrollView>
         </View>

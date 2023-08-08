@@ -1,0 +1,23 @@
+name: Publish Design System package
+
+on:
+    release:
+        types: [created]
+
+jobs:
+    build:
+        runs-on: [self-hosted, debian-stable]
+        steps:
+            - name: build-package
+              uses: ./.github/workflows/build-package.yml
+              with:
+                  node-version: 18
+                  java-version: 11
+                  configuration: release
+                  app-version: ${{ github.ref_name }}
+                  build-number: ${{ needs.format-version.outputs.app-version-formated }}${{ needs.format-version.outputs.build-number-formated }}
+
+            - name: publish-apk
+              run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

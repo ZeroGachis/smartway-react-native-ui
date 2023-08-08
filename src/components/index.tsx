@@ -24,6 +24,7 @@ import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
 import { Product } from './product/Product';
+import { Divider } from './divider/Divider';
 
 export {
     Body,
@@ -52,4 +53,5 @@ export {
     Tab,
     Label,
     Product,
+    Divider,
 };
