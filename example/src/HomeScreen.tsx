@@ -43,6 +43,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
+                            navigation.navigate('TypographyPage');
+                        }}
+                    >
+                        Typography
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
                             navigation.navigate('Dialog');
                         }}
                     >
@@ -191,6 +199,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                         }}
                     >
                         List
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
+                            navigation.navigate('TopAppBarPage');
+                        }}
+                    >
+                        TopAppBarPage
                     </Button>
                 </Pressable>
             </ScrollView>

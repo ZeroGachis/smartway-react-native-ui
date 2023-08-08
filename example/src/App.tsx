@@ -3,6 +3,7 @@ import { ThemeProvider } from 'smartway-react-native-ui';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { HomeScreen } from './HomeScreen';
+import { TypographyPage } from './TypographyPage/TypographyPage';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
@@ -23,9 +24,11 @@ import { TabPage } from './Tab/TabPage';
 import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
 import { ListPage } from './ListPage/ListPage';
+import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
 
 export type RootStackParamList = {
     Home: undefined;
+    TypographyPage: undefined;
     Buttons: undefined;
     Dialog: undefined;
     Input: undefined;
@@ -46,6 +49,7 @@ export type RootStackParamList = {
     Label: undefined;
     ProductPage: undefined;
     ListPage: undefined;
+    TopAppBarPage: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -61,6 +65,7 @@ const App = () => {
                     initialRouteName="Home"
                 >
                     <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="TypographyPage" component={TypographyPage} />
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
                     <Stack.Screen name="Input" component={InputsPage} />
@@ -93,6 +98,7 @@ const App = () => {
                     <Stack.Screen name="Label" component={LabelPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />
                     <Stack.Screen name="ListPage" component={ListPage} />
+                    <Stack.Screen name="TopAppBarPage" component={TopAppBarPage} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>

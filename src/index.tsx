@@ -26,6 +26,7 @@ import {
     Label,
     Product,
     Divider,
+    TopAppBar,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -59,4 +60,5 @@ export {
     Label,
     Product,
     Divider,
+    TopAppBar,
 };

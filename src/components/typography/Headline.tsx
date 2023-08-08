@@ -15,29 +15,25 @@ export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps
     let headlineStyle: StyleProp<TextStyle> = {};
     if (size === 'h1') {
         headlineStyle = {
-            fontSize: 28,
-            lineHeight: 33,
-            fontFamily: 'PublicSans-Black',
+            fontSize: 32,
+            fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h2') {
         headlineStyle = {
-            fontSize: 24,
-            lineHeight: 28,
-            fontFamily: 'PublicSans-ExtraBold',
+            fontSize: 26,
+            fontWeight: 'bold',
+            fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h3') {
         headlineStyle = {
-            fontSize: 20,
-            lineHeight: 24,
-            fontFamily: 'PublicSans-Black',
-            fontWeight: '700',
+            fontSize: 24,
+            fontWeight: 'bold',
+            fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h4') {
         headlineStyle = {
-            fontSize: 18,
-            lineHeight: 21,
-            letterSpacing: 1,
-            textTransform: 'uppercase',
+            fontSize: 20,
+            fontWeight: 'bold',
             fontFamily: 'PublicSans-Bold',
         };
     }

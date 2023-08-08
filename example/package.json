@@ -6,7 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "pods": "pod-install --quiet"
+    "pods": "pod-install --quiet",
+    "link-asset": "npx react-native-asset"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",
