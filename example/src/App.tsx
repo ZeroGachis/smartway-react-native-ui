@@ -3,6 +3,7 @@ import { ThemeProvider } from 'smartway-react-native-ui';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { HomeScreen } from './HomeScreen';
+import { TypographyPage } from './TypographyPage/TypographyPage';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
@@ -27,6 +28,7 @@ import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
 
 export type RootStackParamList = {
     Home: undefined;
+    TypographyPage: undefined;
     Buttons: undefined;
     Dialog: undefined;
     Input: undefined;
@@ -63,6 +65,7 @@ const App = () => {
                     initialRouteName="Home"
                 >
                     <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="TypographyPage" component={TypographyPage} />
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
                     <Stack.Screen name="Input" component={InputsPage} />
