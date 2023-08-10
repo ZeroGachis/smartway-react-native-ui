@@ -23,7 +23,7 @@ import { PlusMinusInputPage } from './PlusMinusInput/PlusMinusInputPage';
 import { TabPage } from './Tab/TabPage';
 import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
-import { ListPage } from './ListPage/ListPage';
+import { DividerPage } from './DividerPage/DividerPage';
 import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
 
 export type RootStackParamList = {
@@ -48,7 +48,7 @@ export type RootStackParamList = {
     Tab: undefined;
     Label: undefined;
     ProductPage: undefined;
-    ListPage: undefined;
+    DividerPage: undefined;
     TopAppBarPage: undefined;
 };
 
@@ -97,7 +97,7 @@ const App = () => {
                     <Stack.Screen name="Tab" component={TabPage} />
                     <Stack.Screen name="Label" component={LabelPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />
-                    <Stack.Screen name="ListPage" component={ListPage} />
+                    <Stack.Screen name="DividerPage" component={DividerPage} />
                     <Stack.Screen name="TopAppBarPage" component={TopAppBarPage} />
                 </Stack.Navigator>
             </NavigationContainer>

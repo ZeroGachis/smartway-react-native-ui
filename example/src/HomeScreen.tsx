@@ -195,10 +195,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('ListPage');
+                            navigation.navigate('DividerPage');
                         }}
                     >
-                        List
+                        Divider
                     </Button>
                     <Button
                         style={styles.button}

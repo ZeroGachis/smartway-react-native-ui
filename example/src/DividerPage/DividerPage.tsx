@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Switch, Text, View } from 'react-native';
-import { Body, Divider, PlusMinusInput, QuantityField, Screen } from 'smartway-react-native-ui';
+import { StyleSheet, Switch, View } from 'react-native';
+import { Body, Divider, PlusMinusInput, Screen } from 'smartway-react-native-ui';
 
-export const ListPage = () => {
+export const DividerPage = () => {
     const [marginTopOrLeft, setMarginTopOrLeft] = useState<number>(10);
     const [marginBottomOrRight, setMarginBottomOrRight] = useState<number>(10);
     const [dashed, setDashed] = useState<boolean>(false);
