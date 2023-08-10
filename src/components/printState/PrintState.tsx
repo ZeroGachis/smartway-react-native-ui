@@ -48,11 +48,7 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
                 <Icon size={24} name="printer" />
                 <Body style={styles.text}>{text}</Body>
             </View>
-            <Button
-                labelStyle={{ color: theme.sw.colors.error['main'] }}
-                style={styles.buttonStyle}
-                onPress={onPress}
-            >
+            <Button style={styles.buttonStyle} onPress={onPress}>
                 {buttonLabel}
             </Button>
         </View>

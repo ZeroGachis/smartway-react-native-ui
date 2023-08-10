@@ -71,7 +71,6 @@ export const Dialog = (props: DialogProps) => {
                     <View style={styles.actions}>
                         {props.onDismiss && props.dismissButtonLabel && (
                             <Button
-                                labelStyle={styles.leftOption}
                                 variant="text"
                                 onPress={props.onDismiss}
                                 testID={'PopupDismissButton'}
