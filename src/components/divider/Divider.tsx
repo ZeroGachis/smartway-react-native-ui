@@ -18,9 +18,9 @@ export const Divider = ({ style, orientation = 'horizontal', dashed = false }: P
         line: {
             borderBottomColor: theme.sw.colors.neutral[500] + theme.sw.transparency[24],
             borderRightColor: theme.sw.colors.neutral[500] + theme.sw.transparency[24],
-            borderBottomWidth: orientation == 'horizontal' ? 2 : 0,
+            borderBottomWidth: orientation == 'horizontal' ? 1 : 0,
             width: orientation == 'horizontal' ? '100%' : 'auto',
-            borderRightWidth: orientation == 'vertical' ? 2 : 0,
+            borderRightWidth: orientation == 'vertical' ? 1 : 0,
             height: orientation == 'vertical' ? '100%' : 'auto',
             borderStyle: dashed ? 'dashed' : 'solid',
         },
