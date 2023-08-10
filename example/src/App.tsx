@@ -7,7 +7,7 @@ import { TypographyPage } from './TypographyPage/TypographyPage';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
-import { QuantityFieldPage } from './QuantityField/QuantityFieldPage';
+import { NumberFieldPage } from './NumberField/NumberFieldPage';
 import { KeyboardPage } from './Keyboard/KeyboardPage';
 import { BottomSheetPage } from './BottomSheet/BottomSheetPage';
 import { DropDownPage } from './DropDown/DropDownPage';
@@ -44,7 +44,7 @@ export type RootStackParamList = {
     Card: undefined;
     ModifyQuantity: undefined;
     NumberSelector: undefined;
-    QuantityField: undefined;
+    NumberField: undefined;
     Tab: undefined;
     Label: undefined;
     ProductPage: undefined;
@@ -69,7 +69,7 @@ const App = () => {
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
                     <Stack.Screen name="Input" component={InputsPage} />
-                    <Stack.Screen name="QuantityField" component={QuantityFieldPage} />
+                    <Stack.Screen name="NumberField" component={NumberFieldPage} />
                     <Stack.Screen name="Keyboard" component={KeyboardPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}

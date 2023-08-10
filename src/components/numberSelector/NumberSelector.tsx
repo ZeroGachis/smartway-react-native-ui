@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
-import { QuantityField } from '../quantityField/QuantityField';
+import { NumberField } from '../numberField/NumberField';
 import type { IconName } from '../icons/IconProps';
 
 interface Props {
@@ -80,7 +80,7 @@ export const NumberSelector = ({
                 size={size}
                 disabled={minusDisabled}
             />
-            <QuantityField
+            <NumberField
                 style={styles.inputContainer}
                 showSoftInputOnFocus={showSoftInputOnFocus}
                 keyboardType="number-pad"
