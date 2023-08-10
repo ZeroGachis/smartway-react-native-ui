@@ -1,10 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Button, IconButton, Screen, ThemeProvider, useTheme } from 'smartway-react-native-ui';
+import { Button, IconButton, Screen, ThemeProvider } from 'smartway-react-native-ui';
 
 export const ButtonsPage = () => {
-    const theme = useTheme();
-
     return (
         <ThemeProvider>
             <Screen>

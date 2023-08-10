@@ -15,9 +15,7 @@ export const ActionCardPage = () => {
                 bottomChildren={
                     <EANInput
                         value={scanValue}
-                        onChangeText={(text) => {
-                            setValue(text);
-                        }}
+                        onChangeText={setValue}
                         placeholder="Scanner ou saisir un gencode"
                     />
                 }

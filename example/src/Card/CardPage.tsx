@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { Body, Button, Card, Headline, Icon, Screen, useTheme } from 'smartway-react-native-ui';
 
 export const CardPage = () => {
@@ -60,7 +60,9 @@ export const CardPage = () => {
                     testID="tag_enrollment_start_button"
                     style={style.button}
                     mode="filled"
-                    onPress={() => {}}
+                    onPress={() => {
+                        Alert.alert('Button pressed !');
+                    }}
                 >
                     start
                 </Button>

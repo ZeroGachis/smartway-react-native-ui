@@ -82,6 +82,12 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+            - name: Run lint
+              run: npm run lint
+
+            - name: Run TS compilation
+              run: npm run tsc
+
             - name: Build Apk
               working-directory: example/android/
               run: ./gradlew assemblerelease

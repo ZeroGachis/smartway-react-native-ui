@@ -1,12 +1,27 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 import { Headline, Menu, Screen } from 'smartway-react-native-ui';
 
 export const MenuPage = () => {
     const options = [
-        { title: 'Long element menu', onPress: () => {} },
-        { title: 'Element menu 2', onPress: () => {} },
-        { title: 'Option 3', onPress: () => {} },
+        {
+            title: 'Long element menu',
+            onPress: () => {
+                Alert.alert('Long element menu pressed !');
+            },
+        },
+        {
+            title: 'Element menu 2',
+            onPress: () => {
+                'Element menu 2 pressed';
+            },
+        },
+        {
+            title: 'Option 3',
+            onPress: () => {
+                'Option 3 pressed';
+            },
+        },
     ];
 
     const styles = StyleSheet.create({

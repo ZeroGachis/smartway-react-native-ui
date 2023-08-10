@@ -1,0 +1,23 @@
+// prettier-ignore
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es6"],
+    "types": ["jest", "node", "reflect-metadata"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "jsx": "react",
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    /* Completeness */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "paths": {
+      "app/*": ["./src/*"],
+    },
+    "strict": true
+  },
+  "include": ["../src/**/*.ts", "src", "index.js"], // Refer to local lib
+}
