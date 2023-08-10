@@ -29,7 +29,7 @@ export const PlusMinusInput = ({
     variant = 'filled',
     size = 'm',
 }: Props) => {
-    const [tempValue, setTempValue] = useState<string>('0');
+    const [tempValue, setTempValue] = useState<string>(value.toString());
     const onAdd = () => {
         if (!addDisabled) {
             onValueChange(value + 1);
