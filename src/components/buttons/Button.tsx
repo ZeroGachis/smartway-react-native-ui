@@ -1,15 +1,18 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import { Button as ButtonBase } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 
 type ButtonProps = React.ComponentProps<typeof ButtonBase>;
-interface customButtonProps extends ButtonProps {
+interface CustomButtonProps extends ButtonProps {
     size?: 's' | 'm';
     variant?: 'filled' | 'outlined' | 'text';
     status?: 'primary' | 'default';
+    disabled?: boolean;
+    style?: ViewStyle;
+    labelStyle?: ViewStyle;
 }
-export const Button = (props: customButtonProps) => {
+export const Button = (props: CustomButtonProps) => {
     const theme = useTheme();
     const mode =
         props.variant === 'filled' && props.status === 'primary'

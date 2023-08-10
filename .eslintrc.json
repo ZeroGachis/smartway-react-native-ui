@@ -38,6 +38,6 @@
       }
     ]
   },
-  "ignorePatterns": ["*/*.config.js", "*.config.js"],
+  "ignorePatterns": ["*/*.config.js", "*.config.js", "setup.js", "example"],
   "root": true
 }

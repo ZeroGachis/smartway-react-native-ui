@@ -27,5 +27,5 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["src", "example", "./.eslintrc.json"]
+  "include": ["src", "./.eslintrc.json", "jest.config.ts"]
 }

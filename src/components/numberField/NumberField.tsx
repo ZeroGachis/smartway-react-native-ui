@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, TextInput, TextInputBase } from 'react-native';
+import { StyleSheet, TextInput, TextInputBase, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
 type FieldBaseProps = React.ComponentProps<typeof TextInputBase>;
 interface NumberFieldProps extends FieldBaseProps {
     state?: 'readonly' | 'filled' | 'prefilled' | 'filled-focused' | 'prefilled-focused' | 'error';
     size?: 'm' | 's';
+    style?: ViewStyle;
 }
 
 export const NumberField = (props: NumberFieldProps) => {

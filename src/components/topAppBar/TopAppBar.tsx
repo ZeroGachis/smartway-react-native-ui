@@ -3,7 +3,7 @@ import { ButtonProps, StyleSheet, View } from 'react-native';
 import { Headline } from '../typography/Headline';
 import { IconButton } from '../buttons/IconButton';
 
-export interface IconButtonProps extends Pick<ButtonProps, 'onPress'> {}
+export type IconButtonProps = Pick<ButtonProps, 'onPress'>;
 
 interface Props {
     isExpanded?: boolean;

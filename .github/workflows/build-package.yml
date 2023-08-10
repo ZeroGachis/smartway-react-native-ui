@@ -39,6 +39,9 @@ jobs:
                   replacement: '"version": "${{ github.ref_name }}"'
                   include: 'package.json'
 
+            - name: Run lint
+              run: npm run lint
+
             - name: Compile
               run: npm run tsc
 
