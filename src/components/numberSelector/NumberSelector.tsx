@@ -17,7 +17,7 @@ interface Props {
     size?: 'm' | 's';
 }
 
-export const PlusMinusInput = ({
+export const NumberSelector = ({
     value,
     onValueChange,
     minValue = 0,

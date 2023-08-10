@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Switch, View } from 'react-native';
-import { Body, Divider, PlusMinusInput, Screen } from 'smartway-react-native-ui';
+import { Body, Divider, NumberSelector, Screen } from 'smartway-react-native-ui';
 
 export const DividerPage = () => {
     const [marginTopOrLeft, setMarginTopOrLeft] = useState<number>(10);
@@ -48,7 +48,7 @@ export const DividerPage = () => {
                 </View>
                 <View style={styles.option}>
                     <Body>Margin Top or Left</Body>
-                    <PlusMinusInput
+                    <NumberSelector
                         value={marginTopOrLeft}
                         onValueChange={(value) => setMarginTopOrLeft(value)}
                         minValue={0}
@@ -58,7 +58,7 @@ export const DividerPage = () => {
                 </View>
                 <View style={styles.option}>
                     <Body>Margin Bottom or Right</Body>
-                    <PlusMinusInput
+                    <NumberSelector
                         value={marginBottomOrRight}
                         onValueChange={(value) => setMarginBottomOrRight(value)}
                         minValue={0}

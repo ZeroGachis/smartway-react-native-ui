@@ -155,10 +155,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('PlusMinusInput');
+                            navigation.navigate('NumberSelector');
                         }}
                     >
-                        PlusMinusInput
+                        NumberSelector
                     </Button>
                     <Button
                         style={styles.button}

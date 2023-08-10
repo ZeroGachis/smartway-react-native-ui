@@ -19,7 +19,7 @@ import { AppBar } from './appBar/AppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
-import { PlusMinusInput } from './plusMinusInput/PlusMinusInput';
+import { NumberSelector } from './numberSelector/NumberSelector';
 import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
@@ -49,7 +49,7 @@ export {
     EANInput,
     SnackBar,
     ModifyQuantity,
-    PlusMinusInput,
+    NumberSelector,
     Card,
     Tab,
     Label,

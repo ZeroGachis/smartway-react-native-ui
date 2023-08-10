@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { PlusMinusInput, Screen } from 'smartway-react-native-ui';
+import { NumberSelector, Screen } from 'smartway-react-native-ui';
 
-export const PlusMinusInputPage = () => {
+export const NumberSelectorPage = () => {
     const [value, setValue] = useState<number>(0);
     const [otherValue, setOtherValue] = useState<number>(0);
 
@@ -18,7 +18,7 @@ export const PlusMinusInputPage = () => {
         <Screen>
             <View style={styles.container}>
                 <View style={{ paddingBottom: 5 }}>
-                    <PlusMinusInput
+                    <NumberSelector
                         onValueChange={setValue}
                         showSoftInputOnFocus={true}
                         value={value}
@@ -29,7 +29,7 @@ export const PlusMinusInputPage = () => {
                     />
                 </View>
                 <View>
-                    <PlusMinusInput
+                    <NumberSelector
                         onValueChange={setOtherValue}
                         showSoftInputOnFocus={true}
                         value={otherValue}
