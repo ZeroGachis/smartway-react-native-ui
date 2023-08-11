@@ -50,7 +50,7 @@ export const DividerPage = () => {
                     <Body>Margin Top or Left</Body>
                     <NumberSelector
                         value={marginTopOrLeft}
-                        onValueChange={(value) => setMarginTopOrLeft(value)}
+                        onValueChange={setMarginTopOrLeft}
                         minValue={0}
                         maxValue={100}
                         size="s"
@@ -60,7 +60,7 @@ export const DividerPage = () => {
                     <Body>Margin Bottom or Right</Body>
                     <NumberSelector
                         value={marginBottomOrRight}
-                        onValueChange={(value) => setMarginBottomOrRight(value)}
+                        onValueChange={setMarginBottomOrRight}
                         minValue={0}
                         maxValue={100}
                         size="s"
