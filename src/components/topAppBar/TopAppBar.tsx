@@ -3,7 +3,7 @@ import { ButtonProps, StyleSheet, View } from 'react-native';
 import { Headline } from '../typography/Headline';
 import { IconButton } from '../buttons/IconButton';
 
-export interface IconButtonProps extends Pick<ButtonProps, 'onPress'> {}
+export type IconButtonProps = Pick<ButtonProps, 'onPress'>;
 
 interface Props {
     isExpanded?: boolean;
@@ -31,10 +31,7 @@ export const TopAppBar = ({
             paddingRight: 24,
             display: 'flex',
             flex: 1,
-            justifyContent: 'center',
-        },
-        wrapper: {
-            alignSelf: 'stretch',
+            alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-between',
         },
@@ -42,35 +39,35 @@ export const TopAppBar = ({
     return (
         <View style={styles.root}>
             <View style={styles.container}>
-                <View style={{ display: isExpanded ? 'flex' : 'none', ...styles.wrapper }}>
-                    <IconButton
-                        {...backButton}
-                        status="primary"
-                        icon="arrow-back"
-                        variant="filled"
-                        size="m"
-                    ></IconButton>
-                    <IconButton
-                        {...moreButton}
-                        status="primary"
-                        icon="more"
-                        variant="filled"
-                        size="m"
-                    />
-                </View>
+                <IconButton
+                    style={{ display: isExpanded ? 'flex' : 'none' }}
+                    {...backButton}
+                    status="primary"
+                    icon="arrow-back"
+                    variant="filled"
+                    size="m"
+                ></IconButton>
+                <IconButton
+                    style={{ display: isExpanded ? 'flex' : 'none' }}
+                    {...moreButton}
+                    status="primary"
+                    icon="more"
+                    variant="filled"
+                    size="m"
+                />
             </View>
             <View style={styles.container}>
-                <View style={styles.wrapper}>
-                    <Headline size="h1">{children}</Headline>
-                    <IconButton
-                        {...settingsButton}
-                        style={{ display: !isExpanded && showSettings ? 'flex' : 'none' }}
-                        status="primary"
-                        icon="settings"
-                        variant="filled"
-                        size="m"
-                    ></IconButton>
-                </View>
+                <Headline size="h1">{children}</Headline>
+                <IconButton
+                    {...settingsButton}
+                    style={{
+                        display: !isExpanded && showSettings ? 'flex' : 'none',
+                    }}
+                    status="primary"
+                    icon="settings"
+                    variant="filled"
+                    size="m"
+                ></IconButton>
             </View>
         </View>
     );
