@@ -4,7 +4,7 @@ import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
-import { PlusMinusInput } from '../plusMinusInput/PlusMinusInput';
+import { NumberSelector } from '../numberSelector/NumberSelector';
 
 interface Props {
     text: string;
@@ -70,7 +70,7 @@ export const ModifyQuantity = ({
                 </View>
                 <Body style={styles.text}>{text}</Body>
             </View>
-            <PlusMinusInput
+            <NumberSelector
                 minValue={minValue}
                 maxValue={maxValue}
                 onValueChange={onValueChange}

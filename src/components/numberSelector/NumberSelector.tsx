@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
-import { QuantityField } from '../quantityField/QuantityField';
+import { NumberField } from '../numberField/NumberField';
 import type { IconName } from '../icons/IconProps';
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
     size?: 'm' | 's';
 }
 
-export const PlusMinusInput = ({
+export const NumberSelector = ({
     value,
     onValueChange,
     minValue = 0,
@@ -29,7 +29,7 @@ export const PlusMinusInput = ({
     variant = 'filled',
     size = 'm',
 }: Props) => {
-    const [tempValue, setTempValue] = useState<string>('0');
+    const [tempValue, setTempValue] = useState<string>(value.toString());
     const onAdd = () => {
         if (!addDisabled) {
             onValueChange(value + 1);
@@ -80,7 +80,7 @@ export const PlusMinusInput = ({
                 size={size}
                 disabled={minusDisabled}
             />
-            <QuantityField
+            <NumberField
                 style={styles.inputContainer}
                 showSoftInputOnFocus={showSoftInputOnFocus}
                 keyboardType="number-pad"

@@ -7,7 +7,7 @@ import { TypographyPage } from './TypographyPage/TypographyPage';
 import { ButtonsPage } from './Buttons/ButtonsPage';
 import { DialogPage } from './Dialog/DialogPage';
 import { InputsPage } from './Inputs/InputPage';
-import { QuantityFieldPage } from './QuantityField/QuantityFieldPage';
+import { NumberFieldPage } from './NumberField/NumberFieldPage';
 import { KeyboardPage } from './Keyboard/KeyboardPage';
 import { BottomSheetPage } from './BottomSheet/BottomSheetPage';
 import { DropDownPage } from './DropDown/DropDownPage';
@@ -19,11 +19,11 @@ import { PrintPage } from './PrintStatePage/PrintPage';
 import { ActionCardPage } from './ActionCard/ActionCardPage';
 import { CardPage } from './Card/CardPage';
 import { ModifyQuantityPage } from './ModifyQuantity/ModifyQuantityPage';
-import { PlusMinusInputPage } from './PlusMinusInput/PlusMinusInputPage';
+import { NumberSelectorPage } from './NumberSelector/NumberSelectorPage';
 import { TabPage } from './Tab/TabPage';
 import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
-import { ListPage } from './ListPage/ListPage';
+import { DividerPage } from './DividerPage/DividerPage';
 import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
 
 export type RootStackParamList = {
@@ -43,12 +43,12 @@ export type RootStackParamList = {
     ActionCard: undefined;
     Card: undefined;
     ModifyQuantity: undefined;
-    PlusMinusInput: undefined;
-    QuantityField: undefined;
+    NumberSelector: undefined;
+    NumberField: undefined;
     Tab: undefined;
     Label: undefined;
     ProductPage: undefined;
-    ListPage: undefined;
+    DividerPage: undefined;
     TopAppBarPage: undefined;
 };
 
@@ -69,7 +69,7 @@ const App = () => {
                     <Stack.Screen name="Buttons" component={ButtonsPage} />
                     <Stack.Screen name="Dialog" component={DialogPage} />
                     <Stack.Screen name="Input" component={InputsPage} />
-                    <Stack.Screen name="QuantityField" component={QuantityFieldPage} />
+                    <Stack.Screen name="NumberField" component={NumberFieldPage} />
                     <Stack.Screen name="Keyboard" component={KeyboardPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}
@@ -82,7 +82,7 @@ const App = () => {
                     <Stack.Screen name="Menu" component={MenuPage} />
                     <Stack.Screen name="PrintState" component={PrintPage} />
                     <Stack.Screen name="ModifyQuantity" component={ModifyQuantityPage} />
-                    <Stack.Screen name="PlusMinusInput" component={PlusMinusInputPage} />
+                    <Stack.Screen name="NumberSelector" component={NumberSelectorPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}
                         name="AppBar"
@@ -97,7 +97,7 @@ const App = () => {
                     <Stack.Screen name="Tab" component={TabPage} />
                     <Stack.Screen name="Label" component={LabelPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />
-                    <Stack.Screen name="ListPage" component={ListPage} />
+                    <Stack.Screen name="DividerPage" component={DividerPage} />
                     <Stack.Screen name="TopAppBarPage" component={TopAppBarPage} />
                 </Stack.Navigator>
             </NavigationContainer>

@@ -67,10 +67,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('QuantityField');
+                            navigation.navigate('NumberField');
                         }}
                     >
-                        QuantityField
+                        NumberField
                     </Button>
                     <Button
                         style={styles.button}
@@ -155,10 +155,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('PlusMinusInput');
+                            navigation.navigate('NumberSelector');
                         }}
                     >
-                        PlusMinusInput
+                        NumberSelector
                     </Button>
                     <Button
                         style={styles.button}
@@ -195,10 +195,10 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('ListPage');
+                            navigation.navigate('DividerPage');
                         }}
                     >
-                        List
+                        Divider
                     </Button>
                     <Button
                         style={styles.button}

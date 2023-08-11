@@ -7,7 +7,7 @@ import { Body } from './typography/Body';
 import { ActionCard } from './actionCard/ActionCard';
 import { Dialog } from './dialogs/Dialog';
 import { TextField } from './fields/TextField';
-import { QuantityField } from './quantityField/QuantityField';
+import { NumberField } from './numberField/NumberField';
 import { Icon } from './icons/Icon';
 import { Keyboard } from './keyboard/Keyboard';
 import { BottomSheet } from './bottomSheet/BottomSheet';
@@ -19,7 +19,7 @@ import { AppBar } from './appBar/AppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
-import { PlusMinusInput } from './plusMinusInput/PlusMinusInput';
+import { NumberSelector } from './numberSelector/NumberSelector';
 import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
@@ -38,7 +38,7 @@ export {
     Logo,
     Screen,
     TextField,
-    QuantityField,
+    NumberField,
     DropDown,
     BottomSheet,
     Toggle,
@@ -49,7 +49,7 @@ export {
     EANInput,
     SnackBar,
     ModifyQuantity,
-    PlusMinusInput,
+    NumberSelector,
     Card,
     Tab,
     Label,

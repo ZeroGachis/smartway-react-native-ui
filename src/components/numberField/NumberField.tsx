@@ -3,12 +3,12 @@ import { StyleSheet, TextInput, TextInputBase } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
 type FieldBaseProps = React.ComponentProps<typeof TextInputBase>;
-interface QuantityFieldProps extends FieldBaseProps {
+interface NumberFieldProps extends FieldBaseProps {
     state?: 'readonly' | 'filled' | 'prefilled' | 'filled-focused' | 'prefilled-focused' | 'error';
     size?: 'm' | 's';
 }
 
-export const QuantityField = (props: QuantityFieldProps) => {
+export const NumberField = (props: NumberFieldProps) => {
     const theme = useTheme();
 
     let borderColor = undefined;
@@ -50,7 +50,6 @@ export const QuantityField = (props: QuantityFieldProps) => {
             color: textColor,
             fontStyle: 'normal',
             fontFamily: 'PublicSans-Regular',
-            fontWeight: '700',
             fontSize: props?.size === 's' ? 18 : 32,
             lineHeight: props?.size === 's' ? 38 : 48,
             backgroundColor: backgroundColor,

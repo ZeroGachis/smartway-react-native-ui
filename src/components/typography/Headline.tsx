@@ -21,19 +21,16 @@ export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps
     } else if (size === 'h2') {
         headlineStyle = {
             fontSize: 26,
-            fontWeight: 'bold',
             fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h3') {
         headlineStyle = {
             fontSize: 24,
-            fontWeight: 'bold',
             fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h4') {
         headlineStyle = {
             fontSize: 20,
-            fontWeight: 'bold',
             fontFamily: 'PublicSans-Bold',
         };
     }
