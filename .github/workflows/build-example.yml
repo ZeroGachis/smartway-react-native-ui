@@ -24,9 +24,11 @@ jobs:
             - name: Tailscale
               uses: tailscale/github-action@v2
               with:
-                  authkey: ${{ secrets.TAILSCALE_AUTH_KEY }}
-                  version: ${{ vars.TAILSCALE_VERSION }}
-
+                oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+                oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+                tags: tag:ci
+                version: ${{ vars.TAILSCALE_VERSION }}
+                
             - name: Import Secrets
               id: secrets
               uses: hashicorp/vault-action@v2
