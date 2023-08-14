@@ -1,58 +1,66 @@
-import React from 'react';
-import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
-import { Dialog as BaseDialog, Portal } from 'react-native-paper';
+import React, { ReactNode } from 'react';
+import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { Dialog as BaseDialog, Portal, Text } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Button } from '../buttons/Button';
-import { Body } from '../typography/Body';
-import { Headline } from '../typography/Headline';
+
+interface Action {
+    label: string;
+    onPress: () => void;
+}
+
+interface DialogActions {
+    confirm: Action;
+    cancel?: Action;
+}
 
 interface DialogProps {
     visible: boolean;
     style?: ViewStyle;
     titleStyle?: TextStyle;
-    contentStyle?: ViewStyle;
     actionsStyle?: ViewStyle;
-    title: string;
-    content: string;
-    dismissButtonLabel?: string;
-    confirmButtonLabel: string;
-    onDismiss?: () => void;
-    onConfirm: () => void;
+    title?: string;
+    variant?: 'left' | 'center';
+    children?: ReactNode;
+    dismissable?: boolean;
+    actions: DialogActions;
 }
 
 export const Dialog = (props: DialogProps) => {
     const theme = useTheme();
 
+    const titleStyle: StyleProp<TextStyle> = {
+        textAlign: props.variant ?? 'left',
+        fontSize: 20,
+        fontFamily: 'PublicSans-Bold',
+        marginBottom: theme.sw.spacing.l,
+        marginTop: 0,
+    };
     const styles = StyleSheet.create({
         dialog: {
             borderRadius: theme.sw.spacing.l,
-            padding: theme.sw.spacing.l,
-            paddingTop: theme.sw.spacing.xl,
+            paddingHorizontal: 56,
+            paddingVertical: 40,
             marginTop: 0,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            width: 500,
             backgroundColor: theme.sw.colors.neutral[50],
             ...props.style,
-        },
-        title: {
-            marginBottom: theme.sw.spacing.l,
-            ...props.titleStyle,
-        },
-        content: {
-            marginBottom: theme.sw.spacing.l,
-            color: theme.sw.colors.neutral[600],
-            ...props.contentStyle,
         },
         actions: {
             flexDirection: 'row',
             justifyContent: 'flex-end',
+            marginRight: 0,
+            marginTop: theme.sw.spacing.l,
             ...props.actionsStyle,
         },
         leftOption: {
             color: theme.sw.colors.neutral[800],
-            fontWeight: 'bold',
-            marginRight: theme.sw.spacing.m,
+            marginRight: theme.sw.spacing.xs,
         },
         rightOption: {
-            flex: props.dismissButtonLabel ? 0 : 1,
+            flex: props.actions.cancel ? 0 : 1,
         },
     });
 
@@ -61,33 +69,32 @@ export const Dialog = (props: DialogProps) => {
             <BaseDialog
                 theme={{ colors: { backdrop: '#1A2026B2' } }}
                 visible={props.visible}
-                onDismiss={props.onDismiss}
+                onDismiss={props.actions.cancel?.onPress}
+                dismissable={props.dismissable}
+                style={styles.dialog}
             >
-                <View style={styles.dialog}>
-                    <Headline size="h3" style={styles.title} testID={'PopupTitle'}>
-                        {props.title}
-                    </Headline>
-                    <Body style={styles.content}>{props.content}</Body>
-                    <View style={styles.actions}>
-                        {props.onDismiss && props.dismissButtonLabel && (
-                            <Button
-                                variant="text"
-                                onPress={props.onDismiss}
-                                testID={'PopupDismissButton'}
-                            >
-                                {props.dismissButtonLabel}
-                            </Button>
-                        )}
-
+                <Text style={titleStyle}>{props.title}</Text>
+                {props.children}
+                <View style={styles.actions}>
+                    {props.actions.cancel && (
                         <Button
-                            variant="filled"
-                            onPress={props.onConfirm}
-                            testID={'PopupConfirmButton'}
-                            style={styles.rightOption}
+                            variant="text"
+                            onPress={props.actions.cancel.onPress}
+                            testID={'PopupDismissButton'}
+                            style={styles.leftOption}
                         >
-                            {props.confirmButtonLabel}
+                            {props.actions.cancel.label}
                         </Button>
-                    </View>
+                    )}
+                    <Button
+                        variant="filled"
+                        status={'primary'}
+                        onPress={props.actions.confirm.onPress}
+                        testID={'PopupConfirmButton'}
+                        style={styles.rightOption}
+                    >
+                        {props.actions.confirm.label}
+                    </Button>
                 </View>
             </BaseDialog>
         </Portal>
