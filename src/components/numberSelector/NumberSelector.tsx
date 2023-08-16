@@ -88,6 +88,7 @@ export const NumberSelector = ({
                 onChangeText={onChangeText}
                 selectTextOnFocus={showSoftInputOnFocus}
                 size={size}
+                state={'prefilled'}
             />
             <IconButton
                 variant={variant}

@@ -27,7 +27,7 @@ export const Button = (props: customButtonProps) => {
             marginHorizontal: props?.size === 's' ? 16 : 22,
             lineHeight: props?.size === 's' ? 24 : 26,
             fontSize: props?.size === 's' ? 14 : 16,
-            fontWeight: '700',
+            fontFamily: 'PublicSans-Bold',
         },
     });
     let customStyle = undefined;
