@@ -29,7 +29,7 @@ export const NumberFieldPage = () => {
                 <NumberField style={styles.numberField} value="999" size="s" state="prefilled" />
                 <NumberField
                     style={styles.numberField}
-                    value="999"
+                    value={'999'}
                     size="s"
                     state="prefilled-focused"
                 />

@@ -23,7 +23,7 @@ export const NumberSelectorPage = () => {
                         showSoftInputOnFocus={true}
                         value={value}
                         minValue={0}
-                        maxValue={999}
+                        maxValue={998}
                         minusIcon="arrow-back"
                         plusIcon="arrow-forward"
                     />
@@ -35,7 +35,7 @@ export const NumberSelectorPage = () => {
                         value={otherValue}
                         size="s"
                         minValue={0}
-                        maxValue={999}
+                        maxValue={998}
                     />
                 </View>
             </View>

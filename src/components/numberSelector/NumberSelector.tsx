@@ -32,16 +32,10 @@ export const NumberSelector = ({
     const [tempValue, setTempValue] = useState<string>(value.toString());
 
     const onAdd = () => {
-        if (!addDisabled) {
-            onValueChange(value + 1);
-            setTempValue((value + 1).toString());
-        }
+        if (!addDisabled) onChangeText((value + 1).toString());
     };
     const onMinus = () => {
-        if (!minusDisabled) {
-            onValueChange(value - 1);
-            setTempValue((value - 1).toString());
-        }
+        if (!minusDisabled) onChangeText((value - 1).toString());
     };
     const onChangeText = (text: string) => {
         const cleanNumber = text.replace(/[^0-9]/g, '');
@@ -52,8 +46,8 @@ export const NumberSelector = ({
                 setTempValue(parsedValue.toString());
             }
         } else {
-            setTempValue('');
             onValueChange(0);
+            setTempValue('');
         }
     };
 

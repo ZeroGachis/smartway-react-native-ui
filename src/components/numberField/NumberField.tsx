@@ -16,8 +16,13 @@ export const NumberField = ({ state = 'prefilled', size = 'm', ...props }: Numbe
     const [filled, setFilled] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const [focused, setFocused] = useState<boolean>(false);
+    const [forcedState, setForcedState] = useState<boolean>(true);
 
     useEffect(() => {
+        if (forcedState) {
+            setForcedState(false);
+            return;
+        }
         refreshCurrentState();
     }, [error, filled, focused]);
 
@@ -131,6 +136,7 @@ export const NumberField = ({ state = 'prefilled', size = 'm', ...props }: Numbe
             onFocus={(e) => onFocus(e)}
             selectionColor={theme.sw.colors.primary.main + theme.sw.transparency[16]}
             keyboardType="number-pad"
+            editable={state !== 'readonly'}
             textAlign={'center'}
         />
     );
