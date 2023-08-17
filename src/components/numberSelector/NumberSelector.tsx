@@ -30,6 +30,7 @@ export const NumberSelector = ({
     size = 'm',
 }: Props) => {
     const [tempValue, setTempValue] = useState<string>(value.toString());
+
     const onAdd = () => {
         if (!addDisabled) {
             onValueChange(value + 1);
@@ -43,11 +44,12 @@ export const NumberSelector = ({
         }
     };
     const onChangeText = (text: string) => {
-        if (text !== '') {
-            const parsedValue = parseInt(text);
-            if (parsedValue && parsedValue >= minValue && parsedValue <= maxValue) {
+        const cleanNumber = text.replace(/[^0-9]/g, '');
+        if (cleanNumber !== '') {
+            const parsedValue = parseInt(cleanNumber);
+            if (parsedValue !== undefined && parsedValue >= minValue && parsedValue <= maxValue) {
                 onValueChange(parsedValue);
-                setTempValue(text);
+                setTempValue(parsedValue.toString());
             }
         } else {
             setTempValue('');
@@ -85,10 +87,11 @@ export const NumberSelector = ({
                 showSoftInputOnFocus={showSoftInputOnFocus}
                 keyboardType="number-pad"
                 value={getDisplayedValue()}
+                minValue={minValue}
+                maxValue={maxValue}
                 onChangeText={onChangeText}
                 selectTextOnFocus={showSoftInputOnFocus}
                 size={size}
-                state={'prefilled'}
             />
             <IconButton
                 variant={variant}
