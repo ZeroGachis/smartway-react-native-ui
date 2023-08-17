@@ -79,15 +79,15 @@ export const Product = ({
         <Pressable onPress={onPress} style={[styles.container, style]}>
             <View style={styles.picture}>
                 <View style={styles.quantityContainer}>
-                    <Body size="small">{`x${quantity}`}</Body>
+                    <Body size="B3">{`x${quantity}`}</Body>
                 </View>
             </View>
             <View style={{ flexShrink: 1 }}>
-                <Body numberOfLines={1} style={styles.label} size="semi-bold">
+                <Body numberOfLines={1} style={styles.label} size="B1" weight="semi-bold">
                     {label}
                 </Body>
 
-                <Body style={styles.barcodePrice} size="small">
+                <Body style={styles.barcodePrice} size="B3">
                     {`${barcode}  •  ${initialPrice}`}
                 </Body>
 
@@ -107,7 +107,7 @@ export const Product = ({
                         />
                     </View>
 
-                    <Body size="small" style={styles.date}>
+                    <Body size="B2" style={styles.date}>
                         {scanDate}
                     </Body>
                 </View>

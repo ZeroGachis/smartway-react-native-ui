@@ -1,50 +1,63 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { StyleProp, Text, TextStyle } from 'react-native';
-import { useTheme } from '../../styles/themes';
+import type { TextProps } from 'react-native-paper';
 
-interface BodyProps {
-    size?: 'default' | 'semi-bold' | 'medium' | 'small';
-    children?: ReactNode;
-    style?: TextStyle;
-    testID?: string;
-    numberOfLines?: number;
+export const toCamelCase = (str: string): string =>
+    str
+        .split('-')
+        .map(([first, ...rest]) => {
+            if (first === undefined) return '';
+            return first.toUpperCase() + rest.join('').toLowerCase();
+        })
+        .join('');
+
+interface BodyProps extends TextProps<Text> {
+    size?: 'B1' | 'B2' | 'B3';
+    weight?: 'regular' | 'semi-bold' | 'bold';
 }
 
-export const Body = ({ size = 'default', children, style, testID, numberOfLines }: BodyProps) => {
-    const theme = useTheme();
-    let bodyStyle: StyleProp<TextStyle> = {};
-    if (size === 'default') {
+export const Body = (props: BodyProps) => {
+    const { size, weight, children, style } = props;
+    const weightSuffix = toCamelCase(weight === undefined ? 'regular' : weight);
+
+    let bodyStyle: StyleProp<TextStyle> = style;
+    switch (size) {
+        case 'B1':
+            bodyStyle = {
+                fontSize: 16,
+            };
+            break;
+        case 'B2':
+            bodyStyle = {
+                fontSize: 14,
+            };
+            break;
+        case 'B3':
+            bodyStyle = {
+                fontSize: 12,
+            };
+            break;
+        default:
+            bodyStyle = {
+                fontSize: 14,
+            };
+            break;
+    }
+
+    if (weight === 'bold') {
         bodyStyle = {
-            fontSize: 16,
-            lineHeight: 19,
-        };
-    } else if (size == 'semi-bold') {
-        bodyStyle = {
-            fontSize: 16,
-            lineHeight: 19,
-            fontWeight: '600',
-            fontFamily: 'PublicSans-SemiBold',
-        };
-    } else if (size === 'medium') {
-        bodyStyle = {
-            fontSize: 14,
-            lineHeight: 16,
-        };
-    } else if (size === 'small') {
-        bodyStyle = {
-            fontSize: 12,
-            lineHeight: 14,
+            ...bodyStyle,
+            lineHeight: 20,
         };
     }
 
     bodyStyle = {
-        color: theme.sw.colors.neutral[800],
-        fontFamily: 'PublicSans-Regular',
         ...bodyStyle,
-        ...style,
+        fontFamily: 'PublicSans-' + weightSuffix,
     };
+
     return (
-        <Text style={bodyStyle} numberOfLines={numberOfLines} testID={testID}>
+        <Text {...props} style={[style, bodyStyle]}>
             {children}
         </Text>
     );
