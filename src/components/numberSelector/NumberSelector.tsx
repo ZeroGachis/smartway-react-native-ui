@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
 import { NumberField } from '../numberField/NumberField';
@@ -29,6 +29,8 @@ export const NumberSelector = ({
     variant = 'filled',
     size = 'm',
 }: Props) => {
+    let refInput = useRef<any>();
+
     const [tempValue, setTempValue] = useState<string>(value.toString());
 
     const onAdd = () => {
@@ -38,6 +40,7 @@ export const NumberSelector = ({
         if (!minusDisabled) onChangeText((value - 1).toString());
     };
     const onChangeText = (text: string) => {
+        refInput?.current?.focus();
         const cleanNumber = text.replace(/[^0-9]/g, '');
         if (cleanNumber !== '') {
             const parsedValue = parseInt(cleanNumber);
@@ -77,6 +80,7 @@ export const NumberSelector = ({
                 disabled={minusDisabled}
             />
             <NumberField
+                ref={refInput}
                 style={styles.inputContainer}
                 showSoftInputOnFocus={showSoftInputOnFocus}
                 keyboardType="number-pad"
