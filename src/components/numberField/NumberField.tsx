@@ -1,7 +1,6 @@
 import React, { createRef, useEffect, useImperativeHandle, useState } from 'react';
 import { StyleSheet, TextInput, TextInputBase, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
-import { CardPage } from 'example/src/Card/CardPage';
 
 type FieldBaseProps = React.ComponentProps<typeof TextInputBase>;
 interface NumberFieldProps extends FieldBaseProps {
@@ -12,7 +11,16 @@ interface NumberFieldProps extends FieldBaseProps {
 }
 
 export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
-    ({ state = 'prefilled', size = 'm', ...props }: NumberFieldProps, ref) => {
+    (
+        {
+            state = 'prefilled',
+            size = 'm',
+            minValue = 0,
+            maxValue = 999,
+            ...props
+        }: NumberFieldProps,
+        ref,
+    ) => {
         const theme = useTheme();
 
         const [currentState, setCurrentState] = useState<string>(state);
@@ -22,6 +30,8 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
         const [forcedState, setForcedState] = useState<boolean>(true);
         const [firstContentChange, setFirstContentChange] = useState<boolean>(true);
         const [firstValue, setFirstValue] = useState<string>();
+        const [value, setValue] = useState<string>(props.value ?? '');
+        const [lastValue, setLastValue] = useState<string>();
 
         useEffect(() => {
             if (forcedState) {
@@ -34,14 +44,31 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
         useEffect(() => {
             if (firstContentChange) {
                 setFirstValue(props.value);
+                console.log('setFistvalueprops', props.value);
                 setFirstContentChange(false);
                 return;
             }
             setFilled(props.value !== firstValue);
+            if (cleanContent(props.value) !== '') setLastValue(value);
             checkContent(props.value);
         }, [props.value]);
 
-        const [lastValue, setLastValue] = useState<string>();
+        useEffect(() => {
+            if (firstContentChange) {
+                setFirstValue(value);
+                setFirstContentChange(false);
+                return;
+            }
+            setFilled(value !== firstValue);
+            if (cleanContent(value) !== '') {
+                setLastValue(value);
+            }
+            checkContent(value);
+        }, [value]);
+
+        useEffect(() => {
+            console.log('lastval', lastValue);
+        }, [lastValue]);
 
         const stateStyle = () => {
             let borderColor = undefined;
@@ -112,8 +139,8 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 const parsedValue = parseInt(cleanNumber);
                 if (parsedValue !== undefined) {
                     setError(
-                        (props.minValue !== undefined && parsedValue < props.minValue) ||
-                            (props.maxValue !== undefined && parsedValue > props.maxValue),
+                        (minValue !== undefined && parsedValue < minValue) ||
+                            (maxValue !== undefined && parsedValue > maxValue),
                     );
                 }
             }
@@ -122,7 +149,6 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
             if (text !== undefined && text !== '') {
                 const cleanNumber = text.replace(/[^0-9]/g, '');
                 const parsedValue = parseInt(cleanNumber);
-                console.log('>>>', parsedValue.toString());
                 return parsedValue.toString();
             }
             return '';
@@ -130,10 +156,12 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
         let onChangeText = (e: any) => {
             if (props?.onChangeText !== undefined) {
                 props.onChangeText(e);
+                checkContent(props.value);
+            } else {
+                if (e == '') setValue('');
+                else if (cleanContent(e) != '') setValue(cleanContent(e));
+                checkContent(value);
             }
-            checkContent(props.value);
-            if (props.value !== '') setLastValue(props.value);
-            props.value = e;
         };
         let onFocus = (e: any) => {
             setFocused(true);
@@ -141,14 +169,19 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
         };
         let onBlur = (e: any) => {
             setFocused(false);
-            if (props.value === '' && firstValue !== undefined) onChangeText(firstValue);
-            else if (props.value === '' && lastValue !== undefined) onChangeText(lastValue);
+            console.log('vval>', value, '<firstValue >', firstValue, '<');
+            if ((value === '' || props.value === '') && firstValue !== '') onChangeText(firstValue);
+            else if ((value === '' || props.value === '') && lastValue !== '') {
+                console.log(lastValue);
+                onChangeText(lastValue);
+            }
             if (props?.onBlur !== undefined) props.onBlur(e);
         };
 
         return (
             <TextInput
                 {...props}
+                value={props.onChangeText ? props.value : value}
                 ref={ref ?? undefined}
                 style={[stateStyle(), props.style]}
                 selectTextOnFocus={false}
