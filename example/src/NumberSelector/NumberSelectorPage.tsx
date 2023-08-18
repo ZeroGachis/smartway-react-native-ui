@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { NumberSelector, Screen } from 'smartway-react-native-ui';
 
 export const NumberSelectorPage = () => {
-    const [value, setValue] = useState<number>(0);
+    const [value, setValue] = useState<number>(10);
     const [otherValue, setOtherValue] = useState<number>(0);
 
     const styles = StyleSheet.create({
@@ -23,7 +23,7 @@ export const NumberSelectorPage = () => {
                         showSoftInputOnFocus={true}
                         value={value}
                         minValue={0}
-                        maxValue={998}
+                        maxValue={999}
                         minusIcon="arrow-back"
                         plusIcon="arrow-forward"
                     />
@@ -35,7 +35,7 @@ export const NumberSelectorPage = () => {
                         value={otherValue}
                         size="s"
                         minValue={0}
-                        maxValue={998}
+                        maxValue={999}
                     />
                 </View>
             </View>

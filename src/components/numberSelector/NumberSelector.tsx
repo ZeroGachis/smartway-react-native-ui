@@ -26,7 +26,7 @@ export const NumberSelector = ({
     minusIcon = 'minus',
     plusIcon = 'add',
     showSoftInputOnFocus = false,
-    variant = 'filled',
+    variant = 'outlined',
     size = 'm',
 }: Props) => {
     let refInput = useRef<any>();
@@ -40,8 +40,8 @@ export const NumberSelector = ({
         if (!minusDisabled) onChangeText((value - 1).toString());
     };
     const onChangeText = (text: string) => {
-        refInput?.current?.focus();
         const cleanNumber = text.replace(/[^0-9]/g, '');
+        if (tempValue !== '') refInput?.current?.focus();
         if (cleanNumber !== '') {
             const parsedValue = parseInt(cleanNumber);
             if (parsedValue !== undefined && parsedValue >= minValue && parsedValue <= maxValue) {
