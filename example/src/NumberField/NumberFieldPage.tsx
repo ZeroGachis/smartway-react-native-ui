@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NumberField, Screen, useTheme } from 'smartway-react-native-ui';
 
@@ -14,34 +14,46 @@ export const NumberFieldPage = () => {
             marginVertical: 10,
         },
     });
+    const value = '999';
 
     return (
         <Screen style={styles.container}>
             <View style={{ flexDirection: 'row' }}>
-                <NumberField style={styles.numberField} value="999" size="m" state="prefilled" />
-                <NumberField style={styles.numberField} value="999" state="prefilled-focused" />
-                <NumberField style={styles.numberField} value="999" state="filled-focused" />
-                <NumberField style={styles.numberField} value="999" state="filled" />
-                <NumberField style={styles.numberField} value="999" state="readonly" />
-                <NumberField style={styles.numberField} value="999" state="error" />
-            </View>
-            <View style={{ flexDirection: 'row' }}>
-                <NumberField style={styles.numberField} value="999" size="s" state="prefilled" />
                 <NumberField
                     style={styles.numberField}
-                    value="999"
+                    value={value}
+                    minValue={0}
+                    maxValue={100}
+                    size="m"
+                    state="prefilled"
+                />
+                <NumberField style={styles.numberField} value={value} state="prefilled-focused" />
+                <NumberField style={styles.numberField} value={value} state="filled-focused" />
+                <NumberField style={styles.numberField} value={value} state="filled" />
+                <NumberField style={styles.numberField} value={value} state="readonly" />
+                <NumberField style={styles.numberField} value={value} state="error" />
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+                <NumberField style={styles.numberField} value={value} size="s" state="prefilled" />
+                <NumberField
+                    style={styles.numberField}
+                    value={value}
                     size="s"
                     state="prefilled-focused"
                 />
                 <NumberField
                     style={styles.numberField}
-                    value="999"
+                    value={value}
                     size="s"
                     state="filled-focused"
                 />
-                <NumberField style={styles.numberField} value="999" size="s" state="filled" />
-                <NumberField style={styles.numberField} value="999" size="s" state="readonly" />
-                <NumberField style={styles.numberField} value="999" size="s" state="error" />
+                <NumberField style={styles.numberField} value={value} size="s" state="filled" />
+                <NumberField style={styles.numberField} value={value} size="s" state="readonly" />
+                <NumberField style={styles.numberField} value={value} size="s" state="error" />
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+                {/* Example without value to hilight the last value on cleared case */}
+                <NumberField style={styles.numberField} size="m" state="prefilled" />
             </View>
         </Screen>
     );

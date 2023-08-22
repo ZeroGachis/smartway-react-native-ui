@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { NumberSelector, Screen } from 'smartway-react-native-ui';
 
 export const NumberSelectorPage = () => {
-    const [value, setValue] = useState<number>(0);
+    const [value, setValue] = useState<number>(10);
     const [otherValue, setOtherValue] = useState<number>(0);
 
     const styles = StyleSheet.create({

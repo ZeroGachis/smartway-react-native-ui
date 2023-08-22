@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
 import { NumberField } from '../numberField/NumberField';
@@ -26,32 +26,31 @@ export const NumberSelector = ({
     minusIcon = 'minus',
     plusIcon = 'add',
     showSoftInputOnFocus = false,
-    variant = 'filled',
+    variant = 'outlined',
     size = 'm',
 }: Props) => {
+    let refInput = useRef<any>();
+
     const [tempValue, setTempValue] = useState<string>(value.toString());
+
     const onAdd = () => {
-        if (!addDisabled) {
-            onValueChange(value + 1);
-            setTempValue((value + 1).toString());
-        }
+        if (!addDisabled) onChangeText((value + 1).toString());
     };
     const onMinus = () => {
-        if (!minusDisabled) {
-            onValueChange(value - 1);
-            setTempValue((value - 1).toString());
-        }
+        if (!minusDisabled) onChangeText((value - 1).toString());
     };
     const onChangeText = (text: string) => {
-        if (text !== '') {
-            const parsedValue = parseInt(text);
-            if (parsedValue && parsedValue >= minValue && parsedValue <= maxValue) {
+        const cleanNumber = text.replace(/[^0-9]/g, '');
+        if (tempValue !== '') refInput?.current?.focus();
+        if (cleanNumber !== '') {
+            const parsedValue = parseInt(cleanNumber);
+            if (parsedValue !== undefined && parsedValue >= minValue && parsedValue <= maxValue) {
                 onValueChange(parsedValue);
-                setTempValue(text);
+                setTempValue(parsedValue.toString());
             }
         } else {
-            setTempValue('');
             onValueChange(0);
+            setTempValue('');
         }
     };
 
@@ -81,14 +80,16 @@ export const NumberSelector = ({
                 disabled={minusDisabled}
             />
             <NumberField
+                ref={refInput}
                 style={styles.inputContainer}
                 showSoftInputOnFocus={showSoftInputOnFocus}
                 keyboardType="number-pad"
                 value={getDisplayedValue()}
+                minValue={minValue}
+                maxValue={maxValue}
                 onChangeText={onChangeText}
                 selectTextOnFocus={showSoftInputOnFocus}
                 size={size}
-                state={'prefilled'}
             />
             <IconButton
                 variant={variant}
