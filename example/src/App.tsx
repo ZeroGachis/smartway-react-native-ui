@@ -25,6 +25,7 @@ import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
 import { DividerPage } from './DividerPage/DividerPage';
 import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
+import { BodyPage } from './Body/BodyPage';
 
 export type RootStackParamList = {
     Home: undefined;
@@ -41,6 +42,7 @@ export type RootStackParamList = {
     AppBar: undefined;
     PrintState: undefined;
     ActionCard: undefined;
+    BodyPage: undefined;
     Card: undefined;
     ModifyQuantity: undefined;
     NumberSelector: undefined;
@@ -93,6 +95,7 @@ const App = () => {
                         name="ActionCard"
                         component={ActionCardPage}
                     />
+                    <Stack.Screen name="BodyPage" component={BodyPage} />
                     <Stack.Screen name="Card" component={CardPage} />
                     <Stack.Screen name="Tab" component={TabPage} />
                     <Stack.Screen name="Label" component={LabelPage} />

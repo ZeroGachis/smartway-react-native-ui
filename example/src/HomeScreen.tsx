@@ -139,6 +139,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
+                            navigation.navigate('BodyPage');
+                        }}
+                    >
+                        Body
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
                             navigation.navigate('Keyboard');
                         }}
                     >

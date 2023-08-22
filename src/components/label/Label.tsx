@@ -153,13 +153,12 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
         },
         text: {
             lineHeight: 20,
-            fontWeight: '700',
             color,
         },
     });
     return (
         <View style={styles.container}>
-            <Body style={styles.text} size="small">
+            <Body style={styles.text} size="B3" weight="bold">
                 {text}
             </Body>
         </View>

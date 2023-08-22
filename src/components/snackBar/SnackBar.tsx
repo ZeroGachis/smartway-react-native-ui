@@ -57,7 +57,7 @@ export const SnackBar = ({
                 })}
                 theme={{ colors: { inverseOnSurface: theme.sw.colors.primary[50] } }}
             >
-                <Body size="medium" style={styles.message}>
+                <Body size="B2" style={styles.message}>
                     {message}
                 </Body>
             </Snackbar>
