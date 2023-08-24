@@ -72,11 +72,13 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
             switch (currentState) {
                 case 'prefilled':
                     textColor = theme.sw.colors.neutral[500];
+                    borderColor = undefined;
                     backgroundColor = theme.sw.colors.neutral[500] + theme.sw.transparency[8];
                     break;
                 case 'filled-focused':
                     textColor = theme.sw.colors.neutral[800];
                     borderColor = theme.sw.colors.primary.main;
+                    backgroundColor = theme.sw.colors.neutral[50];
                     break;
                 case 'prefilled-focused':
                     textColor = theme.sw.colors.primary.main;
@@ -85,10 +87,12 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                     break;
                 case 'filled':
                     textColor = theme.sw.colors.neutral[800];
+                    borderColor = undefined;
                     backgroundColor = theme.sw.colors.neutral[500] + theme.sw.transparency[8];
                     break;
                 case 'error':
                     textColor = theme.sw.colors.error.main;
+                    borderColor = undefined;
                     backgroundColor = theme.sw.colors.error.main + theme.sw.transparency[8];
                     break;
                 case undefined:
@@ -99,7 +103,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 input: {
                     borderRadius: size === 's' ? 10 : 18,
                     height: size === 's' ? 38 : 48,
-                    borderWidth: borderColor ? 1 : 0,
+                    borderWidth: borderColor !== undefined ? 1 : 0,
                     borderColor: borderColor,
 
                     width: size === 's' ? 43 : 72,
