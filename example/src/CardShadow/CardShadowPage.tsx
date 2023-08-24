@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, Text, View, ViewStyle } from 'react-native';
 import {
     Body,
     Card as CustomCard,
@@ -11,6 +11,8 @@ import {
 
 export const CardShadowPage = () => {
     const [val, setVal] = useState<number>(0);
+    const [valX, setValX] = useState<number>(0);
+    const [valY, setValY] = useState<number>(0);
     const theme = useTheme();
     const customCardStyle: ViewStyle = {
         marginTop: theme.sw.spacing.xxl,
@@ -19,14 +21,29 @@ export const CardShadowPage = () => {
         borderWidth: 1,
         borderRadius: 8,
         width: '100%',
-        shadowColor: '#FF0000',
+        elevation: val,
+    };
+    const bigShadowTransparency = '1F';
+    const smallShadowTransparency = '33';
+
+    const bigShadowStyle: ViewStyle = {
+        shadowColor: theme.sw.colors.neutral[500] + bigShadowTransparency,
         shadowOffset: {
-            width: 10,
-            height: 10,
+            width: valX,
+            height: valY,
         },
         shadowOpacity: 0.5,
         shadowRadius: 10,
         elevation: val,
+    };
+    const smallShadowStyle: ViewStyle = {
+        shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
     };
     const style = StyleSheet.create({
         container: {
@@ -37,12 +54,6 @@ export const CardShadowPage = () => {
         textContent: {
             alignItems: 'center',
             justifyContent: 'center',
-        },
-        bigShadow: {
-            shadowOffset: {
-                width: 0,
-                height: val * 20,
-            },
         },
         title: {
             textAlign: 'center',
@@ -62,15 +73,44 @@ export const CardShadowPage = () => {
     };
     return (
         <Screen style={style.container}>
-            <NumberSelector
-                minValue={0}
-                maxValue={999}
-                value={val}
-                onValueChange={(e) => setVal(e)}
-                style={numberSelectorStyle}
-            />
+            <View style={{ flexDirection: 'column' }}>
+                <View style={numberSelectorStyle}>
+                    <Text>Elevation</Text>
+                    <NumberSelector
+                        minValue={0}
+                        maxValue={999}
+                        value={val}
+                        size="s"
+                        onValueChange={(e) => setVal(e)}
+                    />
+                </View>
+                <View style={numberSelectorStyle}>
+                    <Text>Offset x</Text>
+                    <NumberSelector
+                        minValue={-999}
+                        maxValue={999}
+                        value={valX}
+                        size="s"
+                        onValueChange={(e) => setValX(e)}
+                    />
+                </View>
+                <View style={numberSelectorStyle}>
+                    <Text>Offset y</Text>
+                    <NumberSelector
+                        minValue={-999}
+                        maxValue={999}
+                        value={valY}
+                        size="s"
+                        onValueChange={(e) => setValY(e)}
+                    />
+                </View>
+            </View>
             <View>
-                <CustomCard style={customCardStyle}>
+                <CustomCard
+                    style={customCardStyle}
+                    bigShadowStyle={bigShadowStyle}
+                    smallShadowStyle={smallShadowStyle}
+                >
                     <View style={style.textContent}>
                         <Headline size="h3" style={style.title}>
                             Some very interesting title

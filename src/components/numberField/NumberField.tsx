@@ -146,7 +146,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
         };
         let cleanContent = (text: string | undefined) => {
             if (text !== undefined && text !== '') {
-                const cleanNumber = text.replace(/[^0-9]/g, '');
+                const cleanNumber = text.replace(/[^-0-9]/g, '');
                 const parsedValue = parseInt(cleanNumber);
                 return parsedValue.toString();
             }

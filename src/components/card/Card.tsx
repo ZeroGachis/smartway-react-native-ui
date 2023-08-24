@@ -6,9 +6,11 @@ import { useTheme } from '../../styles/themes';
 interface Props {
     children?: ReactNode;
     style?: ViewStyle;
+    bigShadowStyle?: ViewStyle;
+    smallShadowStyle?: ViewStyle;
 }
 
-export const Card = ({ children, style }: Props) => {
+export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Props) => {
     const theme = useTheme();
 
     const bigShadowTransparency = '1F';
@@ -32,6 +34,8 @@ export const Card = ({ children, style }: Props) => {
             },
             shadowOpacity: 0.12,
             shadowRadius: 24,
+            elevation: 200,
+            ...bigShadowStyle,
         },
         smallShadow: {
             shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
@@ -41,6 +45,8 @@ export const Card = ({ children, style }: Props) => {
             },
             shadowOpacity: 0.2,
             shadowRadius: 2,
+            elevation: 200,
+            ...smallShadowStyle,
         },
     });
 
