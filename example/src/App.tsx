@@ -18,6 +18,7 @@ import { AppBarPage } from './AppBar/AppBarPage';
 import { PrintPage } from './PrintStatePage/PrintPage';
 import { ActionCardPage } from './ActionCard/ActionCardPage';
 import { CardPage } from './Card/CardPage';
+import { CardShadowPage } from './CardShadow/CardShadowPage';
 import { ModifyQuantityPage } from './ModifyQuantity/ModifyQuantityPage';
 import { NumberSelectorPage } from './NumberSelector/NumberSelectorPage';
 import { TabPage } from './Tab/TabPage';
@@ -44,6 +45,7 @@ export type RootStackParamList = {
     ActionCard: undefined;
     BodyPage: undefined;
     Card: undefined;
+    CardShadow: undefined;
     ModifyQuantity: undefined;
     NumberSelector: undefined;
     NumberField: undefined;
@@ -72,6 +74,8 @@ const App = () => {
                     <Stack.Screen name="Dialog" component={DialogPage} />
                     <Stack.Screen name="Input" component={InputsPage} />
                     <Stack.Screen name="NumberField" component={NumberFieldPage} />
+                    <Stack.Screen name="NumberSelector" component={NumberSelectorPage} />
+                    <Stack.Screen name="ModifyQuantity" component={ModifyQuantityPage} />
                     <Stack.Screen name="Keyboard" component={KeyboardPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}
@@ -83,8 +87,6 @@ const App = () => {
                     <Stack.Screen name="Toggle" component={TogglePage} />
                     <Stack.Screen name="Menu" component={MenuPage} />
                     <Stack.Screen name="PrintState" component={PrintPage} />
-                    <Stack.Screen name="ModifyQuantity" component={ModifyQuantityPage} />
-                    <Stack.Screen name="NumberSelector" component={NumberSelectorPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}
                         name="AppBar"
@@ -95,8 +97,9 @@ const App = () => {
                         name="ActionCard"
                         component={ActionCardPage}
                     />
-                    <Stack.Screen name="BodyPage" component={BodyPage} />
                     <Stack.Screen name="Card" component={CardPage} />
+                    <Stack.Screen name="CardShadow" component={CardShadowPage} />
+                    <Stack.Screen name="BodyPage" component={BodyPage} />
                     <Stack.Screen name="Tab" component={TabPage} />
                     <Stack.Screen name="Label" component={LabelPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />

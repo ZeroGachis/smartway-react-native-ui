@@ -77,8 +77,8 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                     break;
                 case 'filled-focused':
                     textColor = theme.sw.colors.neutral[800];
-                    borderColor = theme.sw.colors.primary.main;
                     backgroundColor = theme.sw.colors.neutral[50];
+                    borderColor = theme.sw.colors.primary.main;
                     break;
                 case 'prefilled-focused':
                     textColor = theme.sw.colors.primary.main;
