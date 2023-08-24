@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { Keyboard, StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
 import { NumberField } from '../numberField/NumberField';
 import type { IconName } from '../icons/IconProps';
@@ -32,11 +32,13 @@ export const NumberSelector = ({
     let refInput = useRef<any>();
 
     const [tempValue, setTempValue] = useState<string>(value.toString());
-
+    const [softInputOnFocus, setSoftInputOnFocus] = useState(false);
     const onAdd = () => {
+        Keyboard.dismiss();
         if (!addDisabled) onChangeText((value + 1).toString());
     };
     const onMinus = () => {
+        Keyboard.dismiss();
         if (!minusDisabled) onChangeText((value - 1).toString());
     };
     const onChangeText = (text: string) => {
@@ -82,7 +84,9 @@ export const NumberSelector = ({
             <NumberField
                 ref={refInput}
                 style={styles.inputContainer}
-                showSoftInputOnFocus={showSoftInputOnFocus}
+                showSoftInputOnFocus={softInputOnFocus}
+                onPressIn={() => setSoftInputOnFocus(true)}
+                onPressOut={() => setSoftInputOnFocus(false)}
                 keyboardType="number-pad"
                 value={getDisplayedValue()}
                 minValue={minValue}
