@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { ButtonProps, StyleSheet, View } from 'react-native';
 import { Headline } from '../typography/Headline';
 import { IconButton } from '../buttons/IconButton';
+import { useTheme } from '../../styles/themes';
 
 export type IconButtonProps = Pick<ButtonProps, 'onPress'>;
 
@@ -22,13 +23,14 @@ export const TopAppBar = ({
     backButton,
     moreButton,
 }: Props) => {
+    const theme = useTheme();
     const styles = StyleSheet.create({
         root: {
             height: 112,
         },
         container: {
-            paddingLeft: 24,
-            paddingRight: 24,
+            paddingLeft: theme.sw.spacing.l,
+            paddingRight: theme.sw.spacing.l,
             display: 'flex',
             flex: 1,
             alignItems: 'center',
