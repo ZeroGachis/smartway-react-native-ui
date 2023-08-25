@@ -42,7 +42,7 @@ export const NumberSelector = ({
         if (!minusDisabled) onChangeText((value - 1).toString());
     };
     const onChangeText = (text: string) => {
-        const cleanNumber = text.replace(/[^0-9]/g, '');
+        const cleanNumber = text.replace(/[^-0-9]/g, '');
         if (tempValue !== '') refInput?.current?.focus();
         if (cleanNumber !== '') {
             const parsedValue = parseInt(cleanNumber);

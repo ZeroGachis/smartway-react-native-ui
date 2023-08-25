@@ -47,7 +47,7 @@ export const CardPage = () => {
         <Screen style={style.container}>
             <Card style={style.card}>
                 <View style={style.iconContainer}>
-                    <Icon name="qr" size={48} />
+                    <Icon name="qr-code" size={48} />
                 </View>
                 <View style={style.textContent}>
                     <Body style={{ ...style.body, ...style.bodyBold }}>welcome</Body>
@@ -59,7 +59,7 @@ export const CardPage = () => {
                 <Button
                     testID="tag_enrollment_start_button"
                     style={style.button}
-                    mode="filled"
+                    variant="filled"
                     onPress={() => {}}
                 >
                     start

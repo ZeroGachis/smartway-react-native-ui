@@ -72,10 +72,12 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
             switch (currentState) {
                 case 'prefilled':
                     textColor = theme.sw.colors.neutral[500];
+                    borderColor = undefined;
                     backgroundColor = theme.sw.colors.neutral[500] + theme.sw.transparency[8];
                     break;
                 case 'filled-focused':
                     textColor = theme.sw.colors.neutral[800];
+                    backgroundColor = theme.sw.colors.neutral[50];
                     borderColor = theme.sw.colors.primary.main;
                     break;
                 case 'prefilled-focused':
@@ -85,10 +87,12 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                     break;
                 case 'filled':
                     textColor = theme.sw.colors.neutral[800];
+                    borderColor = undefined;
                     backgroundColor = theme.sw.colors.neutral[500] + theme.sw.transparency[8];
                     break;
                 case 'error':
                     textColor = theme.sw.colors.error.main;
+                    borderColor = undefined;
                     backgroundColor = theme.sw.colors.error.main + theme.sw.transparency[8];
                     break;
                 case undefined:
@@ -99,7 +103,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 input: {
                     borderRadius: size === 's' ? 10 : 18,
                     height: size === 's' ? 38 : 48,
-                    borderWidth: borderColor ? 1 : 0,
+                    borderWidth: borderColor !== undefined ? 1 : 0,
                     borderColor: borderColor,
 
                     width: size === 's' ? 43 : 72,
@@ -142,7 +146,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
         };
         let cleanContent = (text: string | undefined) => {
             if (text !== undefined && text !== '') {
-                const cleanNumber = text.replace(/[^0-9]/g, '');
+                const cleanNumber = text.replace(/[^-0-9]/g, '');
                 const parsedValue = parseInt(cleanNumber);
                 return parsedValue.toString();
             }

@@ -75,6 +75,22 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
+                            navigation.navigate('NumberSelector');
+                        }}
+                    >
+                        NumberSelector
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
+                            navigation.navigate('ModifyQuantity');
+                        }}
+                    >
+                        ModifyQuantity
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
                             navigation.navigate('DropDown');
                         }}
                     >
@@ -131,6 +147,22 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
+                            navigation.navigate('Card');
+                        }}
+                    >
+                        Card
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
+                            navigation.navigate('CardShadow');
+                        }}
+                    >
+                        CardShadow
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
                             navigation.navigate('ActionCard');
                         }}
                     >
@@ -151,30 +183,6 @@ export const HomeScreen = ({ navigation }: Props) => {
                         }}
                     >
                         Keyboard
-                    </Button>
-                    <Button
-                        style={styles.button}
-                        onPress={() => {
-                            navigation.navigate('ModifyQuantity');
-                        }}
-                    >
-                        ModifyQuantity
-                    </Button>
-                    <Button
-                        style={styles.button}
-                        onPress={() => {
-                            navigation.navigate('NumberSelector');
-                        }}
-                    >
-                        NumberSelector
-                    </Button>
-                    <Button
-                        style={styles.button}
-                        onPress={() => {
-                            navigation.navigate('Card');
-                        }}
-                    >
-                        Card
                     </Button>
                     <Button
                         style={styles.button}
