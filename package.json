@@ -75,14 +75,16 @@
     "@gorhom/bottom-sheet": "*",
     "react": "*",
     "react-native": "*",
+    "react-native-drop-shadow": "*",
     "react-native-gesture-handler": "*",
     "react-native-icomoon": "*",
     "react-native-paper": "*",
     "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
     "react-native-svg": "*",
-    "react-native-vector-icons": "*",
-    "react-native-drop-shadow": "*"
+    "react-native-vector-icons": "*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-native-chart-kit": "^6.12.0"
+  }
 }

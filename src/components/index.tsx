@@ -26,6 +26,7 @@ import { Label } from './label/Label';
 import { Product } from './product/Product';
 import { Divider } from './divider/Divider';
 import { TopAppBar } from './topAppBar/TopAppBar';
+import { Chart } from './chart/Chart';
 
 export {
     Body,
@@ -39,6 +40,7 @@ export {
     Screen,
     TextField,
     NumberField,
+    Chart,
     DropDown,
     BottomSheet,
     Toggle,

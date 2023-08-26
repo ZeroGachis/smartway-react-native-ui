@@ -211,6 +211,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
+                            navigation.navigate('ChartPage');
+                        }}
+                    >
+                        Chart
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
                             navigation.navigate('TopAppBarPage');
                         }}
                     >

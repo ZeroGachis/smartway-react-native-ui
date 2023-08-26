@@ -26,6 +26,7 @@ import { ProductPage } from './Product/ProductPage';
 import { DividerPage } from './DividerPage/DividerPage';
 import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
 import { BodyPage } from './Body/BodyPage';
+import { ChartPage } from './ChartPage/ChartPage';
 
 export type RootStackParamList = {
     Home: undefined;
@@ -52,6 +53,7 @@ export type RootStackParamList = {
     ProductPage: undefined;
     DividerPage: undefined;
     TopAppBarPage: undefined;
+    ChartPage: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -99,6 +101,7 @@ const App = () => {
                     <Stack.Screen name="Card" component={CardPage} />
                     <Stack.Screen name="Tab" component={TabPage} />
                     <Stack.Screen name="Label" component={LabelPage} />
+                    <Stack.Screen name="ChartPage" component={ChartPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />
                     <Stack.Screen name="DividerPage" component={DividerPage} />
                     <Stack.Screen name="TopAppBarPage" component={TopAppBarPage} />
