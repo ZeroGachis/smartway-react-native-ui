@@ -13,39 +13,35 @@ interface Props {
 export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Props) => {
     const theme = useTheme();
 
-    const bigShadowTransparency = '1F';
-    const smallShadowTransparency = '33';
-
     const styles = StyleSheet.create({
         container: {
             backgroundColor: theme.sw.colors.neutral[50],
+            borderColor: theme.sw.colors.neutral[50],
+            borderWidth: 0,
             width: '100%',
             alignItems: 'center',
-            borderRadius: 20,
             padding: theme.sw.spacing.m,
-            elevation: 1,
+            borderRadius: 20,
             ...style,
         },
         bigShadow: {
-            shadowColor: theme.sw.colors.neutral[500] + bigShadowTransparency,
+            shadowColor: theme.sw.colors.neutral[500],
             shadowOffset: {
                 width: 0,
                 height: 12,
             },
             shadowOpacity: 0.12,
             shadowRadius: 24,
-            elevation: 200,
             ...bigShadowStyle,
         },
         smallShadow: {
-            shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
+            shadowColor: theme.sw.colors.neutral[500],
             shadowOffset: {
                 width: 0,
-                height: 0,
+                height: 2,
             },
-            shadowOpacity: 0.2,
+            shadowOpacity: 0.01,
             shadowRadius: 2,
-            elevation: 200,
             ...smallShadowStyle,
         },
     });
