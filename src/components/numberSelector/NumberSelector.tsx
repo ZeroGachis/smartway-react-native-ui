@@ -65,7 +65,7 @@ export const NumberSelector = ({
             ...style,
         },
         inputContainer: {
-            marginHorizontal: 5,
+            marginHorizontal: 8,
             flex: 0,
         },
     });

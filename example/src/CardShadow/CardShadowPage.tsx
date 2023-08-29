@@ -16,35 +16,8 @@ export const CardShadowPage = () => {
     const theme = useTheme();
     const customCardStyle: ViewStyle = {
         marginTop: theme.sw.spacing.xxl,
-        backgroundColor: theme.sw.colors.neutral[50],
-        borderColor: theme.sw.colors.neutral[900],
-        borderWidth: 1,
-        borderRadius: 8,
-        width: '100%',
-        elevation: val,
     };
-    const bigShadowTransparency = '1F';
-    const smallShadowTransparency = '33';
 
-    const bigShadowStyle: ViewStyle = {
-        shadowColor: theme.sw.colors.neutral[500] + bigShadowTransparency,
-        shadowOffset: {
-            width: valX,
-            height: valY,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
-        elevation: val,
-    };
-    const smallShadowStyle: ViewStyle = {
-        shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-    };
     const style = StyleSheet.create({
         container: {
             paddingTop: theme.sw.spacing.m,
@@ -106,11 +79,7 @@ export const CardShadowPage = () => {
                 </View>
             </View>
             <View>
-                <CustomCard
-                    style={customCardStyle}
-                    bigShadowStyle={bigShadowStyle}
-                    smallShadowStyle={smallShadowStyle}
-                >
+                <CustomCard style={customCardStyle}>
                     <View style={style.textContent}>
                         <Headline size="h3" style={style.title}>
                             Some very interesting title

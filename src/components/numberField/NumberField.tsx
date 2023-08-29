@@ -139,7 +139,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 if (parsedValue !== undefined) {
                     setError(
                         (minValue !== undefined && parsedValue < minValue) ||
-                            (maxValue !== undefined && parsedValue > maxValue),
+                            (maxValue !== undefined && parsedValue >= maxValue),
                     );
                 }
             }
