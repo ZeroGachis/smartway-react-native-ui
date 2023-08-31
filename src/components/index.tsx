@@ -15,7 +15,7 @@ import { DropDown } from './dropDown/DropDown';
 import { SnackBar } from './snackBar/SnackBar';
 import { Toggle } from './toggle/Toggle';
 import { Menu } from './menu/Menu';
-import { AppBar } from './appBar/AppBar';
+import { TopAppBar } from './topAppBar/TopAppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
@@ -25,7 +25,6 @@ import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
 import { Product } from './product/Product';
 import { Divider } from './divider/Divider';
-import { TopAppBar } from './topAppBar/TopAppBar';
 
 export {
     Body,
@@ -43,7 +42,7 @@ export {
     BottomSheet,
     Toggle,
     Menu,
-    AppBar,
+    TopAppBar,
     Keyboard,
     PrintState,
     EANInput,
@@ -55,5 +54,4 @@ export {
     Label,
     Product,
     Divider,
-    TopAppBar,
 };
