@@ -1,76 +1,80 @@
 import React, { ReactNode } from 'react';
-import { ButtonProps, StyleSheet, View } from 'react-native';
-import { Headline } from '../typography/Headline';
-import { IconButton } from '../buttons/IconButton';
+import { Appbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
+import { StyleSheet, type ViewStyle } from 'react-native';
+import { Headline } from '../typography/Headline';
+import type { IconSource } from 'react-native-paper/lib/typescript/src/components/Icon';
 
-export type IconButtonProps = Pick<ButtonProps, 'onPress'>;
-
-interface Props {
-    isExpanded?: boolean;
-    showSettings?: boolean;
-    settingsButton?: IconButtonProps;
-    backButton?: IconButtonProps;
-    moreButton?: IconButtonProps;
-    children?: ReactNode;
+interface Icon {
+    name: IconSource;
+    onPress?: () => void;
 }
 
-export const TopAppBar = ({
-    isExpanded = false,
-    showSettings = false,
-    children,
-    settingsButton,
-    backButton,
-    moreButton,
-}: Props) => {
+interface Title {
+    value: ReactNode;
+    onPress?: () => void;
+}
+
+interface Props {
+    size?: 'small' | 'medium' | 'large' | 'center-aligned';
+    title: Title;
+    icon?: Icon;
+    onBack?: () => void;
+    style?: ViewStyle;
+}
+
+export const TopAppBar = ({ size = 'small', title, icon, onBack, style }: Props) => {
     const theme = useTheme();
     const styles = StyleSheet.create({
-        root: {
-            height: 112,
+        button: {
+            backgroundColor: 'rgba(145, 158, 171, 0.24)',
+            borderRadius: 18,
+            marginLeft: 12,
         },
-        container: {
-            paddingLeft: theme.sw.spacing.l,
-            paddingRight: theme.sw.spacing.l,
-            display: 'flex',
-            flex: 1,
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+        title: {
+            paddingVertical: 9,
+        },
+        header: {
+            paddingHorizontal: 12,
+            ...style,
+        },
+        content: {
+            justifyContent: 'flex-start',
+            paddingBottom: 0,
         },
     });
+    const getIconColor = () => {
+        return theme.sw.colors.neutral[600];
+    };
     return (
-        <View style={styles.root}>
-            <View style={styles.container}>
-                <IconButton
-                    style={{ display: isExpanded ? 'flex' : 'none' }}
-                    {...backButton}
-                    status="primary"
-                    icon="arrow-back"
-                    variant="filled"
-                    size="m"
-                ></IconButton>
-                <IconButton
-                    style={{ display: isExpanded ? 'flex' : 'none' }}
-                    {...moreButton}
-                    status="primary"
-                    icon="more"
-                    variant="filled"
-                    size="m"
+        <Appbar.Header mode={size} style={styles.header} statusBarHeight={0}>
+            {onBack !== undefined && (
+                <Appbar.BackAction
+                    style={styles.button}
+                    onPress={onBack}
+                    size={theme.sw.iconbuttonsize.m}
                 />
-            </View>
-            <View style={styles.container}>
-                <Headline size="h1">{children}</Headline>
-                <IconButton
-                    {...settingsButton}
-                    style={{
-                        display: !isExpanded && showSettings ? 'flex' : 'none',
-                    }}
-                    status="primary"
-                    icon="settings"
-                    variant="filled"
-                    size="m"
-                ></IconButton>
-            </View>
-        </View>
+            )}
+            <Appbar.Content
+                title={
+                    typeof title.value === 'string' ? (
+                        <Headline size="h2">{title.value}</Headline>
+                    ) : (
+                        title.value
+                    )
+                }
+                onPress={title.onPress}
+                style={styles.title}
+            />
+            {icon !== undefined && (
+                <Appbar.Action
+                    icon={icon.name}
+                    onPress={icon.onPress}
+                    color={getIconColor()}
+                    style={styles.button}
+                    size={theme.sw.iconbuttonsize.m}
+                />
+            )}
+        </Appbar.Header>
     );
 };

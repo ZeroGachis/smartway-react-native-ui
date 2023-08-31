@@ -115,7 +115,7 @@ export const HomeScreen = ({ navigation }: Props) => {
                     <Button
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('AppBar');
+                            navigation.navigate('TopAppBar');
                         }}
                     >
                         AppBar
@@ -215,14 +215,6 @@ export const HomeScreen = ({ navigation }: Props) => {
                         }}
                     >
                         Divider
-                    </Button>
-                    <Button
-                        style={styles.button}
-                        onPress={() => {
-                            navigation.navigate('TopAppBarPage');
-                        }}
-                    >
-                        TopAppBarPage
                     </Button>
                 </Pressable>
             </ScrollView>

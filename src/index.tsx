@@ -16,7 +16,7 @@ import {
     SnackBar,
     Toggle,
     Menu,
-    AppBar,
+    TopAppBar,
     PrintState,
     EANInput,
     ModifyQuantity,
@@ -26,7 +26,6 @@ import {
     Label,
     Product,
     Divider,
-    TopAppBar,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -47,7 +46,7 @@ export {
     SnackBar,
     Toggle,
     Menu,
-    AppBar,
+    TopAppBar,
     ThemeProvider,
     useTheme,
     BottomSheet,
@@ -60,5 +59,4 @@ export {
     Label,
     Product,
     Divider,
-    TopAppBar,
 };

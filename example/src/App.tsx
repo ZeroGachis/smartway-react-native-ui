@@ -14,7 +14,7 @@ import { DropDownPage } from './DropDown/DropDownPage';
 import { SnackBarPage } from './SnackBar/SnackBarPage';
 import { TogglePage } from './TogglePage/TogglePage';
 import { MenuPage } from './Menu/MenuPage';
-import { AppBarPage } from './AppBar/AppBarPage';
+import { TopAppBarPage } from './TopAppBar/TopAppBarPage';
 import { PrintPage } from './PrintStatePage/PrintPage';
 import { ActionCardPage } from './ActionCard/ActionCardPage';
 import { CardPage } from './Card/CardPage';
@@ -25,7 +25,6 @@ import { TabPage } from './Tab/TabPage';
 import { LabelPage } from './Label/LabelPage';
 import { ProductPage } from './Product/ProductPage';
 import { DividerPage } from './DividerPage/DividerPage';
-import { TopAppBarPage } from './TopAppBarPage/TopAppBarPage';
 import { BodyPage } from './Body/BodyPage';
 
 export type RootStackParamList = {
@@ -40,7 +39,7 @@ export type RootStackParamList = {
     SnackBar: undefined;
     Toggle: undefined;
     Menu: undefined;
-    AppBar: undefined;
+    TopAppBar: undefined;
     PrintState: undefined;
     ActionCard: undefined;
     BodyPage: undefined;
@@ -53,7 +52,6 @@ export type RootStackParamList = {
     Label: undefined;
     ProductPage: undefined;
     DividerPage: undefined;
-    TopAppBarPage: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -89,8 +87,8 @@ const App = () => {
                     <Stack.Screen name="PrintState" component={PrintPage} />
                     <Stack.Screen
                         options={{ headerShown: false }}
-                        name="AppBar"
-                        component={AppBarPage}
+                        name="TopAppBar"
+                        component={TopAppBarPage}
                     />
                     <Stack.Screen
                         options={{ headerShown: false }}
@@ -104,7 +102,6 @@ const App = () => {
                     <Stack.Screen name="Label" component={LabelPage} />
                     <Stack.Screen name="ProductPage" component={ProductPage} />
                     <Stack.Screen name="DividerPage" component={DividerPage} />
-                    <Stack.Screen name="TopAppBarPage" component={TopAppBarPage} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ThemeProvider>
