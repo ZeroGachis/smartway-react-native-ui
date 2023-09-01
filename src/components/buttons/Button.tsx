@@ -4,7 +4,7 @@ import { Button as ButtonBase } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 
 type ButtonProps = React.ComponentProps<typeof ButtonBase>;
-interface customButtonProps extends ButtonProps {
+export interface customButtonProps extends ButtonProps {
     size?: 's' | 'm';
     variant?: 'filled' | 'outlined' | 'text';
     status?: 'primary' | 'default';
