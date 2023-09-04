@@ -32,15 +32,14 @@ export const TopAppBar = ({ size = 'small', title, icon, onBack, style }: Props)
             marginLeft: 12,
         },
         title: {
-            paddingVertical: 9,
+            paddingTop: size === 'medium' ? 9 : 0,
+            paddingBottom: 0,
+            justifyContent: 'flex-start',
         },
         header: {
             paddingHorizontal: 12,
-            ...style,
-        },
-        content: {
-            justifyContent: 'flex-start',
             paddingBottom: 0,
+            ...style,
         },
     });
     const getIconColor = () => {

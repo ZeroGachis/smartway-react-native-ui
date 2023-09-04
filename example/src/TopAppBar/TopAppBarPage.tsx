@@ -44,7 +44,7 @@ export const TopAppBarPage = ({ navigation }: Props) => {
         >
             <TopAppBar
                 size="small"
-                title={{ value: <Headline size="h1">Headline H1</Headline> }}
+                title={{ value: 'Headline' }}
                 icon={{ name: 'dots-vertical', onPress: showSettings }}
             />
             <TopAppBar
@@ -61,7 +61,7 @@ export const TopAppBarPage = ({ navigation }: Props) => {
             <TopAppBar
                 size="medium"
                 onBack={goBack}
-                title={{ value: 'Headline H2' }}
+                title={{ value: <Headline size="h1">Headline H1</Headline> }}
                 icon={{ name: 'dots-vertical', onPress: showSettings }}
             />
             <BottomSheet
