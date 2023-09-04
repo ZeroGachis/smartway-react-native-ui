@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import { Dialog as BaseDialog, Portal, Text } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
@@ -14,14 +14,13 @@ interface DialogActions {
     cancel?: Action;
 }
 
-interface DialogProps {
+export interface DialogProps extends PropsWithChildren {
     visible: boolean;
     style?: ViewStyle;
     titleStyle?: TextStyle;
     actionsStyle?: ViewStyle;
     title?: string;
     variant?: 'left' | 'center';
-    children?: ReactNode;
     dismissable?: boolean;
     onDismiss?: () => void;
     actions: DialogActions;
