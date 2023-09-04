@@ -1,32 +1,20 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { BottomSheetBackdrop, default as BaseBottomSheet } from '@gorhom/bottom-sheet';
+import { StyleSheet, View, ViewStyle } from 'react-native';
+import {
+    BottomSheetBackdrop,
+    BottomSheetBackdropProps,
+    default as BaseBottomSheet,
+} from '@gorhom/bottom-sheet';
 import { useTheme } from '../../styles/themes';
-import type { AnimateStyle, WithSpringConfig, WithTimingConfig } from 'react-native-reanimated';
+import type { WithSpringConfig, WithTimingConfig } from 'react-native-reanimated';
 import { Headline, HeadlineProps } from '../typography/Headline';
 
-type ContentContainerStyle = StyleProp<
-    AnimateStyle<
-        Omit<
-            ViewStyle,
-            | 'flexDirection'
-            | 'position'
-            | 'top'
-            | 'left'
-            | 'bottom'
-            | 'right'
-            | 'opacity'
-            | 'transform'
-        >
-    >
->;
 interface Props {
     isOpened: boolean;
     children: JSX.Element;
     onClose: () => void;
     snapPoints?: (string | number)[];
     backDropOpacity?: number;
-    contentContainerStyle?: ContentContainerStyle;
     contentStyle?: ViewStyle;
     handleStyle?: ViewStyle;
     handleIndicatorStyle?: ViewStyle;
@@ -42,7 +30,6 @@ export const BottomSheet = ({
     onClose,
     snapPoints = ['40%'],
     backDropOpacity = 0.2,
-    contentContainerStyle,
     contentStyle,
     handleStyle,
     handleIndicatorStyle,
@@ -59,7 +46,7 @@ export const BottomSheet = ({
     }, [isOpened]);
 
     const renderBackdrop = useCallback(
-        (props) => (
+        (props: BottomSheetBackdropProps) => (
             <BottomSheetBackdrop
                 {...props}
                 disappearsOnIndex={-1}
@@ -78,9 +65,12 @@ export const BottomSheet = ({
         bottomSheetRef.current?.expand();
     };
 
-    const handleSheetChanges = useCallback((index: number) => {
-        index === -1 ? close() : open();
-    }, []);
+    const handleSheetChanges = useCallback(
+        (index: number) => {
+            index === -1 ? close() : open();
+        },
+        [close],
+    );
 
     const styles = StyleSheet.create({
         contentContainer: {
@@ -105,7 +95,7 @@ export const BottomSheet = ({
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
             enablePanDownToClose={swipeable}
-            style={[styles.contentContainer, contentContainerStyle]}
+            style={[styles.contentContainer]}
             handleStyle={[{ paddingTop: theme.sw.spacing.xs }, handleStyle]}
             handleIndicatorStyle={styles.indicatorStyle}
             backdropComponent={renderBackdrop}

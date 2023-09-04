@@ -3,7 +3,7 @@ import { Appbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { StyleSheet, type ViewStyle } from 'react-native';
 import { Headline } from '../typography/Headline';
-import type { IconSource } from 'react-native-paper/lib/typescript/src/components/Icon';
+import type { IconSource } from 'react-native-paper/lib/typescript/components/Icon';
 
 interface Icon {
     name: IconSource;

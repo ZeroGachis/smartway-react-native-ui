@@ -87,11 +87,13 @@ export const Default: Story = {
         actions={{
           confirm: {
             label: 'Valider',
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             onPress: () => {},
           },
           cancel: args?.haveSecondButton
             ? {
                 label: 'Annuler',
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 onPress: () => {},
               }
             : undefined,

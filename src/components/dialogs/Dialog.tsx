@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import { Dialog as BaseDialog, Portal, Text } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
