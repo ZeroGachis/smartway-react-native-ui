@@ -16,8 +16,8 @@ export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Prop
     const styles = StyleSheet.create({
         container: {
             backgroundColor: theme.sw.colors.neutral[50],
-            borderColor: theme.sw.colors.neutral[50],
-            borderWidth: 0,
+            borderColor: '#f3f5f6',
+            borderWidth: 1,
             width: '100%',
             alignItems: 'center',
             padding: theme.sw.spacing.m,
@@ -31,7 +31,7 @@ export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Prop
                 height: 12,
             },
             shadowOpacity: 0.12,
-            shadowRadius: 24,
+            shadowRadius: 10,
             ...bigShadowStyle,
         },
         smallShadow: {
@@ -48,9 +48,7 @@ export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Prop
 
     return (
         <DropShadow style={styles.bigShadow}>
-            <DropShadow style={styles.smallShadow}>
-                <View style={styles.container}>{children}</View>
-            </DropShadow>
+            <View style={styles.container}>{children}</View>
         </DropShadow>
     );
 };
