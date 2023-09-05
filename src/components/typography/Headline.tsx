@@ -33,6 +33,11 @@ export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps
             fontSize: 20,
             fontFamily: 'PublicSans-Bold',
         };
+    } else if (size === 'h5') {
+        headlineStyle = {
+            fontSize: 18,
+            fontFamily: 'PublicSans-Medium',
+        };
     }
 
     headlineStyle = {
