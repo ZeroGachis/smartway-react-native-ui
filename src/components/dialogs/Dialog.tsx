@@ -23,6 +23,7 @@ interface DialogProps {
     variant?: 'left' | 'center';
     children?: ReactNode;
     dismissable?: boolean;
+    onDismiss?: () => void;
     actions: DialogActions;
 }
 
@@ -50,7 +51,7 @@ export const Dialog = (props: DialogProps) => {
         },
         actions: {
             flexDirection: 'row',
-            justifyContent: 'flex-end',
+            justifyContent: props.actions.cancel ? 'flex-end' : 'center',
             marginRight: 0,
             marginTop: theme.sw.spacing.l,
             ...props.actionsStyle,
@@ -59,9 +60,6 @@ export const Dialog = (props: DialogProps) => {
             color: theme.sw.colors.neutral[800],
             marginRight: theme.sw.spacing.xs,
         },
-        rightOption: {
-            flex: props.actions.cancel ? 0 : 1,
-        },
     });
 
     return (
@@ -69,7 +67,7 @@ export const Dialog = (props: DialogProps) => {
             <BaseDialog
                 theme={{ colors: { backdrop: '#1A2026B2' } }}
                 visible={props.visible}
-                onDismiss={props.actions.cancel?.onPress}
+                onDismiss={props?.onDismiss}
                 dismissable={props.dismissable}
                 style={styles.dialog}
             >
@@ -91,7 +89,6 @@ export const Dialog = (props: DialogProps) => {
                         status={'primary'}
                         onPress={props.actions.confirm.onPress}
                         testID={'PopupConfirmButton'}
-                        style={styles.rightOption}
                     >
                         {props.actions.confirm.label}
                     </Button>
