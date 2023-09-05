@@ -33,6 +33,10 @@ export const DialogPage = () => {
         },
     });
 
+    const onConfirm = () => setOptionsDialog(false);
+    const onDismiss = () => setOptionsDialog(false);
+    const onCancel = () => setOptionsDialog(false);
+
     return (
         <Screen style={styles.container}>
             <View style={styles.options}>
@@ -66,16 +70,17 @@ export const DialogPage = () => {
                 visible={OptionsDialog}
                 title={'Headline'}
                 variant={variant}
+                onDismiss={onDismiss}
                 dismissable={dismissable}
                 actions={{
                     confirm: {
                         label: 'Valider',
-                        onPress: () => setOptionsDialog(false),
+                        onPress: onConfirm,
                     },
                     cancel: haveSecondButton
                         ? {
                               label: 'Annuler',
-                              onPress: () => setOptionsDialog(false),
+                              onPress: onCancel,
                           }
                         : undefined,
                 }}
