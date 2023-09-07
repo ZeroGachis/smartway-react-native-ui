@@ -6,7 +6,7 @@ import { Icon } from '../icons/Icon';
 import { Body } from '../typography/Body';
 import DropShadow from 'react-native-drop-shadow';
 
-interface Props {
+export interface Props {
     children: ReactNode;
     bottomChildren: ReactNode;
     title?: string;
