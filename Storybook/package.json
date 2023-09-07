@@ -12,7 +12,8 @@
     "prestart": "npm run update-stories",
     "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "link-asset": "npx react-native-asset"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",

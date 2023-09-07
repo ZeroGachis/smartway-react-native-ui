@@ -11,7 +11,7 @@ export const toCamelCase = (str: string): string =>
         })
         .join('');
 
-interface BodyProps extends TextProps<Text> {
+export interface BodyProps extends TextProps<Text> {
     size?: 'B1' | 'B2' | 'B3';
     weight?: 'regular' | 'semi-bold' | 'bold';
 }
