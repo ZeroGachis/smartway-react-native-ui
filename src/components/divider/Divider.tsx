@@ -3,7 +3,7 @@ import { StyleSheet, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import * as Svg from 'react-native-svg';
 
-interface Props {
+export interface Props {
     style?: ViewStyle;
     orientation?: 'vertical' | 'horizontal';
     dashed?: boolean;
