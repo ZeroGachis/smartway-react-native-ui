@@ -1,11 +1,11 @@
 import { withBackgrounds } from "@storybook/addon-ondevice-backgrounds";
-import { ThemeProvider } from "../components/theme/ThemeProvider";
+import { SmartwayDecorator } from "../components/config/SmartwayDecorator";
 
 
 export const decorators = [withBackgrounds,   Story => (
-  <ThemeProvider>
+  <SmartwayDecorator>
     <Story />
-  </ThemeProvider>
+  </SmartwayDecorator>
 )];
 export const parameters = {
   backgrounds: {
