@@ -8,7 +8,7 @@ export interface DropDownOption {
     value: string;
 }
 
-interface Props {
+export interface Props {
     disabled?: boolean;
     error?: boolean;
     placeholder: string;

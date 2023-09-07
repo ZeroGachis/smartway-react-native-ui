@@ -14,7 +14,7 @@ consectetur adipisicing elit.
 `;
 
 export default {
-    title: 'typography/Divider',
+    title: 'components/Divider',
     component: Divider,
     args: {
         orientation: 'horizontal',

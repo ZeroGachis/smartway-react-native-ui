@@ -53,6 +53,7 @@ const getStories = () => {
     "./components/Button/Button.stories.tsx": require("../components/Button/Button.stories.tsx"),
     "./components/Dialog/Dialog.stories.tsx": require("../components/Dialog/Dialog.stories.tsx"),
     "./components/Divider/Divider.stories.tsx": require("../components/Divider/Divider.stories.tsx"),
+    "./components/DropDown/DropDown.stories.tsx": require("../components/DropDown/DropDown.stories.tsx"),
     "./components/Typography/Body.stories.tsx": require("../components/Typography/Body.stories.tsx"),
     "./components/Typography/Headline.stories.tsx": require("../components/Typography/Headline.stories.tsx"),
   };
