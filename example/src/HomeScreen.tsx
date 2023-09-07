@@ -216,6 +216,14 @@ export const HomeScreen = ({ navigation }: Props) => {
                     >
                         Divider
                     </Button>
+                    <Button
+                        style={styles.button}
+                        onPress={() => {
+                            navigation.navigate('ChartPage');
+                        }}
+                    >
+                        Chart
+                    </Button>
                 </Pressable>
             </ScrollView>
         </View>

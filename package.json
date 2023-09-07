@@ -82,7 +82,8 @@
     "react-native-safe-area-context": "*",
     "react-native-svg": "*",
     "react-native-vector-icons": "*",
-    "react-native-drop-shadow": "*"
+    "react-native-drop-shadow": "*",
+    "react-native-linear-gradient": "*"
   },
   "dependencies": {}
 }

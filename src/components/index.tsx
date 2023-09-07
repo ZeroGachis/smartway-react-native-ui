@@ -25,6 +25,7 @@ import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
 import { Product } from './product/Product';
 import { Divider } from './divider/Divider';
+import { LineChart } from './charts/LineChart';
 
 export {
     Body,
@@ -54,4 +55,5 @@ export {
     Label,
     Product,
     Divider,
+    LineChart,
 };
