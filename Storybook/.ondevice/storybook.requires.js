@@ -65,6 +65,7 @@ const getStories = () => {
     "./components/Tab/Tab.stories.tsx": require("../components/Tab/Tab.stories.tsx"),
     "./components/TextField/TextField.stories.tsx": require("../components/TextField/TextField.stories.tsx"),
     "./components/Toggle/Toggle.stories.tsx": require("../components/Toggle/Toggle.stories.tsx"),
+    "./components/TopAppBar/TopAppBar.stories.tsx": require("../components/TopAppBar/TopAppBar.stories.tsx"),
     "./components/Typography/Body.stories.tsx": require("../components/Typography/Body.stories.tsx"),
     "./components/Typography/Headline.stories.tsx": require("../components/Typography/Headline.stories.tsx"),
   };

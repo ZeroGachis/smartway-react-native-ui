@@ -10,12 +10,12 @@ interface Icon {
     onPress?: () => void;
 }
 
-interface Title {
+export interface Title {
     value: ReactNode;
     onPress?: () => void;
 }
 
-interface Props {
+export interface Props {
     size?: 'small' | 'medium' | 'large' | 'center-aligned';
     title: Title;
     icon?: Icon;
