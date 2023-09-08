@@ -5,7 +5,7 @@ import { Button } from '../buttons/Button';
 import { Icon } from '../icons/Icon';
 import { Body } from '../typography/Body';
 
-interface Props {
+export interface Props {
     text: string;
     buttonLabel: string;
     onPress: () => void;
