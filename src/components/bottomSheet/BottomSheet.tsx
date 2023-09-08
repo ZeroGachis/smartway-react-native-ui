@@ -9,7 +9,7 @@ import { useTheme } from '../../styles/themes';
 import type { WithSpringConfig, WithTimingConfig } from 'react-native-reanimated';
 import { Headline, HeadlineProps } from '../typography/Headline';
 
-interface Props {
+export interface Props {
     isOpened: boolean;
     children: JSX.Element;
     onClose: () => void;
@@ -41,9 +41,14 @@ export const BottomSheet = ({
     const theme = useTheme();
     const bottomSheetRef = useRef<BaseBottomSheet>(null);
 
+    const close = useCallback(() => {
+        bottomSheetRef.current?.close();
+        onClose();
+    }, [onClose]);
+
     useEffect(() => {
         !isOpened && close();
-    }, [isOpened]);
+    }, [close, isOpened]);
 
     const renderBackdrop = useCallback(
         (props: BottomSheetBackdropProps) => (
@@ -57,10 +62,6 @@ export const BottomSheet = ({
         [backDropOpacity],
     );
 
-    const close = () => {
-        bottomSheetRef.current?.close();
-        onClose();
-    };
     const open = () => {
         bottomSheetRef.current?.expand();
     };
