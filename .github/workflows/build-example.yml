@@ -1,4 +1,4 @@
-name: Build Design System Example App
+name: Build Design System Storybook App
 
 on:
     push:
@@ -15,7 +15,7 @@ jobs:
             id-token: write
         defaults:
             run:
-                working-directory: ./example
+                working-directory: ./Storybook
         env:
             smartway_keystore_name: smartway.keystore
             node-version: 18
@@ -24,11 +24,11 @@ jobs:
             - name: Tailscale
               uses: tailscale/github-action@v2
               with:
-                oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-                oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-                tags: tag:ci
-                version: ${{ vars.TAILSCALE_VERSION }}
-                
+                  oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+                  oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+                  tags: tag:ci
+                  version: ${{ vars.TAILSCALE_VERSION }}
+
             - name: Import Secrets
               id: secrets
               uses: hashicorp/vault-action@v2
@@ -85,8 +85,8 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Build Apk
-              working-directory: example/android/
-              run: ./gradlew assemblerelease
+              working-directory: Storybook/android/
+              run: chmod +x ./gradlew && ./gradlew assemblerelease
               env:
                   SMARTWAY_KEYSTORE_NAME: ${{ env.smartway_keystore_name }}
 
@@ -94,4 +94,4 @@ jobs:
               uses: actions/upload-artifact@v3
               with:
                   name: Design-system-samples-apk
-                  path: example/android/app/build/outputs/apk/**/app*.apk
+                  path: Storybook/android/app/build/outputs/apk/**/app*.apk
