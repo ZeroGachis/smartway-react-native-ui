@@ -10,7 +10,7 @@ export interface KeyboardState {
     value?: string;
     action: KeyboardActions;
 }
-interface Props {
+export interface Props {
     style?: ViewStyle;
     height: number;
     focusedInput: string;
