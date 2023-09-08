@@ -59,6 +59,7 @@ const getStories = () => {
     "./components/Keyboard/Keyboard.stories.tsx": require("../components/Keyboard/Keyboard.stories.tsx"),
     "./components/Label/Label.stories.tsx": require("../components/Label/Label.stories.tsx"),
     "./components/Menu/Menu.stories.tsx": require("../components/Menu/Menu.stories.tsx"),
+    "./components/ModifyQuantity/ModifyQuantity.stories.tsx": require("../components/ModifyQuantity/ModifyQuantity.stories.tsx"),
     "./components/PrintState/PrintState.stories.tsx": require("../components/PrintState/PrintState.stories.tsx"),
     "./components/Product/Product.stories.tsx": require("../components/Product/Product.stories.tsx"),
     "./components/SnackBar/SnackBar.stories.tsx": require("../components/SnackBar/SnackBar.stories.tsx"),
