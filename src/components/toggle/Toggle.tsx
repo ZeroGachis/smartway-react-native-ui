@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useTheme } from '../../styles/themes';
 
-interface Props {
+export interface Props {
     isToggled: boolean;
     onValueChange: () => void;
     disabled?: boolean;
