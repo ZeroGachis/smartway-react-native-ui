@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, TextInputBase } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
 type FieldBaseProps = React.ComponentProps<typeof TextInputBase>;
-interface NumberFieldProps extends FieldBaseProps {
+export interface NumberFieldProps extends FieldBaseProps {
     state?: 'readonly' | 'filled' | 'prefilled' | 'filled-focused' | 'prefilled-focused' | 'error';
     size?: 'm' | 's';
     minValue?: number;
