@@ -26,6 +26,6 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["src", "example", "Storybook", "./.eslintrc.json"]
+  "include": ["src", "example", "Storybook", "./.eslintrc.json"],
   "exclude": ["src/components/charts/*"]
 }
