@@ -52,6 +52,9 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 }
 
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
+
+
 /**
  * Set this to true to create four separate APKs instead of one,
  * one for each native architecture. This is useful if you don't
@@ -100,6 +103,11 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     splits {
