@@ -10,7 +10,7 @@ export type MenuOption = {
     onPress: () => void;
 };
 
-interface Props {
+export interface Props {
     options: MenuOption[];
     icon: IconName;
     iconSize?: number;

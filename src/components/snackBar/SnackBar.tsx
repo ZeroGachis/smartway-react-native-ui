@@ -6,7 +6,7 @@ import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
 
-interface Props {
+export interface Props {
     visible: boolean;
     message: string;
     iconName?: IconName;

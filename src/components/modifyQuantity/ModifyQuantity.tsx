@@ -6,7 +6,7 @@ import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
 import { NumberSelector } from '../numberSelector/NumberSelector';
 
-interface Props {
+export interface Props {
     text: string;
     value: number;
     onValueChange: (value: number) => void;

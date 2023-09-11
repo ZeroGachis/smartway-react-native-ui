@@ -4,7 +4,7 @@ import { IconButton } from '../buttons/IconButton';
 import { NumberField } from '../numberField/NumberField';
 import type { IconName } from '../icons/IconProps';
 
-interface Props {
+export interface Props {
     value: number;
     onValueChange: (value: number) => void;
     minValue: number;

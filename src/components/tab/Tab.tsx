@@ -3,7 +3,7 @@ import { StyleSheet, TextStyle, TouchableOpacity, ViewStyle } from 'react-native
 import { useTheme } from '../../styles/themes';
 import { Body } from '../typography/Body';
 
-interface Props {
+export interface Props {
     selected?: boolean;
     text: string;
     onPress: () => void;

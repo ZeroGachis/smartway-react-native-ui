@@ -14,7 +14,7 @@ type LabelColor =
     | 'primary'
     | 'neutral';
 
-interface Props {
+export interface Props {
     style?: ViewStyle;
     text: string;
     type: LabelType;

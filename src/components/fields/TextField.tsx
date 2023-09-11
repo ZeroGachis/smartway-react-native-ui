@@ -5,7 +5,7 @@ import { useTheme } from '../../styles/themes';
 import type { IconName } from '../icons/IconProps';
 import { TextIndication, TextType } from './TextIndication';
 
-interface Props extends TextInputProps {
+export interface Props extends TextInputProps {
     style?: ViewStyle;
     inputStyles?: TextStyle;
     label?: string;

@@ -3,7 +3,7 @@ import { StyleSheet, View, ViewStyle } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import { useTheme } from '../../styles/themes';
 
-interface Props {
+export interface Props {
     children?: ReactNode;
     style?: ViewStyle;
     bigShadowStyle?: ViewStyle;
