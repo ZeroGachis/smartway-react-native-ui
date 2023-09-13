@@ -5,49 +5,49 @@ import { useTheme } from '../../styles/themes';
 export interface HeadlineProps {
     size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
     children?: ReactNode;
-    style?: TextStyle;
+    headlineStyle?: TextStyle;
     testID?: string;
 }
 
-export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps) => {
+export const Headline = ({ size = 'h1', children, headlineStyle, testID }: HeadlineProps) => {
     const theme = useTheme();
 
-    let headlineStyle: StyleProp<TextStyle> = {};
+    let defaultHeadlineStyle: StyleProp<TextStyle> = {};
     if (size === 'h1') {
-        headlineStyle = {
+        defaultHeadlineStyle = {
             fontSize: 32,
             fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h2') {
-        headlineStyle = {
+        defaultHeadlineStyle = {
             fontSize: 26,
             fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h3') {
-        headlineStyle = {
+        defaultHeadlineStyle = {
             fontSize: 24,
             fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h4') {
-        headlineStyle = {
+        defaultHeadlineStyle = {
             fontSize: 20,
             fontFamily: 'PublicSans-Bold',
         };
     } else if (size === 'h5') {
-        headlineStyle = {
+        defaultHeadlineStyle = {
             fontSize: 18,
             fontFamily: 'PublicSans-Medium',
         };
     }
 
-    headlineStyle = {
-        ...headlineStyle,
+    defaultHeadlineStyle = {
+        ...defaultHeadlineStyle,
         color: theme.sw.colors.neutral[800],
-        ...style,
+        ...headlineStyle,
     };
 
     return (
-        <Text style={headlineStyle} testID={testID}>
+        <Text style={defaultHeadlineStyle} testID={testID}>
             {children}
         </Text>
     );

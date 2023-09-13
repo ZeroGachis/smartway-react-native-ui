@@ -70,7 +70,7 @@ const InsideDialog = ({ variantBody }: { variantBody?: 'left' | 'center' }) => {
         },
     });
     return (
-        <Body style={styles.content}>
+        <Body style={styles.content} size="B2">
             A dialog is a type of modal window that appears in front of app content to provide
             critical information. This is a dialog content example.
         </Body>

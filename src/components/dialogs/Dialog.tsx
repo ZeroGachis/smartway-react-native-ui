@@ -1,8 +1,9 @@
 import React, { PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
-import { Dialog as BaseDialog, Portal, Text } from 'react-native-paper';
+import { Dialog as BaseDialog, Portal } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { Button } from '../buttons/Button';
+import { Headline } from '../typography/Headline';
 
 interface Action {
     label: string;
@@ -39,12 +40,13 @@ export const Dialog = (props: DialogProps) => {
     const styles = StyleSheet.create({
         dialog: {
             borderRadius: theme.sw.spacing.l,
-            paddingHorizontal: 56,
-            paddingVertical: 40,
+            paddingHorizontal: '5%',
+            paddingVertical: '5%',
             marginTop: 0,
             marginLeft: 'auto',
             marginRight: 'auto',
-            width: 500,
+            width: '80%',
+            maxWidth: 500,
             backgroundColor: theme.sw.colors.neutral[50],
             ...props.style,
         },
@@ -70,7 +72,9 @@ export const Dialog = (props: DialogProps) => {
                 dismissable={props.dismissable}
                 style={styles.dialog}
             >
-                <Text style={titleStyle}>{props.title}</Text>
+                <Headline size="h4" headlineStyle={titleStyle}>
+                    {props.title}
+                </Headline>
                 {props.children}
                 <View style={styles.actions}>
                     {props.actions.cancel && (
