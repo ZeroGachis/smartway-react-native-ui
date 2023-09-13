@@ -1,0 +1,10 @@
+name: 'Production'
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    format-version-code:
+        uses: ZeroGachis/.github/.github/workflows/android-format-version-code.yml@v4
