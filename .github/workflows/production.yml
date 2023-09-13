@@ -24,3 +24,14 @@ jobs:
             vault-url: ${{ vars.VAULT_URL }}
             is-library-package: true
         secrets: inherit
+    publish-s3:
+        uses: ZeroGachis/.github/.github/workflows/publish-apk-s3.yml@v4
+        needs: [create-apk]
+        with:
+            apk-artifact-name: ${{ needs.create-apk.outputs.apk-artifact-name }}
+            apk-name: ${{ needs.create-apk.outputs.apk-name }}
+            apk-version: ${{ needs.create-apk.outputs.apk-version}}
+            vault-path: GH-Storybook-design-system
+            vault-url: ${{ vars.VAULT_URL }}
+            s3-path: storybook-react-native-design-system
+        secrets: inherit
