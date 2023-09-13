@@ -80,6 +80,7 @@ const theme = {
             success: {
                 600: '#1B806A',
                 400: '#22c55e',
+                main: '#00CC76',
                 50: '#D8FBDE',
             },
             warning: {
