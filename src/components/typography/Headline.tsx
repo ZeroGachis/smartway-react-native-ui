@@ -5,11 +5,11 @@ import { useTheme } from '../../styles/themes';
 export interface HeadlineProps {
     size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
     children?: ReactNode;
-    headlineStyle?: TextStyle;
+    style?: TextStyle;
     testID?: string;
 }
 
-export const Headline = ({ size = 'h1', children, headlineStyle, testID }: HeadlineProps) => {
+export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps) => {
     const theme = useTheme();
 
     let defaultHeadlineStyle: StyleProp<TextStyle> = {};
@@ -43,7 +43,7 @@ export const Headline = ({ size = 'h1', children, headlineStyle, testID }: Headl
     defaultHeadlineStyle = {
         ...defaultHeadlineStyle,
         color: theme.sw.colors.neutral[800],
-        ...headlineStyle,
+        ...style,
     };
 
     return (

@@ -72,7 +72,7 @@ export const Dialog = (props: DialogProps) => {
                 dismissable={props.dismissable}
                 style={styles.dialog}
             >
-                <Headline size="h4" headlineStyle={titleStyle}>
+                <Headline size="h4" style={titleStyle}>
                     {props.title}
                 </Headline>
                 {props.children}
