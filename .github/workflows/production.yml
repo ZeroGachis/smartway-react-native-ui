@@ -1,0 +1,55 @@
+name: 'Production'
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    format-version-code:
+        uses: ZeroGachis/.github/.github/workflows/android-format-version-code.yml@v3
+
+    create-apk:
+        uses: ZeroGachis/.github/.github/workflows/create-apk-artifact.yml@v3
+        needs: [format-version-code]
+        with:
+            version-code: ${{ needs.format-version-code.outputs.version-code }}
+            s3-path: storybook-react-native-design-system
+            java-version: 11
+            node-version: 18
+            package-name: com.storybook
+            working-directory: ./Storybook
+            configuration: release
+            vault-path: GH-Storybook-design-system
+            vault-url: ${{ vars.VAULT_URL }}
+            is-library-package: true
+        secrets: inherit
+    publish-bundle:
+        uses: ZeroGachis/.github/.github/workflows/publish-bundle-codepush.yml@v3
+        needs: [create-apk]
+        with:
+            node-version: 18
+            codepush-app: smartway-ai/storybook-smartapp
+            vault-path: GH-Storybook-design-system
+            vault-url: ${{ vars.VAULT_URL }}
+            is-library-package: true
+            apk-version: ${{ needs.create-apk.outputs.apk-version}}
+        secrets: inherit
+    publish-s3:
+        uses: ZeroGachis/.github/.github/workflows/publish-apk-s3.yml@v3
+        needs: [create-apk]
+        with:
+            apk-artifact-name: ${{ needs.create-apk.outputs.apk-artifact-name }}
+            apk-name: ${{ needs.create-apk.outputs.apk-name }}
+            apk-version: ${{ needs.create-apk.outputs.apk-version}}
+            vault-path: GH-Storybook-design-system
+            vault-url: ${{ vars.VAULT_URL }}
+            s3-path: storybook-react-native-design-system
+        secrets: inherit
+    publish-soti:
+        needs: [create-apk]
+        uses: ZeroGachis/.github/.github/workflows/publish-apk-soti.yml@v3
+        with:
+            apk-name: ${{ needs.create-apk.outputs.apk-name }}
+            apk-artifact-name: ${{ needs.create-apk.outputs.apk-artifact-name}}
+        secrets: inherit
