@@ -35,3 +35,10 @@ jobs:
             vault-url: ${{ vars.VAULT_URL }}
             s3-path: storybook-react-native-design-system
         secrets: inherit
+    publish-soti:
+        needs: [create-apk]
+        uses: ZeroGachis/.github/.github/workflows/publish-apk-soti.yml@v4
+        with:
+            apk-name: ${{ needs.create-apk.outputs.apk-name }}
+            apk-artifact-name: ${{ needs.create-apk.outputs.apk-artifact-name}}
+        secrets: inherit
