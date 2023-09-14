@@ -24,6 +24,17 @@ jobs:
             vault-url: ${{ vars.VAULT_URL }}
             is-library-package: true
         secrets: inherit
+    publish-bundle:
+        uses: ZeroGachis/.github/.github/workflows/publish-bundle-codepush.yml@v4
+        needs: [create-apk]
+        with:
+            node-version: 18
+            codepush-app: smartway-ai/storybook-smartapp
+            vault-path: GH-Storybook-design-system
+            vault-url: ${{ vars.VAULT_URL }}
+            is-library-package: true
+            apk-version: ${{ needs.create-apk.outputs.apk-version}}
+        secrets: inherit
     publish-s3:
         uses: ZeroGachis/.github/.github/workflows/publish-apk-s3.yml@v4
         needs: [create-apk]
