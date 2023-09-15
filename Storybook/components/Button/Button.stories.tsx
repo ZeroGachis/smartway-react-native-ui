@@ -38,12 +38,7 @@ export default {
         notes: `
 # Button
 
-This is a paragraph that can span multiple lines. It should be line-wrapped
-but not contain any paragraph breaks.
-
-Unless a paragraph break is explicitly used.
-
-Inline content can be **strong**, _emphasized_, ~~struck out~~, \`code\`, or a [hyperlink](http://example.com).
+A simple button.
 
 `,
     },
