@@ -72,10 +72,12 @@ export const Dialog = (props: DialogProps) => {
                 dismissable={props.dismissable}
                 style={styles.dialog}
             >
-                <Headline size="h4" style={titleStyle}>
-                    {props.title}
-                </Headline>
-                {props.children}
+                <BaseDialog.Title>
+                    <Headline size="h4" style={titleStyle}>
+                        {props.title}
+                    </Headline>
+                </BaseDialog.Title>
+                <BaseDialog.Content>{props.children}</BaseDialog.Content>
                 <View style={styles.actions}>
                     {props.actions.cancel && (
                         <Button
