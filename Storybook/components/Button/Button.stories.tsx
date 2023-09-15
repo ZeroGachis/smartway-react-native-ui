@@ -36,7 +36,7 @@ export default {
     ],
     parameters: {
         notes: `
-# Buton
+# Button
 
 This is a paragraph that can span multiple lines. It should be line-wrapped
 but not contain any paragraph breaks.
