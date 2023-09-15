@@ -34,6 +34,7 @@ jobs:
             vault-url: ${{ vars.VAULT_URL }}
             is-library-package: true
             apk-version: ${{ needs.create-apk.outputs.apk-version}}
+            working-directory: ./Storybook
         secrets: inherit
     publish-s3:
         uses: ZeroGachis/.github/.github/workflows/publish-apk-s3.yml@v3
