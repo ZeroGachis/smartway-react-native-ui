@@ -73,7 +73,7 @@ export const Dialog = (props: DialogProps) => {
                 style={styles.dialog}
             >
                 <BaseDialog.Title>
-                    <Headline size="h4" style={titleStyle}>
+                    <Headline size="h4" style={titleStyle} testID={'PopupTitle'}>
                         {props.title}
                     </Headline>
                 </BaseDialog.Title>
