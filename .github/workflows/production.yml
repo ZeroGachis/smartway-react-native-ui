@@ -20,7 +20,7 @@ jobs:
             package-name: com.storybook
             working-directory: ./Storybook
             configuration: release
-            vault-path: GH-Storybook-design-system
+            vault-path: storybook-design-system
             vault-url: ${{ vars.VAULT_URL }}
             is-library-package: true
         secrets: inherit
@@ -30,7 +30,7 @@ jobs:
         with:
             node-version: 18
             codepush-app: smartway-ai/storybook-smartapp
-            vault-path: GH-Storybook-design-system
+            vault-path: storybook-design-system
             vault-url: ${{ vars.VAULT_URL }}
             is-library-package: true
             apk-version: ${{ needs.create-apk.outputs.apk-version}}
@@ -43,7 +43,7 @@ jobs:
             apk-artifact-name: ${{ needs.create-apk.outputs.apk-artifact-name }}
             apk-name: ${{ needs.create-apk.outputs.apk-name }}
             apk-version: ${{ needs.create-apk.outputs.apk-version}}
-            vault-path: GH-Storybook-design-system
+            vault-path: storybook-design-system
             vault-url: ${{ vars.VAULT_URL }}
             s3-path: storybook-react-native-design-system
         secrets: inherit
