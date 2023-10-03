@@ -16,13 +16,12 @@ const jestConfig: JestConfigWithTsJest = {
     testMatch: ['**/?(*.)test.(ts|tsx)'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     transformIgnorePatterns: [
-        'node_modules/(?!(@react-native|react-native|react-native-drop-shadow)/)',
+        'node_modules/(?!(@react-native|react-native|react-native-drop-shadow|@gorhom/bottom-sheet|react-native-reanimated)/)',
     ],
     moduleDirectories: ['node_modules', 'src'],
     setupFiles: [
         './node_modules/react-native-gesture-handler/jestSetup.js',
         './node_modules/react-native/jest/setup.js',
-        './setup.js',
     ],
 };
 

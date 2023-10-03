@@ -22,6 +22,23 @@ exports[`MODULE | TextField component renders correctly 1`] = `
     }
   >
     <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -90,6 +107,7 @@ exports[`MODULE | TextField component renders correctly 1`] = `
               }
             >
               <TextInput
+                cursorColor="#212B36"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
@@ -164,6 +182,23 @@ exports[`MODULE | TextField component renders correctly when textType in error s
     }
   >
     <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -232,6 +267,7 @@ exports[`MODULE | TextField component renders correctly when textType in error s
               }
             >
               <TextInput
+                cursorColor="#FF5630"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
@@ -306,6 +342,23 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
     }
   >
     <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -374,6 +427,7 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
               }
             >
               <TextInput
+                cursorColor="#212B36"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
