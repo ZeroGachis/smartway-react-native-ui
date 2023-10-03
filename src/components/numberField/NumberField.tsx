@@ -132,7 +132,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 else setCurrentState('prefilled');
             }
         };
-        let checkContent = (text: string | undefined) => {
+        const checkContent = (text: string | undefined) => {
             if (text !== undefined && text !== '') {
                 const cleanNumber = text.replace(/[^0-9]/g, '');
                 const parsedValue = parseInt(cleanNumber);
@@ -144,7 +144,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 }
             }
         };
-        let cleanContent = (text: string | undefined) => {
+        const cleanContent = (text: string | undefined) => {
             if (text !== undefined && text !== '') {
                 const cleanNumber = text.replace(/[^-0-9]/g, '');
                 const parsedValue = parseInt(cleanNumber);
@@ -152,7 +152,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
             }
             return '';
         };
-        let onChangeText = (e: any) => {
+        const onChangeText = (e: any) => {
             if (props?.onChangeText !== undefined) {
                 props.onChangeText(e);
                 checkContent(props.value);
@@ -162,11 +162,11 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 checkContent(value);
             }
         };
-        let onFocus = (e: any) => {
+        const onFocus = (e: any) => {
             setFocused(true);
             if (props?.onFocus !== undefined) props.onFocus(e);
         };
-        let onBlur = (e: any) => {
+        const onBlur = (e: any) => {
             setFocused(false);
             if ((value === '' || props.value === '') && firstValue !== '') onChangeText(firstValue);
             else if ((value === '' || props.value === '') && lastValue !== '') {
@@ -194,3 +194,5 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
         );
     },
 );
+
+NumberField.displayName = 'NumberField';
