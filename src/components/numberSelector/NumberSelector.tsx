@@ -29,7 +29,7 @@ export const NumberSelector = ({
     variant = 'outlined',
     size = 'm',
 }: Props) => {
-    let refInput = useRef<any>();
+    const refInput = useRef<any>();
 
     const [tempValue, setTempValue] = useState<string>(value.toString());
     const [softInputOnFocus, setSoftInputOnFocus] = useState(false);
