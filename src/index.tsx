@@ -29,7 +29,7 @@ import {
     LineChart,
 } from './components';
 
-import { ThemeProvider, useTheme } from './styles/themes';
+import { ThemeProvider, useThem } from './styles/themes';
 export {
     Body,
     Button,
