@@ -28,7 +28,8 @@
     "test": "jest",
     "tsc": "tsc --project tsconfig.build.json",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "type:check": "tsc"
   },
   "keywords": [
     "react-native",
