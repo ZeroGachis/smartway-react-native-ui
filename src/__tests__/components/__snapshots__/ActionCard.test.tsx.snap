@@ -61,14 +61,17 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
         >
           <Text
             style={
-              {
-                "color": "black",
-                "fontFamily": "PublicSans-Regular",
-                "fontSize": 16,
-                "lineHeight": 19,
-                "paddingBottom": 16,
-                "textAlign": "center",
-              }
+              [
+                {
+                  "color": "black",
+                  "paddingBottom": 16,
+                  "textAlign": "center",
+                },
+                {
+                  "fontFamily": "PublicSans-Regular",
+                  "fontSize": 14,
+                },
+              ]
             }
           />
           <View>
@@ -174,14 +177,17 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
         >
           <Text
             style={
-              {
-                "color": "black",
-                "fontFamily": "PublicSans-Regular",
-                "fontSize": 16,
-                "lineHeight": 19,
-                "paddingBottom": 16,
-                "textAlign": "center",
-              }
+              [
+                {
+                  "color": "black",
+                  "paddingBottom": 16,
+                  "textAlign": "center",
+                },
+                {
+                  "fontFamily": "PublicSans-Regular",
+                  "fontSize": 14,
+                },
+              ]
             }
           />
           <View>
