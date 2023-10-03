@@ -1,0 +1,11 @@
+name: 'PullRequest'
+
+on:
+    pull_request:
+
+jobs:
+    unittests:
+        uses: ./.github/workflows/unit-tests.yml
+        with:
+            node-version: 18
+        secrets: inherit
