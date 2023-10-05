@@ -24,7 +24,7 @@ export interface Props {
 export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
     const theme = useTheme();
 
-    const transparencyValue = '29';
+    const transparencyValue = theme.sw.transparency[16];
 
     const getColors = () => {
         switch (type) {
@@ -68,8 +68,8 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
             case 'soft':
                 return labelColor === 'neutral'
                     ? {
-                          backgroundColor: theme.sw.colors.neutral[500] + transparencyValue,
-                          color: theme.sw.colors.neutral[600],
+                          backgroundColor: theme.sw.colors.neutral[50],
+                          color: theme.sw.colors.neutral[800],
                       }
                     : labelColor === 'primary'
                     ? {
@@ -145,9 +145,9 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
         container: {
             borderWidth: type === 'outlined' ? 1 : 0,
             backgroundColor,
-            paddingHorizontal: theme.sw.spacing.xs,
-            paddingVertical: 2,
-            borderRadius: 6,
+            paddingHorizontal: 10,
+            paddingVertical: 4,
+            borderRadius: 8,
             borderColor,
             ...style,
         },
