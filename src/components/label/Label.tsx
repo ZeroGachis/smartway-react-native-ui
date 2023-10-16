@@ -158,7 +158,7 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
     });
     return (
         <View style={styles.container}>
-            <Body style={styles.text} size="B3" weight="bold">
+            <Body style={styles.text} size="B1" weight="bold">
                 {text}
             </Body>
         </View>
