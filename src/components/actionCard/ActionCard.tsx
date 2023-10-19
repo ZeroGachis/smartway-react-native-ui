@@ -59,7 +59,7 @@ export const ActionCard = ({
             width: '100%',
             backgroundColor: theme.sw.colors.neutral[200],
             marginTop: theme.sw.spacing.m,
-            marginBottom: theme.sw.spacing.xs,
+            marginBottom: theme.sw.spacing.xxs,
         },
         bottomChildren: {
             alignItems: 'center',

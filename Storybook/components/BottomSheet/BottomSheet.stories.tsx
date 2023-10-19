@@ -42,7 +42,7 @@ const InsideBottomSheet = () => {
             padding: 16,
         },
         button: {
-            marginVertical: theme.sw.spacing.xs,
+            marginVertical: theme.sw.spacing.xxs,
         },
     });
 

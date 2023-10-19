@@ -28,7 +28,7 @@ export const EANInput = ({ value, style, ...props }: Props) => {
             ...style,
         },
         input: {
-            marginLeft: theme.sw.spacing.xs,
+            marginLeft: theme.sw.spacing.xxs,
             fontSize: 16,
         },
     });

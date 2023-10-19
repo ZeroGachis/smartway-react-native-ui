@@ -46,14 +46,14 @@ export const Product = ({
         },
         quantityContainer: {
             alignSelf: 'flex-end',
-            padding: theme.sw.spacing.xs,
-            paddingHorizontal: theme.sw.spacing.xs,
-            margin: theme.sw.spacing.xs,
+            padding: theme.sw.spacing.xxs,
+            paddingHorizontal: theme.sw.spacing.xxs,
+            margin: theme.sw.spacing.xxs,
             backgroundColor: theme.sw.colors.neutral[50],
             borderRadius: 8,
         },
         label: {
-            marginBottom: theme.sw.spacing.xs,
+            marginBottom: theme.sw.spacing.xxs,
         },
         barcodePrice: {
             marginBottom: theme.sw.spacing.s,
@@ -65,10 +65,10 @@ export const Product = ({
             justifyContent: 'space-between',
         },
         discount: {
-            marginRight: theme.sw.spacing.xs,
+            marginRight: theme.sw.spacing.xxs,
         },
         finalPrice: {
-            marginRight: theme.sw.spacing.xs,
+            marginRight: theme.sw.spacing.xxs,
         },
         date: {
             color: theme.sw.colors.neutral[500],
