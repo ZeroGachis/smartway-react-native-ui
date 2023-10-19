@@ -27,7 +27,7 @@ export const TextIndication = ({ text, type, icon, iconSize, iconColor }: Props)
 
     const container: ViewStyle = {
         flexDirection: 'row',
-        marginTop: theme.sw.spacing.xxs,
+        marginTop: theme.sw.spacing.xs,
         alignItems: 'center',
     };
 

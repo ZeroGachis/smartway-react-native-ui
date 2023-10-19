@@ -479,7 +479,7 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
             {
               "alignItems": "center",
               "flexDirection": "row",
-              "marginTop": 6,
+              "marginTop": 8,
             }
           }
         >
@@ -487,7 +487,7 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
             style={
               {
                 "color": "#637381",
-                "marginLeft": 6,
+                "marginLeft": 4,
               }
             }
           >
