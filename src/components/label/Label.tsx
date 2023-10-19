@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
-import { Body } from '../typography/Body';
+import { Body, BodyProps } from '../typography/Body';
 
 type LabelType = 'outlined' | 'filled' | 'soft';
 type LabelColor =
@@ -14,14 +14,17 @@ type LabelColor =
     | 'primary'
     | 'neutral';
 
-export interface Props {
+type OptionnalBodyPropsWithoutSizeAndWeight = Partial<Omit<Omit<BodyProps, 'size'>, 'weight'>>;
+
+export interface Props extends OptionnalBodyPropsWithoutSizeAndWeight {
     style?: ViewStyle;
     text: string;
     type: LabelType;
     labelColor?: LabelColor;
 }
 
-export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
+export const Label = (props: Props) => {
+    const { style, text, type, labelColor = 'neutral' } = props;
     const theme = useTheme();
 
     const transparencyValue = theme.sw.transparency[16];
@@ -158,7 +161,7 @@ export const Label = ({ style, text, type, labelColor = 'neutral' }: Props) => {
     });
     return (
         <View style={styles.container}>
-            <Body style={styles.text} size="B1" weight="bold">
+            <Body {...props} style={styles.text} size="B1" weight="bold">
                 {text}
             </Body>
         </View>
