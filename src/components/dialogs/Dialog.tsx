@@ -59,7 +59,7 @@ export const Dialog = (props: DialogProps) => {
         },
         leftOption: {
             color: theme.sw.colors.neutral[800],
-            marginRight: theme.sw.spacing.xs,
+            marginRight: theme.sw.spacing.xxs,
         },
     });
 

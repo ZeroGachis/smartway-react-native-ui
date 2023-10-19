@@ -83,7 +83,7 @@ export const DropDown = ({
             borderRadius: 8,
             overflow: 'hidden',
             borderColor: borderColor,
-            marginTop: theme.sw.spacing.xs,
+            marginTop: theme.sw.spacing.xxs,
             ...style,
         },
         accordion: {
