@@ -72,8 +72,8 @@ export const Dialog = (props: DialogProps) => {
                 dismissable={props.dismissable}
                 style={styles.dialog}
             >
-                <BaseDialog.Title>
-                    <Headline size="h4" style={titleStyle} testID={'PopupTitle'}>
+                <BaseDialog.Title testID={'PopupTitle'}>
+                    <Headline size="h4" style={titleStyle}>
                         {props.title}
                     </Headline>
                 </BaseDialog.Title>
