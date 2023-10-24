@@ -21,9 +21,10 @@ export interface Props {
     icon?: Icon;
     onBack?: () => void;
     style?: ViewStyle;
+    testID?: string;
 }
 
-export const TopAppBar = ({ size = 'small', title, icon, onBack, style }: Props) => {
+export const TopAppBar = ({ size = 'small', title, icon, onBack, style, testID }: Props) => {
     const theme = useTheme();
     const styles = StyleSheet.create({
         button: {
@@ -46,7 +47,7 @@ export const TopAppBar = ({ size = 'small', title, icon, onBack, style }: Props)
         return theme.sw.colors.neutral[600];
     };
     return (
-        <Appbar.Header mode={size} style={styles.header} statusBarHeight={0}>
+        <Appbar.Header mode={size} style={styles.header} statusBarHeight={0} testID={testID}>
             {onBack !== undefined && (
                 <Appbar.BackAction
                     style={styles.button}
