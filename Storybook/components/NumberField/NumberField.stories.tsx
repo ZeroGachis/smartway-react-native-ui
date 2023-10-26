@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NumberField } from 'smartway-react-native-ui';
 
@@ -9,9 +9,9 @@ export default {
     title: 'components/NumberField',
     component: NumberField,
     args: {
-        value: '0',
-        minValue: 0,
-        maxValue: 10,
+        value: '-999.9',
+        minValue: -999.9,
+        maxValue: 999.9,
     },
     argTypes: {
         state: {
@@ -26,6 +26,7 @@ export default {
             ],
         },
         size: { control: { type: 'radio' }, options: ['m', 's'] },
+        decimal: { control: { type: 'radio' }, options: [true, false] },
     },
 
     decorators: [
@@ -44,7 +45,25 @@ export default {
 
 type Story = StoryObj<ComponentProps>;
 
+const NumberFieldTester = (args) => {
+    const [quantity, setQuantity] = useState<number>(args.value);
+    const onValueChange = (newQuantity: number) => {
+        setQuantity(newQuantity);
+    };
+    return (
+        <NumberField
+            minValue={args.minValue}
+            maxValue={args.maxValue}
+            size={args.size}
+            decimal={args.decimal}
+            value={quantity}
+            onValueChange={onValueChange}
+        />
+    );
+};
 export const Default: Story = {
-    args: {},
+    render: (args) => {
+        return NumberFieldTester(args);
+    },
 };
 Default.parameters = { noSafeArea: false };

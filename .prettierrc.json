@@ -1,16 +1,17 @@
 {
-  "singleQuote": true,
-  "semi": true,
-  "printWidth": 100,
-  "tabWidth": 4,
-  "trailingComma": "all",
-  "endOfLine": "lf",
-  "overrides": [
-    {
-      "files": "*.json",
-      "options": {
-        "tabWidth": 2
-      }
-    }
-  ]
+    "singleQuote": true,
+    "semi": true,
+    "printWidth": 100,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "endOfLine": "lf",
+    "jsxSingleQuote": true,
+    "overrides": [
+        {
+            "files": "*.json",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
 }
