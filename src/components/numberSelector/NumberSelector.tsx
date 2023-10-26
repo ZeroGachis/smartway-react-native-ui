@@ -77,7 +77,7 @@ export const NumberSelector = ({
                 (maxValue === undefined || parsedValue <= maxValue)
             ) {
                 onValueChange(parsedValue);
-                setTempValue(parsedValue.toString());
+                setTempValue(text);
             }
         }
     };
