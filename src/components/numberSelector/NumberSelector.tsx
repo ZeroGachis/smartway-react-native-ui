@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { useRef, useState } from 'react';
 import { Keyboard, StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
@@ -15,6 +16,7 @@ export interface Props {
     showSoftInputOnFocus?: boolean;
     variant?: 'filled' | 'outlined';
     size?: 'm' | 's';
+    decimal?: boolean;
 }
 
 export const NumberSelector = ({
@@ -27,32 +29,56 @@ export const NumberSelector = ({
     plusIcon = 'add',
     showSoftInputOnFocus = false,
     variant = 'outlined',
+    decimal = false,
     size = 'm',
 }: Props) => {
     const refInput = useRef<any>();
-
+    const parser = decimal ? parseFloat : parseInt;
     const [tempValue, setTempValue] = useState<string>(value.toString());
     const [softInputOnFocus, setSoftInputOnFocus] = useState(false);
+    const allowedMinus = (): boolean => {
+        return minValue !== undefined && minValue < 0;
+    };
+    const decimalRegex = allowedMinus() ? /^-?\d+[\.]?\d?$/ : /^\d+[\.]?\d?$/;
+    const integerRegex = allowedMinus() ? /^-?\d+$/ : /^\d+$/;
+    const numberRegex = decimal ? decimalRegex : integerRegex;
     const onAdd = () => {
         Keyboard.dismiss();
-        if (!addDisabled) onChangeText((value + 1).toString());
+        if (!addDisabled) {
+            onChangeText(
+                (
+                    Math.round(
+                        (value + 1 < maxValue ? value + 1 : maxValue) * 10
+                    ) / 10
+                ).toString()
+            );
+        }
     };
     const onMinus = () => {
         Keyboard.dismiss();
-        if (!minusDisabled) onChangeText((value - 1).toString());
+        if (!minusDisabled)
+            onChangeText(
+                (
+                    Math.round(
+                        (value - 1 > minValue ? value - 1 : minValue) * 10
+                    ) / 10
+                ).toString()
+            );
     };
     const onChangeText = (text: string) => {
-        const cleanNumber = text.replace(/[^-0-9]/g, '');
-        if (tempValue !== '') refInput?.current?.focus();
-        if (cleanNumber !== '') {
-            const parsedValue = parseInt(cleanNumber);
-            if (parsedValue !== undefined && parsedValue >= minValue && parsedValue <= maxValue) {
+        if (tempValue !== '' && tempValue != '-') refInput?.current?.focus();
+        if (text == '' || (allowedMinus() && text == '-')) {
+            setTempValue(text);
+        } else if (numberRegex.test(text)) {
+            const parsedValue = parser(text);
+            if (
+                parsedValue !== undefined &&
+                (minValue === undefined || parsedValue >= minValue) &&
+                (maxValue === undefined || parsedValue <= maxValue)
+            ) {
                 onValueChange(parsedValue);
                 setTempValue(parsedValue.toString());
             }
-        } else {
-            onValueChange(0);
-            setTempValue('');
         }
     };
 
@@ -87,12 +113,13 @@ export const NumberSelector = ({
                 showSoftInputOnFocus={softInputOnFocus}
                 onPressIn={() => setSoftInputOnFocus(true)}
                 onPressOut={() => setSoftInputOnFocus(false)}
-                keyboardType="number-pad"
+                keyboardType='number-pad'
                 value={getDisplayedValue()}
                 minValue={minValue}
                 maxValue={maxValue}
                 onChangeText={onChangeText}
                 selectTextOnFocus={showSoftInputOnFocus}
+                decimal={decimal}
                 size={size}
             />
             <IconButton

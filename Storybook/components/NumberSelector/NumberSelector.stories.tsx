@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NumberSelector } from 'smartway-react-native-ui';
 
@@ -10,9 +10,12 @@ export default {
     component: NumberSelector,
     args: {
         value: 0,
+        minValue: -999,
+        maxValue: 999,
     },
     argTypes: {
         onValueChange: { action: 'onValueChange' },
+        decimal: { control: { type: 'radio' }, options: [true, false] },
     },
 
     decorators: [
@@ -31,13 +34,28 @@ export default {
 
 type Story = StoryObj<ComponentProps>;
 
+const NumberSelectorTester = (args) => {
+    const [quantity, setQuantity] = useState<number>(args.value);
+    const onValueChange = (newQuantity: number) => {
+        setQuantity(newQuantity);
+    };
+    return (
+        <NumberSelector
+            showSoftInputOnFocus={args.showSoftInputOnFocus}
+            decimal={args.decimal}
+            minValue={args.minValue}
+            maxValue={args.maxValue}
+            minusIcon={args.minusIcon}
+            plusIcon={args.plusIcon}
+            value={quantity}
+            onValueChange={onValueChange}
+        />
+    );
+};
+
 export const Default: Story = {
-    args: {
-        showSoftInputOnFocus: true,
-        minValue: 0,
-        maxValue: 999,
-        minusIcon: 'arrow-back',
-        plusIcon: 'arrow-forward',
+    render: (args) => {
+        return NumberSelectorTester(args);
     },
 };
 Default.parameters = { noSafeArea: false };
