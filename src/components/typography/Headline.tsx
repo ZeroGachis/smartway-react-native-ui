@@ -1,15 +1,18 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
+import type { TextProps } from 'react-native-paper';
 
-export interface HeadlineProps {
+export interface HeadlineProps extends TextProps<Text> {
     size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-    children?: ReactNode;
-    style?: TextStyle;
-    testID?: string;
 }
 
-export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps) => {
+export const Headline = ({
+    size = 'h1',
+    children,
+    style,
+    ...props
+}: HeadlineProps) => {
     const theme = useTheme();
 
     let defaultHeadlineStyle: StyleProp<TextStyle> = {};
@@ -43,11 +46,10 @@ export const Headline = ({ size = 'h1', children, style, testID }: HeadlineProps
     defaultHeadlineStyle = {
         ...defaultHeadlineStyle,
         color: theme.sw.colors.neutral[800],
-        ...style,
     };
 
     return (
-        <Text style={defaultHeadlineStyle} testID={testID}>
+        <Text style={[defaultHeadlineStyle, style]} {...props}>
             {children}
         </Text>
     );
