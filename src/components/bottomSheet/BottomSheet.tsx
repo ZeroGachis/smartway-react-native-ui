@@ -6,7 +6,10 @@ import {
     default as BaseBottomSheet,
 } from '@gorhom/bottom-sheet';
 import { useTheme } from '../../styles/themes';
-import type { WithSpringConfig, WithTimingConfig } from 'react-native-reanimated';
+import type {
+    WithSpringConfig,
+    WithTimingConfig,
+} from 'react-native-reanimated';
 import { Headline, HeadlineProps } from '../typography/Headline';
 
 export interface Props {
@@ -22,7 +25,7 @@ export interface Props {
     animationConfigs?: WithSpringConfig | WithTimingConfig;
     swipeable?: boolean;
     title?: string;
-    titleProps?: HeadlineProps;
+    titleProps?: Omit<HeadlineProps, 'children'>;
 }
 export const BottomSheet = ({
     children,
