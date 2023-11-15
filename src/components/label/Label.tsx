@@ -14,17 +14,20 @@ type LabelColor =
     | 'primary'
     | 'neutral';
 
-type OptionnalBodyPropsWithoutSizeAndWeight = Partial<Omit<Omit<BodyProps, 'size'>, 'weight'>>;
+type OptionnalBodyPropsWithoutSizeAndWeight = Partial<
+    Omit<Omit<BodyProps, 'size'>, 'weight'>
+>;
 
 export interface Props extends OptionnalBodyPropsWithoutSizeAndWeight {
     style?: ViewStyle;
     text: string;
     type: LabelType;
     labelColor?: LabelColor;
+    size?: 'm' | 's';
 }
 
 export const Label = (props: Props) => {
-    const { style, text, type, labelColor = 'neutral' } = props;
+    const { style, text, type, labelColor = 'neutral', size = 'm' } = props;
     const theme = useTheme();
 
     const transparencyValue = theme.sw.transparency[16];
@@ -76,31 +79,39 @@ export const Label = (props: Props) => {
                       }
                     : labelColor === 'primary'
                     ? {
-                          backgroundColor: theme.sw.colors.primary.main + transparencyValue,
+                          backgroundColor:
+                              theme.sw.colors.primary.main + transparencyValue,
                           color: theme.sw.colors.primary[600],
                       }
                     : labelColor === 'secondary'
                     ? {
-                          backgroundColor: theme.sw.colors.secondary[400] + transparencyValue,
+                          backgroundColor:
+                              theme.sw.colors.secondary[400] +
+                              transparencyValue,
                           color: theme.sw.colors.secondary[600],
                       }
                     : labelColor === 'information'
                     ? {
-                          backgroundColor: theme.sw.colors.information[400] + transparencyValue,
+                          backgroundColor:
+                              theme.sw.colors.information[400] +
+                              transparencyValue,
                           color: theme.sw.colors.information[600],
                       }
                     : labelColor === 'success'
                     ? {
-                          backgroundColor: theme.sw.colors.success[400] + transparencyValue,
+                          backgroundColor:
+                              theme.sw.colors.success[400] + transparencyValue,
                           color: theme.sw.colors.success[600],
                       }
                     : labelColor === 'warning'
                     ? {
-                          backgroundColor: theme.sw.colors.warning[400] + transparencyValue,
+                          backgroundColor:
+                              theme.sw.colors.warning[400] + transparencyValue,
                           color: theme.sw.colors.warning[600],
                       }
                     : {
-                          backgroundColor: theme.sw.colors.error['main'] + transparencyValue,
+                          backgroundColor:
+                              theme.sw.colors.error['main'] + transparencyValue,
                           color: theme.sw.colors.error[600],
                       };
         }
@@ -109,7 +120,7 @@ export const Label = (props: Props) => {
                 return labelColor === 'neutral'
                     ? {
                           borderColor: theme.sw.colors.neutral[400],
-                          color: theme.sw.colors.neutral[800],
+                          color: theme.sw.colors.neutral[500],
                       }
                     : labelColor === 'primary'
                     ? {
@@ -148,20 +159,25 @@ export const Label = (props: Props) => {
         container: {
             borderWidth: type === 'outlined' ? 1 : 0,
             backgroundColor,
-            paddingHorizontal: 10,
+            paddingHorizontal: size == 'm' ? 10 : 8,
             paddingVertical: 4,
             borderRadius: 8,
             borderColor,
             ...style,
         },
         text: {
-            lineHeight: 20,
+            lineHeight: size == 'm' ? 20 : undefined,
             color,
         },
     });
     return (
         <View style={styles.container}>
-            <Body {...props} style={styles.text} size="B1" weight="bold">
+            <Body
+                {...props}
+                style={styles.text}
+                size={size == 'm' ? 'B1' : 'B2'}
+                weight='bold'
+            >
                 {text}
             </Body>
         </View>
