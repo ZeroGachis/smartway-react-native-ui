@@ -8,6 +8,7 @@ import type { IconName } from '../icons/IconProps';
 export interface Props {
     value: number;
     onValueChange: (value: number) => void;
+    onEndEditing?: ((value: string | undefined) => void) | undefined
     minValue: number;
     maxValue: number;
     style?: ViewStyle;
@@ -22,6 +23,7 @@ export interface Props {
 export const NumberSelector = ({
     value,
     onValueChange,
+    onEndEditing = undefined,
     minValue = 0,
     maxValue,
     style,
@@ -45,25 +47,26 @@ export const NumberSelector = ({
     const onAdd = () => {
         Keyboard.dismiss();
         if (!addDisabled) {
-            onChangeText(
-                (
-                    Math.round(
-                        (value + 1 < maxValue ? value + 1 : maxValue) * 10
-                    ) / 10
-                ).toString()
-            );
+            const newValue = (
+                Math.round(
+                    (value + 1 < maxValue ? value + 1 : maxValue) * 10
+                ) / 10
+            ).toString();
+            onChangeText(newValue);
+            onEndEditing && onEndEditing(newValue);
         }
     };
     const onMinus = () => {
         Keyboard.dismiss();
-        if (!minusDisabled)
-            onChangeText(
-                (
-                    Math.round(
-                        (value - 1 > minValue ? value - 1 : minValue) * 10
-                    ) / 10
-                ).toString()
-            );
+        if (!minusDisabled){
+            const newValue = (
+                Math.round(
+                    (value - 1 > minValue ? value - 1 : minValue) * 10
+                ) / 10
+            ).toString();
+            onChangeText(newValue);
+            onEndEditing && onEndEditing(newValue);
+        }
     };
     const onChangeText = (text: string) => {
         if (tempValue !== '' && tempValue != '-') refInput?.current?.focus();
@@ -118,6 +121,7 @@ export const NumberSelector = ({
                 minValue={minValue}
                 maxValue={maxValue}
                 onChangeText={onChangeText}
+                onEndEditing={(e) => onEndEditing && onEndEditing(e.nativeEvent.text)}
                 selectTextOnFocus={showSoftInputOnFocus}
                 decimal={decimal}
                 size={size}
