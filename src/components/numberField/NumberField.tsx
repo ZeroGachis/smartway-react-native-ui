@@ -209,7 +209,6 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 value={props.onChangeText ? props.value : value}
                 ref={ref ?? undefined}
                 style={[stateStyle(), props.style]}
-                selectTextOnFocus={false}
                 onChangeText={(e) => onChangeText(e)}
                 onBlur={(e) => onBlur(e)}
                 onFocus={(e) => onFocus(e)}

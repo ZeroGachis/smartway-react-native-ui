@@ -6,8 +6,8 @@ import { NumberField } from '../numberField/NumberField';
 import type { IconName } from '../icons/IconProps';
 
 export interface Props {
-    value: number;
-    onValueChange: (value: number) => void;
+    value: number | undefined;
+    onValueChange?: (value: number) => void;
     onEndEditing?: ((value: string | undefined) => void) | undefined
     minValue: number;
     maxValue: number;
@@ -18,11 +18,12 @@ export interface Props {
     variant?: 'filled' | 'outlined';
     size?: 'm' | 's';
     decimal?: boolean;
+    placeholder?: string;
 }
 
 export const NumberSelector = ({
     value,
-    onValueChange,
+    onValueChange= undefined,
     onEndEditing = undefined,
     minValue = 0,
     maxValue,
@@ -33,10 +34,11 @@ export const NumberSelector = ({
     variant = 'outlined',
     decimal = false,
     size = 'm',
+    placeholder = '--',
 }: Props) => {
     const refInput = useRef<any>();
     const parser = decimal ? parseFloat : parseInt;
-    const [tempValue, setTempValue] = useState<string>(value.toString());
+    const [tempValue, setTempValue] = useState<string>(value?.toString() ?? placeholder);
     const [softInputOnFocus, setSoftInputOnFocus] = useState(false);
     const allowedMinus = (): boolean => {
         return minValue !== undefined && minValue < 0;
@@ -47,11 +49,11 @@ export const NumberSelector = ({
     const onAdd = () => {
         Keyboard.dismiss();
         if (!addDisabled) {
-            const newValue = (
+            const newValue =value?  (
                 Math.round(
                     (value + 1 < maxValue ? value + 1 : maxValue) * 10
                 ) / 10
-            ).toString();
+            ).toString() : "1";
             onChangeText(newValue);
             onEndEditing && onEndEditing(newValue);
         }
@@ -59,11 +61,11 @@ export const NumberSelector = ({
     const onMinus = () => {
         Keyboard.dismiss();
         if (!minusDisabled){
-            const newValue = (
+            const newValue = value ? (
                 Math.round(
                     (value - 1 > minValue ? value - 1 : minValue) * 10
                 ) / 10
-            ).toString();
+            ).toString() : "0";
             onChangeText(newValue);
             onEndEditing && onEndEditing(newValue);
         }
@@ -79,14 +81,14 @@ export const NumberSelector = ({
                 (minValue === undefined || parsedValue >= minValue) &&
                 (maxValue === undefined || parsedValue <= maxValue)
             ) {
-                onValueChange(parsedValue);
+                onValueChange && onValueChange(parsedValue);
                 setTempValue(text);
             }
         }
     };
 
-    const minusDisabled = minValue >= value;
-    const addDisabled = maxValue <= value;
+    const minusDisabled = minValue >= (value ?? 0) ;
+    const addDisabled = maxValue <= (value ?? 0);
 
     const styles = StyleSheet.create({
         container: {

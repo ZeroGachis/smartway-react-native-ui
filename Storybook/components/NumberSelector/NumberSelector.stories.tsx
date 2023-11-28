@@ -58,4 +58,12 @@ export const Default: Story = {
         return NumberSelectorTester(args);
     },
 };
+
+export const undefinedValue: Story = {
+    render: (args) => {
+        args.value = undefined;
+        return NumberSelectorTester(args);
+    },
+};
+
 Default.parameters = { noSafeArea: false };
