@@ -4,6 +4,7 @@ import { useTheme } from '../../styles/themes';
 import { StyleSheet, type ViewStyle } from 'react-native';
 import { Headline } from '../typography/Headline';
 import type { IconSource } from 'react-native-paper/lib/typescript/components/Icon';
+import type { WithTestID } from 'src/shared/type';
 
 interface Icon {
     name: IconSource;
@@ -15,16 +16,22 @@ export interface Title {
     onPress?: () => void;
 }
 
-export interface Props {
+export type Props = WithTestID<{
     size?: 'small' | 'medium' | 'large' | 'center-aligned';
     title: Title;
     icon?: Icon;
     onBack?: () => void;
     style?: ViewStyle;
-    testID?: string;
-}
+}>;
 
-export const TopAppBar = ({ size = 'small', title, icon, onBack, style, testID }: Props) => {
+export const TopAppBar = ({
+    size = 'small',
+    title,
+    icon,
+    onBack,
+    style,
+    testID,
+}: Props) => {
     const theme = useTheme();
     const styles = StyleSheet.create({
         button: {
@@ -47,7 +54,12 @@ export const TopAppBar = ({ size = 'small', title, icon, onBack, style, testID }
         return theme.sw.colors.neutral[600];
     };
     return (
-        <Appbar.Header mode={size} style={styles.header} statusBarHeight={0} testID={testID}>
+        <Appbar.Header
+            mode={size}
+            style={styles.header}
+            statusBarHeight={0}
+            testID={testID}
+        >
             {onBack !== undefined && (
                 <Appbar.BackAction
                     style={styles.button}
@@ -58,7 +70,7 @@ export const TopAppBar = ({ size = 'small', title, icon, onBack, style, testID }
             <Appbar.Content
                 title={
                     typeof title.value === 'string' ? (
-                        <Headline size="h2">{title.value}</Headline>
+                        <Headline size='h2'>{title.value}</Headline>
                     ) : (
                         title.value
                     )
