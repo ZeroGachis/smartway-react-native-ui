@@ -26,6 +26,7 @@ import { Label } from './label/Label';
 import { Product } from './product/Product';
 import { Divider } from './divider/Divider';
 import { LineChart } from './charts/LineChart';
+import { Badge } from './badge/Badge';
 
 export {
     Body,
@@ -56,4 +57,5 @@ export {
     Product,
     Divider,
     LineChart,
+    Badge,
 };
