@@ -24,6 +24,10 @@ export default {
                 'neutral',
             ],
         },
+        size: {
+            control: { type: 'radio' },
+            options: ['m', 's'],
+        },
         type: {
             control: { type: 'radio' },
             options: ['outlined', 'filled', 'soft'],

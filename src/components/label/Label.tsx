@@ -176,7 +176,7 @@ export const Label = (props: Props) => {
                 {...props}
                 style={styles.text}
                 size={size == 'm' ? 'B1' : 'B2'}
-                weight='bold'
+                weight={size == 'm' ? 'bold' : 'semi-bold'}
             >
                 {text}
             </Body>
