@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Body, Dialog, useTheme } from 'smartway-react-native-ui';
+import { IconsName } from '../config/IconList';
 
 type DialogPropsAndCustomArgs = React.ComponentProps<typeof Dialog> & {
     haveSecondButton?: boolean;
@@ -15,6 +16,8 @@ export default {
         variant: 'left',
         haveSecondButton: false,
         title: 'Headline',
+        name: undefined,
+        color: 'red',
     },
     argTypes: {
         variant: {
@@ -24,11 +27,17 @@ export default {
         haveSecondButton: {
             control: { type: 'boolean' },
         },
+        name: { control: { type: 'select' }, options: IconsName },
+        color: { control: { type: 'color' } },
     },
     decorators: [
         (Story) => {
             const styles = StyleSheet.create({
-                container: { alignItems: 'center', justifyContent: 'center', flex: 1 },
+                container: {
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flex: 1,
+                },
             });
             return (
                 <View style={styles.container}>
@@ -70,17 +79,23 @@ const InsideDialog = ({ variantBody }: { variantBody?: 'left' | 'center' }) => {
         },
     });
     return (
-        <Body style={styles.content} size="B2">
-            A dialog is a type of modal window that appears in front of app content to provide
-            critical information. This is a dialog content example.
+        <Body style={styles.content} size='B2'>
+            A dialog is a type of modal window that appears in front of app
+            content to provide critical information. This is a dialog content
+            example.
         </Body>
     );
 };
 
 export const Default: Story = {
     render: (args) => {
+        const iconprops = args.name !== undefined && {
+            name: args.name,
+            color: args.color ?? undefined,
+        };
         return (
             <Dialog
+                icon={iconprops ?? undefined}
                 {...args}
                 visible={true}
                 actions={{
