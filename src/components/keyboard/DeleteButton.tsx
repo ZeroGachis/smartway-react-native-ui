@@ -3,11 +3,11 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { KeyboardActions } from './Keyboard';
+import type { WithTestID } from 'src/shared/type';
 
-interface Props {
+type Props = WithTestID<{
     onPress: (action: KeyboardActions) => void;
-    testID?: string;
-}
+}>;
 
 export const DeleteButton = ({ onPress, testID }: Props) => {
     const theme = useTheme();
@@ -25,9 +25,17 @@ export const DeleteButton = ({ onPress, testID }: Props) => {
     });
 
     return (
-        <Pressable testID={testID} style={[styles.button]} onPress={() => onPress('delete')}>
+        <Pressable
+            testID={testID}
+            style={[styles.button]}
+            onPress={() => onPress('delete')}
+        >
             <View style={styles.icon}>
-                <Icon name={'backspace'} color={theme.sw.colors.neutral[500]} size={24} />
+                <Icon
+                    name={'backspace'}
+                    color={theme.sw.colors.neutral[500]}
+                    size={24}
+                />
             </View>
         </Pressable>
     );

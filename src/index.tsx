@@ -27,6 +27,7 @@ import {
     Product,
     Divider,
     LineChart,
+    Badge,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -61,4 +62,5 @@ export {
     Product,
     Divider,
     LineChart,
+    Badge
 };
