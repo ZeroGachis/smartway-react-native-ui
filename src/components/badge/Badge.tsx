@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, ViewStyle } from 'react-native';
 
 import { Body } from '../typography/Body';
-import { ThemType, useTheme } from '../../styles/themes';
+import { Theme, useTheme } from '../../styles/themes';
 import type { WithTestID } from 'src/shared/type';
 
 type BadgeProps = WithTestID<{
@@ -11,7 +11,7 @@ type BadgeProps = WithTestID<{
     style?: ViewStyle;
 }>;
 
-const createStyle = (theme: ThemType, style?: ViewStyle) => {
+const createStyle = (theme: Theme, style?: ViewStyle) => {
     return StyleSheet.create({
         badge: {
             backgroundColor: theme.sw.colors.neutral[700],

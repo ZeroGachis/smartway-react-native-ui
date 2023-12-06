@@ -106,8 +106,8 @@ const theme = {
     },
 };
 
-export type ThemType = typeof theme;
-export const useTheme = () => usePaperTheme<ThemType>();
+export type Theme = typeof theme;
+export const useTheme = () => usePaperTheme<Theme>();
 
 type Props = {
     children?: ReactNode;
