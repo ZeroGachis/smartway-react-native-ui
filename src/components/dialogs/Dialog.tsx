@@ -1,9 +1,16 @@
 import React, { PropsWithChildren } from 'react';
-import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import {
+    StyleProp,
+    StyleSheet,
+    TextStyle,
+    View,
+    ViewStyle,
+} from 'react-native';
 import { Dialog as BaseDialog, Portal } from 'react-native-paper';
-import { useTheme } from '../../styles/themes';
 import { Button } from '../buttons/Button';
 import { Headline } from '../typography/Headline';
+import { DialogIcon, DialogIconProps } from './DialogIcon';
+import { useTheme } from '../../styles/themes';
 
 interface Action {
     label: string;
@@ -21,6 +28,7 @@ export interface DialogProps extends PropsWithChildren {
     titleStyle?: TextStyle;
     actionsStyle?: ViewStyle;
     title?: string;
+    icon?: DialogIconProps;
     variant?: 'left' | 'center';
     dismissable?: boolean;
     onDismiss?: () => void;
@@ -72,8 +80,14 @@ export const Dialog = (props: DialogProps) => {
                 dismissable={props.dismissable}
                 style={styles.dialog}
             >
+                {props.icon && (
+                    <DialogIcon
+                        name={props.icon.name}
+                        color={props.icon.color ? props.icon.color : undefined}
+                    />
+                )}
                 <BaseDialog.Title testID={'PopupTitle'}>
-                    <Headline size="h4" style={titleStyle}>
+                    <Headline size='h4' style={titleStyle}>
                         {props.title}
                     </Headline>
                 </BaseDialog.Title>
@@ -81,7 +95,7 @@ export const Dialog = (props: DialogProps) => {
                 <View style={styles.actions}>
                     {props.actions.cancel && (
                         <Button
-                            variant="text"
+                            variant='text'
                             onPress={props.actions.cancel.onPress}
                             testID={'PopupDismissButton'}
                             style={styles.leftOption}
@@ -90,7 +104,7 @@ export const Dialog = (props: DialogProps) => {
                         </Button>
                     )}
                     <Button
-                        variant="filled"
+                        variant='filled'
                         status={'primary'}
                         onPress={props.actions.confirm.onPress}
                         testID={'PopupConfirmButton'}
