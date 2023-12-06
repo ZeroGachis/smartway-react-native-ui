@@ -73,15 +73,15 @@
     "@gorhom/bottom-sheet": "*",
     "react": "*",
     "react-native": "*",
+    "react-native-device-info": "*",
+    "react-native-drop-shadow": "*",
     "react-native-gesture-handler": "*",
     "react-native-icomoon": "*",
+    "react-native-linear-gradient": "*",
     "react-native-paper": "*",
     "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
     "react-native-svg": "*",
-    "react-native-vector-icons": "*",
-    "react-native-drop-shadow": "*",
-    "react-native-linear-gradient": "*"
-  },
-  "dependencies": {}
+    "react-native-vector-icons": "*"
+  }
 }

@@ -20,6 +20,7 @@ const jestConfig: JestConfigWithTsJest = {
     ],
     moduleDirectories: ['node_modules', 'src'],
     setupFiles: [
+        './jest.setup.js',
         './node_modules/react-native-gesture-handler/jestSetup.js',
         './node_modules/react-native/jest/setup.js',
     ],
