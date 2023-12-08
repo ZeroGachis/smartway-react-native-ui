@@ -3,6 +3,7 @@ import { Appbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { StyleSheet, type ViewStyle } from 'react-native';
 import { Headline } from '../typography/Headline';
+import DeviceInfo from "react-native-device-info";
 import type { IconSource } from 'react-native-paper/lib/typescript/components/Icon';
 import type { WithTestID } from 'src/shared/type';
 
@@ -33,11 +34,13 @@ export const TopAppBar = ({
     testID,
 }: Props) => {
     const theme = useTheme();
+    const isTablet = DeviceInfo.isTablet();
+
     const styles = StyleSheet.create({
         button: {
             backgroundColor: 'rgba(145, 158, 171, 0.24)',
             borderRadius: 18,
-            marginLeft: 12,
+            marginLeft: isTablet ? 12 : theme.sw.spacing.xs,
         },
         title: {
             paddingTop: size === 'medium' ? 9 : 0,

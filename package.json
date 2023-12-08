@@ -62,8 +62,6 @@
     "jest-junit": "^15.0.0",
     "pod-install": "^0.1.0",
     "prettier": "3.0.3",
-    "react": "18.2.0",
-    "react-native": "0.72.6",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
@@ -75,15 +73,15 @@
     "@gorhom/bottom-sheet": "*",
     "react": "*",
     "react-native": "*",
+    "react-native-device-info": "*",
+    "react-native-drop-shadow": "*",
     "react-native-gesture-handler": "*",
     "react-native-icomoon": "*",
+    "react-native-linear-gradient": "*",
     "react-native-paper": "*",
     "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
     "react-native-svg": "*",
-    "react-native-vector-icons": "*",
-    "react-native-drop-shadow": "*",
-    "react-native-linear-gradient": "*"
-  },
-  "dependencies": {}
+    "react-native-vector-icons": "*"
+  }
 }
