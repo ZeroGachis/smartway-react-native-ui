@@ -1,49 +1,46 @@
 name: Build Design System package
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-    release:
-        types: [created]
+  push:
+    tags:
+      - "*"
 
 jobs:
-    build:
-        runs-on: [ubuntu-latest]
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+  publish:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-                  registry-url: 'https://npm.pkg.github.com'
-                  scope: '@ZeroGachis'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@ZeroGachis'
 
-            # Skip post-install scripts here, as a malicious
-            # script could steal GITHUB_TOKEN.
-            - name: Install dependencies
-              run: npm ci --ignore-scripts
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Skip post-install scripts here, as a malicious
+      # script could steal GITHUB_TOKEN.
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            # `npm rebuild` will run all those post-install scripts for us.
-            - name: Rebuild & Prepare dependencies
-              run: npm rebuild && npm run prepare --if-present
+      # `npm rebuild` will run all those post-install scripts for us.
+      - name: Rebuild & Prepare dependencies
+        run: npm rebuild && npm run prepare --if-present
 
-            - name: Update package version
-              uses: mingjun97/file-regex-replace@v1
-              with:
-                  regex: '"version": "([0-9.]*)"'
-                  replacement: '"version": "${{ github.ref_name }}"'
-                  include: 'package.json'
+      - name: Update package version
+        run: npm version --no-git-tag-version ${{ github.ref_name }}
 
-            - name: Compile
-              run: npm run tsc
+      - name: Compile
+        run: npm run tsc
 
-            - name: Publish
-              if: startsWith(github.ref, 'refs/tags/')
-              run: npm publish
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+          with:
+            generate_release_notes: True
