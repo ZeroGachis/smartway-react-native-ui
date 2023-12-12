@@ -102,4 +102,13 @@ export const IconsName = [
     'vpn-key',
     'wifi',
     'wifi-off',
+    'calendar-day-after-tomorrow',
+    'restart-alt',
+    'sunny',
+    'partly-cloudy',
+    'cloud',
+    'rainy',
+    'snow',
+    'thunderstorms',
+    'fail',
 ];

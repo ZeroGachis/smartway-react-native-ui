@@ -27,6 +27,8 @@ export interface DialogProps extends PropsWithChildren {
     style?: ViewStyle;
     titleStyle?: TextStyle;
     actionsStyle?: ViewStyle;
+    leftActionsStyle?: ViewStyle;
+    rightActionsStyle?: ViewStyle;
     title?: string;
     icon?: DialogIconProps;
     variant?: 'left' | 'center';
@@ -68,7 +70,11 @@ export const Dialog = (props: DialogProps) => {
         leftOption: {
             color: theme.sw.colors.neutral[800],
             marginRight: theme.sw.spacing.xs,
+            ...props.leftActionsStyle,
         },
+        rightOption: {
+            ...props.rightActionsStyle,
+        }
     });
 
     return (
@@ -108,6 +114,7 @@ export const Dialog = (props: DialogProps) => {
                         status={'primary'}
                         onPress={props.actions.confirm.onPress}
                         testID={'PopupConfirmButton'}
+                        style={styles.rightOption}
                     >
                         {props.actions.confirm.label}
                     </Button>
