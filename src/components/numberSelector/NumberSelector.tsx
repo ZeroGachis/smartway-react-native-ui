@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Keyboard, StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
 import { NumberField } from '../numberField/NumberField';
@@ -40,6 +40,11 @@ export const NumberSelector = ({
     const parser = decimal ? parseFloat : parseInt;
     const [tempValue, setTempValue] = useState<string>(value?.toString() ?? placeholder);
     const [softInputOnFocus, setSoftInputOnFocus] = useState(false);
+
+    useEffect(() => {
+        setTempValue(value?.toString() ?? placeholder);
+    }, [value, placeholder]);
+
     const allowedMinus = (): boolean => {
         return minValue !== undefined && minValue < 0;
     };

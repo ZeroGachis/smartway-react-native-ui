@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NumberSelector } from 'smartway-react-native-ui';
 
@@ -16,6 +16,7 @@ export default {
     argTypes: {
         onValueChange: { action: 'onValueChange' },
         decimal: { control: { type: 'radio' }, options: [true, false] },
+        value: { control: { type: 'number'}},
     },
 
     decorators: [
@@ -35,9 +36,8 @@ export default {
 type Story = StoryObj<ComponentProps>;
 
 const NumberSelectorTester = (args) => {
-    const [quantity, setQuantity] = useState<number>(args.value);
     const onValueChange = (newQuantity: number) => {
-        setQuantity(newQuantity);
+        console.log('newQuantity set:', newQuantity);
     };
     return (
         <NumberSelector
@@ -47,7 +47,7 @@ const NumberSelectorTester = (args) => {
             maxValue={args.maxValue}
             minusIcon={args.minusIcon}
             plusIcon={args.plusIcon}
-            value={quantity}
+            value={args.value}
             onValueChange={onValueChange}
         />
     );
