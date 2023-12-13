@@ -111,3 +111,4 @@ export type IconName =
     | 'snow'
     | 'thunderstorms'
     | 'fail'
+;
