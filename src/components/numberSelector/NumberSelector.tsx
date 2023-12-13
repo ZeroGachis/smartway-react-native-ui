@@ -43,7 +43,7 @@ export const NumberSelector = ({
     const allowedMinus = (): boolean => {
         return minValue !== undefined && minValue < 0;
     };
-    const decimalRegex = allowedMinus() ? /^-?\d+[\.]?\d?$/ : /^\d+[\.]?\d?$/;
+    const decimalRegex = allowedMinus() ? /^-?\d+[\.,]?\d?$/ : /^\d+[\.,]?\d?$/;
     const integerRegex = allowedMinus() ? /^-?\d+$/ : /^\d+$/;
     const numberRegex = decimal ? decimalRegex : integerRegex;
     const onAdd = () => {
