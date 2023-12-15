@@ -29,6 +29,7 @@ import {
     LineChart,
     Badge,
     DateSelector,
+    DateField,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -65,4 +66,5 @@ export {
     LineChart,
     Badge,
     DateSelector,
+    DateField,
 };
