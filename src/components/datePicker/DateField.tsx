@@ -20,7 +20,7 @@ export interface DateFieldProps extends TextInputProps {
     hasError?: boolean;
 }
 
-function GetColorsStyle(theme: Theme, state: State) {
+function getColorsStyle(theme: Theme, state: State) {
     let backgroundColor, borderColor, textColor;
 
     switch (state) {
@@ -55,7 +55,7 @@ function GetColorsStyle(theme: Theme, state: State) {
 }
 
 function getStyle(theme: Theme, state: State) {
-    const { backgroundColor, borderColor, textColor } = GetColorsStyle(
+    const { backgroundColor, borderColor, textColor } = getColorsStyle(
         theme,
         state,
     );
@@ -70,7 +70,7 @@ function getStyle(theme: Theme, state: State) {
             color: textColor,
             fontFamily: 'PublicSans-Bold',
             fontSize: 20,
-            lineHeight: 48,
+            lineHeight: 23.5,
             backgroundColor: backgroundColor,
             paddingVertical: 0,
             marginVertical: 0,
@@ -144,15 +144,21 @@ function getState(
 ): State {
     if (hasError) {
         return 'error';
-    } else if (!isFocused && value === '') {
-        return 'empty';
-    } else if (isFocused && value === '') {
-        return 'empty-focused';
-    } else if (!isFocused) {
-        return 'filled';
-    } else {
-        return 'filled-focused';
     }
+
+    if (!isFocused && value === '') {
+        return 'empty';
+    }
+
+    if (isFocused && value === '') {
+        return 'empty-focused';
+    }
+
+    if (!isFocused) {
+        return 'filled';
+    }
+
+    return 'filled-focused';
 }
 
 function removeNonNumeric(str: string): string {
