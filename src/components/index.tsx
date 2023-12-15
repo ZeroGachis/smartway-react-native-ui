@@ -27,6 +27,7 @@ import { Product } from './product/Product';
 import { Divider } from './divider/Divider';
 import { LineChart } from './charts/LineChart';
 import { Badge } from './badge/Badge';
+import DateSelector from './dateSelector/DateSelector';
 
 export {
     Body,
@@ -58,4 +59,5 @@ export {
     Divider,
     LineChart,
     Badge,
+    DateSelector,
 };
