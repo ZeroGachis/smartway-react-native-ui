@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { StyleSheet, View, TextInput, TextInputProps } from 'react-native';
 import { Theme, useTheme } from '../../styles/themes';
-// import { NumberField } from '../numberField/NumberField';
 import { Headline } from '../typography/Headline';
+import { DateField } from './DateField';
 
 function getStyles(theme: Theme) {
     return StyleSheet.create({
@@ -27,7 +27,9 @@ interface DateSelectorProps {
     initialDate: Date;
 }
 
-const DateSelector = ({ initialDate }: DateSelectorProps) => {
+const field = initField();
+
+export const DateSelector = ({ initialDate }: DateSelectorProps) => {
     const theme = useTheme();
     const styles = getStyles(theme);
 
@@ -62,52 +64,38 @@ const DateSelector = ({ initialDate }: DateSelectorProps) => {
     const handleChange: (
         setDateField: SetDateFieldState,
         {
-            isEnteredValueValid,
-            isSubmitEditedValueValid,
+            isValueFullFilled,
             onFocusOut,
         }: {
-            isEnteredValueValid: (value: string) => boolean;
-            isSubmitEditedValueValid: (value: string) => boolean;
+            isValueFullFilled: (value: string) => boolean;
             onFocusOut: () => void;
         },
     ) => TextInputProps['onChangeText'] =
-        (
-            setDateField,
-            { isEnteredValueValid, isSubmitEditedValueValid, onFocusOut },
-        ) =>
+        (setDateField, { isValueFullFilled, onFocusOut }) =>
         (value) => {
-            if (!isEnteredValueValid(value)) {
-                return;
-            }
-
             setDateField(value);
 
-            if (isSubmitEditedValueValid(value)) {
+            if (isValueFullFilled(value)) {
                 onFocusOut();
             }
         };
 
-    const field = Field();
-
     const handleDayChange = handleChange(setDay, {
-        isEnteredValueValid: field.day.isEnteredValueValid,
-        isSubmitEditedValueValid: field.day.isHardSubmitEditedValueValid,
+        isValueFullFilled: field.day.isFullFilled,
         onFocusOut() {
             focus(refMonth);
         },
     });
 
     const handleMonthChange = handleChange(setMonth, {
-        isEnteredValueValid: field.month.isEnteredValueValid,
-        isSubmitEditedValueValid: field.month.isHardSubmitEditedValueValid,
+        isValueFullFilled: field.month.isFullFilled,
         onFocusOut() {
             focus(refYear);
         },
     });
 
     const handleYearChange = handleChange(setYear, {
-        isEnteredValueValid: field.year.isEnteredValueValid,
-        isSubmitEditedValueValid: field.year.isHardSubmitEditedValueValid,
+        isValueFullFilled: field.year.isFullFilled,
         onFocusOut() {
             blur(refYear);
         },
@@ -115,7 +103,7 @@ const DateSelector = ({ initialDate }: DateSelectorProps) => {
 
     return (
         <View style={styles.dateSelector}>
-            <TextInput
+            <DateField
                 testID='day'
                 value={day}
                 keyboardType='number-pad'
@@ -123,8 +111,7 @@ const DateSelector = ({ initialDate }: DateSelectorProps) => {
                 selectTextOnFocus={true}
                 returnKeyType='next'
                 onSubmitEditing={() =>
-                    field.day.isSoftSubmitEditedValueValid(day) &&
-                    focus(refMonth)
+                    field.day.isFilled(day) && focus(refMonth)
                 }
                 onChangeText={handleDayChange}
                 onBlur={handleBlur(setDay, { fallback: intitialDay })}
@@ -134,7 +121,7 @@ const DateSelector = ({ initialDate }: DateSelectorProps) => {
                     /
                 </Headline>
             </View>
-            <TextInput
+            <DateField
                 testID='month'
                 ref={refMonth}
                 value={month}
@@ -143,8 +130,7 @@ const DateSelector = ({ initialDate }: DateSelectorProps) => {
                 selectTextOnFocus={true}
                 returnKeyType='next'
                 onSubmitEditing={() =>
-                    field.month.isSoftSubmitEditedValueValid(month) &&
-                    focus(refYear)
+                    field.month.isFilled(month) && focus(refYear)
                 }
                 onChangeText={handleMonthChange}
                 onBlur={handleBlur(setMonth, { fallback: initialMonth })}
@@ -154,7 +140,7 @@ const DateSelector = ({ initialDate }: DateSelectorProps) => {
                     /
                 </Headline>
             </View>
-            <TextInput
+            <DateField
                 testID='year'
                 ref={refYear}
                 value={year}
@@ -226,42 +212,27 @@ const useDateRef = () => {
     };
 };
 
-const Field = () => {
-    const regex = /^[0-9][0-9]?$/;
-    const maxLength = 2;
-
-    const isEnteredValueValid = (value: string) => {
-        if (value === '') return true;
-        return regex.test(value);
+function initField() {
+    const isFilled = (value: string) => {
+        return value.length >= 0;
     };
 
-    const isSoftSubmitEditedValueValid = (value: string) => {
-        return regex.test(value);
-    };
-
-    const isHardSubmitEditedValueValid = (value: string) => {
-        return isSoftSubmitEditedDayValid(value) && value.length === maxLength;
-    };
-
-    const isSoftSubmitEditedDayValid = (value: string) => {
-        return regex.test(value);
+    const isFullFilled = (value: string) => {
+        return value.length === 2;
     };
 
     const day = {
-        isEnteredValueValid,
-        isSoftSubmitEditedValueValid,
-        isHardSubmitEditedValueValid,
+        isFilled,
+        isFullFilled,
     };
 
     const month = {
-        isEnteredValueValid,
-        isSoftSubmitEditedValueValid,
-        isHardSubmitEditedValueValid,
+        isFilled,
+        isFullFilled,
     };
 
     const year = {
-        isEnteredValueValid,
-        isHardSubmitEditedValueValid,
+        isFullFilled,
     };
 
     return {
@@ -269,6 +240,4 @@ const Field = () => {
         month,
         year,
     };
-};
-
-export default DateSelector;
+}

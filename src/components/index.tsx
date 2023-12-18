@@ -27,8 +27,8 @@ import { Product } from './product/Product';
 import { Divider } from './divider/Divider';
 import { LineChart } from './charts/LineChart';
 import { Badge } from './badge/Badge';
-import DateSelector from './dateSelector/DateSelector';
-import { DateField } from './datePicker/DateField';
+import { DateSelector } from './dateSelector/DateSelector';
+import { DateField } from './dateSelector/DateField';
 
 export {
     Body,

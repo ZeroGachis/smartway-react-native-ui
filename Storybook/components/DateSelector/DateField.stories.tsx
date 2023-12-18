@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { StyleSheet, View } from 'react-native';
-import { DateField } from '../../../src';
-import { DateFieldProps } from '../../../src/components/dateSelector/DateField';
+import {
+    DateFieldProps,
+    DateField,
+} from '../../../src/components/dateSelector/DateField';
 
 export default {
     title: 'components/DateField',
