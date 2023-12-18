@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { StyleSheet, View } from 'react-native';
 import { DateField } from '../../../src';
-import { DateFieldProps } from '../../../src/components/datePicker/DateField';
+import { DateFieldProps } from '../../../src/components/dateSelector/DateField';
 
 export default {
     title: 'components/DateField',
     component: DateField,
     argTypes: {
-        placeholder: { control: { type: 'text' }, defaultValue: '01' },
-        hasError: { control: { type: 'boolean' }, defaultValue: false },
+        placeholder: { control: { type: 'text' } },
+        hasError: { control: { type: 'boolean' } },
+    },
+    args: {
+        placeholder: '01',
+        hasError: false,
     },
     decorators: [
         (Story) => {
