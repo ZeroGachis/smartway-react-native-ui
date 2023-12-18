@@ -55,6 +55,7 @@ const getStories = () => {
     "./components/Button/Button.stories.tsx": require("../components/Button/Button.stories.tsx"),
     "./components/Card/Card.stories.tsx": require("../components/Card/Card.stories.tsx"),
     "./components/DateSelector/DateField.stories.tsx": require("../components/DateSelector/DateField.stories.tsx"),
+    "./components/DateSelector/DateSelector.stories.tsx": require("../components/DateSelector/DateSelector.stories.tsx"),
     "./components/Dialog/Dialog.stories.tsx": require("../components/Dialog/Dialog.stories.tsx"),
     "./components/Divider/Divider.stories.tsx": require("../components/Divider/Divider.stories.tsx"),
     "./components/DropDown/DropDown.stories.tsx": require("../components/DropDown/DropDown.stories.tsx"),

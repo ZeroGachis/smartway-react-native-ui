@@ -28,6 +28,7 @@ import {
     Divider,
     LineChart,
     Badge,
+    DateSelector,
 } from './components';
 
 import { ThemeProvider, useTheme } from './styles/themes';
@@ -63,4 +64,5 @@ export {
     Divider,
     LineChart,
     Badge,
+    DateSelector,
 };
