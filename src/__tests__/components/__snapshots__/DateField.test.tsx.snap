@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MODULE | DateField component renders correctly empty focused state 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <TextInput
+      cursorColor="#18A586"
+      keyboardType="numeric"
+      maxLength={2}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="01"
+      placeholderTextColor="#18A586"
+      selectTextOnFocus={true}
+      selectionColor="#18A58629"
+      style={
+        {
+          "backgroundColor": "#18A58629",
+          "borderColor": "#18A586",
+          "borderRadius": 18,
+          "borderWidth": 1,
+          "color": "#18A586",
+          "fontFamily": "PublicSans-Bold",
+          "fontSize": 20,
+          "height": 48,
+          "lineHeight": 23.5,
+          "marginVertical": 0,
+          "paddingVertical": 0,
+          "width": 72,
+        }
+      }
+      testID="mockedTestID"
+      textAlign="center"
+      value=""
+    />
+  </View>
+</RNCSafeAreaProvider>
+`;
+
+exports[`MODULE | DateField component renders correctly filled focused state 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <TextInput
+      cursorColor="#18A586"
+      keyboardType="numeric"
+      maxLength={2}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="01"
+      placeholderTextColor="#919EAB"
+      selectTextOnFocus={true}
+      selectionColor="#18A58629"
+      style={
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#18A586",
+          "borderRadius": 18,
+          "borderWidth": 1,
+          "color": "#212B36",
+          "fontFamily": "PublicSans-Bold",
+          "fontSize": 20,
+          "height": 48,
+          "lineHeight": 23.5,
+          "marginVertical": 0,
+          "paddingVertical": 0,
+          "width": 72,
+        }
+      }
+      testID="mockedTestID"
+      textAlign="center"
+      value="12"
+    />
+  </View>
+</RNCSafeAreaProvider>
+`;
+
+exports[`MODULE | DateField component renders correctly filled unfocused state 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <TextInput
+      cursorColor="#18A586"
+      keyboardType="numeric"
+      maxLength={2}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="01"
+      placeholderTextColor="#919EAB"
+      selectTextOnFocus={true}
+      selectionColor="#18A58629"
+      style={
+        {
+          "backgroundColor": "#919EAB14",
+          "borderColor": undefined,
+          "borderRadius": 18,
+          "borderWidth": 0,
+          "color": "#212B36",
+          "fontFamily": "PublicSans-Bold",
+          "fontSize": 20,
+          "height": 48,
+          "lineHeight": 23.5,
+          "marginVertical": 0,
+          "paddingVertical": 0,
+          "width": 72,
+        }
+      }
+      testID="mockedTestID"
+      textAlign="center"
+      value="12"
+    />
+  </View>
+</RNCSafeAreaProvider>
+`;
+
+exports[`MODULE | DateField component renders correctly in empty mode 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <TextInput
+      cursorColor="#18A586"
+      keyboardType="numeric"
+      maxLength={2}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="01"
+      placeholderTextColor="#919EAB"
+      selectTextOnFocus={true}
+      selectionColor="#18A58629"
+      style={
+        {
+          "backgroundColor": "#919EAB14",
+          "borderColor": undefined,
+          "borderRadius": 18,
+          "borderWidth": 0,
+          "color": "#919EAB",
+          "fontFamily": "PublicSans-Bold",
+          "fontSize": 20,
+          "height": 48,
+          "lineHeight": 23.5,
+          "marginVertical": 0,
+          "paddingVertical": 0,
+          "width": 72,
+        }
+      }
+      textAlign="center"
+      value=""
+    />
+  </View>
+</RNCSafeAreaProvider>
+`;
+
+exports[`MODULE | DateField component renders correctly in error state 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <TextInput
+      cursorColor="#18A586"
+      keyboardType="numeric"
+      maxLength={2}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="01"
+      placeholderTextColor="#919EAB"
+      selectTextOnFocus={true}
+      selectionColor="#18A58629"
+      style={
+        {
+          "backgroundColor": "#FF563014",
+          "borderColor": undefined,
+          "borderRadius": 18,
+          "borderWidth": 0,
+          "color": "#FF5630",
+          "fontFamily": "PublicSans-Bold",
+          "fontSize": 20,
+          "height": 48,
+          "lineHeight": 23.5,
+          "marginVertical": 0,
+          "paddingVertical": 0,
+          "width": 72,
+        }
+      }
+      textAlign="center"
+      value=""
+    />
+  </View>
+</RNCSafeAreaProvider>
+`;
