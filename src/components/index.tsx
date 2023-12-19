@@ -28,6 +28,7 @@ import { Divider } from './divider/Divider';
 import { LineChart } from './charts/LineChart';
 import { Badge } from './badge/Badge';
 import { DateField } from './dateSelector/DateField';
+import { DateSelector } from './dateSelector/DateSelector';
 
 export {
     Body,
@@ -60,4 +61,5 @@ export {
     LineChart,
     Badge,
     DateField,
+    DateSelector,
 };
