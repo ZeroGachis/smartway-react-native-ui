@@ -145,8 +145,9 @@ export const DateSelector = ({ initialDate }: DateSelectorProps) => {
     );
 };
 
+const MAX_CHAR_LENGTH = 2;
+
 const applyPaddingZeroFromTheStart = (value: string) => {
-    const MAX_CHAR_LENGTH = 2;
     const PREFIX = '0';
     return value.padStart(MAX_CHAR_LENGTH, PREFIX);
 };
@@ -209,7 +210,7 @@ function initField() {
     };
 
     const isFullFilled = (value: string) => {
-        return value.length === 2;
+        return value.length === MAX_CHAR_LENGTH;
     };
 
     const day = {
