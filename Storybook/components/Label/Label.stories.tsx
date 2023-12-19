@@ -10,8 +10,12 @@ export default {
     component: Label,
     args: {
         type: 'soft',
+        text: 'text',
     },
     argTypes: {
+        text: {
+            control: { type: 'text' },
+        },
         labelColor: {
             control: { type: 'radio' },
             options: [
@@ -32,6 +36,12 @@ export default {
             control: { type: 'radio' },
             options: ['outlined', 'filled', 'soft'],
         },
+        mainColor: {
+            control: 'color',
+        },
+        backgroundColor: {
+            control: 'color',
+        },
     },
 
     decorators: [
@@ -50,9 +60,12 @@ export default {
 
 type Story = StoryObj<LabelProps>;
 
-export const Default: Story = {
-    args: {
-        text: 'text',
-    },
+export const Default: Story = (args) => {
+    const style = {
+        borderColor: args.mainColor,
+        backgroundColor: args.backgroundColor,
+    };
+    const textStyle = { color: args.mainColor };
+    return <Label {...args} style={style} textStyle={textStyle} />;
 };
 Default.parameters = { noSafeArea: false };

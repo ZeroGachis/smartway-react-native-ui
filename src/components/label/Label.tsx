@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 
 import { Body, BodyProps } from '../typography/Body';
@@ -20,6 +20,7 @@ type OptionnalBodyPropsWithoutSizeAndWeight = Partial<
 
 export interface Props extends OptionnalBodyPropsWithoutSizeAndWeight {
     style?: ViewStyle;
+    textStyle?: TextStyle;
     text: string;
     type: LabelType;
     labelColor?: LabelColor;
@@ -27,7 +28,14 @@ export interface Props extends OptionnalBodyPropsWithoutSizeAndWeight {
 }
 
 export const Label = (props: Props) => {
-    const { style, text, type, labelColor = 'neutral', size = 'm' } = props;
+    const {
+        style,
+        textStyle,
+        text,
+        type,
+        labelColor = 'neutral',
+        size = 'm',
+    } = props;
     const theme = useTheme();
 
     const transparencyValue = theme.sw.transparency[16];
@@ -166,8 +174,9 @@ export const Label = (props: Props) => {
             ...style,
         },
         text: {
-            lineHeight: size == 'm' ? 20 : undefined,
+            lineHeight: size === 'm' ? 20 : undefined,
             color,
+            ...textStyle,
         },
     });
     return (
