@@ -106,9 +106,6 @@ export const DateSelector = ({ initialDate }: DateSelectorProps) => {
             <DateField
                 testID='day'
                 value={day}
-                keyboardType='number-pad'
-                inputMode='numeric'
-                selectTextOnFocus={true}
                 returnKeyType='next'
                 onSubmitEditing={() =>
                     field.day.isFilled(day) && focus(refMonth)
@@ -125,9 +122,6 @@ export const DateSelector = ({ initialDate }: DateSelectorProps) => {
                 testID='month'
                 ref={refMonth}
                 value={month}
-                keyboardType='number-pad'
-                inputMode='numeric'
-                selectTextOnFocus={true}
                 returnKeyType='next'
                 onSubmitEditing={() =>
                     field.month.isFilled(month) && focus(refYear)
@@ -144,9 +138,6 @@ export const DateSelector = ({ initialDate }: DateSelectorProps) => {
                 testID='year'
                 ref={refYear}
                 value={year}
-                keyboardType='number-pad'
-                inputMode='numeric'
-                selectTextOnFocus={true}
                 onChangeText={handleYearChange}
                 onBlur={handleBlur(setYear, { fallback: initialYear })}
             />
