@@ -13,7 +13,7 @@ describe('MODULE | Badge', () => {
                 </ThemeProvider>,
             );
 
-            expect(screen.getByText('100')).toBeDefined();
+            expect(screen.getByText('100')).toBeOnTheScreen();
         });
     });
     describe("Given a `number` and a `maxDigits` greater than number's total digit", () => {
@@ -24,7 +24,7 @@ describe('MODULE | Badge', () => {
                 </ThemeProvider>,
             );
 
-            expect(screen.getByText('99+')).toBeDefined();
+            expect(screen.getByText('99+')).toBeOnTheScreen();
         });
     });
     describe("Given a `number` and a `maxDigits` smaller or equal than number's total digit'", () => {
@@ -35,7 +35,7 @@ describe('MODULE | Badge', () => {
                 </ThemeProvider>,
             );
 
-            expect(screen.getByText('88')).toBeDefined();
+            expect(screen.getByText('88')).toBeOnTheScreen();
         });
     });
 });
