@@ -19,8 +19,8 @@ const jestConfig: JestConfigWithTsJest = {
         'node_modules/(?!(@react-native|react-native|react-native-drop-shadow|@gorhom/bottom-sheet|react-native-reanimated)/)',
     ],
     moduleDirectories: ['node_modules', 'src'],
+    setupFilesAfterEnv: ['./jest.setup.ts'],
     setupFiles: [
-        './jest.setup.js',
         './node_modules/react-native-gesture-handler/jestSetup.js',
         './node_modules/react-native/jest/setup.js',
     ],

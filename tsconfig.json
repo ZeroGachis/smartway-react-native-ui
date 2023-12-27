@@ -26,6 +26,6 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["src", "./.eslintrc.json"],
+  "include": ["src", "./.eslintrc.json", "./modules.d.ts", "./jest.setup.ts"],
   "exclude": ["src/components/charts/*"]
 }
