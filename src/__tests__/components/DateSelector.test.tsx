@@ -1,43 +1,58 @@
 import React from 'react';
-import { fireEvent, render, act } from '@testing-library/react-native';
+import { render, act, userEvent, screen } from '@testing-library/react-native';
 import { ThemeProvider } from '../../styles/themes';
 import { DateSelector } from '../../components';
+import { DeviceEventEmitter } from 'react-native';
 
-const mockedCallback = jest.fn();
 const mockedTestID = 'mockedTestID';
+const mockOnChange = jest.fn();
+let tree: ReturnType<typeof render>;
+
+beforeEach(() => {
+    tree = render(
+        <ThemeProvider>
+            <DateSelector
+                prefilled={new Date(2003, 1, 1)}
+                onChange={mockOnChange}
+                testID={mockedTestID}
+            />
+        </ThemeProvider>,
+    );
+});
 
 describe('MODULE | DateField', () => {
     it('component renders correctly with prefilled values in DD/MM/YY', () => {
-        const tree = render(
-            <ThemeProvider>
-                <DateSelector prefilled={new Date(2003, 1, 1)} />
-            </ThemeProvider>,
-        );
         expect(tree.toJSON()).toMatchSnapshot();
     });
 
-    it('fires callback with correctly formatted date', async () => {
-        const tree = render(
-            <ThemeProvider>
-                <DateSelector
-                    prefilled={new Date(2003, 1, 1)}
-                    onChange={mockedCallback}
-                    testID={mockedTestID}
-                />
-            </ThemeProvider>,
-        );
+    it('should send date filled with missing fields', async () => {
+        const user = userEvent.setup();
 
-        await act(async () => {
-            fireEvent.changeText(
-                tree.getByTestId(mockedTestID + '/first'),
-                '12',
-            );
+        const yearField = screen.getByTestId(mockedTestID + '/third');
+        await user.type(yearField, '24');
+
+        await act(() => {
+            DeviceEventEmitter.emit('keyboardDidHide', {});
         });
 
-        await act(async () => {
-            fireEvent(tree.getByTestId(mockedTestID + '/first'), 'blur');
+        expect(mockOnChange).toHaveBeenCalledWith(new Date(2024, 1, 1));
+    });
+
+    it('should send date filled with all changed fields', async () => {
+        const user = userEvent.setup();
+
+        const dayField = screen.getByTestId(mockedTestID + '/first');
+        const monthField = screen.getByTestId(mockedTestID + '/second');
+        const yearField = screen.getByTestId(mockedTestID + '/third');
+
+        await user.type(dayField, '12');
+        await user.type(monthField, '06');
+        await user.type(yearField, '24');
+
+        await act(() => {
+            DeviceEventEmitter.emit('keyboardDidHide', {});
         });
 
-        expect(mockedCallback).toHaveBeenCalledWith(new Date(2003, 1, 12));
+        expect(mockOnChange).toHaveBeenCalledWith(new Date(2024, 5, 12));
     });
 });
