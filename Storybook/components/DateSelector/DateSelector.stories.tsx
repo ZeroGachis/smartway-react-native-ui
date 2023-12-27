@@ -2,6 +2,7 @@ import React from 'react';
 import { DateSelector } from '../../../src/components/dateSelector/DateSelector';
 import type { ComponentMeta, ComponentStory } from '@storybook/react-native';
 import { StyleSheet, View } from 'react-native';
+import { action } from '@storybook/addon-actions';
 
 export default {
     title: 'components/DateSelector',
@@ -26,6 +27,9 @@ export default {
     ],
 } as ComponentMeta<typeof DateSelector>;
 
-export const Base: ComponentStory<typeof DateSelector> = (args) => (
-    <DateSelector {...args} />
-);
+export const Base: ComponentStory<typeof DateSelector> = (args) => {
+    const handleChange = (date: Date) => {
+        action('onChange')(date.toDateString());
+    };
+    return <DateSelector {...args} onChange={handleChange} />;
+};

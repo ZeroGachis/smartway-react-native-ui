@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import {
     NativeSyntheticEvent,
     StyleSheet,
@@ -85,57 +85,58 @@ function getStyle(theme: Theme, state: State) {
     return style;
 }
 
-export const DateField: React.FC<DateFieldProps> = ({
-    value = '',
-    hasError,
-    ...props
-}) => {
-    const theme = useTheme();
-    const [isFocused, setIsFocused] = useState(false);
-    const state = getState(hasError, isFocused, value);
+export const DateField = forwardRef<TextInput, DateFieldProps>(
+    ({ value = '', hasError, ...props }, ref) => {
+        const theme = useTheme();
+        const [isFocused, setIsFocused] = useState(false);
+        const state = getState(hasError, isFocused, value);
 
-    const style = getStyle(theme, state);
+        const style = getStyle(theme, state);
 
-    const onFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-        setIsFocused(true);
-        if (props.onFocus) {
-            props.onFocus(e);
-        }
-    };
-
-    const onBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-        setIsFocused(false);
-        if (props.onBlur) {
-            props.onBlur(e);
-        }
-    };
-
-    const onChangeText = (text: string) => {
-        if (props.onChangeText) {
-            props.onChangeText(removeNonNumeric(text));
-        }
-    };
-
-    return (
-        <TextInput
-            maxLength={2}
-            {...props}
-            style={style.main}
-            value={value}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            keyboardType='numeric'
-            cursorColor={theme.sw.colors.primary.main}
-            selectionColor={
-                theme.sw.colors.primary.main + theme.sw.transparency[16]
+        const onFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+            setIsFocused(true);
+            if (props.onFocus) {
+                props.onFocus(e);
             }
-            selectTextOnFocus={true}
-            textAlign='center'
-            placeholderTextColor={style.placeholder.color}
-            onChangeText={onChangeText}
-        />
-    );
-};
+        };
+
+        const onBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+            setIsFocused(false);
+            if (props.onBlur) {
+                props.onBlur(e);
+            }
+        };
+
+        const onChangeText = (text: string) => {
+            if (props.onChangeText) {
+                props.onChangeText(removeNonNumeric(text));
+            }
+        };
+
+        return (
+            <TextInput
+                ref={ref}
+                maxLength={2}
+                {...props}
+                style={style.main}
+                value={value}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                keyboardType='numeric'
+                cursorColor={theme.sw.colors.primary.main}
+                selectionColor={
+                    theme.sw.colors.primary.main + theme.sw.transparency[16]
+                }
+                selectTextOnFocus={true}
+                textAlign='center'
+                placeholderTextColor={style.placeholder.color}
+                onChangeText={onChangeText}
+            />
+        );
+    },
+);
+
+DateField.displayName = 'DateFieldRef';
 
 function getState(
     hasError: boolean | undefined,

@@ -1,12 +1,18 @@
-import { StyleSheet, View } from 'react-native';
+import {
+    StyleSheet,
+    TextInput,
+    View,
+    Keyboard,
+    KeyboardEventListener,
+} from 'react-native';
 import { DateField } from './DateField';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme, useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 
 interface DateSelectorProps {
     prefilled: Date;
-    onChange?: (date: Date) => void;
+    onChange: (date: Date) => void;
     testID?: string;
 }
 
@@ -47,17 +53,28 @@ export const DateSelector = ({
     const [secondField, setSecondField] = useState('');
     const [thirdField, setThirdField] = useState('');
 
+    const refYear = useRef<TextInput>(null);
+
     const prefilledFields = fromDateToFields(prefilled);
 
-    const onFieldBlur = () => {
-        if (onChange) {
-            const completeFields = filledFieldsValues(
-                prefilledFields,
-                firstField,
-                secondField,
-                thirdField,
-            );
-            onChange(fromFieldsToDate(completeFields));
+    const leaveDateSelector = useCallback(() => {
+        const completeFields = filledFieldsValues(
+            prefilledFields,
+            firstField,
+            secondField,
+            thirdField,
+        );
+
+        onChange(fromFieldsToDate(completeFields));
+    }, [prefilledFields, firstField, secondField, thirdField, onChange]);
+
+    useListenerOnKeyboardHidding(leaveDateSelector);
+
+    const handleYearChange = (fieldValue: string) => {
+        setThirdField(fieldValue);
+
+        if (fieldValue.length === 2) {
+            hideKeyboard(refYear);
         }
     };
 
@@ -68,7 +85,6 @@ export const DateSelector = ({
                 placeholder={prefilledFields.firstField}
                 value={firstField}
                 onChangeText={setFirstField}
-                onBlur={onFieldBlur}
             />
             <View style={styles.slashContainer}>
                 <Headline size='h4' style={styles.slash}>
@@ -80,7 +96,6 @@ export const DateSelector = ({
                 placeholder={prefilledFields.secondField}
                 value={secondField}
                 onChangeText={setSecondField}
-                onBlur={onFieldBlur}
             />
             <View style={styles.slashContainer}>
                 <Headline size='h4' style={styles.slash}>
@@ -88,15 +103,31 @@ export const DateSelector = ({
                 </Headline>
             </View>
             <DateField
+                ref={refYear}
                 testID={testID + '/third'}
                 placeholder={prefilledFields.thirdField}
                 value={thirdField}
-                onChangeText={setThirdField}
-                onBlur={onFieldBlur}
+                onChangeText={handleYearChange}
             />
         </View>
     );
 };
+
+function useListenerOnKeyboardHidding(listener: KeyboardEventListener) {
+    useEffect(() => {
+        const hideSubscription = Keyboard.addListener(
+            'keyboardDidHide',
+            listener,
+        );
+        return () => {
+            hideSubscription.remove();
+        };
+    }, [listener]);
+}
+
+function hideKeyboard(ref: React.RefObject<TextInput>) {
+    ref?.current?.blur();
+}
 
 function fromDateToFields(date: Date): FieldsValues {
     const day = prefixWith0(date.getDate());
