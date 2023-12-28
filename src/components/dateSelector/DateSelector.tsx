@@ -17,9 +17,9 @@ interface DateSelectorProps {
 }
 
 interface FieldsValues {
-    firstField: string;
-    secondField: string;
-    thirdField: string;
+    dayField: string;
+    monthField: string;
+    yearField: string;
 }
 
 function getStyles(theme: Theme) {
@@ -41,6 +41,8 @@ function getStyles(theme: Theme) {
     });
 }
 
+const MAX_DATE_FIELD_LENGTH = 2;
+
 export const DateSelector = ({
     prefilled,
     onChange,
@@ -49,10 +51,12 @@ export const DateSelector = ({
     const theme = useTheme();
     const styles = getStyles(theme);
 
-    const [firstField, setFirstField] = useState('');
-    const [secondField, setSecondField] = useState('');
-    const [thirdField, setThirdField] = useState('');
+    const [dayField, setDayField] = useState('');
+    const [monthField, setMonthField] = useState('');
+    const [yearField, setYearField] = useState('');
 
+    const refDay = useRef<TextInput>(null);
+    const refMonth = useRef<TextInput>(null);
     const refYear = useRef<TextInput>(null);
 
     const prefilledFields = fromDateToFields(prefilled);
@@ -60,20 +64,36 @@ export const DateSelector = ({
     const leaveDateSelector = useCallback(() => {
         const completeFields = filledFieldsValues(
             prefilledFields,
-            firstField,
-            secondField,
-            thirdField,
+            dayField,
+            monthField,
+            yearField,
         );
 
         onChange(fromFieldsToDate(completeFields));
-    }, [prefilledFields, firstField, secondField, thirdField, onChange]);
+    }, [prefilledFields, dayField, monthField, yearField, onChange]);
 
-    useListenerOnKeyboardHidding(leaveDateSelector);
+    useListenerOnKeyboardHiding(leaveDateSelector);
+
+    const handleDayChange = (fieldValue: string) => {
+        setDayField(fieldValue);
+
+        if (fieldValue.length === MAX_DATE_FIELD_LENGTH) {
+            refMonth.current?.focus();
+        }
+    };
+
+    const handleMonthChange = (fieldValue: string) => {
+        setMonthField(fieldValue);
+
+        if (fieldValue.length === MAX_DATE_FIELD_LENGTH) {
+            refYear.current?.focus();
+        }
+    };
 
     const handleYearChange = (fieldValue: string) => {
-        setThirdField(fieldValue);
+        setYearField(fieldValue);
 
-        if (fieldValue.length === 2) {
+        if (fieldValue.length === MAX_DATE_FIELD_LENGTH) {
             hideKeyboard(refYear);
         }
     };
@@ -81,10 +101,11 @@ export const DateSelector = ({
     return (
         <View style={styles.dateSelector} testID={testID}>
             <DateField
+                ref={refDay}
                 testID={testID + '/first'}
-                placeholder={prefilledFields.firstField}
-                value={firstField}
-                onChangeText={setFirstField}
+                placeholder={prefilledFields.dayField}
+                value={dayField}
+                onChangeText={handleDayChange}
             />
             <View style={styles.slashContainer}>
                 <Headline size='h4' style={styles.slash}>
@@ -92,10 +113,11 @@ export const DateSelector = ({
                 </Headline>
             </View>
             <DateField
+                ref={refMonth}
                 testID={testID + '/second'}
-                placeholder={prefilledFields.secondField}
-                value={secondField}
-                onChangeText={setSecondField}
+                placeholder={prefilledFields.monthField}
+                value={monthField}
+                onChangeText={handleMonthChange}
             />
             <View style={styles.slashContainer}>
                 <Headline size='h4' style={styles.slash}>
@@ -105,15 +127,15 @@ export const DateSelector = ({
             <DateField
                 ref={refYear}
                 testID={testID + '/third'}
-                placeholder={prefilledFields.thirdField}
-                value={thirdField}
+                placeholder={prefilledFields.yearField}
+                value={yearField}
                 onChangeText={handleYearChange}
             />
         </View>
     );
 };
 
-function useListenerOnKeyboardHidding(listener: KeyboardEventListener) {
+function useListenerOnKeyboardHiding(listener: KeyboardEventListener) {
     useEffect(() => {
         const hideSubscription = Keyboard.addListener(
             'keyboardDidHide',
@@ -134,14 +156,14 @@ function fromDateToFields(date: Date): FieldsValues {
     const month = prefixWith0(date.getMonth() + 1); // Months are 0-based in JS
     const year = getLast2Number(date.getFullYear());
     return {
-        firstField: day,
-        secondField: month,
-        thirdField: year,
+        dayField: day,
+        monthField: month,
+        yearField: year,
     };
 }
 
 function prefixWith0(value: number) {
-    return value.toString().padStart(2, '0');
+    return value.toString().padStart(MAX_DATE_FIELD_LENGTH, '0');
 }
 
 function getLast2Number(value: number) {
@@ -150,22 +172,22 @@ function getLast2Number(value: number) {
 
 function fromFieldsToDate(fieldsValues: FieldsValues) {
     const [day, month, year] = [
-        parseInt(fieldsValues.firstField),
-        parseInt(fieldsValues.secondField),
-        2000 + parseInt(fieldsValues.thirdField),
+        parseInt(fieldsValues.dayField),
+        parseInt(fieldsValues.monthField),
+        2000 + parseInt(fieldsValues.yearField),
     ];
     return new Date(year, month - 1, day);
 }
 
 function filledFieldsValues(
     prefilled: FieldsValues,
-    firstField: string,
-    secondField: string,
-    thirdField: string,
+    dayField: string,
+    monthField: string,
+    yearField: string,
 ) {
     return {
-        firstField: firstField || prefilled.firstField,
-        secondField: secondField || prefilled.secondField,
-        thirdField: thirdField || prefilled.thirdField,
+        dayField: dayField || prefilled.dayField,
+        monthField: monthField || prefilled.monthField,
+        yearField: yearField || prefilled.yearField,
     };
 }
