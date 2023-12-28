@@ -28,7 +28,7 @@ describe('MODULE | DateField', () => {
     it('should send date filled with missing fields', async () => {
         const user = userEvent.setup();
 
-        const yearField = screen.getByTestId(mockedTestID + '/third');
+        const yearField = screen.getByTestId(mockedTestID + '/year');
         await user.type(yearField, '24');
 
         await act(() => {
@@ -41,9 +41,9 @@ describe('MODULE | DateField', () => {
     it('should send date filled with all changed fields', async () => {
         const user = userEvent.setup();
 
-        const dayField = screen.getByTestId(mockedTestID + '/first');
-        const monthField = screen.getByTestId(mockedTestID + '/second');
-        const yearField = screen.getByTestId(mockedTestID + '/third');
+        const dayField = screen.getByTestId(mockedTestID + '/day');
+        const monthField = screen.getByTestId(mockedTestID + '/month');
+        const yearField = screen.getByTestId(mockedTestID + '/year');
 
         await user.type(dayField, '12');
         await user.type(monthField, '06');

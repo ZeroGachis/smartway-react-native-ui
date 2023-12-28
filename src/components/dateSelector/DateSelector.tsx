@@ -112,7 +112,7 @@ export const DateSelector = ({
         <View style={styles.dateSelector} testID={testID}>
             <DateField
                 ref={refDay}
-                testID={testID + '/first'}
+                testID={testID + '/day'}
                 placeholder={prefilledFields.dayField}
                 value={dayField}
                 onBlur={handleBlurPrefixWith0(setDayField)}
@@ -125,7 +125,7 @@ export const DateSelector = ({
             </View>
             <DateField
                 ref={refMonth}
-                testID={testID + '/second'}
+                testID={testID + '/month'}
                 placeholder={prefilledFields.monthField}
                 value={monthField}
                 onBlur={handleBlurPrefixWith0(setMonthField)}
@@ -138,7 +138,7 @@ export const DateSelector = ({
             </View>
             <DateField
                 ref={refYear}
-                testID={testID + '/third'}
+                testID={testID + '/year'}
                 placeholder={prefilledFields.yearField}
                 value={yearField}
                 onBlur={handleBlurPrefixWith0(setYearField)}
