@@ -55,4 +55,20 @@ describe('MODULE | DateField', () => {
 
         expect(mockOnChange).toHaveBeenCalledWith(new Date(2024, 5, 12));
     });
+
+    it('should prefix date fields with a 0 on blur', async () => {
+        const user = userEvent.setup();
+
+        const dayField = screen.getByTestId(mockedTestID + '/day');
+        await user.type(dayField, '4');
+        expect(dayField.props.value).toBe('04');
+
+        const monthField = screen.getByTestId(mockedTestID + '/month');
+        await user.type(monthField, '5');
+        expect(monthField.props.value).toBe('05');
+
+        const yearField = screen.getByTestId(mockedTestID + '/year');
+        await user.type(yearField, '6');
+        expect(yearField.props.value).toBe('06');
+    });
 });
