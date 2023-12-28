@@ -1,19 +1,25 @@
-import { StyleSheet, View } from 'react-native';
+import {
+    StyleSheet,
+    TextInput,
+    View,
+    Keyboard,
+    KeyboardEventListener,
+} from 'react-native';
 import { DateField } from './DateField';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme, useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 
 interface DateSelectorProps {
     prefilled: Date;
-    onChange?: (date: Date) => void;
+    onChange: (date: Date) => void;
     testID?: string;
 }
 
 interface FieldsValues {
-    firstField: string;
-    secondField: string;
-    thirdField: string;
+    dayField: string;
+    monthField: string;
+    yearField: string;
 }
 
 function getStyles(theme: Theme) {
@@ -35,6 +41,8 @@ function getStyles(theme: Theme) {
     });
 }
 
+const MAX_DATE_FIELD_LENGTH = 2;
+
 export const DateSelector = ({
     prefilled,
     onChange,
@@ -43,32 +51,72 @@ export const DateSelector = ({
     const theme = useTheme();
     const styles = getStyles(theme);
 
-    const [firstField, setFirstField] = useState('');
-    const [secondField, setSecondField] = useState('');
-    const [thirdField, setThirdField] = useState('');
+    const [dayField, setDayField] = useState('');
+    const [monthField, setMonthField] = useState('');
+    const [yearField, setYearField] = useState('');
+
+    const refDay = useRef<TextInput>(null);
+    const refMonth = useRef<TextInput>(null);
+    const refYear = useRef<TextInput>(null);
 
     const prefilledFields = fromDateToFields(prefilled);
 
-    const onFieldBlur = () => {
-        if (onChange) {
-            const completeFields = filledFieldsValues(
-                prefilledFields,
-                firstField,
-                secondField,
-                thirdField,
-            );
-            onChange(fromFieldsToDate(completeFields));
+    const leaveDateSelector = useCallback(() => {
+        const completeFields = filledFieldsValues(
+            prefilledFields,
+            dayField,
+            monthField,
+            yearField,
+        );
+
+        onChange(fromFieldsToDate(completeFields));
+    }, [prefilledFields, dayField, monthField, yearField, onChange]);
+
+    useListenerOnKeyboardHiding(leaveDateSelector);
+
+    const handleDayChange = (fieldValue: string) => {
+        setDayField(fieldValue);
+
+        if (fieldValue.length === MAX_DATE_FIELD_LENGTH) {
+            refMonth.current?.focus();
         }
     };
+
+    const handleMonthChange = (fieldValue: string) => {
+        setMonthField(fieldValue);
+
+        if (fieldValue.length === MAX_DATE_FIELD_LENGTH) {
+            refYear.current?.focus();
+        }
+    };
+
+    const handleYearChange = (fieldValue: string) => {
+        setYearField(fieldValue);
+
+        if (fieldValue.length === MAX_DATE_FIELD_LENGTH) {
+            hideKeyboard(refYear);
+        }
+    };
+
+    const handleBlurPrefixWith0 =
+        (setField: React.Dispatch<React.SetStateAction<string>>) => () => {
+            setField((value) => {
+                if (value.length === 1) {
+                    return prefixWith0(Number(value));
+                }
+                return value;
+            });
+        };
 
     return (
         <View style={styles.dateSelector} testID={testID}>
             <DateField
-                testID={testID + '/first'}
-                placeholder={prefilledFields.firstField}
-                value={firstField}
-                onChangeText={setFirstField}
-                onBlur={onFieldBlur}
+                ref={refDay}
+                testID={testID + '/day'}
+                placeholder={prefilledFields.dayField}
+                value={dayField}
+                onBlur={handleBlurPrefixWith0(setDayField)}
+                onChangeText={handleDayChange}
             />
             <View style={styles.slashContainer}>
                 <Headline size='h4' style={styles.slash}>
@@ -76,11 +124,12 @@ export const DateSelector = ({
                 </Headline>
             </View>
             <DateField
-                testID={testID + '/second'}
-                placeholder={prefilledFields.secondField}
-                value={secondField}
-                onChangeText={setSecondField}
-                onBlur={onFieldBlur}
+                ref={refMonth}
+                testID={testID + '/month'}
+                placeholder={prefilledFields.monthField}
+                value={monthField}
+                onBlur={handleBlurPrefixWith0(setMonthField)}
+                onChangeText={handleMonthChange}
             />
             <View style={styles.slashContainer}>
                 <Headline size='h4' style={styles.slash}>
@@ -88,29 +137,46 @@ export const DateSelector = ({
                 </Headline>
             </View>
             <DateField
-                testID={testID + '/third'}
-                placeholder={prefilledFields.thirdField}
-                value={thirdField}
-                onChangeText={setThirdField}
-                onBlur={onFieldBlur}
+                ref={refYear}
+                testID={testID + '/year'}
+                placeholder={prefilledFields.yearField}
+                value={yearField}
+                onBlur={handleBlurPrefixWith0(setYearField)}
+                onChangeText={handleYearChange}
             />
         </View>
     );
 };
+
+function useListenerOnKeyboardHiding(listener: KeyboardEventListener) {
+    useEffect(() => {
+        const hideSubscription = Keyboard.addListener(
+            'keyboardDidHide',
+            listener,
+        );
+        return () => {
+            hideSubscription.remove();
+        };
+    }, [listener]);
+}
+
+function hideKeyboard(ref: React.RefObject<TextInput>) {
+    ref?.current?.blur();
+}
 
 function fromDateToFields(date: Date): FieldsValues {
     const day = prefixWith0(date.getDate());
     const month = prefixWith0(date.getMonth() + 1); // Months are 0-based in JS
     const year = getLast2Number(date.getFullYear());
     return {
-        firstField: day,
-        secondField: month,
-        thirdField: year,
+        dayField: day,
+        monthField: month,
+        yearField: year,
     };
 }
 
 function prefixWith0(value: number) {
-    return value.toString().padStart(2, '0');
+    return value.toString().padStart(MAX_DATE_FIELD_LENGTH, '0');
 }
 
 function getLast2Number(value: number) {
@@ -119,22 +185,22 @@ function getLast2Number(value: number) {
 
 function fromFieldsToDate(fieldsValues: FieldsValues) {
     const [day, month, year] = [
-        parseInt(fieldsValues.firstField),
-        parseInt(fieldsValues.secondField),
-        2000 + parseInt(fieldsValues.thirdField),
+        parseInt(fieldsValues.dayField),
+        parseInt(fieldsValues.monthField),
+        2000 + parseInt(fieldsValues.yearField),
     ];
     return new Date(year, month - 1, day);
 }
 
 function filledFieldsValues(
     prefilled: FieldsValues,
-    firstField: string,
-    secondField: string,
-    thirdField: string,
+    dayField: string,
+    monthField: string,
+    yearField: string,
 ) {
     return {
-        firstField: firstField || prefilled.firstField,
-        secondField: secondField || prefilled.secondField,
-        thirdField: thirdField || prefilled.thirdField,
+        dayField: dayField || prefilled.dayField,
+        monthField: monthField || prefilled.monthField,
+        yearField: yearField || prefilled.yearField,
     };
 }

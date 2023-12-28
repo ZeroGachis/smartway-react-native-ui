@@ -29,6 +29,7 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
           "flexDirection": "row",
         }
       }
+      testID="mockedTestID"
     >
       <TextInput
         cursorColor="#18A586"
@@ -57,7 +58,7 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
             "width": 72,
           }
         }
-        testID="undefined/first"
+        testID="mockedTestID/day"
         textAlign="center"
         value=""
       />
@@ -115,7 +116,7 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
             "width": 72,
           }
         }
-        testID="undefined/second"
+        testID="mockedTestID/month"
         textAlign="center"
         value=""
       />
@@ -173,7 +174,7 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
             "width": 72,
           }
         }
-        testID="undefined/third"
+        testID="mockedTestID/year"
         textAlign="center"
         value=""
       />
