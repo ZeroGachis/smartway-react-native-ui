@@ -58,7 +58,7 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
             "width": 72,
           }
         }
-        testID="mockedTestID/first"
+        testID="mockedTestID/day"
         textAlign="center"
         value=""
       />
@@ -116,7 +116,7 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
             "width": 72,
           }
         }
-        testID="mockedTestID/second"
+        testID="mockedTestID/month"
         textAlign="center"
         value=""
       />
@@ -174,7 +174,7 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
             "width": 72,
           }
         }
-        testID="mockedTestID/third"
+        testID="mockedTestID/year"
         textAlign="center"
         value=""
       />

@@ -98,13 +98,24 @@ export const DateSelector = ({
         }
     };
 
+    const handleBlurPrefixWith0 =
+        (setField: React.Dispatch<React.SetStateAction<string>>) => () => {
+            setField((value) => {
+                if (value.length === 1) {
+                    return prefixWith0(Number(value));
+                }
+                return value;
+            });
+        };
+
     return (
         <View style={styles.dateSelector} testID={testID}>
             <DateField
                 ref={refDay}
-                testID={testID + '/first'}
+                testID={testID + '/day'}
                 placeholder={prefilledFields.dayField}
                 value={dayField}
+                onBlur={handleBlurPrefixWith0(setDayField)}
                 onChangeText={handleDayChange}
             />
             <View style={styles.slashContainer}>
@@ -114,9 +125,10 @@ export const DateSelector = ({
             </View>
             <DateField
                 ref={refMonth}
-                testID={testID + '/second'}
+                testID={testID + '/month'}
                 placeholder={prefilledFields.monthField}
                 value={monthField}
+                onBlur={handleBlurPrefixWith0(setMonthField)}
                 onChangeText={handleMonthChange}
             />
             <View style={styles.slashContainer}>
@@ -126,9 +138,10 @@ export const DateSelector = ({
             </View>
             <DateField
                 ref={refYear}
-                testID={testID + '/third'}
+                testID={testID + '/year'}
                 placeholder={prefilledFields.yearField}
                 value={yearField}
+                onBlur={handleBlurPrefixWith0(setYearField)}
                 onChangeText={handleYearChange}
             />
         </View>
