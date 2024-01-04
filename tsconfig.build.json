@@ -1,5 +1,5 @@
 {
     "extends": "./tsconfig",
-    "include": ["src", "./modules.d.ts", "./jest.setup.ts"],
-    "exclude": ["src/**/*test.ts"]
+    "include": ["src"],
+    "exclude": ["**/*.test.tsx", "**/*.test.ts"]
 }
