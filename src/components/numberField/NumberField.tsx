@@ -129,7 +129,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                     borderColor: borderColor,
 
                     width:
-                        size === 's' ? (decimal ? 63 : 43) : decimal ? 110 : 72,
+                        size === 's' ? (decimal ? 63 : 48) : decimal ? 110 : 72,
 
                     color: textColor,
                     fontStyle: 'normal',

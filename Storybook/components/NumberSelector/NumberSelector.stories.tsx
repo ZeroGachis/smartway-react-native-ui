@@ -16,6 +16,7 @@ export default {
     argTypes: {
         onValueChange: { action: 'onValueChange' },
         decimal: { control: { type: 'radio' }, options: [true, false] },
+        size: { control: { type: 'radio' }, options: ['m', 's'] },
     },
 
     decorators: [
@@ -43,6 +44,7 @@ const NumberSelectorTester = (args) => {
         <NumberSelector
             showSoftInputOnFocus={args.showSoftInputOnFocus}
             decimal={args.decimal}
+            size={args.size}
             minValue={args.minValue}
             maxValue={args.maxValue}
             minusIcon={args.minusIcon}
