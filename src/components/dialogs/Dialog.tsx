@@ -14,8 +14,8 @@ import { useTheme } from '../../styles/themes';
 
 interface Action {
     label: string;
-    disabled: boolean
-    loading: boolean
+    disabled?: boolean
+    loading?: boolean
     onPress: () => void;
 }
 
