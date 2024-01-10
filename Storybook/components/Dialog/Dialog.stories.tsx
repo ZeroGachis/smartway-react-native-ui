@@ -28,6 +28,8 @@ export default {
             control: { type: 'boolean' },
         },
         name: { control: { type: 'select' }, options: IconsName },
+        disabled: { control: { type: 'boolean' } },
+        loading: { control: { type: 'boolean' } },
         color: { control: { type: 'color' } },
     },
     decorators: [
@@ -101,6 +103,8 @@ export const Default: Story = {
                 actions={{
                     confirm: {
                         label: 'Valider',
+                        disabled: args.disabled,
+                        loading: args.loading,
                         // eslint-disable-next-line @typescript-eslint/no-empty-function
                         onPress: () => {},
                     },

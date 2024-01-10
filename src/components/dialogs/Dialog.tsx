@@ -14,6 +14,8 @@ import { useTheme } from '../../styles/themes';
 
 interface Action {
     label: string;
+    disabled: boolean
+    loading: boolean
     onPress: () => void;
 }
 
@@ -105,6 +107,8 @@ export const Dialog = (props: DialogProps) => {
                             onPress={props.actions.cancel.onPress}
                             testID={'PopupDismissButton'}
                             style={styles.leftOption}
+                            loading= {props.actions.cancel.loading ?? false}
+                            disabled={props.actions.cancel.disabled ?? false}
                         >
                             {props.actions.cancel.label}
                         </Button>
@@ -115,6 +119,8 @@ export const Dialog = (props: DialogProps) => {
                         onPress={props.actions.confirm.onPress}
                         testID={'PopupConfirmButton'}
                         style={styles.rightOption}
+                        loading= {props.actions.confirm.loading ?? false}
+                        disabled={props.actions.confirm.disabled ?? false}
                     >
                         {props.actions.confirm.label}
                     </Button>
