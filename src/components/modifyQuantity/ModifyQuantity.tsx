@@ -5,6 +5,7 @@ import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
 import { NumberSelector } from '../numberSelector/NumberSelector';
+import { NumberValidator } from '../numberField/NumberValidator';
 
 export interface Props {
     text: string;
@@ -66,7 +67,11 @@ export const ModifyQuantity = ({
         <View style={styles.container}>
             <View style={styles.iconContainer}>
                 <View style={{ transform: [{ rotate: '225deg' }] }}>
-                    <Icon size={24} name={icon} color={theme.sw.colors.neutral[600]} />
+                    <Icon
+                        size={24}
+                        name={icon}
+                        color={theme.sw.colors.neutral[600]}
+                    />
                 </View>
                 <Body style={styles.text}>{text}</Body>
             </View>
@@ -75,6 +80,11 @@ export const ModifyQuantity = ({
                 maxValue={maxValue}
                 onValueChange={onValueChange}
                 value={value}
+                validator={new NumberValidator(0, 10, false)}
+                initialValue={undefined}
+                onEndEditing={function (_: string | undefined): void {
+                    throw new Error('Function not implemented.');
+                }}
             />
         </View>
     );

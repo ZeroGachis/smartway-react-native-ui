@@ -1,94 +1,136 @@
-/* eslint-disable no-useless-escape */
 import React, { useRef, useState } from 'react';
 import { Keyboard, StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
-import { NumberField } from '../numberField/NumberField';
+import { FieldState, NumberField } from '../numberField/NumberField';
 import type { IconName } from '../icons/IconProps';
+import { NumberValidator } from '../numberField/NumberValidator';
 
 export interface Props {
+    validator: NumberValidator;
+    initialValue: number | undefined;
     value: number | undefined;
     onValueChange?: (value: number) => void;
-    onEndEditing?: ((value: string | undefined) => void) | undefined
-    minValue: number;
-    maxValue: number;
+    onEndEditing: (value: string | undefined) => void;
     style?: ViewStyle;
     minusIcon?: IconName;
     plusIcon?: IconName;
     showSoftInputOnFocus?: boolean;
     variant?: 'filled' | 'outlined';
     size?: 'm' | 's';
-    decimal?: boolean;
     placeholder?: string;
+    incrementStep?: number;
+    decrementStep?: number;
 }
 
+export const RoundValue = (val: number): number => {
+    return Math.round(val * 10) / 10;
+};
+export const ComputeCrementedValue = (
+    value: number,
+    step: number,
+    validator: NumberValidator,
+): number => {
+    let crementedValue = value;
+    const roundedCrementedValue = Math.round(crementedValue);
+    if (crementedValue === 0 || crementedValue % roundedCrementedValue === 0) {
+        crementedValue = Number(value ?? 0) + step;
+    } else if (step < 0) {
+        crementedValue = Math.floor(value) + step + 1;
+    } else if (step > 0) {
+        crementedValue = Math.ceil(value) + step - 1;
+    }
+    return Math.max(
+        Math.min(crementedValue, validator.maxValue),
+        validator.minValue,
+    );
+};
+
 export const NumberSelector = ({
+    validator,
+    initialValue,
     value,
-    onValueChange= undefined,
-    onEndEditing = undefined,
-    minValue = 0,
-    maxValue,
+    onEndEditing,
     style,
     minusIcon = 'minus',
     plusIcon = 'add',
     showSoftInputOnFocus = false,
     variant = 'outlined',
-    decimal = false,
     size = 'm',
     placeholder = '--',
+    incrementStep = 1,
+    decrementStep = 1,
 }: Props) => {
-    const refInput = useRef<any>();
-    const parser = decimal ? parseFloat : parseInt;
-    const [tempValue, setTempValue] = useState<string>(value?.toString() ?? placeholder);
+    const [tempValue, setTempValue] = useState<string>(
+        value?.toString() ?? placeholder,
+    );
+
+    const [lastValidValue, setLastValidValue] = useState<number | undefined>();
     const [softInputOnFocus, setSoftInputOnFocus] = useState(false);
-    const allowedMinus = (): boolean => {
-        return minValue !== undefined && minValue < 0;
-    };
-    const decimalRegex = allowedMinus() ? /^-?\d+[\.]?\d?$/ : /^\d+[\.]?\d?$/;
-    const integerRegex = allowedMinus() ? /^-?\d+$/ : /^\d+$/;
-    const numberRegex = decimal ? decimalRegex : integerRegex;
-    const onAdd = () => {
-        Keyboard.dismiss();
-        if (!addDisabled) {
-            const newValue =value?  (
-                Math.round(
-                    (value + 1 < maxValue ? value + 1 : maxValue) * 10
-                ) / 10
-            ).toString() : "1";
-            onChangeText(newValue);
-            onEndEditing && onEndEditing(newValue);
-        }
-    };
-    const onMinus = () => {
-        Keyboard.dismiss();
-        if (!minusDisabled){
-            const newValue = value ? (
-                Math.round(
-                    (value - 1 > minValue ? value - 1 : minValue) * 10
-                ) / 10
-            ).toString() : "0";
-            onChangeText(newValue);
-            onEndEditing && onEndEditing(newValue);
-        }
-    };
-    const onChangeText = (text: string) => {
-        if (tempValue !== '' && tempValue != '-') refInput?.current?.focus();
-        if (text == '' || (allowedMinus() && text == '-')) {
-            setTempValue(text);
-        } else if (numberRegex.test(text)) {
-            const parsedValue = parser(text);
-            if (
-                parsedValue !== undefined &&
-                (minValue === undefined || parsedValue >= minValue) &&
-                (maxValue === undefined || parsedValue <= maxValue)
-            ) {
-                onValueChange && onValueChange(parsedValue);
-                setTempValue(text);
-            }
-        }
+
+    const [error, setError] = useState(false);
+    const [focused, setFocused] = useState(false);
+    const [fieldState, setFieldState] =
+        useState<FieldState>('filledWithDefault');
+
+    const computeIncrementedValue = (): number => {
+        return RoundValue(
+            ComputeCrementedValue(getParsedValue(), incrementStep, validator),
+        );
     };
 
-    const minusDisabled = minValue >= (value ?? 0) ;
-    const addDisabled = maxValue <= (value ?? 0);
+    const computeDecrementedValue = (): number => {
+        return RoundValue(
+            ComputeCrementedValue(getParsedValue(), -decrementStep, validator),
+        );
+    };
+
+    const isConsideredEmptyValue = (value: string) => {
+        return value === '' || value === '-' || value === placeholder;
+    };
+
+    const getParsedValue = (): number => {
+        const parsedValue = validator.parser(tempValue);
+        return Number.isNaN(parsedValue) ? 0 : parsedValue;
+    };
+
+    const getValidValue = (): string => {
+        if (isConsideredEmptyValue(tempValue)) {
+            return lastValidValue?.toString() ?? placeholder;
+        }
+        return getParsedValue().toString();
+    };
+
+    const refInput = useRef<any>();
+    const minusDisabled = validator.minValue === getParsedValue();
+    const addDisabled = validator.maxValue === getParsedValue();
+
+    const onAdd = () => {
+        Keyboard.dismiss();
+        if (addDisabled) return;
+        const newValue = computeIncrementedValue().toString();
+        onChangeText(newValue);
+        onEndEditing !== undefined && onEndEditing(newValue);
+    };
+
+    const onMinus = () => {
+        Keyboard.dismiss();
+        if (minusDisabled) return;
+        const newValue = computeDecrementedValue().toString();
+        onChangeText(newValue);
+        onEndEditing !== undefined && onEndEditing(newValue);
+    };
+
+    const onChangeText = (text: string) => {
+        refInput.current.focus();
+        setFieldState(
+            text !== initialValue?.toString() ? 'filled' : 'filledWithDefault',
+        );
+        if (validator.validateFormat(text)) {
+            setTempValue(text);
+            setLastValidValue(getParsedValue());
+            setError(!validator.validateMinMax(text));
+        }
+    };
 
     const styles = StyleSheet.create({
         container: {
@@ -97,12 +139,20 @@ export const NumberSelector = ({
         },
         inputContainer: {
             marginHorizontal: 8,
-            flex: 0,
+            flex: 1,
         },
     });
     const getDisplayedValue = (): string => {
         return tempValue.toString();
     };
+    const onFocus = () => {
+        setFocused(true);
+    };
+    const onBlur = () => {
+        setTempValue(getValidValue());
+        setFocused(false);
+    };
+
     return (
         <View style={styles.container}>
             <IconButton
@@ -112,21 +162,26 @@ export const NumberSelector = ({
                 size={size}
                 disabled={minusDisabled}
             />
+
             <NumberField
                 ref={refInput}
                 style={styles.inputContainer}
                 showSoftInputOnFocus={softInputOnFocus}
                 onPressIn={() => setSoftInputOnFocus(true)}
                 onPressOut={() => setSoftInputOnFocus(false)}
+                selectTextOnFocus={showSoftInputOnFocus}
                 keyboardType='number-pad'
                 value={getDisplayedValue()}
-                minValue={minValue}
-                maxValue={maxValue}
                 onChangeText={onChangeText}
-                onEndEditing={(e) => onEndEditing && onEndEditing(e.nativeEvent.text)}
-                selectTextOnFocus={showSoftInputOnFocus}
-                decimal={decimal}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onEndEditing={(e) => {
+                    onEndEditing(e.nativeEvent.text);
+                }}
                 size={size}
+                error={error}
+                fieldState={fieldState}
+                focused={focused}
             />
             <IconButton
                 variant={variant}
