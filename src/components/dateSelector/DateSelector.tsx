@@ -24,31 +24,6 @@ interface FieldsValues {
     yearField: string;
 }
 
-function getStyles(theme: Theme) {
-    return StyleSheet.create({
-        root: {
-            alignSelf: 'center',
-            alignItems: 'center',
-        },
-        dateSelector: {
-            flexDirection: 'row',
-        },
-        slashContainer: {
-            width: 26,
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
-        slash: {
-            fontSize: 20,
-            color: theme.sw.colors.neutral[500],
-        },
-        errorMessage: {
-            marginTop: theme.sw.spacing.m,
-            color: theme.sw.colors.error.main,
-        },
-    });
-}
-
 const MAX_DATE_FIELD_LENGTH = 2;
 
 export const DateSelector = ({
@@ -219,4 +194,29 @@ function filledFieldsValues(
         monthField: monthField || prefilled.monthField,
         yearField: yearField || prefilled.yearField,
     };
+}
+
+function getStyles(theme: Theme) {
+    return StyleSheet.create({
+        root: {
+            alignSelf: 'center',
+            alignItems: 'center',
+        },
+        dateSelector: {
+            flexDirection: 'row',
+        },
+        slashContainer: {
+            width: 26,
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        slash: {
+            fontSize: 20,
+            color: theme.sw.colors.neutral[500],
+        },
+        errorMessage: {
+            marginTop: theme.sw.spacing.m,
+            color: theme.sw.colors.error.main,
+        },
+    });
 }
