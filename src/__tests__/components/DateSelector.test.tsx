@@ -71,4 +71,19 @@ describe('MODULE | DateField', () => {
         await user.type(yearField, '6');
         expect(yearField.props.value).toBe('06');
     });
+
+    it('should display an error message', async () => {
+        tree.rerender(
+            <ThemeProvider>
+                <DateSelector
+                    prefilled={new Date(2003, 1, 1)}
+                    onChange={mockOnChange}
+                    testID={mockedTestID}
+                    errorMessage='an error'
+                />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByText('an error')).toBeOnTheScreen();
+    });
 });

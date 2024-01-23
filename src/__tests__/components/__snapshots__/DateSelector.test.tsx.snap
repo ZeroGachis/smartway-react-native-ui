@@ -26,158 +26,165 @@ exports[`MODULE | DateField component renders correctly with prefilled values in
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "flexDirection": "row",
         }
       }
-      testID="mockedTestID"
     >
-      <TextInput
-        cursorColor="#18A586"
-        keyboardType="numeric"
-        maxLength={2}
-        onBlur={[Function]}
-        onChangeText={[Function]}
-        onFocus={[Function]}
-        placeholder="01"
-        placeholderTextColor="#919EAB"
-        selectTextOnFocus={true}
-        selectionColor="#18A58629"
-        style={
-          {
-            "backgroundColor": "#919EAB14",
-            "borderColor": undefined,
-            "borderRadius": 18,
-            "borderWidth": 0,
-            "color": "#919EAB",
-            "fontFamily": "PublicSans-Bold",
-            "fontSize": 20,
-            "height": 48,
-            "lineHeight": 23.5,
-            "marginVertical": 0,
-            "paddingVertical": 0,
-            "width": 72,
-          }
-        }
-        testID="mockedTestID/day"
-        textAlign="center"
-        value=""
-      />
       <View
         style={
           {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "width": 26,
+            "flexDirection": "row",
           }
         }
+        testID="mockedTestID"
       >
-        <Text
+        <TextInput
+          cursorColor="#18A586"
+          keyboardType="numeric"
+          maxLength={2}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          placeholder="01"
+          placeholderTextColor="#919EAB"
+          selectTextOnFocus={true}
+          selectionColor="#18A58629"
           style={
-            [
-              {
-                "color": "#212B36",
-                "fontFamily": "PublicSans-Bold",
-                "fontSize": 20,
-              },
-              {
-                "color": "#919EAB",
-                "fontSize": 20,
-              },
-            ]
+            {
+              "backgroundColor": "#919EAB14",
+              "borderColor": undefined,
+              "borderRadius": 18,
+              "borderWidth": 0,
+              "color": "#919EAB",
+              "fontFamily": "PublicSans-Bold",
+              "fontSize": 20,
+              "height": 48,
+              "lineHeight": 23.5,
+              "marginVertical": 0,
+              "paddingVertical": 0,
+              "width": 72,
+            }
+          }
+          testID="mockedTestID/day"
+          textAlign="center"
+          value=""
+        />
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "width": 26,
+            }
           }
         >
-          /
-        </Text>
-      </View>
-      <TextInput
-        cursorColor="#18A586"
-        keyboardType="numeric"
-        maxLength={2}
-        onBlur={[Function]}
-        onChangeText={[Function]}
-        onFocus={[Function]}
-        placeholder="02"
-        placeholderTextColor="#919EAB"
-        selectTextOnFocus={true}
-        selectionColor="#18A58629"
-        style={
-          {
-            "backgroundColor": "#919EAB14",
-            "borderColor": undefined,
-            "borderRadius": 18,
-            "borderWidth": 0,
-            "color": "#919EAB",
-            "fontFamily": "PublicSans-Bold",
-            "fontSize": 20,
-            "height": 48,
-            "lineHeight": 23.5,
-            "marginVertical": 0,
-            "paddingVertical": 0,
-            "width": 72,
-          }
-        }
-        testID="mockedTestID/month"
-        textAlign="center"
-        value=""
-      />
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "width": 26,
-          }
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "color": "#212B36",
+                  "fontFamily": "PublicSans-Bold",
+                  "fontSize": 20,
+                },
+                {
+                  "color": "#919EAB",
+                  "fontSize": 20,
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+        <TextInput
+          cursorColor="#18A586"
+          keyboardType="numeric"
+          maxLength={2}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          placeholder="02"
+          placeholderTextColor="#919EAB"
+          selectTextOnFocus={true}
+          selectionColor="#18A58629"
           style={
-            [
-              {
-                "color": "#212B36",
-                "fontFamily": "PublicSans-Bold",
-                "fontSize": 20,
-              },
-              {
-                "color": "#919EAB",
-                "fontSize": 20,
-              },
-            ]
+            {
+              "backgroundColor": "#919EAB14",
+              "borderColor": undefined,
+              "borderRadius": 18,
+              "borderWidth": 0,
+              "color": "#919EAB",
+              "fontFamily": "PublicSans-Bold",
+              "fontSize": 20,
+              "height": 48,
+              "lineHeight": 23.5,
+              "marginVertical": 0,
+              "paddingVertical": 0,
+              "width": 72,
+            }
+          }
+          testID="mockedTestID/month"
+          textAlign="center"
+          value=""
+        />
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "width": 26,
+            }
           }
         >
-          /
-        </Text>
-      </View>
-      <TextInput
-        cursorColor="#18A586"
-        keyboardType="numeric"
-        maxLength={2}
-        onBlur={[Function]}
-        onChangeText={[Function]}
-        onFocus={[Function]}
-        placeholder="03"
-        placeholderTextColor="#919EAB"
-        selectTextOnFocus={true}
-        selectionColor="#18A58629"
-        style={
-          {
-            "backgroundColor": "#919EAB14",
-            "borderColor": undefined,
-            "borderRadius": 18,
-            "borderWidth": 0,
-            "color": "#919EAB",
-            "fontFamily": "PublicSans-Bold",
-            "fontSize": 20,
-            "height": 48,
-            "lineHeight": 23.5,
-            "marginVertical": 0,
-            "paddingVertical": 0,
-            "width": 72,
+          <Text
+            style={
+              [
+                {
+                  "color": "#212B36",
+                  "fontFamily": "PublicSans-Bold",
+                  "fontSize": 20,
+                },
+                {
+                  "color": "#919EAB",
+                  "fontSize": 20,
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+        <TextInput
+          cursorColor="#18A586"
+          keyboardType="numeric"
+          maxLength={2}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          placeholder="03"
+          placeholderTextColor="#919EAB"
+          selectTextOnFocus={true}
+          selectionColor="#18A58629"
+          style={
+            {
+              "backgroundColor": "#919EAB14",
+              "borderColor": undefined,
+              "borderRadius": 18,
+              "borderWidth": 0,
+              "color": "#919EAB",
+              "fontFamily": "PublicSans-Bold",
+              "fontSize": 20,
+              "height": 48,
+              "lineHeight": 23.5,
+              "marginVertical": 0,
+              "paddingVertical": 0,
+              "width": 72,
+            }
           }
-        }
-        testID="mockedTestID/year"
-        textAlign="center"
-        value=""
-      />
+          testID="mockedTestID/year"
+          textAlign="center"
+          value=""
+        />
+      </View>
     </View>
   </View>
 </RNCSafeAreaProvider>
