@@ -10,13 +10,13 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme, useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 import { Body } from '../typography/Body';
+import { WithTestID } from 'src/shared/type';
 
-interface DateSelectorProps {
+type DateSelectorProps = WithTestID<{
     prefilled: Date;
     errorMessage?: string;
     onChange: (date: Date) => void;
-    testID?: string;
-}
+}>;
 
 interface FieldsValues {
     dayField: string;
