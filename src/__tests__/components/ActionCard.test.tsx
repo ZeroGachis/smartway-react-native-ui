@@ -1,6 +1,5 @@
 import React from 'react';
-import { act, fireEvent, render } from '@testing-library/react-native';
-import { ThemeProvider } from '../../styles/themes';
+import { act, fireEvent, render } from '../../shared/testUtils';
 import { ActionCard } from '../../components';
 import { Text, View } from 'react-native';
 
@@ -9,56 +8,50 @@ const mockedTestID = 'mockedTestID';
 describe('MODULE | ActionCard', () => {
     it('component renders correctly', () => {
         const tree = render(
-            <ThemeProvider>
-                <ActionCard
-                    titleColor={'black'}
-                    bottomChildren={
-                        <View>
-                            <Text>Test</Text>
-                        </View>
-                    }
-                >
-                    {'Test children'}
-                </ActionCard>
-            </ThemeProvider>,
+            <ActionCard
+                titleColor={'black'}
+                bottomChildren={
+                    <View>
+                        <Text>Test</Text>
+                    </View>
+                }
+            >
+                {'Test children'}
+            </ActionCard>,
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
     it('component renders correctly in disabled state', () => {
         const tree = render(
-            <ThemeProvider>
-                <ActionCard
-                    disabled
-                    titleColor={'black'}
-                    bottomChildren={
-                        <View>
-                            <Text>Test</Text>
-                        </View>
-                    }
-                >
-                    {'Test children'}
-                </ActionCard>
-            </ThemeProvider>,
+            <ActionCard
+                disabled
+                titleColor={'black'}
+                bottomChildren={
+                    <View>
+                        <Text>Test</Text>
+                    </View>
+                }
+            >
+                {'Test children'}
+            </ActionCard>,
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
     it('fires callback on button press', async () => {
         const tree = render(
-            <ThemeProvider>
-                <ActionCard
-                    onClear={mockedCallback}
-                    displayClear={true}
-                    titleColor={'black'}
-                    bottomChildren={
-                        <View>
-                            <Text>Test</Text>
-                        </View>
-                    }
-                    buttonTestID={mockedTestID}
-                >
-                    {'Test children'}
-                </ActionCard>
-            </ThemeProvider>,
+            <ActionCard
+                onClear={mockedCallback}
+                displayClear={true}
+                titleColor={'black'}
+                bottomChildren={
+                    <View>
+                        <Text>Test</Text>
+                    </View>
+                }
+                buttonTestID={mockedTestID}
+            >
+                {'Test children'}
+            </ActionCard>,
         );
 
         await act(async () => {
