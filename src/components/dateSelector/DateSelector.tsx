@@ -1,16 +1,14 @@
-import {
-    StyleSheet,
-    TextInput,
-    View,
-    Keyboard,
-    KeyboardEventListener,
-} from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import { DateField } from './DateField';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Theme, useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 import { Body } from '../typography/Body';
 import { WithTestID } from 'src/shared/type';
+import {
+    hideKeyboard,
+    useListenerOnKeyboardHiding,
+} from '../../shared/keyboardUtils';
 
 type DateSelectorProps = WithTestID<{
     prefilled: Date;
@@ -52,6 +50,10 @@ export const DateSelector = ({
             monthField,
             yearField,
         );
+
+        setDayField(completeFields.dayField);
+        setMonthField(completeFields.monthField);
+        setYearField(completeFields.yearField);
 
         onChange(fromFieldsToDate(completeFields));
     }, [prefilledFields, dayField, monthField, yearField, onChange]);
@@ -138,22 +140,6 @@ export const DateSelector = ({
         </View>
     );
 };
-
-function useListenerOnKeyboardHiding(listener: KeyboardEventListener) {
-    useEffect(() => {
-        const hideSubscription = Keyboard.addListener(
-            'keyboardDidHide',
-            listener,
-        );
-        return () => {
-            hideSubscription.remove();
-        };
-    }, [listener]);
-}
-
-function hideKeyboard(ref: React.RefObject<TextInput>) {
-    ref?.current?.blur();
-}
 
 function fromDateToFields(date: Date): FieldsValues {
     const day = prefixWith0(date.getDate());
