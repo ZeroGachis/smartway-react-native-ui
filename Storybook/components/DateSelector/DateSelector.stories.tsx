@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DateSelector } from '../../../src/components/dateSelector/DateSelector';
 import type { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { action } from '@storybook/addon-actions';
 import { StyleSheet, View, Text } from 'react-native';
 
 export default {
@@ -11,7 +12,9 @@ export default {
     },
     args: {
         prefilled: new Date(2023, 0, 8),
-        onUpdatedDate: () => true,
+        onUpdatedDate: (date: Date) => {
+            action('onChange')(date.toDateString());
+        },
     },
     decorators: [
         (Story) => {
@@ -45,9 +48,13 @@ export const WithErrorMessage: ComponentStory<typeof DateSelector> = (args) => {
         return !isGreaterThunberg;
     };
 
+    const styles = getStyles();
+
     return (
         <View>
-            <Text>Enter a date greater than 2030 to be in error</Text>
+            <Text style={styles.container}>
+                Enter a date greater than 2030 to be in error.
+            </Text>
             <DateSelector
                 {...args}
                 onUpdatedDate={handleUpdatedDate}
@@ -55,6 +62,12 @@ export const WithErrorMessage: ComponentStory<typeof DateSelector> = (args) => {
             />
         </View>
     );
+
+    function getStyles() {
+        return StyleSheet.create({
+            container: { padding: 8 },
+        });
+    }
 };
 
 function isGreaterThan2030(date: Date): boolean {
