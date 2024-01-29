@@ -1,6 +1,5 @@
 import React from 'react';
-import { act, fireEvent, render } from '@testing-library/react-native';
-import { ThemeProvider } from '../../styles/themes';
+import { render, fireEvent, act } from '../../shared/testUtils';
 import { Keyboard } from '../../components';
 
 const mockedCallback = jest.fn();
@@ -8,28 +7,24 @@ const mockedCallback = jest.fn();
 describe('MODULE | Keyboard', () => {
     it('component renders correctly', () => {
         const tree = render(
-            <ThemeProvider>
-                <Keyboard
-                    focusedInput=""
-                    height={300}
-                    setValues={mockedCallback}
-                    onSubmit={mockedCallback}
-                />
-            </ThemeProvider>,
+            <Keyboard
+                focusedInput=''
+                height={300}
+                setValues={mockedCallback}
+                onSubmit={mockedCallback}
+            />,
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     it('return undefined if there is no focused input provided', async () => {
         const tree = render(
-            <ThemeProvider>
-                <Keyboard
-                    focusedInput=""
-                    height={300}
-                    setValues={mockedCallback}
-                    onSubmit={mockedCallback}
-                />
-            </ThemeProvider>,
+            <Keyboard
+                focusedInput=''
+                height={300}
+                setValues={mockedCallback}
+                onSubmit={mockedCallback}
+            />,
         );
         const button = await tree.findByText('1');
 
@@ -47,16 +42,14 @@ describe('MODULE | Keyboard', () => {
         });
 
         const tree = render(
-            <ThemeProvider>
-                <Keyboard
-                    focusedInput={focusedInput}
-                    height={300}
-                    setValues={mockSetter}
-                    onSubmit={() => {
-                        return;
-                    }}
-                />
-            </ThemeProvider>,
+            <Keyboard
+                focusedInput={focusedInput}
+                height={300}
+                setValues={mockSetter}
+                onSubmit={() => {
+                    return;
+                }}
+            />,
         );
 
         const button = await tree.findByText('1');
@@ -76,17 +69,15 @@ describe('MODULE | Keyboard', () => {
         });
 
         const tree = render(
-            <ThemeProvider>
-                <Keyboard
-                    deleteButtonTestID={mockedTestID}
-                    focusedInput={focusedInput}
-                    height={300}
-                    setValues={mockedSetter}
-                    onSubmit={() => {
-                        return;
-                    }}
-                />
-            </ThemeProvider>,
+            <Keyboard
+                deleteButtonTestID={mockedTestID}
+                focusedInput={focusedInput}
+                height={300}
+                setValues={mockedSetter}
+                onSubmit={() => {
+                    return;
+                }}
+            />,
         );
         const button = await tree.findByTestId(mockedTestID);
 
@@ -101,15 +92,13 @@ describe('MODULE | Keyboard', () => {
         const mockedTestID = 'submitButtonTestID';
         const focusedInput = 'input';
         const tree = render(
-            <ThemeProvider>
-                <Keyboard
-                    submitButtonTestID={mockedTestID}
-                    focusedInput={focusedInput}
-                    height={300}
-                    setValues={mockedSetter}
-                    onSubmit={mockedOnSubmit}
-                />
-            </ThemeProvider>,
+            <Keyboard
+                submitButtonTestID={mockedTestID}
+                focusedInput={focusedInput}
+                height={300}
+                setValues={mockedSetter}
+                onSubmit={mockedOnSubmit}
+            />,
         );
         const button = await tree.findByTestId(mockedTestID);
 

@@ -33,3 +33,15 @@ export const Base: ComponentStory<typeof DateSelector> = (args) => {
     };
     return <DateSelector {...args} onChange={handleChange} />;
 };
+export const WithErrorMessage: ComponentStory<typeof DateSelector> = (args) => {
+    const handleChange = (date: Date) => {
+        action('onChange')(date.toDateString());
+    };
+    return (
+        <DateSelector
+            {...args}
+            onChange={handleChange}
+            errorMessage='Date non valide. Veuillez respecter le format attendu (JJ/MM/AA). '
+        />
+    );
+};

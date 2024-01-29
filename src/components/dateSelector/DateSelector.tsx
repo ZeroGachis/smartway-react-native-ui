@@ -9,12 +9,14 @@ import { DateField } from './DateField';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme, useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
+import { Body } from '../typography/Body';
+import { WithTestID } from 'src/shared/type';
 
-interface DateSelectorProps {
+type DateSelectorProps = WithTestID<{
     prefilled: Date;
+    errorMessage?: string;
     onChange: (date: Date) => void;
-    testID?: string;
-}
+}>;
 
 interface FieldsValues {
     dayField: string;
@@ -22,29 +24,11 @@ interface FieldsValues {
     yearField: string;
 }
 
-function getStyles(theme: Theme) {
-    return StyleSheet.create({
-        dateSelector: {
-            alignSelf: 'center',
-            flexDirection: 'row',
-            alignItems: 'center',
-        },
-        slashContainer: {
-            width: 26,
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
-        slash: {
-            fontSize: 20,
-            color: theme.sw.colors.neutral[500],
-        },
-    });
-}
-
 const MAX_DATE_FIELD_LENGTH = 2;
 
 export const DateSelector = ({
     prefilled,
+    errorMessage,
     onChange,
     testID,
 }: DateSelectorProps) => {
@@ -109,41 +93,48 @@ export const DateSelector = ({
         };
 
     return (
-        <View style={styles.dateSelector} testID={testID}>
-            <DateField
-                ref={refDay}
-                testID={testID + '/day'}
-                placeholder={prefilledFields.dayField}
-                value={dayField}
-                onBlur={handleBlurPrefixWith0(setDayField)}
-                onChangeText={handleDayChange}
-            />
-            <View style={styles.slashContainer}>
-                <Headline size='h4' style={styles.slash}>
-                    /
-                </Headline>
+        <View style={styles.root}>
+            <View style={styles.dateSelector} testID={testID}>
+                <DateField
+                    ref={refDay}
+                    testID={testID + '/day'}
+                    placeholder={prefilledFields.dayField}
+                    value={dayField}
+                    onBlur={handleBlurPrefixWith0(setDayField)}
+                    onChangeText={handleDayChange}
+                />
+                <View style={styles.slashContainer}>
+                    <Headline size='h4' style={styles.slash}>
+                        /
+                    </Headline>
+                </View>
+                <DateField
+                    ref={refMonth}
+                    testID={testID + '/month'}
+                    placeholder={prefilledFields.monthField}
+                    value={monthField}
+                    onBlur={handleBlurPrefixWith0(setMonthField)}
+                    onChangeText={handleMonthChange}
+                />
+                <View style={styles.slashContainer}>
+                    <Headline size='h4' style={styles.slash}>
+                        /
+                    </Headline>
+                </View>
+                <DateField
+                    ref={refYear}
+                    testID={testID + '/year'}
+                    placeholder={prefilledFields.yearField}
+                    value={yearField}
+                    onBlur={handleBlurPrefixWith0(setYearField)}
+                    onChangeText={handleYearChange}
+                />
             </View>
-            <DateField
-                ref={refMonth}
-                testID={testID + '/month'}
-                placeholder={prefilledFields.monthField}
-                value={monthField}
-                onBlur={handleBlurPrefixWith0(setMonthField)}
-                onChangeText={handleMonthChange}
-            />
-            <View style={styles.slashContainer}>
-                <Headline size='h4' style={styles.slash}>
-                    /
-                </Headline>
-            </View>
-            <DateField
-                ref={refYear}
-                testID={testID + '/year'}
-                placeholder={prefilledFields.yearField}
-                value={yearField}
-                onBlur={handleBlurPrefixWith0(setYearField)}
-                onChangeText={handleYearChange}
-            />
+            {errorMessage && (
+                <Body testID='text/error-message' style={styles.errorMessage}>
+                    {errorMessage}
+                </Body>
+            )}
         </View>
     );
 };
@@ -203,4 +194,29 @@ function filledFieldsValues(
         monthField: monthField || prefilled.monthField,
         yearField: yearField || prefilled.yearField,
     };
+}
+
+function getStyles(theme: Theme) {
+    return StyleSheet.create({
+        root: {
+            alignSelf: 'center',
+            alignItems: 'center',
+        },
+        dateSelector: {
+            flexDirection: 'row',
+        },
+        slashContainer: {
+            width: 26,
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        slash: {
+            fontSize: 20,
+            color: theme.sw.colors.neutral[500],
+        },
+        errorMessage: {
+            marginTop: theme.sw.spacing.m,
+            color: theme.sw.colors.error.main,
+        },
+    });
 }

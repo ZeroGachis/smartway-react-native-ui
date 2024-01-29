@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, act, userEvent, screen } from '@testing-library/react-native';
-import { ThemeProvider } from '../../styles/themes';
 import { DateSelector } from '../../components';
 import { DeviceEventEmitter } from 'react-native';
+import { render, userEvent, screen, act } from '../../shared/testUtils';
 
 const mockedTestID = 'mockedTestID';
 const mockOnChange = jest.fn();
@@ -10,13 +9,11 @@ let tree: ReturnType<typeof render>;
 
 beforeEach(() => {
     tree = render(
-        <ThemeProvider>
-            <DateSelector
-                prefilled={new Date(2003, 1, 1)}
-                onChange={mockOnChange}
-                testID={mockedTestID}
-            />
-        </ThemeProvider>,
+        <DateSelector
+            prefilled={new Date(2003, 1, 1)}
+            onChange={mockOnChange}
+            testID={mockedTestID}
+        />,
     );
 });
 
@@ -70,5 +67,18 @@ describe('MODULE | DateField', () => {
         const yearField = screen.getByTestId(mockedTestID + '/year');
         await user.type(yearField, '6');
         expect(yearField.props.value).toBe('06');
+    });
+
+    it('should display an error message', async () => {
+        tree.rerender(
+            <DateSelector
+                prefilled={new Date(2003, 1, 1)}
+                onChange={mockOnChange}
+                testID={mockedTestID}
+                errorMessage='an error'
+            />,
+        );
+
+        expect(screen.getByText('an error')).toBeOnTheScreen();
     });
 });
