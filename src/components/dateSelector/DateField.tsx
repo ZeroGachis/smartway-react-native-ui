@@ -20,6 +20,18 @@ export interface DateFieldProps extends TextInputProps {
     hasError?: boolean;
 }
 
+function getPlaceholderColorsStyle(theme: Theme, state: State) {
+    let textColor: string | undefined = theme.sw.colors.neutral[500];
+    if (state === 'error') {
+        textColor = undefined;
+    }
+    if (state === 'empty-focused') {
+        textColor = theme.sw.colors.primary.main;
+    }
+    return {
+        textColor,
+    };
+}
 function getColorsStyle(theme: Theme, state: State) {
     let backgroundColor, borderColor, textColor;
 
@@ -60,6 +72,8 @@ function getStyle(theme: Theme, state: State) {
         state,
     );
 
+    const placeholderColorsStyle = getPlaceholderColorsStyle(theme, state);
+
     const style = StyleSheet.create({
         main: {
             borderRadius: 18,
@@ -76,10 +90,7 @@ function getStyle(theme: Theme, state: State) {
             marginVertical: 0,
         },
         placeholder: {
-            color:
-                state === 'empty-focused'
-                    ? theme.sw.colors.primary.main
-                    : theme.sw.colors.neutral[500],
+            color: placeholderColorsStyle.textColor,
         },
     });
     return style;

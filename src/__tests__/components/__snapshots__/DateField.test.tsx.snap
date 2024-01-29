@@ -252,7 +252,6 @@ exports[`MODULE | DateField component renders correctly in error state 1`] = `
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder="01"
-      placeholderTextColor="#919EAB"
       selectTextOnFocus={true}
       selectionColor="#18A58629"
       style={

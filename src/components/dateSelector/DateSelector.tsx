@@ -13,7 +13,7 @@ import {
 type DateSelectorProps = WithTestID<{
     prefilled: Date;
     errorMessage?: string;
-    onChange: (date: Date) => void;
+    onUpdatedDate: (date: Date) => boolean;
 }>;
 
 interface FieldsValues {
@@ -27,7 +27,7 @@ const MAX_DATE_FIELD_LENGTH = 2;
 export const DateSelector = ({
     prefilled,
     errorMessage,
-    onChange,
+    onUpdatedDate,
     testID,
 }: DateSelectorProps) => {
     const theme = useTheme();
@@ -55,8 +55,8 @@ export const DateSelector = ({
         setMonthField(completeFields.monthField);
         setYearField(completeFields.yearField);
 
-        onChange(fromFieldsToDate(completeFields));
-    }, [prefilledFields, dayField, monthField, yearField, onChange]);
+        onUpdatedDate(fromFieldsToDate(completeFields));
+    }, [prefilledFields, dayField, monthField, yearField, onUpdatedDate]);
 
     useListenerOnKeyboardHiding(leaveDateSelector);
 
@@ -102,6 +102,7 @@ export const DateSelector = ({
                     testID={testID + '/day'}
                     placeholder={prefilledFields.dayField}
                     value={dayField}
+                    hasError={!!errorMessage}
                     onBlur={handleBlurPrefixWith0(setDayField)}
                     onChangeText={handleDayChange}
                 />
@@ -115,6 +116,7 @@ export const DateSelector = ({
                     testID={testID + '/month'}
                     placeholder={prefilledFields.monthField}
                     value={monthField}
+                    hasError={!!errorMessage}
                     onBlur={handleBlurPrefixWith0(setMonthField)}
                     onChangeText={handleMonthChange}
                 />
@@ -128,6 +130,7 @@ export const DateSelector = ({
                     testID={testID + '/year'}
                     placeholder={prefilledFields.yearField}
                     value={yearField}
+                    hasError={!!errorMessage}
                     onBlur={handleBlurPrefixWith0(setYearField)}
                     onChangeText={handleYearChange}
                 />
