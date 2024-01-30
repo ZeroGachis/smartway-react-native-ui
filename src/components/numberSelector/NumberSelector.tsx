@@ -11,15 +11,12 @@ export interface Props {
     value: number | undefined;
     onValueChange?: (value: number) => void;
     onEndEditing: (value: string | undefined) => void;
-    minValue: number;
-    maxValue: number;
     style?: ViewStyle;
     minusIcon?: IconName;
     plusIcon?: IconName;
     showSoftInputOnFocus?: boolean;
     variant?: 'filled' | 'outlined';
     size?: 'm' | 's';
-    decimal?: boolean;
     placeholder?: string;
     incrementStep?: number;
     decrementStep?: number;
