@@ -1,21 +1,19 @@
-import {
-    StyleSheet,
-    TextInput,
-    View,
-    Keyboard,
-    KeyboardEventListener,
-} from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import { DateField } from './DateField';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Theme, useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 import { Body } from '../typography/Body';
 import { WithTestID } from 'src/shared/type';
+import {
+    hideKeyboard,
+    useListenerOnKeyboardHiding,
+} from '../../shared/keyboardUtils';
 
 type DateSelectorProps = WithTestID<{
     prefilled: Date;
     errorMessage?: string;
-    onChange: (date: Date) => void;
+    onUpdatedDate: (date: Date) => void;
 }>;
 
 interface FieldsValues {
@@ -29,7 +27,7 @@ const MAX_DATE_FIELD_LENGTH = 2;
 export const DateSelector = ({
     prefilled,
     errorMessage,
-    onChange,
+    onUpdatedDate,
     testID,
 }: DateSelectorProps) => {
     const theme = useTheme();
@@ -53,8 +51,12 @@ export const DateSelector = ({
             yearField,
         );
 
-        onChange(fromFieldsToDate(completeFields));
-    }, [prefilledFields, dayField, monthField, yearField, onChange]);
+        setDayField(completeFields.dayField);
+        setMonthField(completeFields.monthField);
+        setYearField(completeFields.yearField);
+
+        onUpdatedDate(fromFieldsToDate(completeFields));
+    }, [prefilledFields, dayField, monthField, yearField, onUpdatedDate]);
 
     useListenerOnKeyboardHiding(leaveDateSelector);
 
@@ -100,6 +102,7 @@ export const DateSelector = ({
                     testID={testID + '/day'}
                     placeholder={prefilledFields.dayField}
                     value={dayField}
+                    hasError={!!errorMessage}
                     onBlur={handleBlurPrefixWith0(setDayField)}
                     onChangeText={handleDayChange}
                 />
@@ -113,6 +116,7 @@ export const DateSelector = ({
                     testID={testID + '/month'}
                     placeholder={prefilledFields.monthField}
                     value={monthField}
+                    hasError={!!errorMessage}
                     onBlur={handleBlurPrefixWith0(setMonthField)}
                     onChangeText={handleMonthChange}
                 />
@@ -126,6 +130,7 @@ export const DateSelector = ({
                     testID={testID + '/year'}
                     placeholder={prefilledFields.yearField}
                     value={yearField}
+                    hasError={!!errorMessage}
                     onBlur={handleBlurPrefixWith0(setYearField)}
                     onChangeText={handleYearChange}
                 />
@@ -138,22 +143,6 @@ export const DateSelector = ({
         </View>
     );
 };
-
-function useListenerOnKeyboardHiding(listener: KeyboardEventListener) {
-    useEffect(() => {
-        const hideSubscription = Keyboard.addListener(
-            'keyboardDidHide',
-            listener,
-        );
-        return () => {
-            hideSubscription.remove();
-        };
-    }, [listener]);
-}
-
-function hideKeyboard(ref: React.RefObject<TextInput>) {
-    ref?.current?.blur();
-}
 
 function fromDateToFields(date: Date): FieldsValues {
     const day = prefixWith0(date.getDate());

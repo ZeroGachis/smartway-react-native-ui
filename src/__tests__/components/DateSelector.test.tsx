@@ -11,7 +11,7 @@ beforeEach(() => {
     tree = render(
         <DateSelector
             prefilled={new Date(2003, 1, 1)}
-            onChange={mockOnChange}
+            onUpdatedDate={mockOnChange}
             testID={mockedTestID}
         />,
     );
@@ -73,7 +73,7 @@ describe('MODULE | DateField', () => {
         tree.rerender(
             <DateSelector
                 prefilled={new Date(2003, 1, 1)}
-                onChange={mockOnChange}
+                onUpdatedDate={mockOnChange}
                 testID={mockedTestID}
                 errorMessage='an error'
             />,
