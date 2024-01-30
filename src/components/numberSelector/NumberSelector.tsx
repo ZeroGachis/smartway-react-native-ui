@@ -9,7 +9,6 @@ export interface Props {
     validator: NumberValidator;
     initialValue: number | undefined;
     value: number | undefined;
-    onValueChange?: (value: number) => void;
     onEndEditing: (value: string | undefined) => void;
     style?: ViewStyle;
     minusIcon?: IconName;
@@ -25,6 +24,7 @@ export interface Props {
 export const RoundValue = (val: number): number => {
     return Math.round(val * 10) / 10;
 };
+
 export const ComputeCrementedValue = (
     value: number,
     step: number,

@@ -63,6 +63,13 @@ export const ModifyQuantity = ({
             justifyContent: 'center',
         },
     });
+
+    const onEndEditing = (value: string | undefined) => {
+        if (value) {
+            onValueChange(Number(value));
+        }
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.iconContainer}>
@@ -76,15 +83,10 @@ export const ModifyQuantity = ({
                 <Body style={styles.text}>{text}</Body>
             </View>
             <NumberSelector
-                minValue={minValue}
-                maxValue={maxValue}
-                onValueChange={onValueChange}
                 value={value}
-                validator={new NumberValidator(0, 10, false)}
+                validator={new NumberValidator(minValue, maxValue, false)}
                 initialValue={undefined}
-                onEndEditing={function (_: string | undefined): void {
-                    throw new Error('Function not implemented.');
-                }}
+                onEndEditing={onEndEditing}
             />
         </View>
     );
