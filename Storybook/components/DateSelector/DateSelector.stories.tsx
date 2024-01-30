@@ -1,25 +1,27 @@
 import React from 'react';
-import { DateSelector } from '../../../src/components/dateSelector/DateSelector';
+import { DateSelector } from '../../../src';
 import type { ComponentMeta, ComponentStory } from '@storybook/react-native';
-import { StyleSheet, View } from 'react-native';
 import { action } from '@storybook/addon-actions';
+import { View } from 'react-native';
 
 export default {
     title: 'components/DateSelector',
     component: DateSelector,
     argTypes: {
         prefilled: { control: { type: 'date' } },
+        errorMessage: { control: { type: 'text' } },
     },
     args: {
         prefilled: new Date(2023, 0, 8),
+        onUpdatedDate: (date: Date) => {
+            action('onChange')(date.toDateString());
+        },
+        errorMessage: undefined,
     },
     decorators: [
         (Story) => {
-            const styles = StyleSheet.create({
-                container: { paddingTop: 16 },
-            });
             return (
-                <View style={styles.container}>
+                <View style={{ paddingTop: 16 }}>
                     <Story />
                 </View>
             );
@@ -28,20 +30,5 @@ export default {
 } as ComponentMeta<typeof DateSelector>;
 
 export const Base: ComponentStory<typeof DateSelector> = (args) => {
-    const handleChange = (date: Date) => {
-        action('onChange')(date.toDateString());
-    };
-    return <DateSelector {...args} onChange={handleChange} />;
-};
-export const WithErrorMessage: ComponentStory<typeof DateSelector> = (args) => {
-    const handleChange = (date: Date) => {
-        action('onChange')(date.toDateString());
-    };
-    return (
-        <DateSelector
-            {...args}
-            onChange={handleChange}
-            errorMessage='Date non valide. Veuillez respecter le format attendu (JJ/MM/AA). '
-        />
-    );
+    return <DateSelector {...args} />;
 };
