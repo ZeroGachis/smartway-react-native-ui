@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NumberSelector } from 'smartway-react-native-ui';
+import { NumberSelector, NumberValidator } from 'smartway-react-native-ui';
 
 type ComponentProps = React.ComponentProps<typeof NumberSelector>;
 
@@ -10,12 +10,33 @@ export default {
     component: NumberSelector,
     args: {
         value: 0,
-        minValue: -999,
+        minValue: 0,
         maxValue: 999,
+        decimal: 'true',
+        blockOutrange: 'true',
+        size: 'm',
+        showSoftInputOnFocus: 'true',
     },
     argTypes: {
         onValueChange: { action: 'onValueChange' },
-        decimal: { control: { type: 'radio' }, options: [true, false] },
+        decimal: {
+            control: { type: 'radio' },
+            options: ['true', 'false'],
+            mapping: { true: true, false: false },
+            table: { defaultValue: { summary: 'true' } },
+        },
+        blockOutrange: {
+            control: { type: 'radio' },
+            options: ['true', 'false'],
+            mapping: { true: true, false: false },
+            table: { defaultValue: { summary: 'true' } },
+        },
+        showSoftInputOnFocus: {
+            control: { type: 'radio' },
+            options: ['true', 'false'],
+            mapping: { true: true, false: false },
+            table: { defaultValue: { summary: 'true' } },
+        },
         size: { control: { type: 'radio' }, options: ['m', 's'] },
     },
 
@@ -36,21 +57,27 @@ export default {
 type Story = StoryObj<ComponentProps>;
 
 const NumberSelectorTester = (args) => {
-    const [quantity, setQuantity] = useState<number>(args.value);
-    const onValueChange = (newQuantity: number) => {
+    const [quantity, setQuantity] = useState<number | undefined>(args.value);
+    const onEndEditing = (newQuantity: number) => {
         setQuantity(newQuantity);
     };
     return (
         <NumberSelector
             showSoftInputOnFocus={args.showSoftInputOnFocus}
-            decimal={args.decimal}
+            validator={
+                new NumberValidator(
+                    args.minValue,
+                    args.maxValue,
+                    args.decimal,
+                    args.blockOutrange
+                )
+            }
+            initialValue={args.value}
             size={args.size}
-            minValue={args.minValue}
-            maxValue={args.maxValue}
             minusIcon={args.minusIcon}
             plusIcon={args.plusIcon}
             value={quantity}
-            onValueChange={onValueChange}
+            onEndEditing={onEndEditing}
         />
     );
 };

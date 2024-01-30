@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Body, BottomSheet, Button, Card, Headline, useTheme } from 'smartway-react-native-ui';
+import { Body, Card, Headline } from 'smartway-react-native-ui';
 
 type CardProps = React.ComponentProps<typeof Card>;
 
@@ -43,7 +43,7 @@ export const Default: Story = {
     render: () => {
         return (
             <Card>
-                <Headline size="h2">Un Titre</Headline>
+                <Headline size='h2'>Un Titre</Headline>
                 <Body>{textInside}</Body>
             </Card>
         );

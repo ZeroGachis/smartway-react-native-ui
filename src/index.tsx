@@ -20,6 +20,7 @@ import {
     PrintState,
     EANInput,
     ModifyQuantity,
+    NumberValidator,
     NumberSelector,
     Card,
     Tab,
@@ -67,4 +68,5 @@ export {
     Badge,
     DateField,
     DateSelector,
+    NumberValidator,
 };

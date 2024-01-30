@@ -67,7 +67,7 @@ export const IconButton = (props: customIconButtonProps) => {
         if (props.status === 'default' || props.status === undefined) {
             style.iconButton = {
                 ...style.iconButton,
-                ...{ borderColor: theme.sw.colors.neutral[800] + theme.sw.transparency[48] },
+                ...{ borderColor: theme.sw.colors.neutral[500] },
             };
         }
         if (props.disabled) {

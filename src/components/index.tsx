@@ -20,6 +20,7 @@ import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
 import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
 import { NumberSelector } from './numberSelector/NumberSelector';
+import { NumberValidator } from './numberField/NumberValidator';
 import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
@@ -62,4 +63,5 @@ export {
     Badge,
     DateField,
     DateSelector,
+    NumberValidator,
 };

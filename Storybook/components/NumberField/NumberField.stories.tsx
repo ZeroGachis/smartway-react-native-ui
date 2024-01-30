@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NumberField } from 'smartway-react-native-ui';
+import { NumberField, NumberValidator } from 'smartway-react-native-ui';
 
 type ComponentProps = React.ComponentProps<typeof NumberField>;
 
@@ -12,21 +12,40 @@ export default {
         value: '-999.9',
         minValue: -999.9,
         maxValue: 999.9,
+        decimal: 'true',
+        blockOutrange: 'true',
+        size: 'm',
+        focused: 'false',
+        error: 'false',
+        fieldState: 'filledWithDefault',
     },
     argTypes: {
-        state: {
+        fieldState: {
             control: { type: 'radio' },
-            options: [
-                'readonly',
-                'filled',
-                'prefilled',
-                'filled-focused',
-                'prefilled-focused',
-                'error',
-            ],
+            options: ['filled', 'filledWithDefault'],
         },
         size: { control: { type: 'radio' }, options: ['m', 's'] },
-        decimal: { control: { type: 'radio' }, options: [true, false] },
+        error: {
+            control: { type: 'radio' },
+            options: ['true', 'false'],
+            mapping: { true: true, false: false },
+        },
+        focused: {
+            control: { type: 'radio' },
+            options: ['true', 'false'],
+            mapping: { true: true, false: false },
+        },
+        decimal: {
+            control: { type: 'radio' },
+            options: ['true', 'false'],
+            mapping: { true: true, false: false },
+        },
+        blockOutrange: {
+            control: { type: 'radio' },
+            options: ['true', 'false'],
+            mapping: { true: true, false: false },
+            table: { defaultValue: { summary: 'true' } },
+        },
     },
 
     decorators: [
@@ -46,18 +65,25 @@ export default {
 type Story = StoryObj<ComponentProps>;
 
 const NumberFieldTester = (args) => {
-    const [quantity, setQuantity] = useState<number>(args.value);
+    const [quantity, setQuantity] = useState<number>(args.value.toString());
     const onValueChange = (newQuantity: number) => {
         setQuantity(newQuantity);
     };
+    const validator = new NumberValidator(
+        args.minValue,
+        args.maxValue,
+        args.decimal,
+        args.blockOutrange
+    );
     return (
         <NumberField
-            minValue={args.minValue}
-            maxValue={args.maxValue}
+            validator={validator}
             size={args.size}
-            decimal={args.decimal}
+            focused={args.focused}
+            error={args.error}
+            fieldState={args.fieldState}
             value={quantity}
-            onValueChange={onValueChange}
+            onChangeText={onValueChange}
         />
     );
 };
