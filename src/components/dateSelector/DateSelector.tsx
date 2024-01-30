@@ -13,7 +13,7 @@ import {
 type DateSelectorProps = WithTestID<{
     prefilled: Date;
     errorMessage?: string;
-    onUpdatedDate: (date: Date) => boolean;
+    onUpdatedDate: (date: Date) => void;
 }>;
 
 interface FieldsValues {

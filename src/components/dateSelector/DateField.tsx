@@ -103,15 +103,11 @@ function useDateFieldStyle(
     }
 
     function getPlaceholderColorsStyle(theme: Theme, state: State) {
-        let textColor: string | undefined = theme.sw.colors.neutral[500];
-        if (state === 'error') {
-            textColor = undefined;
-        }
-        if (state === 'empty-focused') {
-            textColor = theme.sw.colors.primary.main;
-        }
         return {
-            textColor,
+            textColor:
+                state === 'empty-focused'
+                    ? theme.sw.colors.primary.main
+                    : theme.sw.colors.neutral[500],
         };
     }
 
