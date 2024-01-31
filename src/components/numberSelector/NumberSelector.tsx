@@ -170,6 +170,7 @@ export const NumberSelector = ({
                 onPress={onMinus}
                 size={size}
                 disabled={minusDisabled}
+                testID='number_selector_minus_button'
             />
 
             <NumberField
@@ -198,6 +199,7 @@ export const NumberSelector = ({
                 onPress={onAdd}
                 disabled={addDisabled}
                 size={size}
+                testID='number_selector_plus_button'
             />
         </View>
     );
