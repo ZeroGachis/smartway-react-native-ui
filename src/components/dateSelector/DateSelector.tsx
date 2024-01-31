@@ -172,8 +172,13 @@ function fromFieldsToDate(fieldsValues: FieldsValues) {
 
     const date = new Date(`${year}-${month}-${day}`);
 
-    if (isNaN(date.getTime())) {
-        return RangeError("Invalid date");
+    const isDateExist =
+        date.getMonth() === month - 1 &&
+        date.getDate() === day &&
+        date.getFullYear() === year;
+
+    if (!isDateExist) {
+        return RangeError('Invalid date');
     }
 
     return date;
