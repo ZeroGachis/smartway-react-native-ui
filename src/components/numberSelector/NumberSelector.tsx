@@ -69,8 +69,9 @@ export const NumberSelector = ({
 
     const [error, setError] = useState(false);
     const [focused, setFocused] = useState(false);
-    const [fieldState, setFieldState] =
-        useState<FieldState>('filledWithDefault');
+    const [fieldState, setFieldState] = useState<FieldState>(
+        value !== initialValue ? 'filled' : 'filledWithDefault',
+    );
 
     const computeIncrementedValue = (): number => {
         return RoundValue(
