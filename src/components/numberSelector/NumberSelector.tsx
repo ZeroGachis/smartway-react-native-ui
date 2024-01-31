@@ -10,6 +10,10 @@ export interface Props {
     initialValue: number | undefined;
     value: number | undefined;
     onEndEditing: (value: string | undefined) => void;
+    onKeyPress?: (
+        oldValue: string | undefined,
+        newValue: string | undefined,
+    ) => void;
     style?: ViewStyle;
     minusIcon?: IconName;
     plusIcon?: IconName;
@@ -50,6 +54,7 @@ export const NumberSelector = ({
     initialValue,
     value,
     onEndEditing,
+    onKeyPress,
     style,
     minusIcon = 'minus',
     plusIcon = 'add',
@@ -127,6 +132,9 @@ export const NumberSelector = ({
             text !== initialValue?.toString() ? 'filled' : 'filledWithDefault',
         );
         if (validator.validateFormat(text)) {
+            if (Keyboard.isVisible() && onKeyPress) {
+                onKeyPress(tempValue, text);
+            }
             setTempValue(text);
             setLastValidValue(getParsedValue());
             setError(!validator.validateMinMax(text));
