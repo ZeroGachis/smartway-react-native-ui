@@ -13,7 +13,7 @@ import {
 type DateSelectorProps = WithTestID<{
     prefilled: Date;
     errorMessage?: string;
-    onUpdatedDate: (date: Date) => void;
+    onUpdatedDate: (date: Date | RangeError) => void;
 }>;
 
 interface FieldsValues {
@@ -169,7 +169,14 @@ function fromFieldsToDate(fieldsValues: FieldsValues) {
         parseInt(fieldsValues.monthField),
         2000 + parseInt(fieldsValues.yearField),
     ];
-    return new Date(year, month - 1, day);
+
+    const date = new Date(`${year}-${month}-${day}`);
+
+    if (isNaN(date.getTime())) {
+        return RangeError("Invalid date");
+    }
+
+    return date;
 }
 
 function filledFieldsValues(

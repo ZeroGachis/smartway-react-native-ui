@@ -4,10 +4,11 @@ import { DeviceEventEmitter } from 'react-native';
 import { render, userEvent, screen, act } from '../../shared/testUtils';
 
 const mockedTestID = 'mockedTestID';
-const mockOnChange = jest.fn();
+let mockOnChange: jest.Mock<unknown, unknown[], unknown>;
 let tree: ReturnType<typeof render>;
 
 beforeEach(() => {
+    mockOnChange = jest.fn();
     tree = render(
         <DateSelector
             prefilled={new Date(2003, 1, 1)}
@@ -67,6 +68,25 @@ describe('MODULE | DateField', () => {
         const yearField = screen.getByTestId(mockedTestID + '/year');
         await user.type(yearField, '6');
         expect(yearField.props.value).toBe('06');
+    });
+
+    it('should not cast invalid date into a valid one', async () => {
+        const user = userEvent.setup();
+
+        const dayField = screen.getByTestId(mockedTestID + '/day');
+        await user.type(dayField, '33');
+
+        const monthField = screen.getByTestId(mockedTestID + '/month');
+        await user.type(monthField, '5');
+
+        const yearField = screen.getByTestId(mockedTestID + '/year');
+        await user.type(yearField, '6');
+
+        await act(() => {
+            DeviceEventEmitter.emit('keyboardDidHide', {});
+        });
+
+        expect(mockOnChange).toHaveBeenCalledWith(expect.any(RangeError));
     });
 
     it('should display an error message', async () => {
