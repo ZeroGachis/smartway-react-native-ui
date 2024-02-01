@@ -5,15 +5,13 @@ import { FieldState, NumberField } from '../numberField/NumberField';
 import type { IconName } from '../icons/IconProps';
 import { NumberValidator } from '../numberField/NumberValidator';
 
+type Source = 'keyboard' | 'minus_button' | 'plus_button';
+
 export interface Props {
     validator: NumberValidator;
     initialValue: number | undefined;
     value: number | undefined;
-    onEndEditing: (value: string | undefined) => void;
-    onKeyPress?: (
-        oldValue: string | undefined,
-        newValue: string | undefined,
-    ) => void;
+    onEndEditing: (value: string | undefined, source: Source) => void;
     style?: ViewStyle;
     minusIcon?: IconName;
     plusIcon?: IconName;
@@ -54,7 +52,6 @@ export const NumberSelector = ({
     initialValue,
     value,
     onEndEditing,
-    onKeyPress,
     style,
     minusIcon = 'minus',
     plusIcon = 'add',
@@ -115,7 +112,7 @@ export const NumberSelector = ({
         if (addDisabled) return;
         const newValue = computeIncrementedValue().toString();
         onChangeText(newValue);
-        onEndEditing !== undefined && onEndEditing(newValue);
+        onEndEditing !== undefined && onEndEditing(newValue, 'plus_button');
     };
 
     const onMinus = () => {
@@ -123,7 +120,7 @@ export const NumberSelector = ({
         if (minusDisabled) return;
         const newValue = computeDecrementedValue().toString();
         onChangeText(newValue);
-        onEndEditing !== undefined && onEndEditing(newValue);
+        onEndEditing !== undefined && onEndEditing(newValue, 'minus_button');
     };
 
     const onChangeText = (text: string) => {
@@ -132,9 +129,6 @@ export const NumberSelector = ({
             text !== initialValue?.toString() ? 'filled' : 'filledWithDefault',
         );
         if (validator.validateFormat(text)) {
-            if (Keyboard.isVisible() && onKeyPress) {
-                onKeyPress(tempValue, text);
-            }
             setTempValue(text);
             setLastValidValue(getParsedValue());
             setError(!validator.validateMinMax(text));
@@ -186,7 +180,7 @@ export const NumberSelector = ({
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onEndEditing={(e) => {
-                    onEndEditing(e.nativeEvent.text);
+                    onEndEditing(e.nativeEvent.text, 'keyboard');
                 }}
                 size={size}
                 error={error}
