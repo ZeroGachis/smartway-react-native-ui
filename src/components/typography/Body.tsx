@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import type { TextProps } from 'react-native-paper';
+import { useTheme } from '../../styles/themes';
 
 export const toCamelCase = (str: string): string =>
     str
@@ -19,6 +20,7 @@ export interface BodyProps extends TextProps<Text> {
 export const Body = (props: BodyProps) => {
     const { size, weight, children, style } = props;
     const weightSuffix = toCamelCase(weight === undefined ? 'regular' : weight);
+    const theme = useTheme();
 
     let bodyStyle: StyleProp<TextStyle> = style;
     switch (size) {
@@ -54,6 +56,7 @@ export const Body = (props: BodyProps) => {
     bodyStyle = {
         ...bodyStyle,
         fontFamily: 'PublicSans-' + weightSuffix,
+        color: theme.sw.colors.neutral['800'],
     };
 
     return (
