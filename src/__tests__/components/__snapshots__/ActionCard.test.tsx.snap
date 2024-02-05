@@ -63,14 +63,14 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
             style={
               [
                 {
-                  "color": "black",
-                  "paddingBottom": 16,
-                  "textAlign": "center",
-                },
-                {
                   "color": "#212B36",
                   "fontFamily": "PublicSans-Regular",
                   "fontSize": 14,
+                },
+                {
+                  "color": "black",
+                  "paddingBottom": 16,
+                  "textAlign": "center",
                 },
               ]
             }
@@ -180,14 +180,14 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
             style={
               [
                 {
-                  "color": "black",
-                  "paddingBottom": 16,
-                  "textAlign": "center",
-                },
-                {
                   "color": "#212B36",
                   "fontFamily": "PublicSans-Regular",
                   "fontSize": 14,
+                },
+                {
+                  "color": "black",
+                  "paddingBottom": 16,
+                  "textAlign": "center",
                 },
               ]
             }

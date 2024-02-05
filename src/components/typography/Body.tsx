@@ -60,7 +60,7 @@ export const Body = (props: BodyProps) => {
     };
 
     return (
-        <Text {...props} style={[style, bodyStyle]}>
+        <Text {...props} style={[bodyStyle, style]}>
             {children}
         </Text>
     );
