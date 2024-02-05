@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MODULE | DateField component renders correctly with prefilled values in DD/MM/YY 1`] = `
+exports[`MODULE | DateSelector component renders correctly with prefilled values in DD/MM/YY 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={

@@ -5,22 +5,20 @@ import { render, userEvent, screen, act } from '../../shared/testUtils';
 
 const mockedTestID = 'mockedTestID';
 let mockOnChange: jest.Mock<unknown, unknown[], unknown>;
-let tree: ReturnType<typeof render>;
 
-beforeEach(() => {
-    mockOnChange = jest.fn();
-    tree = render(
-        <DateSelector
-            prefilled={new Date(2003, 1, 1)}
-            onUpdatedDate={mockOnChange}
-            testID={mockedTestID}
-        />,
-    );
-});
-
-describe('MODULE | DateField', () => {
+describe('MODULE | DateSelector', () => {
+    beforeEach(() => {
+        mockOnChange = jest.fn();
+        render(
+            <DateSelector
+                prefilled={new Date(2003, 1, 1)}
+                onUpdatedDate={mockOnChange}
+                testID={mockedTestID}
+            />,
+        );
+    });
     it('component renders correctly with prefilled values in DD/MM/YY', () => {
-        expect(tree.toJSON()).toMatchSnapshot();
+        expect(screen.toJSON()).toMatchSnapshot();
     });
 
     it('should send date filled with missing fields', async () => {
@@ -88,17 +86,41 @@ describe('MODULE | DateField', () => {
 
         expect(mockOnChange).toHaveBeenCalledWith(expect.any(RangeError));
     });
-
-    it('should display an error message', async () => {
-        tree.rerender(
+});
+describe('MODULE | DateSelector error', () => {
+    const errorMessage = 'an error';
+    it('should display an error message if not focused', async () => {
+        mockOnChange = jest.fn();
+        render(
             <DateSelector
                 prefilled={new Date(2003, 1, 1)}
                 onUpdatedDate={mockOnChange}
                 testID={mockedTestID}
-                errorMessage='an error'
+                errorMessage={errorMessage}
             />,
         );
 
-        expect(screen.getByText('an error')).toBeOnTheScreen();
+        expect(screen.getByText(errorMessage)).toBeOnTheScreen();
+    });
+
+    it('should not display an error message if a field is focused', async () => {
+        mockOnChange = jest.fn();
+        render(
+            <DateSelector
+                prefilled={new Date(2003, 1, 1)}
+                onUpdatedDate={mockOnChange}
+                testID={mockedTestID}
+                errorMessage={errorMessage}
+            />,
+        );
+
+        const user = userEvent.setup();
+
+        expect(screen.getByText(errorMessage)).toBeOnTheScreen();
+
+        const dayField = screen.getByTestId(mockedTestID + '/day');
+        await user.type(dayField, '4');
+
+        expect(screen.queryByText(errorMessage)).not.toBeOnTheScreen();
     });
 });

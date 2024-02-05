@@ -36,6 +36,7 @@ export const DateSelector = ({
     const [dayField, setDayField] = useState('');
     const [monthField, setMonthField] = useState('');
     const [yearField, setYearField] = useState('');
+    const [displayError, setDisplayError] = useState(!!errorMessage);
 
     const refDay = useRef<TextInput>(null);
     const refMonth = useRef<TextInput>(null);
@@ -54,9 +55,17 @@ export const DateSelector = ({
         setDayField(completeFields.dayField);
         setMonthField(completeFields.monthField);
         setYearField(completeFields.yearField);
+        setDisplayError(!!errorMessage);
 
         onUpdatedDate(fromFieldsToDate(completeFields));
-    }, [prefilledFields, dayField, monthField, yearField, onUpdatedDate]);
+    }, [
+        prefilledFields,
+        dayField,
+        monthField,
+        yearField,
+        errorMessage,
+        onUpdatedDate,
+    ]);
 
     useListenerOnKeyboardHiding(leaveDateSelector);
 
@@ -94,6 +103,8 @@ export const DateSelector = ({
             });
         };
 
+    const handleOnFocus = () => setDisplayError(false);
+
     return (
         <View style={styles.root}>
             <View style={styles.dateSelector} testID={testID}>
@@ -102,9 +113,10 @@ export const DateSelector = ({
                     testID={testID + '/day'}
                     placeholder={prefilledFields.dayField}
                     value={dayField}
-                    hasError={!!errorMessage}
+                    hasError={displayError}
                     onBlur={handleBlurPrefixWith0(setDayField)}
                     onChangeText={handleDayChange}
+                    onFocus={handleOnFocus}
                 />
                 <View style={styles.slashContainer}>
                     <Headline size='h4' style={styles.slash}>
@@ -116,9 +128,10 @@ export const DateSelector = ({
                     testID={testID + '/month'}
                     placeholder={prefilledFields.monthField}
                     value={monthField}
-                    hasError={!!errorMessage}
+                    hasError={displayError}
                     onBlur={handleBlurPrefixWith0(setMonthField)}
                     onChangeText={handleMonthChange}
+                    onFocus={handleOnFocus}
                 />
                 <View style={styles.slashContainer}>
                     <Headline size='h4' style={styles.slash}>
@@ -130,12 +143,13 @@ export const DateSelector = ({
                     testID={testID + '/year'}
                     placeholder={prefilledFields.yearField}
                     value={yearField}
-                    hasError={!!errorMessage}
+                    hasError={displayError}
                     onBlur={handleBlurPrefixWith0(setYearField)}
                     onChangeText={handleYearChange}
+                    onFocus={handleOnFocus}
                 />
             </View>
-            {errorMessage && (
+            {displayError && errorMessage && (
                 <Body testID='text/error-message' style={styles.errorMessage}>
                     {errorMessage}
                 </Body>

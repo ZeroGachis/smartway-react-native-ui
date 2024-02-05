@@ -14,7 +14,6 @@ export default {
     args: {
         prefilled: new Date(2023, 0, 8),
         onUpdatedDate: (date: Date | RangeError) => {
-            console.log(date);
             if (date instanceof RangeError) {
                 action('onUpdatedDate')('Invalide date');
             } else {
