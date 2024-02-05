@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 import { DateField } from './DateField';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme, useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 import { Body } from '../typography/Body';
@@ -37,6 +37,10 @@ export const DateSelector = ({
     const [monthField, setMonthField] = useState('');
     const [yearField, setYearField] = useState('');
     const [displayError, setDisplayError] = useState(!!errorMessage);
+
+    useEffect(() => {
+        setDisplayError(!!errorMessage);
+    }, [errorMessage]);
 
     const refDay = useRef<TextInput>(null);
     const refMonth = useRef<TextInput>(null);
