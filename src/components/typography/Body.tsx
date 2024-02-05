@@ -54,9 +54,9 @@ export const Body = (props: BodyProps) => {
     }
 
     bodyStyle = {
+        color: theme.sw.colors.neutral['800'],
         ...bodyStyle,
         fontFamily: 'PublicSans-' + weightSuffix,
-        color: theme.sw.colors.neutral['800'],
     };
 
     return (

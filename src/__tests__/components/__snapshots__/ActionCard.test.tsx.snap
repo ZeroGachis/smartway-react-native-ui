@@ -68,6 +68,7 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
                   "textAlign": "center",
                 },
                 {
+                  "color": "#212B36",
                   "fontFamily": "PublicSans-Regular",
                   "fontSize": 14,
                 },
@@ -184,6 +185,7 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
                   "textAlign": "center",
                 },
                 {
+                  "color": "#212B36",
                   "fontFamily": "PublicSans-Regular",
                   "fontSize": 14,
                 },
