@@ -174,7 +174,7 @@ function getColors(
                 'warning-filled',
                 {
                     backgroundColor: swColors.warning[400],
-                    color: swColors.neutral[800],
+                    color: swColors.neutral[50],
                 },
             ],
             [
