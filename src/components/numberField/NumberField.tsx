@@ -59,8 +59,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 case 'filled':
                     textColor = theme.sw.colors.neutral[800];
                     borderColor = undefined;
-                    backgroundColor =
-                        theme.sw.colors.neutral[500] + theme.sw.transparency[8];
+                    backgroundColor = theme.sw.colors.neutral[200];
                     break;
                 case 'error':
                     textColor = theme.sw.colors.error.main;
