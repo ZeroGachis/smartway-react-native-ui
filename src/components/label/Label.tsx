@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
-import { useTheme } from '../../styles/themes';
+import { Theme, useTheme } from '../../styles/themes';
 
-import { Body, BodyProps } from '../typography/Body';
+import { Body } from '../typography/Body';
 
-type LabelType = 'outlined' | 'filled' | 'soft';
-type LabelColor =
+type LabelVariant = 'outlined' | 'filled' | 'soft';
+type LabelStatus =
     | 'error'
     | 'warning'
     | 'success'
@@ -14,158 +14,38 @@ type LabelColor =
     | 'primary'
     | 'neutral';
 
-type OptionnalBodyPropsWithoutSizeAndWeight = Partial<
-    Omit<Omit<BodyProps, 'size'>, 'weight'>
->;
-
-export interface Props extends OptionnalBodyPropsWithoutSizeAndWeight {
-    style?: ViewStyle;
-    textStyle?: TextStyle;
+type Props = {
     text: string;
-    type: LabelType;
-    labelColor?: LabelColor;
+    status: LabelStatus;
+    variant: LabelVariant;
+    textStyle?: TextStyle;
+    style?: ViewStyle;
     size?: 'm' | 's';
-}
+} & Omit<
+    React.ComponentPropsWithoutRef<typeof Body>,
+    'size' | 'weight' | 'variant' | 'style' | 'children'
+>;
 
 export const Label = (props: Props) => {
     const {
         style,
         textStyle,
         text,
-        type,
-        labelColor = 'neutral',
+        variant = 'filled',
+        status = 'neutral',
         size = 'm',
+        ...bodyProps
     } = props;
     const theme = useTheme();
 
-    const transparencyValue = theme.sw.transparency[16];
-
-    const getColors = () => {
-        switch (type) {
-            case 'filled':
-                return labelColor === 'neutral'
-                    ? {
-                          backgroundColor: theme.sw.colors.neutral[400],
-                          color: theme.sw.colors.neutral[800],
-                      }
-                    : labelColor === 'primary'
-                    ? {
-                          backgroundColor: theme.sw.colors.primary.main,
-                          color: theme.sw.colors.neutral[50],
-                      }
-                    : labelColor === 'secondary'
-                    ? {
-                          backgroundColor: theme.sw.colors.secondary[400],
-                          color: theme.sw.colors.neutral[50],
-                      }
-                    : labelColor === 'information'
-                    ? {
-                          backgroundColor: theme.sw.colors.information[400],
-                          color: theme.sw.colors.neutral[50],
-                      }
-                    : labelColor === 'success'
-                    ? {
-                          backgroundColor: theme.sw.colors.success[400],
-                          color: theme.sw.colors.neutral[50],
-                      }
-                    : labelColor === 'warning'
-                    ? {
-                          backgroundColor: theme.sw.colors.warning[400],
-                          color: theme.sw.colors.neutral[800],
-                      }
-                    : {
-                          backgroundColor: theme.sw.colors.error['main'],
-                          color: theme.sw.colors.neutral[50],
-                      };
-        }
-        switch (type) {
-            case 'soft':
-                return labelColor === 'neutral'
-                    ? {
-                          backgroundColor: theme.sw.colors.neutral[50],
-                          color: theme.sw.colors.neutral[800],
-                      }
-                    : labelColor === 'primary'
-                    ? {
-                          backgroundColor:
-                              theme.sw.colors.primary.main + transparencyValue,
-                          color: theme.sw.colors.primary[600],
-                      }
-                    : labelColor === 'secondary'
-                    ? {
-                          backgroundColor:
-                              theme.sw.colors.secondary[400] +
-                              transparencyValue,
-                          color: theme.sw.colors.secondary[600],
-                      }
-                    : labelColor === 'information'
-                    ? {
-                          backgroundColor:
-                              theme.sw.colors.information[400] +
-                              transparencyValue,
-                          color: theme.sw.colors.information[600],
-                      }
-                    : labelColor === 'success'
-                    ? {
-                          backgroundColor:
-                              theme.sw.colors.success[400] + transparencyValue,
-                          color: theme.sw.colors.success[600],
-                      }
-                    : labelColor === 'warning'
-                    ? {
-                          backgroundColor:
-                              theme.sw.colors.warning[400] + transparencyValue,
-                          color: theme.sw.colors.warning[600],
-                      }
-                    : {
-                          backgroundColor:
-                              theme.sw.colors.error['main'] + transparencyValue,
-                          color: theme.sw.colors.error[600],
-                      };
-        }
-        switch (type) {
-            case 'outlined':
-                return labelColor === 'neutral'
-                    ? {
-                          borderColor: theme.sw.colors.neutral[400],
-                          color: theme.sw.colors.neutral[500],
-                      }
-                    : labelColor === 'primary'
-                    ? {
-                          borderColor: theme.sw.colors.primary.main,
-                          color: theme.sw.colors.primary.main,
-                      }
-                    : labelColor === 'secondary'
-                    ? {
-                          borderColor: theme.sw.colors.secondary[400],
-                          color: theme.sw.colors.secondary[400],
-                      }
-                    : labelColor === 'information'
-                    ? {
-                          borderColor: theme.sw.colors.information[400],
-                          color: theme.sw.colors.information[400],
-                      }
-                    : labelColor === 'success'
-                    ? {
-                          borderColor: theme.sw.colors.success[400],
-                          color: theme.sw.colors.success[400],
-                      }
-                    : labelColor === 'warning'
-                    ? {
-                          borderColor: theme.sw.colors.warning[400],
-                          color: theme.sw.colors.warning[400],
-                      }
-                    : {
-                          borderColor: theme.sw.colors.error['main'],
-                          color: theme.sw.colors.error['main'],
-                      };
-        }
-    };
-    const { backgroundColor, color, borderColor } = getColors();
+    const { backgroundColor, color, borderColor } = getColors(
+        `${status}-${variant}`,
+        theme,
+    );
 
     const styles = StyleSheet.create({
         container: {
-            borderWidth: type === 'outlined' ? 1 : 0,
+            borderWidth: variant.endsWith('outlined') ? 1 : 0,
             backgroundColor,
             paddingHorizontal: size == 'm' ? 10 : 8,
             paddingVertical: 4,
@@ -182,7 +62,7 @@ export const Label = (props: Props) => {
     return (
         <View style={styles.container}>
             <Body
-                {...props}
+                {...bodyProps}
                 style={styles.text}
                 size={size == 'm' ? 'B1' : 'B2'}
                 weight={size == 'm' ? 'bold' : 'semi-bold'}
@@ -192,3 +72,170 @@ export const Label = (props: Props) => {
         </View>
     );
 };
+
+function getColors(
+    statusVariant: `${LabelStatus}-${LabelVariant}`,
+    theme: Theme,
+) {
+    const transparencyValue = theme.sw.transparency[16];
+    const swColors = theme.sw.colors;
+    return (
+        new Map<
+            typeof statusVariant,
+            { backgroundColor?: string; color?: string; borderColor?: string }
+        >([
+            [
+                'primary-filled',
+                {
+                    backgroundColor: swColors.primary.main,
+                    color: swColors.neutral[50],
+                },
+            ],
+            [
+                'primary-soft',
+                {
+                    backgroundColor: swColors.primary.main + transparencyValue,
+                    color: swColors.primary[600],
+                },
+            ],
+            [
+                'primary-outlined',
+                {
+                    borderColor: swColors.primary.main,
+                    color: swColors.primary.main,
+                },
+            ],
+            [
+                'secondary-filled',
+                {
+                    backgroundColor: swColors.secondary[400],
+                    color: swColors.neutral[50],
+                },
+            ],
+            [
+                'secondary-soft',
+                {
+                    backgroundColor:
+                        swColors.secondary[400] + transparencyValue,
+                    color: swColors.secondary[600],
+                },
+            ],
+            [
+                'secondary-outlined',
+                {
+                    borderColor: swColors.secondary[400],
+                    color: swColors.secondary[400],
+                },
+            ],
+            [
+                'information-filled',
+                {
+                    backgroundColor: swColors.information[400],
+                    color: swColors.neutral[50],
+                },
+            ],
+            [
+                'information-soft',
+                {
+                    backgroundColor:
+                        swColors.information[400] + transparencyValue,
+                    color: swColors.information[600],
+                },
+            ],
+            [
+                'information-outlined',
+                {
+                    borderColor: swColors.information[400],
+                    color: swColors.information[400],
+                },
+            ],
+            [
+                'success-filled',
+                {
+                    backgroundColor: swColors.success[400],
+                    color: swColors.neutral[50],
+                },
+            ],
+            [
+                'success-soft',
+                {
+                    backgroundColor: swColors.success[400] + transparencyValue,
+                    color: swColors.success[600],
+                },
+            ],
+            [
+                'success-outlined',
+                {
+                    borderColor: swColors.success[400],
+                    color: swColors.success[400],
+                },
+            ],
+            [
+                'warning-filled',
+                {
+                    backgroundColor: swColors.warning[400],
+                    color: swColors.neutral[800],
+                },
+            ],
+            [
+                'warning-soft',
+                {
+                    backgroundColor: swColors.warning[400] + transparencyValue,
+                    color: swColors.warning[600],
+                },
+            ],
+            [
+                'warning-outlined',
+                {
+                    borderColor: swColors.warning[400],
+                    color: swColors.warning[400],
+                },
+            ],
+            [
+                'error-filled',
+                {
+                    backgroundColor: swColors.error['main'],
+                    color: swColors.neutral[50],
+                },
+            ],
+            [
+                'error-soft',
+                {
+                    backgroundColor: swColors.error['main'] + transparencyValue,
+                    color: swColors.error[600],
+                },
+            ],
+            [
+                'error-outlined',
+                {
+                    borderColor: swColors.error['main'],
+                    color: swColors.error['main'],
+                },
+            ],
+            [
+                'neutral-filled',
+                {
+                    backgroundColor: swColors.neutral[400],
+                    color: swColors.neutral[800],
+                },
+            ],
+            [
+                'neutral-soft',
+                {
+                    backgroundColor: swColors.neutral[50],
+                    color: swColors.neutral[800],
+                },
+            ],
+            [
+                'neutral-outlined',
+                {
+                    borderColor: swColors.neutral[400],
+                    color: swColors.neutral[500],
+                },
+            ],
+        ]).get(statusVariant) || {
+            backgroundColor: swColors.neutral[400],
+            color: swColors.neutral[800],
+        }
+    );
+}
