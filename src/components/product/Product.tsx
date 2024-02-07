@@ -95,14 +95,14 @@ export const Product = ({
                     <View style={{ flexDirection: 'row' }}>
                         <Label
                             style={styles.discount}
-                            type="soft"
-                            labelColor="secondary"
+                            status='secondary'
+                            variant='soft'
                             text={discount}
                         />
                         <Label
                             style={styles.finalPrice}
-                            type="soft"
-                            labelColor="secondary"
+                            status='secondary'
+                            variant='soft'
                             text={finalPrice}
                         />
                     </View>
