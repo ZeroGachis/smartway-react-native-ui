@@ -27,7 +27,15 @@ Rebuild app and you can use new added font with :
 
 ```
 cd Storybook
+npm install
 npm run start
+```
+
+## In case of failure
+
+```
+cd android
+./gradlew clean
 ```
 
 ## create a new story for storybook
