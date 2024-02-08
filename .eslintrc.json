@@ -27,6 +27,7 @@
   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
     "@typescript-eslint/semi": ["error", "always"],
+    "@typescript-eslint/no-explicit-any": ["warn"],
     "@typescript-eslint/space-before-function-paren": 0,
     "prefer-arrow-callback": "error",
     "react/function-component-definition": [
