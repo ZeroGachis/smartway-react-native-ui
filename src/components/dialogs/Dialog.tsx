@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import {
-    StyleProp,
+    Dimensions,
     StyleSheet,
     TextStyle,
     View,
@@ -11,11 +11,12 @@ import { Button } from '../buttons/Button';
 import { Headline } from '../typography/Headline';
 import { DialogIcon, DialogIconProps } from './DialogIcon';
 import { useTheme } from '../../styles/themes';
+import DeviceInfo from 'react-native-device-info';
 
 interface Action {
     label: string;
-    disabled?: boolean
-    loading?: boolean
+    disabled?: boolean;
+    loading?: boolean;
     onPress: () => void;
 }
 
@@ -40,43 +41,22 @@ export interface DialogProps extends PropsWithChildren {
 }
 
 export const Dialog = (props: DialogProps) => {
-    const theme = useTheme();
+    const {
+        style,
+        actionsStyle,
+        leftActionsStyle,
+        rightActionsStyle,
+        actions,
+        variant,
+    } = props;
 
-    const titleStyle: StyleProp<TextStyle> = {
-        textAlign: props.variant ?? 'left',
-        fontSize: 20,
-        fontFamily: 'PublicSans-Bold',
-        marginBottom: theme.sw.spacing.l,
-        marginTop: 0,
-    };
-    const styles = StyleSheet.create({
-        dialog: {
-            borderRadius: theme.sw.spacing.l,
-            paddingHorizontal: '5%',
-            paddingVertical: '5%',
-            marginTop: 0,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            width: '80%',
-            maxWidth: 500,
-            backgroundColor: theme.sw.colors.neutral[50],
-            ...props.style,
-        },
-        actions: {
-            flexDirection: 'row',
-            justifyContent: props.actions.cancel ? 'flex-end' : 'center',
-            marginRight: 0,
-            marginTop: theme.sw.spacing.l,
-            ...props.actionsStyle,
-        },
-        leftOption: {
-            color: theme.sw.colors.neutral[800],
-            marginRight: theme.sw.spacing.xs,
-            ...props.leftActionsStyle,
-        },
-        rightOption: {
-            ...props.rightActionsStyle,
-        }
+    const styles = useStyles({
+        style,
+        actionsStyle,
+        leftActionsStyle,
+        rightActionsStyle,
+        cancel: actions.cancel,
+        variant,
     });
 
     return (
@@ -95,11 +75,13 @@ export const Dialog = (props: DialogProps) => {
                     />
                 )}
                 <BaseDialog.Title testID={'PopupTitle'}>
-                    <Headline size='h4' style={titleStyle}>
+                    <Headline size='h4' style={styles.title}>
                         {props.title}
                     </Headline>
                 </BaseDialog.Title>
-                <BaseDialog.Content>{props.children}</BaseDialog.Content>
+                <BaseDialog.Content style={styles.dialogContent}>
+                    {props.children}
+                </BaseDialog.Content>
                 <View style={styles.actions}>
                     {props.actions.cancel && (
                         <Button
@@ -107,7 +89,7 @@ export const Dialog = (props: DialogProps) => {
                             onPress={props.actions.cancel.onPress}
                             testID={'PopupDismissButton'}
                             style={styles.leftOption}
-                            loading= {props.actions.cancel.loading ?? false}
+                            loading={props.actions.cancel.loading ?? false}
                             disabled={props.actions.cancel.disabled ?? false}
                         >
                             {props.actions.cancel.label}
@@ -119,7 +101,7 @@ export const Dialog = (props: DialogProps) => {
                         onPress={props.actions.confirm.onPress}
                         testID={'PopupConfirmButton'}
                         style={styles.rightOption}
-                        loading= {props.actions.confirm.loading ?? false}
+                        loading={props.actions.confirm.loading ?? false}
                         disabled={props.actions.confirm.disabled ?? false}
                     >
                         {props.actions.confirm.label}
@@ -129,3 +111,102 @@ export const Dialog = (props: DialogProps) => {
         </Portal>
     );
 };
+
+type UseStylesProps = Pick<
+    DialogProps,
+    | 'style'
+    | 'actionsStyle'
+    | 'leftActionsStyle'
+    | 'rightActionsStyle'
+    | 'variant'
+> & {
+    cancel: DialogProps['actions']['cancel'];
+};
+
+function useStyles({
+    style,
+    actionsStyle,
+    leftActionsStyle,
+    rightActionsStyle,
+    cancel,
+    variant,
+}: UseStylesProps) {
+    const theme = useTheme();
+
+    const commonStyleSheet = StyleSheet.create({
+        dialog: {
+            borderRadius: theme.sw.spacing.l,
+            marginTop: 0,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            backgroundColor: theme.sw.colors.neutral[50],
+            ...style,
+        },
+        dialogContent: {
+            paddingHorizontal: 0,
+        },
+        title: {
+            textAlign: variant ?? 'left',
+            fontSize: 20,
+            lineHeight: 20,
+            fontFamily: 'PublicSans-Bold',
+            marginTop: 0,
+            marginHorizontal: 0,
+        },
+        actions: {
+            flexDirection: 'row',
+            justifyContent: cancel ? 'flex-end' : 'center',
+            marginRight: 0,
+            ...actionsStyle,
+        },
+        leftOption: {
+            color: theme.sw.colors.neutral[800],
+            marginRight: theme.sw.spacing.xs,
+            ...leftActionsStyle,
+        },
+        rightOption: {
+            ...rightActionsStyle,
+        },
+    });
+
+    const createMobileStyle = () => {
+        const { width } = Dimensions.get('screen');
+        return StyleSheet.create({
+            dialog: {
+                ...commonStyleSheet.dialog,
+                paddingHorizontal: theme.sw.spacing.l,
+                paddingVertical: theme.sw.spacing.l,
+                width: width - theme.sw.spacing.xl,
+            },
+            dialogContent: commonStyleSheet.dialogContent,
+            title: commonStyleSheet.title,
+            actions: commonStyleSheet.actions,
+            leftOption: commonStyleSheet.leftOption,
+            rightOption: commonStyleSheet.rightOption,
+        });
+    };
+
+    const createTabletStyle = () =>
+        StyleSheet.create({
+            dialog: {
+                ...commonStyleSheet.dialog,
+                paddingHorizontal: 56,
+                paddingVertical: 40,
+                width: '80%',
+                maxWidth: 500,
+            },
+            dialogContent: commonStyleSheet.dialogContent,
+            title: {
+                ...commonStyleSheet.title,
+                marginBottom: theme.sw.spacing.l,
+            },
+            actions: {
+                ...commonStyleSheet.actions,
+                marginTop: theme.sw.spacing.l,
+            },
+            leftOption: commonStyleSheet.leftOption,
+            rightOption: commonStyleSheet.rightOption,
+        });
+
+    return DeviceInfo.isTablet() ? createTabletStyle() : createMobileStyle();
+}
