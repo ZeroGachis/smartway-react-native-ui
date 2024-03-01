@@ -25,6 +25,7 @@ const theme = {
         surfaceDisabled: '#919EAB' + '3D', // neutral 500
 
         outline: '#2F4158', // neutral 700
+        backdrop: 'rgba(33, 43, 54, 0.6)',
     },
     sw: {
         transparency: {
