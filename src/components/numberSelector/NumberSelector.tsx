@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Keyboard, StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from '../buttons/IconButton';
 import { FieldState, NumberField } from '../numberField/NumberField';
@@ -16,6 +16,7 @@ export interface Props {
     minusIcon?: IconName;
     plusIcon?: IconName;
     showSoftInputOnFocus?: boolean;
+    selectTextOnFocus?: boolean;
     variant?: 'filled' | 'outlined';
     size?: 'm' | 's';
     placeholder?: string;
@@ -56,6 +57,7 @@ export const NumberSelector = ({
     minusIcon = 'minus',
     plusIcon = 'add',
     showSoftInputOnFocus = false,
+    selectTextOnFocus = false,
     variant = 'outlined',
     size = 'm',
     placeholder = '--',
@@ -67,13 +69,24 @@ export const NumberSelector = ({
     );
 
     const [lastValidValue, setLastValidValue] = useState<number | undefined>();
-    const [softInputOnFocus, setSoftInputOnFocus] = useState(false);
+    const [softInputOnFocus, setSoftInputOnFocus] =
+        useState(showSoftInputOnFocus);
 
     const [error, setError] = useState(false);
     const [focused, setFocused] = useState(false);
+    const [selection, setSelection] = useState<
+        { start: number; end?: number } | undefined
+    >({
+        start: 0,
+        end: 0,
+    });
     const [fieldState, setFieldState] = useState<FieldState>(
         value !== initialValue ? 'filled' : 'filledWithDefault',
     );
+
+    useEffect(() => {
+        if (selection !== undefined) setSelection(undefined);
+    }, [selection]);
 
     const computeIncrementedValue = (): number => {
         return RoundValue(
@@ -103,7 +116,7 @@ export const NumberSelector = ({
         return getParsedValue().toString();
     };
 
-    const refInput = useRef<any>();
+    const refInput = useRef<any>(null);
     const minusDisabled = validator.minValue === getParsedValue();
     const addDisabled = validator.maxValue === getParsedValue();
 
@@ -150,10 +163,28 @@ export const NumberSelector = ({
     };
     const onFocus = () => {
         setFocused(true);
+        clearPlaceHolder();
+        resetCursorToEnd();
     };
+
     const onBlur = () => {
         setTempValue(getValidValue());
         setFocused(false);
+        setSelection({ start: 0 });
+    };
+    const clearPlaceHolder = () => {
+        if (tempValue == placeholder) setTempValue('');
+    };
+    const resetCursorToEnd = () => {
+        const length = value?.toString().length ?? 0;
+        if (length >= 0) {
+            setSelection({ start: length });
+        }
+    };
+    const resetCursorToBegining = () => {
+        refInput.current.setNativeProps({
+            selection: { start: 0 },
+        });
     };
 
     return (
@@ -173,7 +204,7 @@ export const NumberSelector = ({
                 showSoftInputOnFocus={softInputOnFocus}
                 onPressIn={() => setSoftInputOnFocus(true)}
                 onPressOut={() => setSoftInputOnFocus(false)}
-                selectTextOnFocus={showSoftInputOnFocus}
+                selectTextOnFocus={selectTextOnFocus}
                 keyboardType='number-pad'
                 value={getDisplayedValue()}
                 onChangeText={onChangeText}
@@ -181,7 +212,9 @@ export const NumberSelector = ({
                 onBlur={onBlur}
                 onEndEditing={(e) => {
                     onEndEditing(e.nativeEvent.text, 'keyboard');
+                    resetCursorToBegining();
                 }}
+                selection={selection}
                 size={size}
                 error={error}
                 fieldState={fieldState}
