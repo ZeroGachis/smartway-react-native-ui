@@ -14,8 +14,8 @@ export default {
         maxValue: 999,
         decimal: 'true',
         blockOutrange: 'true',
-        size: 'm',
-        showSoftInputOnFocus: 'true',
+        size: 's',
+        showSoftInputOnFocus: 'false',
     },
     argTypes: {
         onValueChange: { action: 'onValueChange' },
@@ -43,7 +43,7 @@ export default {
     decorators: [
         (Story) => {
             const styles = StyleSheet.create({
-                container: { paddingTop: 16 },
+                container: { paddingTop: 16, width: 140 },
             });
             return (
                 <View style={styles.container}>
