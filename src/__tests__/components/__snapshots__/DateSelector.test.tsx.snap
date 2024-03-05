@@ -50,7 +50,7 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
           selectionColor="#18a58629"
           style={
             {
-              "backgroundColor": "#919eab14",
+              "backgroundColor": "#edeff2",
               "borderColor": undefined,
               "borderRadius": 18,
               "borderWidth": 0,
@@ -108,7 +108,7 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
           selectionColor="#18a58629"
           style={
             {
-              "backgroundColor": "#919eab14",
+              "backgroundColor": "#edeff2",
               "borderColor": undefined,
               "borderRadius": 18,
               "borderWidth": 0,
@@ -166,7 +166,7 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
           selectionColor="#18a58629"
           style={
             {
-              "backgroundColor": "#919eab14",
+              "backgroundColor": "#edeff2",
               "borderColor": undefined,
               "borderRadius": 18,
               "borderWidth": 0,

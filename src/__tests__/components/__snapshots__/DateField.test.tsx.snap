@@ -146,7 +146,7 @@ exports[`MODULE | DateField component renders correctly filled unfocused state 1
       selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#919eab14",
+          "backgroundColor": "#edeff2",
           "borderColor": undefined,
           "borderRadius": 18,
           "borderWidth": 0,
@@ -202,7 +202,7 @@ exports[`MODULE | DateField component renders correctly in empty mode 1`] = `
       selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#919eab14",
+          "backgroundColor": "#edeff2",
           "borderColor": undefined,
           "borderRadius": 18,
           "borderWidth": 0,
