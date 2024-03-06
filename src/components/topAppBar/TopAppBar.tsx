@@ -6,8 +6,8 @@ import { Headline } from '../typography/Headline';
 import DeviceInfo from 'react-native-device-info';
 import type { WithTestID } from 'src/shared/type';
 import TopAppBarAction from './TopAppBarAction';
-import {TopAppBarMenu} from "./Menu/TopAppBarMenu";
-import TopAppBarMenuItem from "./Menu/TopAppBarMenuItem";
+import { TopAppBarMenu } from './Menu/TopAppBarMenu';
+import TopAppBarMenuItem from './Menu/TopAppBarMenuItem';
 
 export interface Title {
     value: ReactNode;
@@ -22,6 +22,7 @@ export type TopAppBarProps = WithTestID<{
     action?: ReactNode;
 }>;
 
+const isTablet = DeviceInfo.isTablet();
 // eslint-disable-next-line react/function-component-definition
 export function TopAppBar({
     size = 'small',
@@ -34,6 +35,12 @@ export function TopAppBar({
     const theme = useTheme();
 
     const styles = useStyles(size, style);
+
+    const headlineSize = isTablet
+        ? 'h1'
+        : isTitleBelowTopAppBar(size)
+        ? 'h3'
+        : 'h1';
 
     return (
         <Appbar.Header
@@ -52,13 +59,15 @@ export function TopAppBar({
             <Appbar.Content
                 title={
                     typeof title.value === 'string' ? (
-                        <Headline size='h2'>{title.value}</Headline>
+                        <Headline size={headlineSize} style={styles.title}>
+                            {title.value}
+                        </Headline>
                     ) : (
                         title.value
                     )
                 }
                 onPress={title.onPress}
-                style={styles.title}
+                style={styles.content}
             />
             {action}
         </Appbar.Header>
@@ -73,22 +82,31 @@ function useStyles(
     style: TopAppBarProps['style'],
 ) {
     const theme = useTheme();
-    const isTablet = DeviceInfo.isTablet();
+
     return StyleSheet.create({
         button: {
             backgroundColor: 'rgba(145, 158, 171, 0.24)',
             borderRadius: 18,
             marginLeft: isTablet ? 12 : theme.sw.spacing.xs,
         },
-        title: {
-            paddingTop: size === 'medium' ? 9 : 0,
+        content: {
+            paddingTop: isTitleBelowTopAppBar(size) ? 9 : 0,
             paddingBottom: 0,
             justifyContent: 'flex-start',
+        },
+        title: {
+            lineHeight: isTitleBelowTopAppBar(size) ? undefined : 32,
         },
         header: {
             paddingHorizontal: 12,
             paddingBottom: 0,
+            marginBottom: theme.sw.spacing.l,
+            backgroundColor: theme.sw.colors.neutral['50'],
             ...style,
         },
     });
+}
+
+function isTitleBelowTopAppBar(size: TopAppBarProps['size']) {
+    return (['medium', 'large'] as (typeof size)[]).includes(size);
 }

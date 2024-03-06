@@ -5,9 +5,9 @@ import { StyleSheet, View } from 'react-native';
 import { TopAppBar, Title } from '../../../src/components/topAppBar/TopAppBar';
 import { Headline } from '../../../src/components/typography/Headline';
 
-const asString = { value: 'menu' };
+const asString = { value: 'Menu' };
 const asButton = {
-    value: 'menu',
+    value: 'Menu',
     onPress: () => {},
 };
 const asComponent = { value: <Headline size='h1'>Headline H1</Headline> };
