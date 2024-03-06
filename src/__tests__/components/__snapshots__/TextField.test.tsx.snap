@@ -85,7 +85,7 @@ exports[`MODULE | TextField component renders correctly 1`] = `
                   "borderWidth": 1,
                 },
                 {
-                  "borderColor": "#E5EAEE",
+                  "borderColor": "#C4CDD5",
                   "borderWidth": 1,
                 },
               ]
@@ -405,7 +405,7 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
                   "borderWidth": 1,
                 },
                 {
-                  "borderColor": "#E5EAEE",
+                  "borderColor": "#C4CDD5",
                   "borderWidth": 1,
                 },
               ]
