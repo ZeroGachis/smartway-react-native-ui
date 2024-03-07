@@ -50,6 +50,8 @@ try {
 const getStories = () => {
   return {
     "./components/ActionCard/ActionCard.stories.tsx": require("../components/ActionCard/ActionCard.stories.tsx"),
+    "./components/Alert/Banner.stories.tsx": require("../components/Alert/Banner.stories.tsx"),
+    "./components/Alert/SnackBar.stories.tsx": require("../components/Alert/SnackBar.stories.tsx"),
     "./components/Badge/Badge.stories.tsx": require("../components/Badge/Badge.stories.tsx"),
     "./components/BottomSheet/BottomSheet.stories.tsx": require("../components/BottomSheet/BottomSheet.stories.tsx"),
     "./components/Button/Button.stories.tsx": require("../components/Button/Button.stories.tsx"),
@@ -68,7 +70,6 @@ const getStories = () => {
     "./components/NumberSelector/NumberSelector.stories.tsx": require("../components/NumberSelector/NumberSelector.stories.tsx"),
     "./components/PrintState/PrintState.stories.tsx": require("../components/PrintState/PrintState.stories.tsx"),
     "./components/Product/Product.stories.tsx": require("../components/Product/Product.stories.tsx"),
-    "./components/SnackBar/SnackBar.stories.tsx": require("../components/SnackBar/SnackBar.stories.tsx"),
     "./components/Tab/Tab.stories.tsx": require("../components/Tab/Tab.stories.tsx"),
     "./components/TextField/TextField.stories.tsx": require("../components/TextField/TextField.stories.tsx"),
     "./components/Toggle/Toggle.stories.tsx": require("../components/Toggle/Toggle.stories.tsx"),

@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { SnackBar } from 'smartway-react-native-ui';
-import { IconsName } from '../config/IconList';
+import Snackbar from '../../../src/components/alert/Snackbar';
 
-type ComponentProps = React.ComponentProps<typeof SnackBar>;
+type ComponentProps = React.ComponentProps<typeof Snackbar>;
 
 export default {
-    title: 'components/SnackBar',
-    component: SnackBar,
-    args: {},
+    title: 'components/Snackbar',
+    component: Snackbar,
     argTypes: {
         onDismiss: { action: 'onDismiss' },
-        visible: { type: 'boolean' },
         duration: { type: 'number' },
-        iconName: { control: { type: 'select' }, options: IconsName },
+        status: {
+            control: { type: 'select' },
+            options: ['information', 'success', 'error', 'warning'],
+        },
     },
 
     decorators: [
@@ -35,13 +35,9 @@ type Story = StoryObj<ComponentProps>;
 
 export const Default: Story = {
     args: {
-        message: 'This is a message',
-        action: {
-            label: 'Longer action',
-            onPress: () => {
-                console.log('callBack');
-            },
-        },
+        title: 'This is a title',
+        description: 'This is a description',
+        visible: true,
+        status: 'warning',
     },
 };
-Default.parameters = { noSafeArea: false };
