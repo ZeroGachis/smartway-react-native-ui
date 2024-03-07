@@ -7,7 +7,7 @@ import {
 } from 'react-native-paper';
 import { fontConfig } from './fonts';
 
-const theme = {
+export const theme = {
     ...MD3LightTheme,
     fonts: configureFonts({ config: fontConfig }),
     colors: {
@@ -25,6 +25,7 @@ const theme = {
         surfaceDisabled: '#919EAB' + '3D', // neutral 500
 
         outline: '#2F4158', // neutral 700
+        backdrop: 'rgba(33, 43, 54, 0.6)',
     },
     sw: {
         transparency: {
@@ -52,10 +53,10 @@ const theme = {
                 700: '#2F4158',
                 600: '#637381',
                 500: '#919EAB',
-                400: '#E5EAEE',
-                300: '#ECF0F4',
-                200: '#F4F6F8',
-                100: '#F9FAFB',
+                400: '#C4CDD5',
+                300: '#DFE3E8',
+                200: '#EDEFF2',
+                100: '#F4F6F8',
                 50: '#FFFFFF',
             },
             primary: {

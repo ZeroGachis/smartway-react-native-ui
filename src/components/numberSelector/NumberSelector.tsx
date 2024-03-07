@@ -173,7 +173,7 @@ export const NumberSelector = ({
         setSelection({ start: 0 });
     };
     const clearPlaceHolder = () => {
-        if (tempValue == placeholder) setTempValue('');
+        if (tempValue === placeholder) setTempValue('');
     };
     const resetCursorToEnd = () => {
         const length = value?.toString().length ?? 0;
@@ -182,9 +182,7 @@ export const NumberSelector = ({
         }
     };
     const resetCursorToBegining = () => {
-        refInput.current.setNativeProps({
-            selection: { start: 0 },
-        });
+        setSelection({ start: 0 });
     };
 
     return (
