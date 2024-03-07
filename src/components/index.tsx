@@ -12,6 +12,7 @@ import { Icon } from './icons/Icon';
 import { Keyboard } from './keyboard/Keyboard';
 import { BottomSheet } from './bottomSheet/BottomSheet';
 import { DropDown } from './dropDown/DropDown';
+import { SnackBar } from './snackBar/SnackBar';
 import { Toggle } from './toggle/Toggle';
 import { Menu } from './menu/Menu';
 import { TopAppBar } from './topAppBar/TopAppBar';
@@ -30,8 +31,8 @@ import { Badge } from './badge/Badge';
 import { DateField } from './dateSelector/DateField';
 import { DateSelector } from './dateSelector/DateSelector';
 
-export { default as Snackbar } from './alert/Snackbar';
-export { default as Banner } from './alert/Banner';
+export { default as Snackbar, useSnackbar } from './alert/Snackbar';
+export { default as Banner, useBanner } from './alert/Banner';
 
 export {
     Body,
@@ -53,6 +54,7 @@ export {
     Keyboard,
     PrintState,
     EANInput,
+    SnackBar,
     ModifyQuantity,
     NumberSelector,
     Card,
