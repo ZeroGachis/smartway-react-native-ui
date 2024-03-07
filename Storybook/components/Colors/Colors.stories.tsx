@@ -13,15 +13,31 @@ export default {
 
 type Story = StoryObj<ComponentProps>;
 
+const byNoDeprecatedToken = ([key]: string[]) => {
+    return ['50', '200', '400', 'main', '600', '800'].includes(key) === false;
+};
 export const Default: Story = {
     render: () => {
         const neutral = Object.entries(theme.sw.colors.neutral);
-        const primary = Object.entries(theme.sw.colors.primary);
-        const information = Object.entries(theme.sw.colors.information);
-        const secondary = Object.entries(theme.sw.colors.secondary);
-        const success = Object.entries(theme.sw.colors.success);
-        const warning = Object.entries(theme.sw.colors.warning);
-        const error = Object.entries(theme.sw.colors.error);
+        const primary = Object.entries(theme.sw.colors.primary).filter(
+            byNoDeprecatedToken
+        );
+        const information = Object.entries(theme.sw.colors.information).filter(
+            byNoDeprecatedToken
+        );
+        const secondary = Object.entries(theme.sw.colors.secondary).filter(
+            byNoDeprecatedToken
+        );
+        const success = Object.entries(theme.sw.colors.success).filter(
+            byNoDeprecatedToken
+        );
+        const warning = Object.entries(theme.sw.colors.warning).filter(
+            byNoDeprecatedToken
+        );
+        const error = Object.entries(theme.sw.colors.error).filter(
+            byNoDeprecatedToken
+        );
+
         return (
             <ScrollView>
                 <Headline size='h1'>Neutral</Headline>
@@ -91,7 +107,7 @@ export const Default: Story = {
                             style={{
                                 backgroundColor: hex,
                                 padding: 8,
-                                color: Number(key) <= 50 ? '#000' : undefined,
+                                color: Number(key) <= 300 ? '#000' : undefined,
                             }}
                             key={key}
                         >
@@ -106,7 +122,7 @@ export const Default: Story = {
                             style={{
                                 backgroundColor: hex,
                                 padding: 8,
-                                color: Number(key) <= 400 ? '#000' : undefined,
+                                color: Number(key) <= 500 ? '#000' : undefined,
                             }}
                             key={key}
                         >
@@ -121,7 +137,7 @@ export const Default: Story = {
                             style={{
                                 backgroundColor: hex,
                                 padding: 8,
-                                color: Number(key) === 50 ? '#000' : undefined,
+                                color: Number(key) <= 500 ? '#000' : undefined,
                             }}
                             key={key}
                         >
