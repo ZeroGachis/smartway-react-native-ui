@@ -64,14 +64,16 @@ export const NumberSelector = ({
     incrementStep = 1,
     decrementStep = 1,
 }: Props) => {
-    const [tempValue, setTempValue] = useState<string>(
-        value?.toString() ?? placeholder,
+    const [tempValue, setTempValue] = useState<string>('');
+    const [editingEnded, setEditingEnded] = useState<boolean>(false);
+    const [editingSource, setEditingSource] = useState<Source | undefined>(
+        undefined,
     );
 
     const [lastValidValue, setLastValidValue] = useState<number | undefined>();
     const [softInputOnFocus, setSoftInputOnFocus] =
         useState(showSoftInputOnFocus);
-
+    const [afterFirstFocus, setAfterFirstFocus] = useState(false);
     const [error, setError] = useState(false);
     const [focused, setFocused] = useState(false);
     const [selection, setSelection] = useState<
@@ -125,7 +127,7 @@ export const NumberSelector = ({
         if (addDisabled) return;
         const newValue = computeIncrementedValue().toString();
         onChangeText(newValue);
-        onEndEditing !== undefined && onEndEditing(newValue, 'plus_button');
+        setEditingSource('plus_button');
     };
 
     const onMinus = () => {
@@ -133,7 +135,7 @@ export const NumberSelector = ({
         if (minusDisabled) return;
         const newValue = computeDecrementedValue().toString();
         onChangeText(newValue);
-        onEndEditing !== undefined && onEndEditing(newValue, 'minus_button');
+        setEditingSource('minus_button');
     };
 
     const onChangeText = (text: string) => {
@@ -146,6 +148,7 @@ export const NumberSelector = ({
             setLastValidValue(getParsedValue());
             setError(!validator.validateMinMax(text));
         }
+        setEditingSource('keyboard');
     };
 
     const styles = StyleSheet.create({
@@ -158,10 +161,8 @@ export const NumberSelector = ({
             flex: 1,
         },
     });
-    const getDisplayedValue = (): string => {
-        return tempValue.toString();
-    };
     const onFocus = () => {
+        setAfterFirstFocus(true);
         setFocused(true);
         clearPlaceHolder();
         resetCursorToEnd();
@@ -170,7 +171,7 @@ export const NumberSelector = ({
     const onBlur = () => {
         setTempValue(getValidValue());
         setFocused(false);
-        setSelection({ start: 0 });
+        resetCursorToBeginning();
     };
     const clearPlaceHolder = () => {
         if (tempValue === placeholder) setTempValue('');
@@ -181,9 +182,24 @@ export const NumberSelector = ({
             setSelection({ start: length });
         }
     };
-    const resetCursorToBegining = () => {
+    const resetCursorToBeginning = () => {
         setSelection({ start: 0 });
     };
+    useEffect(() => {
+        setTempValue(value?.toString() ?? placeholder);
+    }, [value, placeholder]);
+
+    useEffect(() => {
+        if (editingEnded && editingSource !== undefined) {
+            onEndEditing(tempValue, editingSource);
+            setEditingSource(undefined);
+            setEditingEnded(false);
+        }
+    }, [tempValue, onEndEditing, editingEnded, editingSource]);
+
+    useEffect(() => {
+        if (afterFirstFocus && selection !== undefined) setSelection(undefined);
+    }, [afterFirstFocus, selection]);
 
     return (
         <View style={styles.container}>
@@ -204,13 +220,12 @@ export const NumberSelector = ({
                 onPressOut={() => setSoftInputOnFocus(false)}
                 selectTextOnFocus={selectTextOnFocus}
                 keyboardType='number-pad'
-                value={getDisplayedValue()}
+                value={tempValue}
                 onChangeText={onChangeText}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                onEndEditing={(e) => {
-                    onEndEditing(e.nativeEvent.text, 'keyboard');
-                    resetCursorToBegining();
+                onEndEditing={() => {
+                    setEditingEnded(true);
                 }}
                 selection={selection}
                 size={size}

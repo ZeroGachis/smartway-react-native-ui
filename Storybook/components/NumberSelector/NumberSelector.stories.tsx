@@ -9,7 +9,7 @@ export default {
     title: 'components/NumberSelector',
     component: NumberSelector,
     args: {
-        value: 0,
+        value: 998.9,
         minValue: 0,
         maxValue: 999,
         decimal: 'true',
