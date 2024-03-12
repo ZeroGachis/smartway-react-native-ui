@@ -16,7 +16,9 @@ export class NumberValidator {
                 : /^(0|([1-9]\d*))?([\.]\d?)?$/;
 
         const integerRegex =
-            minValue !== undefined && minValue < 0 ? /^-?\d+$/ : /^\d+$/;
+            minValue !== undefined && minValue < 0
+                ? /^-?(0|([1-9]\d*))?$/
+                : /^(0|([1-9]\d*))?$/;
 
         this.regex = allowDecimal ? decimalRegex : integerRegex;
     }
