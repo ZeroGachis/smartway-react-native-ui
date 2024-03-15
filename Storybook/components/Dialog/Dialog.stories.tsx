@@ -74,7 +74,7 @@ const InsideDialog = ({ variantBody }: { variantBody?: 'left' | 'center' }) => {
 
     const styles = StyleSheet.create({
         content: {
-            color: theme.sw.colors.neutral[600],
+            color: theme.sw.color.neutral[600],
             textAlign: variantBody,
             lineHeight: 22,
             marginBottom: 0,

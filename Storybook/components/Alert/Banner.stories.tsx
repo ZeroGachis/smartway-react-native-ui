@@ -35,7 +35,7 @@ export const Default: Story = {
     render(args) {
         return (
             <View style={{ gap: 8 }}>
-                <Banner {...args} status='information' />
+                <Banner {...args} status='info' />
                 <Banner {...args} status='success' />
                 <Banner {...args} status='warning' />
                 <Banner {...args} status='error' />
