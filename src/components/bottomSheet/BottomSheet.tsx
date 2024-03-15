@@ -83,11 +83,11 @@ export const BottomSheet = ({
         },
 
         indicatorStyle: {
-            backgroundColor: theme.sw.colors.neutral[400],
+            backgroundColor: theme.sw.color.neutral[400],
             ...handleIndicatorStyle,
         },
         content: {
-            padding: theme.sw.spacing.m,
+            padding: theme.sw.spacing.s,
             ...contentStyle,
         },
     });

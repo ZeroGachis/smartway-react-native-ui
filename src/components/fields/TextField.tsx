@@ -40,12 +40,12 @@ export const TextField = ({
     const inputRef = useRef<TextInputRN>(null);
 
     const containerStyle: ViewStyle = {
-        marginBottom: theme.sw.spacing.l,
+        marginBottom: theme.sw.spacing.m,
         ...style,
     };
 
     const inputSyle: TextStyle = {
-        backgroundColor: theme.sw.colors.neutral[50],
+        backgroundColor: theme.sw.color.neutral[0],
         fontSize: 16,
         lineHeight: 19,
         fontFamily: 'PublicSans-Regular',
@@ -57,10 +57,10 @@ export const TextField = ({
         borderWidth: 1,
         borderColor:
             textType === 'error'
-                ? theme.sw.colors.error['main']
+                ? theme.sw.color.error[500]
                 : inputRef.current?.isFocused() || value.length > 0
-                ? theme.sw.colors.neutral[500]
-                : theme.sw.colors.neutral[400],
+                ? theme.sw.color.neutral[500]
+                : theme.sw.color.neutral[400],
     };
 
     return (
@@ -75,17 +75,17 @@ export const TextField = ({
                     ref={inputRef}
                     label={label}
                     style={inputSyle}
-                    textColor={textColor || theme.sw.colors.neutral[900]}
+                    textColor={textColor || theme.sw.color.neutral[900]}
                     mode={'outlined'}
                     error={textType === 'error'}
                     outlineStyle={outlineStyle}
                     theme={{
                         roundness: 8,
                         colors: {
-                            error: theme.sw.colors.error['main'],
-                            text: theme.sw.colors.neutral[800],
-                            onSurfaceVariant: theme.sw.colors.neutral[500],
-                            primary: theme.sw.colors.neutral[800],
+                            error: theme.sw.color.error[500],
+                            text: theme.sw.color.neutral[800],
+                            onSurfaceVariant: theme.sw.color.neutral[500],
+                            primary: theme.sw.color.neutral[800],
                         },
                     }}
                     value={value}

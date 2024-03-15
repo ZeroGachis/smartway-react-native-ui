@@ -40,32 +40,34 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
             let backgroundColor = undefined;
             switch (getCurrentState()) {
                 case 'prefilled':
-                    textColor = theme.sw.colors.neutral[500];
+                    textColor = theme.sw.color.neutral[500];
                     borderColor = undefined;
-                    backgroundColor = theme.sw.colors.neutral[200];
+                    backgroundColor = theme.sw.color.neutral[200];
                     break;
                 case 'filled-focused':
-                    textColor = theme.sw.colors.neutral[800];
-                    backgroundColor = theme.sw.colors.neutral[50];
-                    borderColor = theme.sw.colors.primary.main;
+                    textColor = theme.sw.color.neutral[800];
+                    backgroundColor = theme.sw.color.neutral[0];
+                    borderColor = theme.sw.color.primary[500];
                     break;
                 case 'prefilled-focused':
-                    textColor = theme.sw.colors.primary.main;
-                    borderColor = theme.sw.colors.primary.main;
+                    textColor = theme.sw.color.primary[500];
+                    borderColor = theme.sw.color.primary[500];
                     backgroundColor =
-                        theme.sw.colors.primary.main +
-                        theme.sw.transparency[16];
+                        theme.sw.color.primary[500] +
+                        // TODO: use new tokens
+                        '29';
                     break;
                 case 'filled':
-                    textColor = theme.sw.colors.neutral[800];
+                    textColor = theme.sw.color.neutral[800];
                     borderColor = undefined;
-                    backgroundColor = theme.sw.colors.neutral[200];
+                    backgroundColor = theme.sw.color.neutral[200];
                     break;
                 case 'error':
-                    textColor = theme.sw.colors.error.main;
+                    textColor = theme.sw.color.error[500];
                     borderColor = undefined;
                     backgroundColor =
-                        theme.sw.colors.error.main + theme.sw.transparency[8];
+                        // TODO: use new tokens
+                        theme.sw.color.error[500] + '14';
                     break;
                 case undefined:
                     break;
@@ -96,9 +98,10 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                 ref={ref ?? undefined}
                 style={[stateStyle(), props.style]}
                 selectionColor={
-                    theme.sw.colors.primary.main + theme.sw.transparency[16]
+                    // TODO: use new tokens
+                    theme.sw.color.primary[500] + '29'
                 }
-                cursorColor={theme.sw.colors.primary.main}
+                cursorColor={theme.sw.color.primary[500]}
                 keyboardType='number-pad'
                 textAlign={'center'}
             />

@@ -6,7 +6,7 @@ import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
 
 type Status = Exclude<
-    keyof Theme['sw']['colors'],
+    keyof Theme['sw']['color'],
     'primary' | 'secondary' | 'neutral'
 >;
 
@@ -36,7 +36,7 @@ const Alert = ({
                 <Icon
                     name={iconName}
                     size={24}
-                    color={theme.sw.colors[status][500]}
+                    color={theme.sw.color[status][500]}
                 />
                 <View style={styles.texts}>
                     <Body
@@ -65,7 +65,7 @@ const Alert = ({
                 <Icon
                     name='close'
                     size={20}
-                    color={theme.sw.colors[status][700]}
+                    color={theme.sw.color[status][700]}
                 />
             </Pressable>
         </View>
@@ -74,7 +74,7 @@ const Alert = ({
 function getStatusIcon(variant: Status): IconName {
     const fallback = 'info';
 
-    if (variant === 'information') {
+    if (variant === 'info') {
         return 'info';
     }
     if (variant === 'success') {
@@ -110,17 +110,17 @@ function useAlert(defaultVisible = false) {
 function useStyles(theme: Theme, variantTheme: Status) {
     return StyleSheet.create({
         content: {
-            backgroundColor: theme.sw.colors[variantTheme][100],
+            backgroundColor: theme.sw.color[variantTheme][100],
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: theme.sw.spacing.m,
-            gap: theme.sw.spacing.m,
+            padding: theme.sw.spacing.s,
+            gap: theme.sw.spacing.s,
         },
         body: {
             flexDirection: 'row',
             alignItems: 'center',
-            gap: theme.sw.spacing.m,
+            gap: theme.sw.spacing.s,
             flexGrow: 1,
             flexShrink: 1,
         },
@@ -129,10 +129,10 @@ function useStyles(theme: Theme, variantTheme: Status) {
             flex: 1,
         },
         title: {
-            color: theme.sw.colors[variantTheme][700],
+            color: theme.sw.color[variantTheme][700],
         },
         description: {
-            color: theme.sw.colors[variantTheme][700],
+            color: theme.sw.color[variantTheme][700],
         },
     });
 }

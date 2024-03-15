@@ -14,7 +14,7 @@ export const Icon = ({ name, size = 16, color }: Props) => {
     const theme = useTheme();
     return (
         <IconMoon
-            color={color ? color : theme.sw.colors.neutral[800]}
+            color={color ? color : theme.sw.color.neutral[800]}
             iconSet={iconSet}
             name={name}
             size={size}

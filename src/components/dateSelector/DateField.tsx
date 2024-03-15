@@ -48,9 +48,10 @@ export const DateField = forwardRef<TextInput, DateFieldProps>(
                 onFocus={onFocus}
                 onBlur={onBlur}
                 keyboardType='numeric'
-                cursorColor={theme.sw.colors.primary.main}
+                cursorColor={theme.sw.color.primary[500]}
                 selectionColor={
-                    theme.sw.colors.primary.main + theme.sw.transparency[16]
+                    // TODO: use new tokens
+                    theme.sw.color.primary[500] + '29'
                 }
                 selectTextOnFocus={true}
                 textAlign='center'
@@ -106,8 +107,8 @@ function useDateFieldStyle(
         return {
             textColor:
                 state === 'empty-focused'
-                    ? theme.sw.colors.primary.main
-                    : theme.sw.colors.neutral[500],
+                    ? theme.sw.color.primary[500]
+                    : theme.sw.color.neutral[500],
         };
     }
 
@@ -116,30 +117,34 @@ function useDateFieldStyle(
 
         switch (state) {
             case 'filled-focused':
-                textColor = theme.sw.colors.neutral[800];
-                backgroundColor = theme.sw.colors.neutral[50];
-                borderColor = theme.sw.colors.primary.main;
+                textColor = theme.sw.color.neutral[800];
+                backgroundColor = theme.sw.color.neutral[0];
+                borderColor = theme.sw.color.primary[500];
                 break;
             case 'empty-focused':
-                textColor = theme.sw.colors.primary.main;
-                borderColor = theme.sw.colors.primary.main;
+                textColor = theme.sw.color.primary[500];
+                borderColor = theme.sw.color.primary[500];
                 backgroundColor =
-                    theme.sw.colors.primary.main + theme.sw.transparency[16];
+                    // TODO: use new tokens
+                    theme.sw.color.primary[500] + '29';
                 break;
             case 'filled':
-                textColor = theme.sw.colors.neutral[800];
+                textColor = theme.sw.color.neutral[800];
                 backgroundColor =
-                    theme.sw.colors.neutral[500] + theme.sw.transparency[8];
+                    // TODO: use new tokens
+                    theme.sw.color.neutral[500] + '14';
                 break;
             case 'error':
-                textColor = theme.sw.colors.error.main;
+                textColor = theme.sw.color.error[500];
                 backgroundColor =
-                    theme.sw.colors.error.main + theme.sw.transparency[8];
+                    // TODO: use new tokens
+                    theme.sw.color.error[500] + '14';
                 break;
             default:
-                textColor = theme.sw.colors.neutral[500];
+                textColor = theme.sw.color.neutral[500];
                 backgroundColor =
-                    theme.sw.colors.neutral[500] + theme.sw.transparency[8];
+                    // TODO: use new tokens
+                    theme.sw.color.neutral[500] + '14';
                 break;
         }
         return { backgroundColor, borderColor, textColor };

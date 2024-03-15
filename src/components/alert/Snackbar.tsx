@@ -40,7 +40,7 @@ function useSnackbarStyles(status: AlertProps['status']) {
     const theme = useTheme();
     return StyleSheet.create({
         snackbar: {
-            backgroundColor: theme.sw.colors[status][100],
+            backgroundColor: theme.sw.color[status][100],
         },
         alert: {
             padding: 0,

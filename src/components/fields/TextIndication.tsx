@@ -3,7 +3,9 @@ import { Text, TextStyle, View, ViewStyle } from 'react-native';
 import { Icon } from '../icons/Icon';
 import { useTheme } from '../../styles/themes';
 import type { IconName } from '../icons/IconProps';
+
 export type TextType = 'error' | 'warning' | 'information';
+
 interface Props {
     text: string;
     type: TextType;
@@ -11,17 +13,25 @@ interface Props {
     iconSize?: number;
     iconColor?: string;
 }
-export const TextIndication = ({ text, type, icon, iconSize, iconColor }: Props) => {
+
+export const TextIndication = ({
+    text,
+    type,
+    icon,
+    iconSize,
+    iconColor,
+}: Props) => {
     const theme = useTheme();
 
     const getTextColor = () => {
         switch (type) {
             case 'information':
-                return theme.sw.colors.neutral[600];
+                return theme.sw.color.neutral[600];
             case 'warning':
-                return theme.sw.colors.warning[400];
+                // TODO: use new tokens
+                return '#f59e0b';
             case 'error':
-                return theme.sw.colors.error['main'];
+                return theme.sw.color.error[500];
         }
     };
 

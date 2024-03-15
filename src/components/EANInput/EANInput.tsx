@@ -15,9 +15,9 @@ export const EANInput = ({ value, style, ...props }: Props) => {
 
     const getIconColor = () => {
         if (focused || value.length > 0) {
-            return theme.sw.colors.neutral[800];
+            return theme.sw.color.neutral[800];
         } else {
-            return theme.sw.colors.neutral[600];
+            return theme.sw.color.neutral[600];
         }
     };
 
@@ -41,7 +41,7 @@ export const EANInput = ({ value, style, ...props }: Props) => {
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
                 value={value}
-                placeholderTextColor={theme.sw.colors.neutral[500]}
+                placeholderTextColor={theme.sw.color.neutral[500]}
                 {...props}
             />
         </View>

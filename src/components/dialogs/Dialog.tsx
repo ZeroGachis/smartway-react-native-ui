@@ -135,11 +135,11 @@ function useStyles({
 
     const commonStyleSheet = StyleSheet.create({
         dialog: {
-            borderRadius: theme.sw.spacing.l,
+            borderRadius: theme.sw.borderRadius.l,
             marginTop: 0,
             marginLeft: 'auto',
             marginRight: 'auto',
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
             ...style,
         },
         dialogContent: {
@@ -160,7 +160,7 @@ function useStyles({
             ...actionsStyle,
         },
         leftOption: {
-            color: theme.sw.colors.neutral[800],
+            color: theme.sw.color.neutral[800],
             marginRight: theme.sw.spacing.xs,
             ...leftActionsStyle,
         },
@@ -174,9 +174,9 @@ function useStyles({
         return StyleSheet.create({
             dialog: {
                 ...commonStyleSheet.dialog,
-                paddingHorizontal: theme.sw.spacing.l,
-                paddingVertical: theme.sw.spacing.l,
-                width: width - theme.sw.spacing.xl,
+                paddingHorizontal: theme.sw.spacing.m,
+                paddingVertical: theme.sw.spacing.m,
+                width: width - theme.sw.spacing.l,
             },
             dialogContent: commonStyleSheet.dialogContent,
             title: commonStyleSheet.title,
@@ -198,11 +198,11 @@ function useStyles({
             dialogContent: commonStyleSheet.dialogContent,
             title: {
                 ...commonStyleSheet.title,
-                marginBottom: theme.sw.spacing.l,
+                marginBottom: theme.sw.spacing.m,
             },
             actions: {
                 ...commonStyleSheet.actions,
-                marginTop: theme.sw.spacing.l,
+                marginTop: theme.sw.spacing.m,
             },
             leftOption: commonStyleSheet.leftOption,
             rightOption: commonStyleSheet.rightOption,

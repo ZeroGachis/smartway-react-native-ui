@@ -11,9 +11,10 @@ const TopAppBarAction = (props: TopAppBarActionProps) => {
 
     return (
         <Appbar.Action
-            color={theme.sw.colors.neutral[600]}
+            color={theme.sw.color.neutral[600]}
             style={styles.button}
-            size={theme.sw.iconbuttonsize.m}
+            // TODO: use new tokens
+            size={26}
             {...props}
         />
     );

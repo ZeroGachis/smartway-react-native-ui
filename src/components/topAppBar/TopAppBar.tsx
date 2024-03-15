@@ -23,6 +23,7 @@ export type TopAppBarProps = WithTestID<{
 }>;
 
 const isTablet = DeviceInfo.isTablet();
+
 // eslint-disable-next-line react/function-component-definition
 export function TopAppBar({
     size = 'small',
@@ -32,8 +33,6 @@ export function TopAppBar({
     testID,
     action,
 }: TopAppBarProps) {
-    const theme = useTheme();
-
     const styles = useStyles(size, style);
 
     const headlineSize = isTablet
@@ -53,7 +52,8 @@ export function TopAppBar({
                 <Appbar.BackAction
                     style={styles.button}
                     onPress={onBack}
-                    size={theme.sw.iconbuttonsize.m}
+                    // TODO: use new tokens
+                    size={32}
                 />
             )}
             <Appbar.Content
@@ -73,6 +73,7 @@ export function TopAppBar({
         </Appbar.Header>
     );
 }
+
 TopAppBar.Action = TopAppBarAction;
 TopAppBar.Menu = TopAppBarMenu;
 TopAppBar.MenuItem = TopAppBarMenuItem;
@@ -100,8 +101,8 @@ function useStyles(
         header: {
             paddingHorizontal: 12,
             paddingBottom: 0,
-            marginBottom: theme.sw.spacing.l,
-            backgroundColor: theme.sw.colors.neutral['50'],
+            marginBottom: theme.sw.spacing.m,
+            backgroundColor: theme.sw.color.neutral[0],
             ...style,
         },
     });

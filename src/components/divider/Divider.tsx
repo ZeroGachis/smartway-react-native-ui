@@ -18,7 +18,8 @@ export const Divider = ({ style, orientation = 'horizontal', dashed = false }: P
             ...style,
         },
         line: {
-            color: theme.sw.colors.neutral[500] + theme.sw.transparency[24],
+            // TODO: use new tokens
+            color: theme.sw.color.neutral[500] + '3D',
         },
     });
     const isRow = orientation == 'horizontal';

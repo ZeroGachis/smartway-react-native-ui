@@ -36,9 +36,9 @@ export const ActionCard = ({
 
     const styles = StyleSheet.create({
         container: {
-            backgroundColor: disabled ? theme.sw.colors.neutral[100] : theme.sw.colors.neutral[50],
+            backgroundColor: disabled ? theme.sw.color.neutral[100] : theme.sw.color.neutral[0],
             borderWidth: 1,
-            borderColor: disabled ? theme.sw.colors.neutral[400] : theme.sw.colors.neutral[400],
+            borderColor: disabled ? theme.sw.color.neutral[400] : theme.sw.color.neutral[400],
             width: '100%',
             borderRadius: 20,
             alignItems: 'center',
@@ -46,26 +46,26 @@ export const ActionCard = ({
         },
         close: {
             position: 'absolute',
-            right: theme.sw.spacing.m,
-            top: theme.sw.spacing.m,
+            right: theme.sw.spacing.s,
+            top: theme.sw.spacing.s,
         },
         title: {
             color: titleColor,
-            paddingBottom: theme.sw.spacing.m,
+            paddingBottom: theme.sw.spacing.s,
             textAlign: 'center',
         },
         divider: {
             height: 1,
             width: '100%',
-            backgroundColor: theme.sw.colors.neutral[200],
-            marginTop: theme.sw.spacing.m,
+            backgroundColor: theme.sw.color.neutral[200],
+            marginTop: theme.sw.spacing.s,
             marginBottom: theme.sw.spacing.xxs,
         },
         bottomChildren: {
             alignItems: 'center',
         },
         bigShadow: {
-            shadowColor: theme.sw.colors.neutral[500] + bigShadowTransparency,
+            shadowColor: theme.sw.color.neutral[500] + bigShadowTransparency,
             shadowOffset: {
                 width: 0,
                 height: 12,
@@ -74,7 +74,7 @@ export const ActionCard = ({
             shadowRadius: 24,
         },
         smallShadow: {
-            shadowColor: theme.sw.colors.neutral[500] + smallShadowTransparency,
+            shadowColor: theme.sw.color.neutral[500] + smallShadowTransparency,
             shadowOffset: {
                 width: 0,
                 height: 0,

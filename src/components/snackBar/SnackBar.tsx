@@ -33,13 +33,13 @@ export const SnackBar = ({
             flex: 1,
         },
         snackBar: {
-            backgroundColor: theme.sw.colors.neutral[800],
+            backgroundColor: theme.sw.color.neutral[800],
             flexDirection:
                 action?.label && action?.label.length > 10 ? 'column' : 'row',
         },
         message: {
-            color: theme.sw.colors.neutral[50],
-            marginRight: theme.sw.spacing.l,
+            color: theme.sw.color.neutral[0],
+            marginRight: theme.sw.spacing.m,
         },
     });
 
@@ -53,21 +53,17 @@ export const SnackBar = ({
                 action={
                     action && {
                         ...action,
-                        textColor: theme.sw.colors.primary[200],
+                        textColor: theme.sw.color.primary[300],
                     }
                 }
                 {...(iconName && {
                     onIconPress: onDismiss,
                     icon: () => (
-                        <Icon
-                            name={iconName}
-                            size={16}
-                            color={theme.sw.colors.primary[50]}
-                        />
+                        <Icon name={iconName} size={16} color={'#C5FCF0'} />
                     ),
                 })}
                 theme={{
-                    colors: { inverseOnSurface: theme.sw.colors.primary[50] },
+                    colors: { inverseOnSurface: '#C5FCF0' },
                 }}
             >
                 <Body size='B2' style={styles.message}>

@@ -65,7 +65,7 @@ function useStyles() {
             marginRight: theme.sw.spacing.xs,
         },
         menu: {
-            backgroundColor: theme.sw.colors.neutral['50'],
+            backgroundColor: theme.sw.color.neutral[0],
             borderRadius: 18,
             width: 248,
         },

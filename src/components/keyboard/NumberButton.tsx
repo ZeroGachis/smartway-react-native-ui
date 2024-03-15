@@ -15,12 +15,12 @@ export const NumberButton = ({ value, onPress }: Props) => {
         button: {
             flex: 1,
             justifyContent: 'center',
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
         },
         buttonLabel: {
             fontSize: 24,
             textAlign: 'center',
-            color: theme.sw.colors.neutral[700],
+            color: theme.sw.color.neutral[700],
         },
         icon: {
             justifyContent: 'center',
@@ -29,7 +29,10 @@ export const NumberButton = ({ value, onPress }: Props) => {
     });
 
     return (
-        <Pressable style={[styles.button]} onPress={() => onPress('type', value)}>
+        <Pressable
+            style={[styles.button]}
+            onPress={() => onPress('type', value)}
+        >
             <Text style={styles.buttonLabel}>{value}</Text>
         </Pressable>
     );

@@ -31,7 +31,7 @@ const TopAppBarMenuItem = ({
         onPress(e);
     };
 
-    const colorTheme = color || theme.sw.colors.primary.main;
+    const colorTheme = color || theme.sw.color.primary[500];
 
     const menuItemTheme = {
         colors: {
@@ -60,8 +60,8 @@ function useStyles(theme: Theme) {
     return StyleSheet.create({
         menuItem: {
             borderRadius: 18,
-            paddingHorizontal: theme.sw.spacing.l,
-            paddingVertical: theme.sw.spacing.m,
+            paddingHorizontal: theme.sw.spacing.m,
+            paddingVertical: theme.sw.spacing.s,
             height: 'auto',
         },
         title: {

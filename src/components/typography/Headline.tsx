@@ -45,7 +45,7 @@ export const Headline = ({
 
     defaultHeadlineStyle = {
         ...defaultHeadlineStyle,
-        color: theme.sw.colors.neutral[800],
+        color: theme.sw.color.neutral[800],
     };
 
     return (

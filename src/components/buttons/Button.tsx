@@ -37,15 +37,16 @@ export const Button = (props: customButtonProps) => {
             label: {
                 color: props.disabled
                     ? theme.colors.onSurfaceDisabled
-                    : theme.sw.colors.neutral[50],
+                    : theme.sw.color.neutral[0],
             },
         });
     }
     if ((mode === 'text' || mode === 'outlined') && props.status === 'primary') {
         customStyle = StyleSheet.create({
             button: {
-                borderColor: theme.sw.colors.primary.main + theme.sw.transparency[48],
-                backgroundColor: theme.sw.colors.neutral[50],
+                // TODO: use new tokens
+                borderColor: theme.sw.color.primary[500] + '7A',
+                backgroundColor: theme.sw.color.neutral[0],
             },
             label: {
                 color: theme.colors.secondaryContainer,
@@ -56,13 +57,13 @@ export const Button = (props: customButtonProps) => {
         customStyle = StyleSheet.create({
             button: {
                 borderColor: props.disabled
-                    ? theme.sw.colors.neutral[500] + theme.sw.transparency[24]
-                    : theme.sw.colors.neutral[800] + theme.sw.transparency[48],
+                    ? theme.sw.color.neutral[500] + '3D'
+                    : theme.sw.color.neutral[800] + '7A',
             },
             label: {
                 color: props.disabled
                     ? theme.colors.onSurfaceDisabled
-                    : theme.sw.colors.neutral[800],
+                    : theme.sw.color.neutral[800],
             },
         });
     }

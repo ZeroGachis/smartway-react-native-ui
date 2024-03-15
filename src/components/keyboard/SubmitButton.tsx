@@ -17,7 +17,7 @@ export const SubmitButton = ({ onPress, testID }: Props) => {
             flex: 1,
 
             justifyContent: 'center',
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
         },
         icon: {
             justifyContent: 'center',
@@ -34,7 +34,7 @@ export const SubmitButton = ({ onPress, testID }: Props) => {
             <View style={styles.icon}>
                 <Icon
                     name={'validate'}
-                    color={theme.sw.colors.primary.main}
+                    color={theme.sw.color.primary[500]}
                     size={24}
                 />
             </View>

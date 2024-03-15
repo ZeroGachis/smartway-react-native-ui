@@ -1,7 +1,7 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 import { DateField } from './DateField';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Theme, useTheme } from '../../styles/themes';
+import { useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 import { Body } from '../typography/Body';
 import { WithTestID } from 'src/shared/type';
@@ -30,8 +30,7 @@ export const DateSelector = ({
     onUpdatedDate,
     testID,
 }: DateSelectorProps) => {
-    const theme = useTheme();
-    const styles = getStyles(theme);
+    const styles = useGetStyles();
 
     const [dayField, setDayField] = useState('');
     const [monthField, setMonthField] = useState('');
@@ -215,7 +214,8 @@ function filledFieldsValues(
     };
 }
 
-function getStyles(theme: Theme) {
+function useGetStyles() {
+    const theme = useTheme();
     return StyleSheet.create({
         root: {
             alignSelf: 'center',
@@ -231,11 +231,11 @@ function getStyles(theme: Theme) {
         },
         slash: {
             fontSize: 20,
-            color: theme.sw.colors.neutral[500],
+            color: theme.sw.color.neutral[500],
         },
         errorMessage: {
-            marginTop: theme.sw.spacing.m,
-            color: theme.sw.colors.error.main,
+            marginTop: theme.sw.spacing.s,
+            color: theme.sw.color.error[500],
         },
     });
 }

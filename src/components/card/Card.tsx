@@ -15,17 +15,17 @@ export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Prop
 
     const styles = StyleSheet.create({
         container: {
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
             borderColor: '#f3f5f6',
             borderWidth: 1,
             width: '100%',
             alignItems: 'center',
-            padding: theme.sw.spacing.m,
+            padding: theme.sw.spacing.s,
             borderRadius: 20,
             ...style,
         },
         bigShadow: {
-            shadowColor: theme.sw.colors.neutral[500],
+            shadowColor: theme.sw.color.neutral[500],
             shadowOffset: {
                 width: 0,
                 height: 12,
@@ -35,7 +35,7 @@ export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Prop
             ...bigShadowStyle,
         },
         smallShadow: {
-            shadowColor: theme.sw.colors.neutral[500],
+            shadowColor: theme.sw.color.neutral[500],
             shadowOffset: {
                 width: 0,
                 height: 2,
