@@ -24,7 +24,7 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
     <View
       style={
         {
-          "shadowColor": "#919EAB1F",
+          "shadowColor": "#919eab1F",
           "shadowOffset": {
             "height": 12,
             "width": 0,
@@ -37,7 +37,7 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
       <View
         style={
           {
-            "shadowColor": "#919EAB80",
+            "shadowColor": "#919eab80",
             "shadowOffset": {
               "height": 0,
               "width": 0,
@@ -51,8 +51,8 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
           style={
             {
               "alignItems": "center",
-              "backgroundColor": "#FFFFFF",
-              "borderColor": "#C4CDD5",
+              "backgroundColor": "#ffffff",
+              "borderColor": "#c4cdd5",
               "borderRadius": 20,
               "borderWidth": 1,
               "width": "100%",
@@ -63,7 +63,7 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
             style={
               [
                 {
-                  "color": "#212B36",
+                  "color": "#212b36",
                   "fontFamily": "PublicSans-Regular",
                   "fontSize": 14,
                 },
@@ -88,7 +88,7 @@ exports[`MODULE | ActionCard component renders correctly 1`] = `
             <View
               style={
                 {
-                  "backgroundColor": "#EDEFF2",
+                  "backgroundColor": "#edeff2",
                   "height": 1,
                   "marginBottom": 4,
                   "marginTop": 16,
@@ -141,7 +141,7 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
     <View
       style={
         {
-          "shadowColor": "#919EAB1F",
+          "shadowColor": "#919eab1F",
           "shadowOffset": {
             "height": 12,
             "width": 0,
@@ -154,7 +154,7 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
       <View
         style={
           {
-            "shadowColor": "#919EAB80",
+            "shadowColor": "#919eab80",
             "shadowOffset": {
               "height": 0,
               "width": 0,
@@ -168,8 +168,8 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
           style={
             {
               "alignItems": "center",
-              "backgroundColor": "#F4F6F8",
-              "borderColor": "#C4CDD5",
+              "backgroundColor": "#f4f6f8",
+              "borderColor": "#c4cdd5",
               "borderRadius": 20,
               "borderWidth": 1,
               "width": "100%",
@@ -180,7 +180,7 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
             style={
               [
                 {
-                  "color": "#212B36",
+                  "color": "#212b36",
                   "fontFamily": "PublicSans-Regular",
                   "fontSize": 14,
                 },
@@ -205,7 +205,7 @@ exports[`MODULE | ActionCard component renders correctly in disabled state 1`] =
             <View
               style={
                 {
-                  "backgroundColor": "#EDEFF2",
+                  "backgroundColor": "#edeff2",
                   "height": 1,
                   "marginBottom": 4,
                   "marginTop": 16,

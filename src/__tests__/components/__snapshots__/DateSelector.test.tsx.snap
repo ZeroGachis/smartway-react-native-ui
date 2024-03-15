@@ -38,23 +38,23 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
         testID="mockedTestID"
       >
         <TextInput
-          cursorColor="#18A586"
+          cursorColor="#18a586"
           keyboardType="numeric"
           maxLength={2}
           onBlur={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholder="01"
-          placeholderTextColor="#919EAB"
+          placeholderTextColor="#919eab"
           selectTextOnFocus={true}
-          selectionColor="#18A58629"
+          selectionColor="#18a58629"
           style={
             {
-              "backgroundColor": "#919EAB14",
+              "backgroundColor": "#919eab14",
               "borderColor": undefined,
               "borderRadius": 18,
               "borderWidth": 0,
-              "color": "#919EAB",
+              "color": "#919eab",
               "fontFamily": "PublicSans-Bold",
               "fontSize": 20,
               "height": 48,
@@ -81,12 +81,12 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
             style={
               [
                 {
-                  "color": "#212B36",
+                  "color": "#212b36",
                   "fontFamily": "PublicSans-Bold",
                   "fontSize": 20,
                 },
                 {
-                  "color": "#919EAB",
+                  "color": "#919eab",
                   "fontSize": 20,
                 },
               ]
@@ -96,23 +96,23 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
           </Text>
         </View>
         <TextInput
-          cursorColor="#18A586"
+          cursorColor="#18a586"
           keyboardType="numeric"
           maxLength={2}
           onBlur={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholder="02"
-          placeholderTextColor="#919EAB"
+          placeholderTextColor="#919eab"
           selectTextOnFocus={true}
-          selectionColor="#18A58629"
+          selectionColor="#18a58629"
           style={
             {
-              "backgroundColor": "#919EAB14",
+              "backgroundColor": "#919eab14",
               "borderColor": undefined,
               "borderRadius": 18,
               "borderWidth": 0,
-              "color": "#919EAB",
+              "color": "#919eab",
               "fontFamily": "PublicSans-Bold",
               "fontSize": 20,
               "height": 48,
@@ -139,12 +139,12 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
             style={
               [
                 {
-                  "color": "#212B36",
+                  "color": "#212b36",
                   "fontFamily": "PublicSans-Bold",
                   "fontSize": 20,
                 },
                 {
-                  "color": "#919EAB",
+                  "color": "#919eab",
                   "fontSize": 20,
                 },
               ]
@@ -154,23 +154,23 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
           </Text>
         </View>
         <TextInput
-          cursorColor="#18A586"
+          cursorColor="#18a586"
           keyboardType="numeric"
           maxLength={2}
           onBlur={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholder="03"
-          placeholderTextColor="#919EAB"
+          placeholderTextColor="#919eab"
           selectTextOnFocus={true}
-          selectionColor="#18A58629"
+          selectionColor="#18a58629"
           style={
             {
-              "backgroundColor": "#919EAB14",
+              "backgroundColor": "#919eab14",
               "borderColor": undefined,
               "borderRadius": 18,
               "borderWidth": 0,
-              "color": "#919EAB",
+              "color": "#919eab",
               "fontFamily": "PublicSans-Bold",
               "fontSize": 20,
               "height": 48,

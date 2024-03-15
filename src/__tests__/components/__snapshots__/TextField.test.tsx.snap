@@ -79,13 +79,13 @@ exports[`MODULE | TextField component renders correctly 1`] = `
                   "top": 6,
                 },
                 {
-                  "backgroundColor": "#FFFFFF",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#2F4158",
                   "borderRadius": 8,
                   "borderWidth": 1,
                 },
                 {
-                  "borderColor": "#C4CDD5",
+                  "borderColor": "#c4cdd5",
                   "borderWidth": 1,
                 },
               ]
@@ -107,15 +107,15 @@ exports[`MODULE | TextField component renders correctly 1`] = `
               }
             >
               <TextInput
-                cursorColor="#212B36"
+                cursorColor="#212b36"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
-                placeholderTextColor="#919EAB"
-                selectionColor="#212B36"
+                placeholderTextColor="#919eab"
+                selectionColor="#212b36"
                 style={
                   [
                     {
@@ -130,7 +130,7 @@ exports[`MODULE | TextField component renders correctly 1`] = `
                       "paddingTop": 18.5,
                     },
                     {
-                      "color": "#1A2026",
+                      "color": "#1a2026",
                       "fontFamily": "PublicSans-Regular",
                       "fontSize": 16,
                       "fontWeight": undefined,
@@ -239,13 +239,13 @@ exports[`MODULE | TextField component renders correctly when textType in error s
                   "top": 6,
                 },
                 {
-                  "backgroundColor": "#FFFFFF",
-                  "borderColor": "#FF5630",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#ff5630",
                   "borderRadius": 8,
                   "borderWidth": 2,
                 },
                 {
-                  "borderColor": "#FF5630",
+                  "borderColor": "#ff5630",
                   "borderWidth": 1,
                 },
               ]
@@ -267,15 +267,15 @@ exports[`MODULE | TextField component renders correctly when textType in error s
               }
             >
               <TextInput
-                cursorColor="#FF5630"
+                cursorColor="#ff5630"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
-                placeholderTextColor="#919EAB"
-                selectionColor="#FF5630"
+                placeholderTextColor="#919eab"
+                selectionColor="#ff5630"
                 style={
                   [
                     {
@@ -290,7 +290,7 @@ exports[`MODULE | TextField component renders correctly when textType in error s
                       "paddingTop": 18.5,
                     },
                     {
-                      "color": "#1A2026",
+                      "color": "#1a2026",
                       "fontFamily": "PublicSans-Regular",
                       "fontSize": 16,
                       "fontWeight": undefined,
@@ -399,13 +399,13 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
                   "top": 6,
                 },
                 {
-                  "backgroundColor": "#FFFFFF",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#2F4158",
                   "borderRadius": 8,
                   "borderWidth": 1,
                 },
                 {
-                  "borderColor": "#C4CDD5",
+                  "borderColor": "#c4cdd5",
                   "borderWidth": 1,
                 },
               ]
@@ -427,15 +427,15 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
               }
             >
               <TextInput
-                cursorColor="#212B36"
+                cursorColor="#212b36"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
-                placeholderTextColor="#919EAB"
-                selectionColor="#212B36"
+                placeholderTextColor="#919eab"
+                selectionColor="#212b36"
                 style={
                   [
                     {
@@ -450,7 +450,7 @@ exports[`MODULE | TextField component renders correctly with bottom text 1`] = `
                       "paddingTop": 18.5,
                     },
                     {
-                      "color": "#1A2026",
+                      "color": "#1a2026",
                       "fontFamily": "PublicSans-Regular",
                       "fontSize": 16,
                       "fontWeight": undefined,

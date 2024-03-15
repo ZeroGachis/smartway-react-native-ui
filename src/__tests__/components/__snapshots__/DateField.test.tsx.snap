@@ -22,23 +22,23 @@ exports[`MODULE | DateField component renders correctly empty focused state 1`] 
     }
   >
     <TextInput
-      cursorColor="#18A586"
+      cursorColor="#18a586"
       keyboardType="numeric"
       maxLength={2}
       onBlur={[Function]}
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder="01"
-      placeholderTextColor="#18A586"
+      placeholderTextColor="#18a586"
       selectTextOnFocus={true}
-      selectionColor="#18A58629"
+      selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#18A58629",
-          "borderColor": "#18A586",
+          "backgroundColor": "#18a58629",
+          "borderColor": "#18a586",
           "borderRadius": 18,
           "borderWidth": 1,
-          "color": "#18A586",
+          "color": "#18a586",
           "fontFamily": "PublicSans-Bold",
           "fontSize": 20,
           "height": 48,
@@ -78,23 +78,23 @@ exports[`MODULE | DateField component renders correctly filled focused state 1`]
     }
   >
     <TextInput
-      cursorColor="#18A586"
+      cursorColor="#18a586"
       keyboardType="numeric"
       maxLength={2}
       onBlur={[Function]}
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder="01"
-      placeholderTextColor="#919EAB"
+      placeholderTextColor="#919eab"
       selectTextOnFocus={true}
-      selectionColor="#18A58629"
+      selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#FFFFFF",
-          "borderColor": "#18A586",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#18a586",
           "borderRadius": 18,
           "borderWidth": 1,
-          "color": "#212B36",
+          "color": "#212b36",
           "fontFamily": "PublicSans-Bold",
           "fontSize": 20,
           "height": 48,
@@ -134,23 +134,23 @@ exports[`MODULE | DateField component renders correctly filled unfocused state 1
     }
   >
     <TextInput
-      cursorColor="#18A586"
+      cursorColor="#18a586"
       keyboardType="numeric"
       maxLength={2}
       onBlur={[Function]}
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder="01"
-      placeholderTextColor="#919EAB"
+      placeholderTextColor="#919eab"
       selectTextOnFocus={true}
-      selectionColor="#18A58629"
+      selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#919EAB14",
+          "backgroundColor": "#919eab14",
           "borderColor": undefined,
           "borderRadius": 18,
           "borderWidth": 0,
-          "color": "#212B36",
+          "color": "#212b36",
           "fontFamily": "PublicSans-Bold",
           "fontSize": 20,
           "height": 48,
@@ -190,23 +190,23 @@ exports[`MODULE | DateField component renders correctly in empty mode 1`] = `
     }
   >
     <TextInput
-      cursorColor="#18A586"
+      cursorColor="#18a586"
       keyboardType="numeric"
       maxLength={2}
       onBlur={[Function]}
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder="01"
-      placeholderTextColor="#919EAB"
+      placeholderTextColor="#919eab"
       selectTextOnFocus={true}
-      selectionColor="#18A58629"
+      selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#919EAB14",
+          "backgroundColor": "#919eab14",
           "borderColor": undefined,
           "borderRadius": 18,
           "borderWidth": 0,
-          "color": "#919EAB",
+          "color": "#919eab",
           "fontFamily": "PublicSans-Bold",
           "fontSize": 20,
           "height": 48,
@@ -245,23 +245,23 @@ exports[`MODULE | DateField component renders correctly in error state 1`] = `
     }
   >
     <TextInput
-      cursorColor="#18A586"
+      cursorColor="#18a586"
       keyboardType="numeric"
       maxLength={2}
       onBlur={[Function]}
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder="01"
-      placeholderTextColor="#919EAB"
+      placeholderTextColor="#919eab"
       selectTextOnFocus={true}
-      selectionColor="#18A58629"
+      selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#FF563014",
+          "backgroundColor": "#ff563014",
           "borderColor": undefined,
           "borderRadius": 18,
           "borderWidth": 0,
-          "color": "#FF5630",
+          "color": "#ff5630",
           "fontFamily": "PublicSans-Bold",
           "fontSize": 20,
           "height": 48,

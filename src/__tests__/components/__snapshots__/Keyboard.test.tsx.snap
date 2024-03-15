@@ -70,7 +70,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -80,7 +80,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -122,7 +122,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -132,7 +132,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -174,7 +174,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -184,7 +184,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -235,7 +235,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -245,7 +245,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -287,7 +287,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -297,7 +297,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -339,7 +339,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -349,7 +349,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -400,7 +400,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -410,7 +410,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -452,7 +452,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -462,7 +462,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -504,7 +504,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -514,7 +514,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -565,7 +565,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -584,7 +584,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
               align="xMidYMid"
               bbHeight="24"
               bbWidth="24"
-              fill="#919EAB"
+              fill="#919eab"
               focusable={false}
               height="24"
               meetOrSlice={0}
@@ -679,7 +679,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -689,7 +689,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           <Text
             style={
               {
-                "color": "#2F4158",
+                "color": "#2f4158",
                 "fontSize": 24,
                 "textAlign": "center",
               }
@@ -731,7 +731,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
           style={
             [
               {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "#ffffff",
                 "flex": 1,
                 "justifyContent": "center",
               },
@@ -750,7 +750,7 @@ exports[`MODULE | Keyboard component renders correctly 1`] = `
               align="xMidYMid"
               bbHeight="24"
               bbWidth="24"
-              fill="#18A586"
+              fill="#18a586"
               focusable={false}
               height="24"
               meetOrSlice={0}
