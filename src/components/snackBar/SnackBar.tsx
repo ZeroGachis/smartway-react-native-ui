@@ -17,6 +17,7 @@ export interface Props {
     };
 }
 
+/** @deprecated will be replaced by Snackbar soon*/
 export const SnackBar = ({
     message,
     iconName,
@@ -33,7 +34,8 @@ export const SnackBar = ({
         },
         snackBar: {
             backgroundColor: theme.sw.colors.neutral[800],
-            flexDirection: action?.label && action?.label.length > 10 ? 'column' : 'row',
+            flexDirection:
+                action?.label && action?.label.length > 10 ? 'column' : 'row',
         },
         message: {
             color: theme.sw.colors.neutral[50],
@@ -48,16 +50,27 @@ export const SnackBar = ({
                 visible={visible}
                 onDismiss={onDismiss}
                 style={styles.snackBar}
-                action={action && { ...action, textColor: theme.sw.colors.primary[200] }}
+                action={
+                    action && {
+                        ...action,
+                        textColor: theme.sw.colors.primary[200],
+                    }
+                }
                 {...(iconName && {
                     onIconPress: onDismiss,
                     icon: () => (
-                        <Icon name={iconName} size={16} color={theme.sw.colors.primary[50]} />
+                        <Icon
+                            name={iconName}
+                            size={16}
+                            color={theme.sw.colors.primary[50]}
+                        />
                     ),
                 })}
-                theme={{ colors: { inverseOnSurface: theme.sw.colors.primary[50] } }}
+                theme={{
+                    colors: { inverseOnSurface: theme.sw.colors.primary[50] },
+                }}
             >
-                <Body size="B2" style={styles.message}>
+                <Body size='B2' style={styles.message}>
                     {message}
                 </Body>
             </Snackbar>

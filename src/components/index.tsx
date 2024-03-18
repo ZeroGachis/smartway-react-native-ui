@@ -31,6 +31,9 @@ import { Badge } from './badge/Badge';
 import { DateField } from './dateSelector/DateField';
 import { DateSelector } from './dateSelector/DateSelector';
 
+export { default as Snackbar, useSnackbar } from './alert/Snackbar';
+export { default as Banner, useBanner } from './alert/Banner';
+
 export {
     Body,
     Button,
