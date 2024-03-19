@@ -12,7 +12,7 @@ type Status = Exclude<
 
 export interface AlertProps {
     status: Status;
-    title?: string;
+    title: string;
     description?: string;
     style?: ViewStyle;
     onDismiss: () => void;
@@ -47,13 +47,15 @@ const Alert = ({
                     >
                         {title}
                     </Body>
-                    <Body
-                        size='B1'
-                        style={styles.description}
-                        accessibilityRole='alert'
-                    >
-                        {description}
-                    </Body>
+                    {description && (
+                        <Body
+                            size='B1'
+                            style={styles.description}
+                            accessibilityRole='alert'
+                        >
+                            {description}
+                        </Body>
+                    )}
                 </View>
             </View>
             <Pressable
