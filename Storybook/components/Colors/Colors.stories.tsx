@@ -13,30 +13,15 @@ export default {
 
 type Story = StoryObj<ComponentProps>;
 
-const byNoDeprecatedToken = ([key]: string[]) => {
-    return ['50', '200', '400', 'main', '600', '800'].includes(key) === false;
-};
 export const Default: Story = {
     render: () => {
-        const neutral = Object.entries(theme.sw.colors.neutral);
-        const primary = Object.entries(theme.sw.colors.primary).filter(
-            byNoDeprecatedToken
-        );
-        const information = Object.entries(theme.sw.colors.information).filter(
-            byNoDeprecatedToken
-        );
-        const secondary = Object.entries(theme.sw.colors.secondary).filter(
-            byNoDeprecatedToken
-        );
-        const success = Object.entries(theme.sw.colors.success).filter(
-            byNoDeprecatedToken
-        );
-        const warning = Object.entries(theme.sw.colors.warning).filter(
-            byNoDeprecatedToken
-        );
-        const error = Object.entries(theme.sw.colors.error).filter(
-            byNoDeprecatedToken
-        );
+        const neutral = Object.entries(theme.sw.color.neutral);
+        const primary = Object.entries(theme.sw.color.primary);
+        const information = Object.entries(theme.sw.color.info);
+        const secondary = Object.entries(theme.sw.color.secondary);
+        const success = Object.entries(theme.sw.color.success);
+        const warning = Object.entries(theme.sw.color.warning);
+        const error = Object.entries(theme.sw.color.error);
 
         return (
             <ScrollView>

@@ -1,5 +1,11 @@
 import React from 'react';
-import { Pressable, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import {
+    Pressable,
+    StyleProp,
+    StyleSheet,
+    View,
+    ViewStyle,
+} from 'react-native';
 import { useTheme } from '../..//styles/themes';
 import { Label } from '../label/Label';
 import { Body } from '../typography/Body';
@@ -31,33 +37,35 @@ export const Product = ({
 
     const styles = StyleSheet.create({
         container: {
-            paddingVertical: theme.sw.spacing.m,
+            paddingVertical: theme.sw.spacing.s,
             flexDirection: 'row',
             borderBottomWidth: 1,
-            borderBottomColor: theme.sw.colors.neutral[200],
+            borderBottomColor: theme.sw.color.neutral[200],
         },
         picture: {
-            backgroundColor: theme.sw.colors.neutral[300],
+            backgroundColor: theme.sw.color.neutral[300],
             height: 64,
             width: 64,
             borderRadius: 8,
             flexDirection: 'row',
-            marginRight: theme.sw.spacing.s,
+            // TODO: use new tokens
+            marginRight: 12,
         },
         quantityContainer: {
             alignSelf: 'flex-end',
             padding: theme.sw.spacing.xxs,
             paddingHorizontal: theme.sw.spacing.xxs,
             margin: theme.sw.spacing.xxs,
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
             borderRadius: 8,
         },
         label: {
             marginBottom: theme.sw.spacing.xxs,
         },
         barcodePrice: {
-            marginBottom: theme.sw.spacing.s,
-            color: theme.sw.colors.neutral[500],
+            // TODO: use new tokens
+            marginBottom: 12,
+            color: theme.sw.color.neutral[500],
         },
         labels: {
             width: '100%',
@@ -71,7 +79,7 @@ export const Product = ({
             marginRight: theme.sw.spacing.xxs,
         },
         date: {
-            color: theme.sw.colors.neutral[500],
+            color: theme.sw.color.neutral[500],
             alignSelf: 'center',
         },
     });
@@ -79,15 +87,20 @@ export const Product = ({
         <Pressable onPress={onPress} style={[styles.container, style]}>
             <View style={styles.picture}>
                 <View style={styles.quantityContainer}>
-                    <Body size="B3">{`x${quantity}`}</Body>
+                    <Body size='B3'>{`x${quantity}`}</Body>
                 </View>
             </View>
             <View style={{ flexShrink: 1 }}>
-                <Body numberOfLines={1} style={styles.label} size="B1" weight="semi-bold">
+                <Body
+                    numberOfLines={1}
+                    style={styles.label}
+                    size='B1'
+                    weight='semi-bold'
+                >
                     {label}
                 </Body>
 
-                <Body style={styles.barcodePrice} size="B3">
+                <Body style={styles.barcodePrice} size='B3'>
                     {`${barcode}  •  ${initialPrice}`}
                 </Body>
 
@@ -107,7 +120,7 @@ export const Product = ({
                         />
                     </View>
 
-                    <Body size="B2" style={styles.date}>
+                    <Body size='B2' style={styles.date}>
                         {scanDate}
                     </Body>
                 </View>

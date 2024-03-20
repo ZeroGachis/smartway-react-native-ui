@@ -15,7 +15,7 @@ describe('Uncontrolled Banner', () => {
         mockOnDismiss = jest.fn();
         render(
             <Banner
-                status='information'
+                status='info'
                 onDismiss={mockOnDismiss}
                 title='This is a title'
                 description='This is a decription'
@@ -52,7 +52,7 @@ describe('Controlled Banner', () => {
 
         return (
             <Banner
-                status='information'
+                status='info'
                 onDismiss={dismiss}
                 title='This is a title'
                 description='This is a decription'

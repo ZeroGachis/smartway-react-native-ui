@@ -38,13 +38,13 @@ export const Menu = ({
             ...style,
         },
         menu: {
-            paddingVertical: theme.sw.spacing.l,
-            backgroundColor: theme.sw.colors.neutral[50],
+            paddingVertical: theme.sw.spacing.m,
+            backgroundColor: theme.sw.color.neutral[0],
             borderRadius: 8,
             ...menuStyle,
         },
         option: {
-            paddingHorizontal: theme.sw.spacing.l,
+            paddingHorizontal: theme.sw.spacing.m,
             ...optionStyle,
         },
     });

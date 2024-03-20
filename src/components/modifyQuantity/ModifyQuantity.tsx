@@ -33,18 +33,19 @@ export const ModifyQuantity = ({
             width: '100%',
             flexDirection: 'row',
             alignItems: 'center',
-            padding: theme.sw.spacing.l,
-            backgroundColor: theme.sw.colors.neutral[50],
+            padding: theme.sw.spacing.m,
+            backgroundColor: theme.sw.color.neutral[0],
             borderRadius: 24,
             justifyContent: 'space-between',
             elevation: 1,
             borderWidth: 1,
-            borderColor: theme.sw.colors.neutral[200],
+            borderColor: theme.sw.color.neutral[200],
             ...style,
         },
         text: {
-            marginLeft: theme.sw.spacing.s,
-            color: theme.sw.colors.neutral[800],
+            // TODO: use new tokens
+            marginLeft: 12,
+            color: theme.sw.color.neutral[800],
         },
         iconContainer: {
             flexDirection: 'row',
@@ -56,7 +57,7 @@ export const ModifyQuantity = ({
         },
         input: {
             marginBottom: 0,
-            marginHorizontal: theme.sw.spacing.l,
+            marginHorizontal: theme.sw.spacing.m,
         },
         inputText: {
             textAlign: 'center',
@@ -77,7 +78,7 @@ export const ModifyQuantity = ({
                     <Icon
                         size={24}
                         name={icon}
-                        color={theme.sw.colors.neutral[600]}
+                        color={theme.sw.color.neutral[600]}
                     />
                 </View>
                 <Body style={styles.text}>{text}</Body>

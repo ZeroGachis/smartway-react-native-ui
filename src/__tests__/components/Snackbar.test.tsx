@@ -16,7 +16,7 @@ describe('Uncontrolled Snackbar', () => {
         render(
             <Snackbar
                 visible
-                status='information'
+                status='info'
                 onDismiss={mockOnDismiss}
                 title='This is a title'
                 description='This is a decription'
@@ -51,7 +51,7 @@ describe('Uncontrolled Snackbar invisibled on mount', () => {
         render(
             <Snackbar
                 visible={false}
-                status='information'
+                status='info'
                 onDismiss={mockOnDismiss}
                 title='This is a title'
                 description='This is a decription'
@@ -74,7 +74,7 @@ describe('Controlled Snackbar visible on mount', () => {
         return (
             <Snackbar
                 visible={visible}
-                status='information'
+                status='info'
                 onDismiss={dismiss}
                 title='This is a title'
                 description='This is a decription'

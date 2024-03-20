@@ -21,7 +21,7 @@ export default {
     \`\`\`
     <ActionCard
     title="Texte action possible"
-    titleColor={theme.sw.colors.neutral[500]}
+    titleColor={theme.sw.color.neutral[500]}
     bottomChildren={
         <EANInput
             value={scanValue}

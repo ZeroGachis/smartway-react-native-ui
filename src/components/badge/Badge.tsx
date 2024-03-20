@@ -14,8 +14,8 @@ type BadgeProps = WithTestID<{
 const createStyle = (theme: Theme, style?: ViewStyle) => {
     return StyleSheet.create({
         badge: {
-            backgroundColor: theme.sw.colors.neutral[700],
-            color: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[700],
+            color: theme.sw.color.neutral[0],
             paddingHorizontal: theme.sw.spacing.xs,
             paddingVertical: theme.sw.spacing.xxs,
             alignSelf: 'flex-start',

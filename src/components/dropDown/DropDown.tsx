@@ -50,25 +50,25 @@ export const DropDown = ({
     const getColors = () => {
         if (expanded) {
             return {
-                color: theme.sw.colors.primary.main,
-                borderColor: theme.sw.colors.neutral[400],
+                color: theme.sw.color.primary[500],
+                borderColor: theme.sw.color.neutral[400],
             };
         }
         if (error) {
             return {
-                color: theme.sw.colors.error['main'],
-                borderColor: theme.sw.colors.error['main'],
+                color: theme.sw.color.error[500],
+                borderColor: theme.sw.color.error[500],
             };
         }
         if (selected) {
             return {
-                color: theme.sw.colors.neutral[800],
-                borderColor: theme.sw.colors.neutral[400],
+                color: theme.sw.color.neutral[800],
+                borderColor: theme.sw.color.neutral[400],
             };
         }
         return {
-            color: theme.sw.colors.neutral[500],
-            borderColor: theme.sw.colors.neutral[400],
+            color: theme.sw.color.neutral[500],
+            borderColor: theme.sw.color.neutral[400],
         };
     };
     const { color, borderColor } = getColors();
@@ -87,8 +87,9 @@ export const DropDown = ({
             ...style,
         },
         accordion: {
-            backgroundColor: theme.sw.colors.neutral[50],
-            paddingVertical: theme.sw.spacing.s,
+            backgroundColor: theme.sw.color.neutral[0],
+            // TODO: use new tokens
+            paddingVertical: 12,
             ...accordionStyle,
         },
         accordionTitle: {
@@ -101,7 +102,7 @@ export const DropDown = ({
             ...optionStyle,
         },
         optionTitle: {
-            color: theme.sw.colors.neutral[800],
+            color: theme.sw.color.neutral[800],
             fontSize: 16,
             textAlign: 'left',
         },

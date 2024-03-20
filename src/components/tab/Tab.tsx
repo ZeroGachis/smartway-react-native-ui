@@ -19,15 +19,15 @@ export const Tab = ({ selected, text, onPress, style, textStyle }: Props) => {
             flexGrow: 1,
             borderBottomWidth: 2,
             borderBottomColor: selected
-                ? theme.sw.colors.primary.main
-                : theme.sw.colors.neutral[200],
+                ? theme.sw.color.primary[500]
+                : theme.sw.color.neutral[200],
 
-            padding: theme.sw.spacing.m,
+            padding: theme.sw.spacing.s,
             ...style,
         },
         text: {
             textAlign: 'center',
-            color: selected ? theme.sw.colors.primary.main : theme.sw.colors.neutral[800],
+            color: selected ? theme.sw.color.primary[500] : theme.sw.color.neutral[800],
             ...textStyle,
         },
     });

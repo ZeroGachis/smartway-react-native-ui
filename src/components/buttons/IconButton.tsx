@@ -10,6 +10,7 @@ type FilteredIconButtonProps = Pick<
     BaseIconButtonProps,
     Exclude<keyof BaseIconButtonProps, 'mode' | 'size' | 'icon'>
 >;
+
 interface customIconButtonProps extends FilteredIconButtonProps {
     size?: 's' | 'm';
     status?: 'primary' | 'default';
@@ -19,7 +20,8 @@ interface customIconButtonProps extends FilteredIconButtonProps {
 
 export const IconButton = (props: customIconButtonProps) => {
     const theme = useTheme();
-    const size = props.size === 's' ? theme.sw.iconbuttonsize.s : theme.sw.iconbuttonsize.m;
+    // TODO: use new tokens
+    const size = props.size === 's' ? 22 : 32;
     const mode =
         props.variant === 'filled' && props.status === 'primary'
             ? 'contained-tonal'
@@ -43,37 +45,41 @@ export const IconButton = (props: customIconButtonProps) => {
         };
     }
 
-    let iconColor = theme.sw.colors.neutral[800];
+    let iconColor = theme.sw.color.neutral[800];
     if (mode === 'contained') {
         iconColor = theme.colors.onPrimary;
     }
     if (mode === undefined || mode === 'outlined') {
         iconColor =
             props.status === 'default' || props.status === undefined
-                ? theme.sw.colors.neutral[800]
-                : theme.sw.colors.neutral[600];
+                ? theme.sw.color.neutral[800]
+                : theme.sw.color.neutral[600];
     }
     if (props.disabled) {
-        iconColor = theme.sw.colors.neutral[500];
+        iconColor = theme.sw.color.neutral[500];
     }
 
     if (mode === 'outlined') {
         if (props.status === 'primary') {
             style.iconButton = {
                 ...style.iconButton,
-                ...{ borderColor: theme.sw.colors.neutral[500] + theme.sw.transparency[32] },
+                // TODO: use new tokens
+                ...{ borderColor: theme.sw.color.neutral[500] + '52' },
             };
         }
         if (props.status === 'default' || props.status === undefined) {
             style.iconButton = {
                 ...style.iconButton,
-                ...{ borderColor: theme.sw.colors.neutral[500] },
+                ...{ borderColor: theme.sw.color.neutral[500] },
             };
         }
         if (props.disabled) {
             style.iconButton = {
                 ...style.iconButton,
-                ...{ borderColor: theme.sw.colors.neutral[500] + theme.sw.transparency[24] },
+                ...{
+                    // TODO: use new tokens
+                    borderColor: theme.sw.color.neutral[500] + '3D',
+                },
             };
         }
     }
@@ -83,7 +89,9 @@ export const IconButton = (props: customIconButtonProps) => {
             {...props}
             mode={mode}
             style={[style.iconButton, props.style]}
-            icon={() => <Icon name={props.icon} size={size} color={iconColor} />}
+            icon={() => (
+                <Icon name={props.icon} size={size} color={iconColor} />
+            )}
             size={size}
         />
     );

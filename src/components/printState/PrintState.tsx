@@ -20,22 +20,24 @@ export const PrintState = ({ text, buttonLabel, onPress, style }: Props) => {
             width: '100%',
             flexDirection: 'row',
             alignItems: 'center',
-            padding: theme.sw.spacing.l,
-            backgroundColor: theme.sw.colors.neutral[50],
+            padding: theme.sw.spacing.m,
+            backgroundColor: theme.sw.color.neutral[0],
             borderRadius: 24,
             justifyContent: 'space-between',
             elevation: 1,
             ...style,
         },
         text: {
-            marginLeft: theme.sw.spacing.s,
-            color: theme.sw.colors.neutral[800],
+            // TODO: use new tokens
+            marginLeft: 12,
+            color: theme.sw.color.neutral[800],
         },
         buttonStyle: {
             borderColor: 'rgba(255, 86, 48, 0.5)',
             borderWidth: 1,
             borderRadius: 8,
-            paddingHorizontal: theme.sw.spacing.s,
+            // TODO: use new tokens
+            paddingHorizontal: 12,
         },
         iconContainer: {
             flexDirection: 'row',

@@ -16,7 +16,7 @@ export const DeleteButton = ({ onPress, testID }: Props) => {
         button: {
             flex: 1,
             justifyContent: 'center',
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
         },
         icon: {
             justifyContent: 'center',
@@ -33,7 +33,7 @@ export const DeleteButton = ({ onPress, testID }: Props) => {
             <View style={styles.icon}>
                 <Icon
                     name={'backspace'}
-                    color={theme.sw.colors.neutral[500]}
+                    color={theme.sw.color.neutral[500]}
                     size={24}
                 />
             </View>

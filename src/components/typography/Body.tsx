@@ -26,22 +26,22 @@ export const Body = (props: BodyProps) => {
     switch (size) {
         case 'B1':
             bodyStyle = {
-                fontSize: 16,
+                fontSize: theme.sw.fontSize.s,
             };
             break;
         case 'B2':
             bodyStyle = {
-                fontSize: 14,
+                fontSize: theme.sw.fontSize.xs,
             };
             break;
         case 'B3':
             bodyStyle = {
-                fontSize: 12,
+                fontSize: theme.sw.fontSize.xxs,
             };
             break;
         default:
             bodyStyle = {
-                fontSize: 14,
+                fontSize: theme.sw.fontSize.xs,
             };
             break;
     }
@@ -54,7 +54,7 @@ export const Body = (props: BodyProps) => {
     }
 
     bodyStyle = {
-        color: theme.sw.colors.neutral['800'],
+        color: theme.sw.color.neutral[800],
         ...bodyStyle,
         fontFamily: 'PublicSans-' + weightSuffix,
     };

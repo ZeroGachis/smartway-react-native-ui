@@ -19,10 +19,10 @@ export const Screen = ({ children, style, testID, statusBarColor }: Props) => {
     const styles = StyleSheet.create({
         screen: {
             flex: 1,
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
             marginTop: insets.top,
-            paddingLeft: isTablet ? theme.sw.spacing.m : 0,
-            paddingRight: isTablet ? theme.sw.spacing.m : 0,
+            paddingLeft: isTablet ? theme.sw.spacing.s : 0,
+            paddingRight: isTablet ? theme.sw.spacing.s : 0,
             ...style,
         },
     });
@@ -34,7 +34,7 @@ export const Screen = ({ children, style, testID, statusBarColor }: Props) => {
                 backgroundColor={
                     statusBarColor
                         ? statusBarColor
-                        : theme.sw.colors.neutral[50]
+                        : theme.sw.color.neutral[0]
                 }
                 barStyle='dark-content'
             />

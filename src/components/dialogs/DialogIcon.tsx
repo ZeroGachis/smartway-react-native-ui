@@ -20,11 +20,11 @@ export const DialogIcon = (props: DialogIconProps) => {
                 justifyContent: 'center',
                 borderWidth: 4,
                 borderStyle: 'solid',
-                borderColor: theme.sw.colors.neutral[200],
+                borderColor: theme.sw.color.neutral[200],
                 width: 100,
                 height: 100,
                 borderRadius: 50,
-                marginBottom: theme.sw.spacing.m,
+                marginBottom: theme.sw.spacing.s,
             }}
         >
             <View
@@ -38,7 +38,7 @@ export const DialogIcon = (props: DialogIconProps) => {
                 <Icon
                     name={props.name}
                     size={42}
-                    color={props.color ?? theme.sw.colors.neutral[600]}
+                    color={props.color ?? theme.sw.color.neutral[600]}
                 />
             </View>
         </View>

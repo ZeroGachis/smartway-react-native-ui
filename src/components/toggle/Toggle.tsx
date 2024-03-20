@@ -66,7 +66,8 @@ export const Toggle = ({ isToggled, onValueChange, style, text, textStyle }: Pro
         const backgroundColor = interpolateColor(
             progress.value,
             [0, 1],
-            [theme.sw.colors.success[400], theme.sw.colors.neutral[400]],
+            // TODO: use new tokens
+            ['#22c55e', theme.sw.color.neutral[400]],
         );
         return {
             backgroundColor,
@@ -85,12 +86,12 @@ export const Toggle = ({ isToggled, onValueChange, style, text, textStyle }: Pro
             width: 22.5,
             height: 22.5,
             borderRadius: 50,
-            backgroundColor: theme.sw.colors.neutral[50],
+            backgroundColor: theme.sw.color.neutral[0],
             zIndex: 1,
         },
         text: {
             position: 'absolute',
-            color: isToggled ? theme.sw.colors.neutral[50] : theme.sw.colors.neutral[600],
+            color: isToggled ? theme.sw.color.neutral[0] : theme.sw.color.neutral[600],
             left: 50,
             ...textStyle,
         },

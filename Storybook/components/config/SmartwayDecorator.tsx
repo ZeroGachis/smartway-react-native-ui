@@ -1,5 +1,8 @@
 import React, { PropsWithChildren } from 'react';
-import { Screen, ThemeProvider } from 'smartway-react-native-ui';
+import {
+    Screen,
+    ThemeProvider,
+} from 'smartway-react-native-ui';
 
 type SmartwayDecoratorProps = PropsWithChildren;
 

@@ -77,8 +77,9 @@ function getColors(
     statusVariant: `${LabelStatus}-${LabelVariant}`,
     theme: Theme,
 ) {
-    const transparencyValue = theme.sw.transparency[16];
-    const swColors = theme.sw.colors;
+    // TODO: use new tokens
+    const transparencyValue = '29';
+    const swColors = theme.sw.color;
     return (
         new Map<
             typeof statusVariant,
@@ -87,73 +88,73 @@ function getColors(
             [
                 'primary-filled',
                 {
-                    backgroundColor: swColors.primary.main,
-                    color: swColors.neutral[50],
+                    backgroundColor: swColors.primary[500],
+                    color: swColors.neutral[0],
                 },
             ],
             [
                 'primary-soft',
                 {
-                    backgroundColor: swColors.primary.main + transparencyValue,
-                    color: swColors.primary[600],
+                    backgroundColor: swColors.primary[500] + transparencyValue,
+                    color: swColors.primary[700],
                 },
             ],
             [
                 'primary-outlined',
                 {
-                    borderColor: swColors.primary.main,
-                    color: swColors.primary.main,
+                    borderColor: swColors.primary[500],
+                    color: swColors.primary[500],
                 },
             ],
             [
                 'secondary-filled',
                 {
-                    backgroundColor: swColors.secondary[400],
-                    color: swColors.neutral[50],
+                    backgroundColor: swColors.secondary[500],
+                    color: swColors.neutral[0],
                 },
             ],
             [
                 'secondary-soft',
                 {
                     backgroundColor:
-                        swColors.secondary[400] + transparencyValue,
-                    color: swColors.secondary[600],
+                        swColors.secondary[500] + transparencyValue,
+                    color: swColors.secondary[700],
                 },
             ],
             [
                 'secondary-outlined',
                 {
-                    borderColor: swColors.secondary[400],
-                    color: swColors.secondary[400],
+                    borderColor: swColors.secondary[500],
+                    color: swColors.secondary[500],
                 },
             ],
             [
                 'information-filled',
                 {
-                    backgroundColor: swColors.information[400],
-                    color: swColors.neutral[50],
+                    backgroundColor: swColors.info[500],
+                    color: swColors.neutral[0],
                 },
             ],
             [
                 'information-soft',
                 {
-                    backgroundColor:
-                        swColors.information[400] + transparencyValue,
-                    color: swColors.information[600],
+                    backgroundColor: swColors.info[500] + transparencyValue,
+                    color: swColors.info[700],
                 },
             ],
             [
                 'information-outlined',
                 {
-                    borderColor: swColors.information[400],
-                    color: swColors.information[400],
+                    borderColor: swColors.info[500],
+                    color: swColors.info[500],
                 },
             ],
             [
                 'success-filled',
                 {
-                    backgroundColor: swColors.success[400],
-                    color: swColors.neutral[50],
+                    // TODO: use new tokens
+                    backgroundColor: '#22c55e',
+                    color: swColors.neutral[0],
                 },
             ],
             [
@@ -166,50 +167,54 @@ function getColors(
             [
                 'success-outlined',
                 {
-                    borderColor: swColors.success[400],
-                    color: swColors.success[400],
+                    // TODO: use new tokens
+                    borderColor: '#22c55e',
+                    color: '#22c55e',
                 },
             ],
             [
                 'warning-filled',
                 {
-                    backgroundColor: swColors.warning[400],
-                    color: swColors.neutral[50],
+                    // TODO: use new tokens
+                    backgroundColor: '#f59e0b',
+                    color: swColors.neutral[0],
                 },
             ],
             [
                 'warning-soft',
                 {
-                    backgroundColor: swColors.warning[400] + transparencyValue,
-                    color: swColors.warning[600],
+                    // TODO: use new tokens
+                    backgroundColor: '#f59e0b' + transparencyValue,
+                    color: '#B76E00',
                 },
             ],
             [
                 'warning-outlined',
                 {
-                    borderColor: swColors.warning[400],
-                    color: swColors.warning[400],
+                    // TODO: use new tokens
+                    borderColor: '#f59e0b',
+                    color: '#f59e0b',
                 },
             ],
             [
                 'error-filled',
                 {
-                    backgroundColor: swColors.error['main'],
-                    color: swColors.neutral[50],
+                    backgroundColor: swColors.error[500],
+                    color: swColors.neutral[0],
                 },
             ],
             [
                 'error-soft',
                 {
-                    backgroundColor: swColors.error['main'] + transparencyValue,
-                    color: swColors.error[600],
+                    backgroundColor: swColors.error[500] + transparencyValue,
+                    color: swColors.error[700],
                 },
             ],
             [
                 'error-outlined',
                 {
-                    borderColor: swColors.error['main'],
-                    color: swColors.error['main'],
+                    borderColor: swColors.error[500],
+                    color: swColors.error[500],
                 },
             ],
             [
@@ -222,7 +227,7 @@ function getColors(
             [
                 'neutral-soft',
                 {
-                    backgroundColor: swColors.neutral[50],
+                    backgroundColor: swColors.neutral[0],
                     color: swColors.neutral[800],
                 },
             ],
