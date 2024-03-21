@@ -14,7 +14,7 @@ const TopAppBarAction = (props: TopAppBarActionProps) => {
             color={theme.sw.color.neutral[600]}
             style={styles.button}
             // TODO: use new tokens
-            size={26}
+            size={32}
             {...props}
         />
     );
@@ -25,7 +25,7 @@ function useStyles(theme: Theme) {
 
     return StyleSheet.create({
         button: {
-            backgroundColor: 'rgba(145, 158, 171, 0.24)',
+            backgroundColor: theme.sw.color.neutral[300],
             borderRadius: 18,
             marginLeft: isTablet ? 12 : theme.sw.spacing.xs,
         },
