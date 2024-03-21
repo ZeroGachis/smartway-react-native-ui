@@ -9,7 +9,11 @@ export interface Props {
     dashed?: boolean;
 }
 
-export const Divider = ({ style, orientation = 'horizontal', dashed = false }: Props) => {
+export const Divider = ({
+    style,
+    orientation = 'horizontal',
+    dashed = false,
+}: Props) => {
     const theme = useTheme();
     const [lineLength, setLineLength] = useState(0);
 
@@ -18,8 +22,7 @@ export const Divider = ({ style, orientation = 'horizontal', dashed = false }: P
             ...style,
         },
         line: {
-            // TODO: use new tokens
-            color: theme.sw.color.neutral[500] + '3D',
+            color: theme.sw.color.neutral[300],
         },
     });
     const isRow = orientation == 'horizontal';
