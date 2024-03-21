@@ -38,8 +38,8 @@ export function TopAppBar({
     const headlineSize = isTablet
         ? 'h1'
         : isTitleBelowTopAppBar(size)
-        ? 'h3'
-        : 'h1';
+          ? 'h3'
+          : 'h1';
 
     return (
         <Appbar.Header
@@ -86,7 +86,7 @@ function useStyles(
 
     return StyleSheet.create({
         button: {
-            backgroundColor: 'rgba(145, 158, 171, 0.24)',
+            backgroundColor: theme.sw.color.neutral['300'],
             borderRadius: 18,
             marginLeft: isTablet ? 12 : theme.sw.spacing.xs,
         },
