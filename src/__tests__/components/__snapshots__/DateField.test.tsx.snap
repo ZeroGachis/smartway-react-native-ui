@@ -257,7 +257,7 @@ exports[`MODULE | DateField component renders correctly in error state 1`] = `
       selectionColor="#18a58629"
       style={
         {
-          "backgroundColor": "#ff563014",
+          "backgroundColor": "#ffe4de",
           "borderColor": undefined,
           "borderRadius": 18,
           "borderWidth": 0,
