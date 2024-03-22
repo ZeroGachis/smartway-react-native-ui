@@ -136,9 +136,7 @@ function useDateFieldStyle(
                 break;
             case 'error':
                 textColor = theme.sw.color.error[500];
-                backgroundColor =
-                    // TODO: use new tokens
-                    theme.sw.color.error[500] + '14';
+                backgroundColor = theme.sw.color.error[100];
                 break;
             default:
                 textColor = theme.sw.color.neutral[500];
