@@ -130,9 +130,7 @@ function useDateFieldStyle(
                 break;
             case 'filled':
                 textColor = theme.sw.color.neutral[800];
-                backgroundColor =
-                    // TODO: use new tokens
-                    theme.sw.color.neutral[500] + '14';
+                backgroundColor = theme.sw.color.neutral[200];
                 break;
             case 'error':
                 textColor = theme.sw.color.error[500];
@@ -140,9 +138,7 @@ function useDateFieldStyle(
                 break;
             default:
                 textColor = theme.sw.color.neutral[500];
-                backgroundColor =
-                    // TODO: use new tokens
-                    theme.sw.color.neutral[500] + '14';
+                backgroundColor = theme.sw.color.neutral[200];
                 break;
         }
         return { backgroundColor, borderColor, textColor };
