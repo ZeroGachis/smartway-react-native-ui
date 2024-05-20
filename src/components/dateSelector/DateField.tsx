@@ -47,14 +47,14 @@ export const DateField = forwardRef<TextInput, DateFieldProps>(
                 value={value}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                keyboardType='numeric'
+                keyboardType="numeric"
                 cursorColor={theme.sw.color.primary[500]}
                 selectionColor={
                     // TODO: use new tokens
                     theme.sw.color.primary[500] + '29'
                 }
                 selectTextOnFocus={true}
-                textAlign='center'
+                textAlign="center"
                 placeholderTextColor={style.placeholder.color}
                 onChangeText={onChangeText}
             />
@@ -64,26 +64,12 @@ export const DateField = forwardRef<TextInput, DateFieldProps>(
 
 DateField.displayName = 'DateFieldRef';
 
-function useDateFieldStyle(
-    hasError: boolean | undefined,
-    isFocused: boolean,
-    value: string,
-) {
-    type State =
-        | 'readonly'
-        | 'filled'
-        | 'empty'
-        | 'filled-focused'
-        | 'empty-focused'
-        | 'error';
+function useDateFieldStyle(hasError: boolean | undefined, isFocused: boolean, value: string) {
+    type State = 'readonly' | 'filled' | 'empty' | 'filled-focused' | 'empty-focused' | 'error';
 
     const theme = useTheme();
 
-    function getState(
-        hasError: boolean | undefined,
-        isFocused: boolean,
-        value: string,
-    ): State {
+    function getState(hasError: boolean | undefined, isFocused: boolean, value: string): State {
         if (hasError) {
             return 'error';
         }
@@ -145,10 +131,7 @@ function useDateFieldStyle(
     }
 
     function getStyle(theme: Theme, state: State) {
-        const { backgroundColor, borderColor, textColor } = getTextInputStyle(
-            theme,
-            state,
-        );
+        const { backgroundColor, borderColor, textColor } = getTextInputStyle(theme, state);
 
         const placeholderColorsStyle = getPlaceholderColorsStyle(theme, state);
 
