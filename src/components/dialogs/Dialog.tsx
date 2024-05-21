@@ -1,11 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import {
-    Dimensions,
-    StyleSheet,
-    TextStyle,
-    View,
-    ViewStyle,
-} from 'react-native';
+import { Dimensions, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import { Dialog as BaseDialog, Portal } from 'react-native-paper';
 import { Button } from '../buttons/Button';
 import { Headline } from '../typography/Headline';
@@ -41,14 +35,7 @@ export interface DialogProps extends PropsWithChildren {
 }
 
 export const Dialog = (props: DialogProps) => {
-    const {
-        style,
-        actionsStyle,
-        leftActionsStyle,
-        rightActionsStyle,
-        actions,
-        variant,
-    } = props;
+    const { style, actionsStyle, leftActionsStyle, rightActionsStyle, actions, variant } = props;
 
     const styles = useStyles({
         style,
@@ -74,10 +61,8 @@ export const Dialog = (props: DialogProps) => {
                         color={props.icon.color ? props.icon.color : undefined}
                     />
                 )}
-                <BaseDialog.Title testID={'PopupTitle'}>
-                    <Headline size='h4' style={styles.title}>
-                        {props.title}
-                    </Headline>
+                <BaseDialog.Title testID={'PopupTitle'} style={styles.title}>
+                    <Headline size="h4">{props.title}</Headline>
                 </BaseDialog.Title>
                 <BaseDialog.Content style={styles.dialogContent}>
                     {props.children}
@@ -85,7 +70,7 @@ export const Dialog = (props: DialogProps) => {
                 <View style={styles.actions}>
                     {props.actions.cancel && (
                         <Button
-                            variant='text'
+                            variant="text"
                             onPress={props.actions.cancel.onPress}
                             testID={'PopupDismissButton'}
                             style={styles.leftOption}
@@ -96,7 +81,7 @@ export const Dialog = (props: DialogProps) => {
                         </Button>
                     )}
                     <Button
-                        variant='filled'
+                        variant="filled"
                         status={'primary'}
                         onPress={props.actions.confirm.onPress}
                         testID={'PopupConfirmButton'}
@@ -114,11 +99,7 @@ export const Dialog = (props: DialogProps) => {
 
 type UseStylesProps = Pick<
     DialogProps,
-    | 'style'
-    | 'actionsStyle'
-    | 'leftActionsStyle'
-    | 'rightActionsStyle'
-    | 'variant'
+    'style' | 'actionsStyle' | 'leftActionsStyle' | 'rightActionsStyle' | 'variant'
 > & {
     cancel: DialogProps['actions']['cancel'];
 };
@@ -148,7 +129,6 @@ function useStyles({
         title: {
             textAlign: variant ?? 'left',
             fontSize: 20,
-            lineHeight: 20,
             fontFamily: 'PublicSans-Bold',
             marginTop: 0,
             marginHorizontal: 0,
