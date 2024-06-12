@@ -140,9 +140,6 @@ export const NumberSelector = ({
 
     const onChangeText = (text: string) => {
         refInput.current.focus();
-        setFieldState(
-            text !== initialValue?.toString() ? 'filled' : 'filledWithDefault',
-        );
         if (validator.validateFormat(text)) {
             setTempValue(text);
             setLastValidValue(getParsedValue());
@@ -165,7 +162,11 @@ export const NumberSelector = ({
         setAfterFirstFocus(true);
         setFocused(true);
         clearPlaceHolder();
-        resetCursorToEnd();
+        if (isInitialValue()) {
+            selectAll();
+        } else {
+            resetCursorToEnd();
+        }
     };
 
     const onBlur = () => {
@@ -185,9 +186,21 @@ export const NumberSelector = ({
     const resetCursorToBeginning = () => {
         setSelection({ start: 0 });
     };
+    const selectAll = () => {
+        setSelection({ start: 0, end: value?.toString().length });
+    };
+
+    const isInitialValue = () => {
+        return tempValue === initialValue?.toString();
+    };
+
     useEffect(() => {
         setTempValue(value?.toString() ?? placeholder);
     }, [value, placeholder]);
+
+    useEffect(() => {
+        setFieldState(isInitialValue() ? 'filledWithDefault' : 'filled');
+    }, [tempValue, initialValue]);
 
     useEffect(() => {
         if (editingEnded && editingSource !== undefined) {
