@@ -140,9 +140,6 @@ export const NumberSelector = ({
 
     const onChangeText = (text: string) => {
         refInput.current.focus();
-        setFieldState(
-            text !== initialValue?.toString() ? 'filled' : 'filledWithDefault',
-        );
         if (validator.validateFormat(text)) {
             setTempValue(text);
             setLastValidValue(getParsedValue());
@@ -188,6 +185,10 @@ export const NumberSelector = ({
     useEffect(() => {
         setTempValue(value?.toString() ?? placeholder);
     }, [value, placeholder]);
+
+    useEffect(() => {
+        setFieldState(tempValue !== initialValue?.toString() ? 'filled' : 'filledWithDefault');
+    }, [tempValue, initialValue]);
 
     useEffect(() => {
         if (editingEnded && editingSource !== undefined) {
