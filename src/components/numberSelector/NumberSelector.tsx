@@ -42,10 +42,7 @@ export const ComputeCrementedValue = (
     } else if (step > 0) {
         crementedValue = Math.ceil(value) + step - 1;
     }
-    return Math.max(
-        Math.min(crementedValue, validator.maxValue),
-        validator.minValue,
-    );
+    return Math.max(Math.min(crementedValue, validator.maxValue), validator.minValue);
 };
 
 export const NumberSelector = ({
@@ -66,19 +63,14 @@ export const NumberSelector = ({
 }: Props) => {
     const [tempValue, setTempValue] = useState<string>('');
     const [editingEnded, setEditingEnded] = useState<boolean>(false);
-    const [editingSource, setEditingSource] = useState<Source | undefined>(
-        undefined,
-    );
+    const [editingSource, setEditingSource] = useState<Source | undefined>(undefined);
 
     const [lastValidValue, setLastValidValue] = useState<number | undefined>();
-    const [softInputOnFocus, setSoftInputOnFocus] =
-        useState(showSoftInputOnFocus);
+    const [softInputOnFocus, setSoftInputOnFocus] = useState(showSoftInputOnFocus);
     const [afterFirstFocus, setAfterFirstFocus] = useState(false);
     const [error, setError] = useState(false);
     const [focused, setFocused] = useState(false);
-    const [selection, setSelection] = useState<
-        { start: number; end?: number } | undefined
-    >({
+    const [selection, setSelection] = useState<{ start: number; end?: number } | undefined>({
         start: 0,
         end: 0,
     });
@@ -91,15 +83,11 @@ export const NumberSelector = ({
     }, [selection]);
 
     const computeIncrementedValue = (): number => {
-        return RoundValue(
-            ComputeCrementedValue(getParsedValue(), incrementStep, validator),
-        );
+        return RoundValue(ComputeCrementedValue(getParsedValue(), incrementStep, validator));
     };
 
     const computeDecrementedValue = (): number => {
-        return RoundValue(
-            ComputeCrementedValue(getParsedValue(), -decrementStep, validator),
-        );
+        return RoundValue(ComputeCrementedValue(getParsedValue(), -decrementStep, validator));
     };
 
     const isConsideredEmptyValue = (value: string) => {
@@ -222,7 +210,7 @@ export const NumberSelector = ({
                 onPress={onMinus}
                 size={size}
                 disabled={minusDisabled}
-                testID='number_selector_minus_button'
+                testID="number_selector_minus_button"
             />
 
             <NumberField
@@ -232,7 +220,7 @@ export const NumberSelector = ({
                 onPressIn={() => setSoftInputOnFocus(true)}
                 onPressOut={() => setSoftInputOnFocus(false)}
                 selectTextOnFocus={selectTextOnFocus}
-                keyboardType='number-pad'
+                keyboardType="number-pad"
                 value={tempValue}
                 onChangeText={onChangeText}
                 onFocus={onFocus}
@@ -252,7 +240,7 @@ export const NumberSelector = ({
                 onPress={onAdd}
                 disabled={addDisabled}
                 size={size}
-                testID='number_selector_plus_button'
+                testID="number_selector_plus_button"
             />
         </View>
     );
