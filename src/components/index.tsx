@@ -7,7 +7,6 @@ import { Body } from './typography/Body';
 import { ActionCard } from './actionCard/ActionCard';
 import { Dialog } from './dialogs/Dialog';
 import { TextField } from './fields/TextField';
-import { NumberField } from './numberField/NumberField';
 import { Icon } from './icons/Icon';
 import { Keyboard } from './keyboard/Keyboard';
 import { BottomSheet } from './bottomSheet/BottomSheet';
@@ -18,9 +17,6 @@ import { Menu } from './menu/Menu';
 import { TopAppBar } from './topAppBar/TopAppBar';
 import { PrintState } from './printState/PrintState';
 import { EANInput } from './EANInput/EANInput';
-import { ModifyQuantity } from './modifyQuantity/ModifyQuantity';
-import { NumberSelector } from './numberSelector/NumberSelector';
-import { NumberValidator } from './numberField/NumberValidator';
 import { Card } from './card/Card';
 import { Tab } from './tab/Tab';
 import { Label } from './label/Label';
@@ -45,7 +41,6 @@ export {
     Logo,
     Screen,
     TextField,
-    NumberField,
     DropDown,
     BottomSheet,
     Toggle,
@@ -55,8 +50,6 @@ export {
     PrintState,
     EANInput,
     SnackBar,
-    ModifyQuantity,
-    NumberSelector,
     Card,
     Tab,
     Label,
@@ -66,5 +59,4 @@ export {
     Badge,
     DateField,
     DateSelector,
-    NumberValidator,
 };
