@@ -63,6 +63,11 @@ android/keystores/debug.keystore
 # Expo
 .expo/
 
+# Yalc
+*.yalc/
+*.yalc
+yalc.lock
+
 # Turborepo
 .turbo/
 
