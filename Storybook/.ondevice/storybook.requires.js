@@ -49,11 +49,9 @@ try {
 
 const getStories = () => {
   return {
-    "./components/ActionCard/ActionCard.stories.tsx": require("../components/ActionCard/ActionCard.stories.tsx"),
     "./components/Alert/Banner.stories.tsx": require("../components/Alert/Banner.stories.tsx"),
     "./components/Alert/SnackBar.stories.tsx": require("../components/Alert/SnackBar.stories.tsx"),
     "./components/Badge/Badge.stories.tsx": require("../components/Badge/Badge.stories.tsx"),
-    "./components/BottomSheet/BottomSheet.stories.tsx": require("../components/BottomSheet/BottomSheet.stories.tsx"),
     "./components/Button/Button.stories.tsx": require("../components/Button/Button.stories.tsx"),
     "./components/Card/Card.stories.tsx": require("../components/Card/Card.stories.tsx"),
     "./components/Colors/Colors.stories.tsx": require("../components/Colors/Colors.stories.tsx"),
@@ -61,16 +59,8 @@ const getStories = () => {
     "./components/DateSelector/DateSelector.stories.tsx": require("../components/DateSelector/DateSelector.stories.tsx"),
     "./components/Dialog/Dialog.stories.tsx": require("../components/Dialog/Dialog.stories.tsx"),
     "./components/Divider/Divider.stories.tsx": require("../components/Divider/Divider.stories.tsx"),
-    "./components/DropDown/DropDown.stories.tsx": require("../components/DropDown/DropDown.stories.tsx"),
-    "./components/Keyboard/Keyboard.stories.tsx": require("../components/Keyboard/Keyboard.stories.tsx"),
     "./components/Label/Label.stories.tsx": require("../components/Label/Label.stories.tsx"),
-    "./components/Menu/Menu.stories.tsx": require("../components/Menu/Menu.stories.tsx"),
-    "./components/ModifyQuantity/ModifyQuantity.stories.tsx": require("../components/ModifyQuantity/ModifyQuantity.stories.tsx"),
     "./components/NumberField/NumberField.stories.tsx": require("../components/NumberField/NumberField.stories.tsx"),
-    "./components/NumberSelector/NumberSelector.stories.tsx": require("../components/NumberSelector/NumberSelector.stories.tsx"),
-    "./components/PrintState/PrintState.stories.tsx": require("../components/PrintState/PrintState.stories.tsx"),
-    "./components/Product/Product.stories.tsx": require("../components/Product/Product.stories.tsx"),
-    "./components/Tab/Tab.stories.tsx": require("../components/Tab/Tab.stories.tsx"),
     "./components/TextField/TextField.stories.tsx": require("../components/TextField/TextField.stories.tsx"),
     "./components/Toggle/Toggle.stories.tsx": require("../components/Toggle/Toggle.stories.tsx"),
     "./components/TopAppBar/TopAppBar.stories.tsx": require("../components/TopAppBar/TopAppBar.stories.tsx"),
