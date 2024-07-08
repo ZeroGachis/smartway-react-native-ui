@@ -10,6 +10,8 @@ export {
     Screen,
     Snackbar,
     useSnackbar,
+    NumberField,
+    FieldState,
     Banner,
     useBanner,
     TopAppBar,

@@ -16,6 +16,7 @@ import { Badge } from './badge/Badge';
 import { DateField } from './dateSelector/DateField';
 import { DateSelector } from './dateSelector/DateSelector';
 import { Label } from './typography/Label';
+import { FieldState, NumberField } from './numberField/NumberField';
 
 export { default as Snackbar, useSnackbar } from './alert/Snackbar';
 export { default as Banner, useBanner } from './alert/Banner';
@@ -32,6 +33,8 @@ export {
     Screen,
     TextField,
     TopAppBar,
+    NumberField,
+    FieldState,
     Card,
     Tag,
     Divider,
