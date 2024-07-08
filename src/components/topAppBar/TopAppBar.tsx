@@ -35,19 +35,10 @@ export function TopAppBar({
 }: TopAppBarProps) {
     const styles = useStyles(size, style);
 
-    const headlineSize = isTablet
-        ? 'h1'
-        : isTitleBelowTopAppBar(size)
-          ? 'h3'
-          : 'h1';
+    const headlineSize = isTablet ? 'n1' : isTitleBelowTopAppBar(size) ? 'n2' : 'n1';
 
     return (
-        <Appbar.Header
-            mode={size}
-            style={styles.header}
-            statusBarHeight={0}
-            testID={testID}
-        >
+        <Appbar.Header mode={size} style={styles.header} statusBarHeight={0} testID={testID}>
             {onBack !== undefined && (
                 <Appbar.BackAction
                     style={styles.button}
@@ -59,7 +50,7 @@ export function TopAppBar({
             <Appbar.Content
                 title={
                     typeof title.value === 'string' ? (
-                        <Headline size={headlineSize} style={styles.title}>
+                        <Headline typography={headlineSize} style={styles.title}>
                             {title.value}
                         </Headline>
                     ) : (
@@ -78,10 +69,7 @@ TopAppBar.Action = TopAppBarAction;
 TopAppBar.Menu = TopAppBarMenu;
 TopAppBar.MenuItem = TopAppBarMenuItem;
 
-function useStyles(
-    size: TopAppBarProps['size'],
-    style: TopAppBarProps['style'],
-) {
+function useStyles(size: TopAppBarProps['size'], style: TopAppBarProps['style']) {
     const theme = useTheme();
 
     return StyleSheet.create({

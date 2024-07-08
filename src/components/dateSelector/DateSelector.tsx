@@ -107,7 +107,7 @@ export const DateSelector = ({
                     onFocus={handleOnFocus}
                 />
                 <View style={styles.slashContainer}>
-                    <Headline size='h4' style={styles.slash}>
+                    <Headline typography="n4" style={styles.slash}>
                         /
                     </Headline>
                 </View>
@@ -122,7 +122,7 @@ export const DateSelector = ({
                     onFocus={handleOnFocus}
                 />
                 <View style={styles.slashContainer}>
-                    <Headline size='h4' style={styles.slash}>
+                    <Headline typography="n4" style={styles.slash}>
                         /
                     </Headline>
                 </View>

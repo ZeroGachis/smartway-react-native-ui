@@ -62,7 +62,7 @@ export const Dialog = (props: DialogProps) => {
                     />
                 )}
                 <BaseDialog.Title testID={'PopupTitle'} style={styles.title}>
-                    <Headline size="h4">{props.title}</Headline>
+                    <Headline typography="n4">{props.title}</Headline>
                 </BaseDialog.Title>
                 <BaseDialog.Content style={styles.dialogContent}>
                     {props.children}
@@ -128,8 +128,6 @@ function useStyles({
         },
         title: {
             textAlign: variant ?? 'left',
-            fontSize: 20,
-            fontFamily: 'PublicSans-Bold',
             marginTop: 0,
             marginHorizontal: 0,
         },

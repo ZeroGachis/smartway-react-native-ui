@@ -8,15 +8,19 @@ export default {
     title: 'typography/Headline',
     component: Headline,
     argTypes: {
-        size: {
+        token: {
             control: { type: 'radio' },
-            options: ['h1', 'h2', 'h3', 'h4'],
+            options: ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'],
         },
     },
     decorators: [
         (Story) => {
             const styles = StyleSheet.create({
-                container: { alignItems: 'center', justifyContent: 'center', flex: 1 },
+                container: {
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flex: 1,
+                },
             });
             return (
                 <View style={styles.container}>
