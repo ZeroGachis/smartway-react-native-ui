@@ -15,6 +15,7 @@ import { LineChart } from './charts/LineChart';
 import { Badge } from './badge/Badge';
 import { DateField } from './dateSelector/DateField';
 import { DateSelector } from './dateSelector/DateSelector';
+import { Label } from './typography/Label';
 
 export { default as Snackbar, useSnackbar } from './alert/Snackbar';
 export { default as Banner, useBanner } from './alert/Banner';
@@ -27,6 +28,7 @@ export {
     Headline,
     Icon,
     Logo,
+    Label,
     Screen,
     TextField,
     TopAppBar,

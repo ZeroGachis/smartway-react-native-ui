@@ -17,6 +17,7 @@ export {
     Tag,
     Divider,
     LineChart,
+    Label,
     Badge,
     DateField,
     DateSelector,

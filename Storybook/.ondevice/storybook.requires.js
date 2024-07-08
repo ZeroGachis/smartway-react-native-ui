@@ -66,6 +66,7 @@ const getStories = () => {
     "./components/TopAppBar/TopAppBar.stories.tsx": require("../components/TopAppBar/TopAppBar.stories.tsx"),
     "./components/Typography/Body.stories.tsx": require("../components/Typography/Body.stories.tsx"),
     "./components/Typography/Headline.stories.tsx": require("../components/Typography/Headline.stories.tsx"),
+    "./components/Typography/Label.stories.tsx": require("../components/Typography/Label.stories.tsx"),
   };
 };
 
