@@ -4,8 +4,8 @@ import { Theme, useTheme } from '../../styles/themes';
 
 import { Body } from '../typography/Body';
 
-type LabelVariant = 'outlined' | 'filled' | 'soft';
-type LabelStatus =
+type TagVariant = 'outlined' | 'filled' | 'soft';
+type TagStatus =
     | 'error'
     | 'warning'
     | 'success'
@@ -16,8 +16,8 @@ type LabelStatus =
 
 type Props = {
     text: string;
-    status: LabelStatus;
-    variant: LabelVariant;
+    status: TagStatus;
+    variant: TagVariant;
     textStyle?: TextStyle;
     style?: ViewStyle;
     size?: 'm' | 's';
@@ -26,7 +26,7 @@ type Props = {
     'size' | 'weight' | 'variant' | 'style' | 'children'
 >;
 
-export const Label = (props: Props) => {
+export const Tag = (props: Props) => {
     const {
         style,
         textStyle,
@@ -73,10 +73,7 @@ export const Label = (props: Props) => {
     );
 };
 
-function getColors(
-    statusVariant: `${LabelStatus}-${LabelVariant}`,
-    theme: Theme,
-) {
+function getColors(statusVariant: `${TagStatus}-${TagVariant}`, theme: Theme) {
     // TODO: use new tokens
     const transparencyValue = '29';
     const swColors = theme.sw.color;

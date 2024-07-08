@@ -9,7 +9,7 @@ import { TextField } from './fields/TextField';
 import { Icon } from './icons/Icon';
 import { TopAppBar } from './topAppBar/TopAppBar';
 import { Card } from './card/Card';
-import { Label } from './label/Label';
+import { Tag } from './tag/Tag';
 import { Divider } from './divider/Divider';
 import { LineChart } from './charts/LineChart';
 import { Badge } from './badge/Badge';
@@ -31,7 +31,7 @@ export {
     TextField,
     TopAppBar,
     Card,
-    Label,
+    Tag,
     Divider,
     LineChart,
     Badge,

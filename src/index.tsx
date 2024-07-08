@@ -14,7 +14,7 @@ export {
     useBanner,
     TopAppBar,
     Card,
-    Label,
+    Tag,
     Divider,
     LineChart,
     Badge,
