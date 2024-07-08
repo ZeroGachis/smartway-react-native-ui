@@ -2,61 +2,22 @@ import React from 'react';
 import { StyleProp, Text, TextStyle } from 'react-native';
 import type { TextProps } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
+import { tokens } from '@zerogachis/smartway-design-token';
+import { getFont } from './utils';
 
-export const toCamelCase = (str: string): string =>
-    str
-        .split('-')
-        .map(([first, ...rest]) => {
-            if (first === undefined) return '';
-            return first.toUpperCase() + rest.join('').toLowerCase();
-        })
-        .join('');
+type BodyTypography = keyof typeof tokens.typography.body;
 
 export interface BodyProps extends TextProps<Text> {
-    size?: 'B1' | 'B2' | 'B3';
-    weight?: 'regular' | 'semi-bold' | 'bold';
+    typography?: BodyTypography;
 }
 
-export const Body = (props: BodyProps) => {
-    const { size, weight, children, style } = props;
-    const weightSuffix = toCamelCase(weight === undefined ? 'regular' : weight);
+export const Body = ({ typography = 'n4', children, style, ...props }: BodyProps) => {
     const theme = useTheme();
 
-    let bodyStyle: StyleProp<TextStyle> = style;
-    switch (size) {
-        case 'B1':
-            bodyStyle = {
-                fontSize: theme.sw.fontSize.s,
-            };
-            break;
-        case 'B2':
-            bodyStyle = {
-                fontSize: theme.sw.fontSize.xs,
-            };
-            break;
-        case 'B3':
-            bodyStyle = {
-                fontSize: theme.sw.fontSize.xxs,
-            };
-            break;
-        default:
-            bodyStyle = {
-                fontSize: theme.sw.fontSize.xs,
-            };
-            break;
-    }
-
-    if (weight === 'bold') {
-        bodyStyle = {
-            ...bodyStyle,
-            lineHeight: 20,
-        };
-    }
-
-    bodyStyle = {
+    const bodyStyle: StyleProp<TextStyle> = {
         color: theme.sw.color.neutral[800],
-        ...bodyStyle,
-        fontFamily: 'PublicSans-' + weightSuffix,
+        fontSize: tokens.typography.body[typography]?.fontSize,
+        fontFamily: getFont(tokens.typography.body[typography]),
     };
 
     return (

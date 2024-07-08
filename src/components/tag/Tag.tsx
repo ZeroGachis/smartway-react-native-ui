@@ -38,10 +38,7 @@ export const Tag = (props: Props) => {
     } = props;
     const theme = useTheme();
 
-    const { backgroundColor, color, borderColor } = getColors(
-        `${status}-${variant}`,
-        theme,
-    );
+    const { backgroundColor, color, borderColor } = getColors(`${status}-${variant}`, theme);
 
     const styles = StyleSheet.create({
         container: {
@@ -61,12 +58,7 @@ export const Tag = (props: Props) => {
     });
     return (
         <View style={styles.container}>
-            <Body
-                {...bodyProps}
-                style={styles.text}
-                size={size == 'm' ? 'B1' : 'B2'}
-                weight={'bold'}
-            >
+            <Body {...bodyProps} style={styles.text} typography={size == 'm' ? 'n1' : 'n3'}>
                 {text}
             </Body>
         </View>
@@ -113,8 +105,7 @@ function getColors(statusVariant: `${TagStatus}-${TagVariant}`, theme: Theme) {
             [
                 'secondary-soft',
                 {
-                    backgroundColor:
-                        swColors.secondary[500] + transparencyValue,
+                    backgroundColor: swColors.secondary[500] + transparencyValue,
                     color: swColors.secondary[700],
                 },
             ],

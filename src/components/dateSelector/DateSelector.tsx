@@ -5,10 +5,7 @@ import { useTheme } from '../../styles/themes';
 import { Headline } from '../typography/Headline';
 import { Body } from '../typography/Body';
 import { WithTestID } from 'src/shared/type';
-import {
-    hideKeyboard,
-    useListenerOnKeyboardHiding,
-} from '../../shared/keyboardUtils';
+import { hideKeyboard, useListenerOnKeyboardHiding } from '../../shared/keyboardUtils';
 
 type DateSelectorProps = WithTestID<{
     prefilled: Date;
@@ -48,12 +45,7 @@ export const DateSelector = ({
     const prefilledFields = fromDateToFields(prefilled);
 
     const leaveDateSelector = useCallback(() => {
-        const completeFields = filledFieldsValues(
-            prefilledFields,
-            dayField,
-            monthField,
-            yearField,
-        );
+        const completeFields = filledFieldsValues(prefilledFields, dayField, monthField, yearField);
 
         setDayField(completeFields.dayField);
         setMonthField(completeFields.monthField);
@@ -61,14 +53,7 @@ export const DateSelector = ({
         setDisplayError(!!errorMessage);
 
         onUpdatedDate(fromFieldsToDate(completeFields));
-    }, [
-        prefilledFields,
-        dayField,
-        monthField,
-        yearField,
-        errorMessage,
-        onUpdatedDate,
-    ]);
+    }, [prefilledFields, dayField, monthField, yearField, errorMessage, onUpdatedDate]);
 
     useListenerOnKeyboardHiding(leaveDateSelector);
 
@@ -153,7 +138,7 @@ export const DateSelector = ({
                 />
             </View>
             {displayError && errorMessage && (
-                <Body testID='text/error-message' style={styles.errorMessage}>
+                <Body testID="text/error-message" style={styles.errorMessage}>
                     {errorMessage}
                 </Body>
             )}
@@ -190,9 +175,7 @@ function fromFieldsToDate(fieldsValues: FieldsValues) {
     const date = new Date(`${year}-${month}-${day}`);
 
     const isDateExist =
-        date.getMonth() === month - 1 &&
-        date.getDate() === day &&
-        date.getFullYear() === year;
+        date.getMonth() === month - 1 && date.getDate() === day && date.getFullYear() === year;
 
     if (!isDateExist) {
         return RangeError('Invalid date');

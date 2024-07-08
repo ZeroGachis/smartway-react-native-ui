@@ -28,14 +28,12 @@ const createStyle = (theme: Theme, style?: ViewStyle) => {
 export const Badge = ({ number, maxDigits, testID, style }: BadgeProps) => {
     const theme = useTheme();
 
-    const displayText = maxDigits
-        ? getTruncatedNumber(number, maxDigits)
-        : number;
+    const displayText = maxDigits ? getTruncatedNumber(number, maxDigits) : number;
 
     const badgeStyle = createStyle(theme, style).badge;
 
     return (
-        <Body size='B2' weight='semi-bold' style={badgeStyle} testID={testID}>
+        <Body typography="n3" style={badgeStyle} testID={testID}>
             {displayText}
         </Body>
     );

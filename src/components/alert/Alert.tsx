@@ -5,10 +5,7 @@ import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
 
-type Status = Exclude<
-    keyof Theme['sw']['color'],
-    'primary' | 'secondary' | 'neutral'
->;
+type Status = Exclude<keyof Theme['sw']['color'], 'primary' | 'secondary' | 'neutral'>;
 
 export interface AlertProps {
     status: Status;
@@ -18,13 +15,7 @@ export interface AlertProps {
     onDismiss: () => void;
 }
 
-const Alert = ({
-    title,
-    description,
-    onDismiss,
-    status,
-    style,
-}: AlertProps) => {
+const Alert = ({ title, description, onDismiss, status, style }: AlertProps) => {
     const theme = useTheme();
 
     const iconName = getStatusIcon(status);
@@ -33,26 +24,13 @@ const Alert = ({
     return (
         <View style={[styles.content, style]}>
             <View style={styles.body}>
-                <Icon
-                    name={iconName}
-                    size={24}
-                    color={theme.sw.color[status][500]}
-                />
+                <Icon name={iconName} size={24} color={theme.sw.color[status][500]} />
                 <View style={styles.texts}>
-                    <Body
-                        size='B1'
-                        weight='semi-bold'
-                        style={styles.title}
-                        accessibilityRole='alert'
-                    >
+                    <Body typography="n1" style={styles.title} accessibilityRole="alert">
                         {title}
                     </Body>
                     {description && (
-                        <Body
-                            size='B1'
-                            style={styles.description}
-                            accessibilityRole='alert'
-                        >
+                        <Body typography="n1" style={styles.description} accessibilityRole="alert">
                             {description}
                         </Body>
                     )}
@@ -60,15 +38,11 @@ const Alert = ({
             </View>
             <Pressable
                 onPress={onDismiss}
-                accessibilityLabel='Dismiss'
-                accessibilityHint='Dismiss the alert'
+                accessibilityLabel="Dismiss"
+                accessibilityHint="Dismiss the alert"
                 accessible
             >
-                <Icon
-                    name='close'
-                    size={20}
-                    color={theme.sw.color[status][700]}
-                />
+                <Icon name="close" size={20} color={theme.sw.color[status][700]} />
             </Pressable>
         </View>
     );
