@@ -16,10 +16,7 @@ export interface NumberFieldProps extends FieldBaseProps {
 }
 
 export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
-    (
-        { error, fieldState, focused, size = 'm', ...props }: NumberFieldProps,
-        ref,
-    ) => {
+    ({ error, fieldState, focused, size = 'm', ...props }: NumberFieldProps, ref) => {
         const theme = useTheme();
 
         const getCurrentState = () => {
@@ -102,7 +99,7 @@ export const NumberField = React.forwardRef<TextInput, NumberFieldProps>(
                     theme.sw.color.primary[500] + '29'
                 }
                 cursorColor={theme.sw.color.primary[500]}
-                keyboardType='number-pad'
+                keyboardType="number-pad"
                 textAlign={'center'}
             />
         );

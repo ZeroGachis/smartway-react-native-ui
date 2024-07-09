@@ -16,9 +16,7 @@ export class NumberValidator {
                 : /^(0|([1-9]\d*))?([\.]\d?)?$/;
 
         const integerRegex =
-            minValue !== undefined && minValue < 0
-                ? /^-?(0|([1-9]\d*))?$/
-                : /^(0|([1-9]\d*))?$/;
+            minValue !== undefined && minValue < 0 ? /^-?(0|([1-9]\d*))?$/ : /^(0|([1-9]\d*))?$/;
 
         this.regex = allowDecimal ? decimalRegex : integerRegex;
     }
@@ -45,8 +43,7 @@ export class NumberValidator {
 
     validateFormat(text: string | undefined): boolean {
         return (
-            this.regex.test(text ?? '') &&
-            (this.blockOutrange ? this.validateMinMax(text) : true)
+            this.regex.test(text ?? '') && (this.blockOutrange ? this.validateMinMax(text) : true)
         );
     }
 
@@ -63,9 +60,7 @@ export class NumberValidator {
         const parsedValue = this.parser(text);
         const isValueWithinRange =
             !Number.isNaN(parsedValue) &&
-            (this.minValue !== undefined
-                ? parsedValue >= this.minValue
-                : true) &&
+            (this.minValue !== undefined ? parsedValue >= this.minValue : true) &&
             (this.maxValue !== undefined ? parsedValue <= this.maxValue : true);
 
         return isValueWithinRange;

@@ -5,19 +5,19 @@ import { useTheme } from '../../styles/themes';
 import { tokens } from '@zerogachis/smartway-design-token';
 import { getFont } from './utils';
 
-type BodyTypography = keyof typeof tokens.typography.body;
+type LabelTypography = keyof typeof tokens.typography.label;
 
-export interface BodyProps extends TextProps<Text> {
-    typography?: BodyTypography;
+export interface LabelProps extends TextProps<Text> {
+    typography?: LabelTypography;
 }
 
-export const Body = ({ typography = 'n4', children, style, ...props }: BodyProps) => {
+export const Label = ({ typography = 'n1', children, style, ...props }: LabelProps) => {
     const theme = useTheme();
 
     const bodyStyle: StyleProp<TextStyle> = {
         color: theme.sw.color.neutral[800],
-        fontSize: tokens.typography.body[typography]?.fontSize,
-        fontFamily: getFont(tokens.typography.body[typography]),
+        fontSize: tokens.typography.label[typography]?.fontSize,
+        fontFamily: getFont(tokens.typography.label[typography]),
     };
 
     return (

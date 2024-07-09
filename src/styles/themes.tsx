@@ -6,7 +6,7 @@ import {
     useTheme as usePaperTheme,
 } from 'react-native-paper';
 import { fontConfig } from './fonts';
-import { tokens } from "@zerogachis/smartway-design-token";
+import { tokens } from '@zerogachis/smartway-design-token';
 
 export const theme = {
     ...MD3LightTheme,

@@ -2,15 +2,21 @@ import type { Meta, StoryObj } from '@storybook/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Headline } from 'smartway-react-native-ui';
+import { Label } from 'smartway-react-native-ui';
+
+const textInside = `
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quisquam, nulla
+earum ut porro distinctio autem deleniti laborum nisi ex ipsum nihil beatae
+facilis. Vel unde molestias quibusdam dolorem libero.
+`;
 
 export default {
-    title: 'typography/Headline',
-    component: Headline,
+    title: 'typography/Label',
+    component: Label,
     argTypes: {
         token: {
             control: { type: 'radio' },
-            options: ['n1', 'n2', 'n3', 'n4', 'n5', 'n6'],
+            options: ['n1', 'n2'],
         },
     },
     decorators: [
@@ -29,13 +35,13 @@ export default {
             );
         },
     ],
-} as Meta<typeof Headline>;
+} as Meta<typeof Label>;
 
-type Story = StoryObj<typeof Headline>;
+type Story = StoryObj<typeof Label>;
 
 export const Default: Story = {
     args: {
-        children: `This is a Headline`,
+        children: textInside,
     },
 };
 Default.parameters = { noSafeArea: false };
