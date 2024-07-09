@@ -179,8 +179,8 @@ function useStyles({
                 marginBottom: theme.sw.spacing.m,
             },
             actions: {
-                ...commonStyleSheet.actions,
                 marginTop: theme.sw.spacing.m,
+                ...commonStyleSheet.actions,
             },
             leftOption: commonStyleSheet.leftOption,
             rightOption: commonStyleSheet.rightOption,
