@@ -10,15 +10,19 @@ import Banner, { useBanner } from '../../../src/components/alert/Banner';
 
 describe('Uncontrolled Banner', () => {
     let mockOnDismiss: jest.Mock;
+    let mockOnButtonPress: jest.Mock;
 
     beforeEach(() => {
         mockOnDismiss = jest.fn();
+        mockOnButtonPress = jest.fn();
         render(
             <Banner
                 status='info'
-                onDismiss={mockOnDismiss}
                 title='This is a title'
                 description='This is a decription'
+                buttonText='Button'
+                onDismiss={mockOnDismiss}
+                onButtonPress={mockOnButtonPress}
             />,
         );
     });
@@ -37,6 +41,20 @@ describe('Uncontrolled Banner', () => {
         await user.press(screen.getByLabelText(/dismiss/i));
 
         expect(mockOnDismiss).toHaveBeenCalledTimes(1);
+
+        cleanUpFakeTimer();
+    });
+
+    it('triggers `onButtonPress` event when user press button', async () => {
+        setupFakeTimer();
+
+        const user = userEvent.setup();
+
+        expect(mockOnButtonPress).not.toHaveBeenCalled();
+
+        await user.press(screen.getByText(/button/i));
+
+        expect(mockOnButtonPress).toHaveBeenCalledTimes(1);
 
         cleanUpFakeTimer();
     });
