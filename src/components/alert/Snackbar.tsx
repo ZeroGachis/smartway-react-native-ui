@@ -7,6 +7,7 @@ import { useTheme } from '../../../src/styles/themes';
 export interface SnackbarProps extends Omit<AlertProps, 'style'> {
     visible: boolean;
     duration?: number;
+    onDismiss: () => void;
 }
 
 const Snackbar = ({

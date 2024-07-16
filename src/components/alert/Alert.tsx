@@ -4,18 +4,29 @@ import { Theme, useTheme } from '../../styles/themes';
 import { Icon } from '../icons/Icon';
 import type { IconName } from '../icons/IconProps';
 import { Body } from '../typography/Body';
+import { Button } from '../buttons/Button';
 
 type Status = Exclude<keyof Theme['sw']['color'], 'primary' | 'secondary' | 'neutral'>;
 
 export interface AlertProps {
     status: Status;
-    title: string;
-    description?: string;
+    title?: string;
+    description: string;
+    buttonText?: string;
+    onButtonPress?: () => void;
+    onDismiss?: () => void;
     style?: ViewStyle;
-    onDismiss: () => void;
 }
 
-const Alert = ({ title, description, onDismiss, status, style }: AlertProps) => {
+const Alert = ({
+    status,
+    title,
+    description,
+    buttonText,
+    onButtonPress,
+    onDismiss,
+    style,
+}: AlertProps) => {
     const theme = useTheme();
 
     const iconName = getStatusIcon(status);
@@ -26,24 +37,32 @@ const Alert = ({ title, description, onDismiss, status, style }: AlertProps) => 
             <View style={styles.body}>
                 <Icon name={iconName} size={24} color={theme.sw.color[status][500]} />
                 <View style={styles.texts}>
-                    <Body typography="n1" style={styles.title} accessibilityRole="alert">
-                        {title}
-                    </Body>
-                    {description && (
-                        <Body typography="n1" style={styles.description} accessibilityRole="alert">
-                            {description}
+                    {title && (
+                        <Body typography="n1" style={styles.title} accessibilityRole="alert">
+                            {title}
                         </Body>
                     )}
+                    <Body typography="n2" style={styles.description} accessibilityRole="alert">
+                        {description}
+                    </Body>
                 </View>
             </View>
-            <Pressable
-                onPress={onDismiss}
-                accessibilityLabel="Dismiss"
-                accessibilityHint="Dismiss the alert"
-                accessible
-            >
-                <Icon name="close" size={20} color={theme.sw.color[status][700]} />
-            </Pressable>
+            <View style={styles.actionsContainer}>
+                {onButtonPress && buttonText && (
+                    <Button onPress={onButtonPress}>{buttonText}</Button>
+                )}
+                {onDismiss && (
+                    <Pressable
+                        onPress={onDismiss}
+                        style={styles.dismiss}
+                        accessibilityLabel="Dismiss"
+                        accessibilityHint="Dismiss the alert"
+                        accessible
+                    >
+                        <Icon name="close" size={20} color={theme.sw.color[status][700]} />
+                    </Pressable>
+                )}
+            </View>
         </View>
     );
 };
@@ -91,7 +110,6 @@ function useStyles(theme: Theme, variantTheme: Status) {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: theme.sw.spacing.s,
-            gap: theme.sw.spacing.s,
         },
         body: {
             flexDirection: 'row',
@@ -109,6 +127,14 @@ function useStyles(theme: Theme, variantTheme: Status) {
         },
         description: {
             color: theme.sw.color[variantTheme][700],
+        },
+        dismiss: {
+            padding: 9,
+        },
+        actionsContainer: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: theme.sw.spacing.s,
         },
     });
 }
