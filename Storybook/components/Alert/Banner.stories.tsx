@@ -1,45 +1,61 @@
-import type { Meta, StoryObj } from '@storybook/react-native';
+import type { ComponentMeta, ComponentStory } from '@storybook/react-native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import Banner from '../../../src/components/alert/Banner';
+import { action } from '@storybook/addon-actions';
 
-type ComponentProps = React.ComponentProps<typeof Banner>;
+type BannerType = typeof Banner;
 
 export default {
     title: 'components/Banner',
     component: Banner,
-    argTypes: {
-        onDismiss: { action: 'onDismiss' },
+    args: {
+        status: 'info',
+        title: 'This is a title',
+        description: 'This is a description',
+        buttonText: 'Click me',
+        onButtonPress: () => action('onButtonPress')('Button pressed'),
+        onDismiss: () => action('onDismiss')('Dismissed'),
     },
     decorators: [
         (Story) => {
-            const styles = StyleSheet.create({
-                container: { flex: 1 },
-            });
             return (
-                <View style={styles.container}>
+                <View style={{ paddingTop: 16 }}>
                     <Story />
                 </View>
             );
         },
     ],
-} as Meta<ComponentProps>;
+} as ComponentMeta<BannerType>;
 
-type Story = StoryObj<ComponentProps>;
+export const Base: ComponentStory<BannerType> = (args) => {
+    return <Banner {...args} />;
+};
+Base.argTypes = {
+    status: {
+        control: { type: 'radio' },
+        options: ['info', 'success', 'warning', 'error'],
+    },
+    title: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
+    buttonText: { control: { type: 'text' } },
+    onButtonPress: {
+        control: { type: 'boolean' },
+        mapping: { true: action('Button pressed'), false: undefined },
+    },
+    onDismiss: {
+        control: { type: 'boolean' },
+        mapping: { true: action('Dismissed'), false: undefined },
+    },
+};
 
-export const Default: Story = {
-    args: {
-        title: 'This is a title',
-        description: 'This is a description',
-    },
-    render(args) {
-        return (
-            <View style={{ gap: 8 }}>
-                <Banner {...args} status='info' />
-                <Banner {...args} status='success' />
-                <Banner {...args} status='warning' />
-                <Banner {...args} status='error' />
-            </View>
-        );
-    },
+export const Catalog: ComponentStory<BannerType> = (args) => {
+    return (
+        <View style={{ gap: 8 }}>
+            <Banner {...args} status="info" />
+            <Banner {...args} status="success" />
+            <Banner {...args} status="warning" />
+            <Banner {...args} status="error" />
+        </View>
+    );
 };
