@@ -23,6 +23,7 @@ jobs:
             vault-path: storybook-design-system
             vault-url: ${{ vars.VAULT_URL }}
             is-library-package: true
+            environment: main
         secrets: inherit
     publish-bundle:
         uses: ZeroGachis/.github/.github/workflows/publish-bundle-codepush.yml@v3
