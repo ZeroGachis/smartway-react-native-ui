@@ -45,10 +45,10 @@ export const Divider = ({ style, orientation = 'horizontal', dashed = false }: D
                 stroke={styles.line.color}
                 strokeWidth={strokeWidth}
                 strokeDasharray={`5, ${dashed ? '3' : '0'}`}
-                x1={isRow ? 0 : paddingLeft + computedWidth / 2}
-                y1={isRow ? paddingTop + computedHeight / 2 : 0}
-                x2={isRow ? lineLength : paddingLeft + computedWidth / 2}
-                y2={isRow ? paddingTop + computedHeight / 2 : lineLength}
+                x1={isRow ? 0 : paddingLeft + strokeWidth / 2}
+                y1={isRow ? paddingTop + strokeWidth / 2 : 0}
+                x2={isRow ? lineLength : paddingLeft + strokeWidth / 2}
+                y2={isRow ? paddingTop + strokeWidth / 2 : lineLength}
             />
         </Svg.Svg>
     );
