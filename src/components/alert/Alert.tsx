@@ -49,7 +49,9 @@ const Alert = ({
             </View>
             <View style={styles.actionsContainer}>
                 {onButtonPress && buttonText && (
-                    <Button onPress={onButtonPress}>{buttonText}</Button>
+                    <Button status={status} onPress={onButtonPress}>
+                        {buttonText}
+                    </Button>
                 )}
                 {onDismiss && (
                     <Pressable
