@@ -9,11 +9,7 @@ export interface Props {
     dashed?: boolean;
 }
 
-export const Divider = ({
-    style,
-    orientation = 'horizontal',
-    dashed = false,
-}: Props) => {
+export const Divider = ({ style, orientation = 'horizontal', dashed = false }: Props) => {
     const theme = useTheme();
     const [lineLength, setLineLength] = useState(0);
 
@@ -25,13 +21,14 @@ export const Divider = ({
             color: theme.sw.color.neutral[300],
         },
     });
+    const strokeWidth = 1;
     const isRow = orientation == 'horizontal';
     const paddingTop = getPadding(style, 'paddingTop');
     const paddingBottom = getPadding(style, 'paddingBottom');
     const paddingLeft = getPadding(style, 'paddingLeft');
     const paddingRight = getPadding(style, 'paddingRight');
-    const heigh = isRow ? paddingTop + paddingBottom + 1 : '100%';
-    const width = !isRow ? paddingLeft + paddingRight + 1 : '100%';
+    const heigh = isRow ? paddingTop + paddingBottom + strokeWidth : '100%';
+    const width = !isRow ? paddingLeft + paddingRight + strokeWidth : '100%';
     return (
         <Svg.Svg
             style={{ height: heigh, width: width }}
@@ -42,7 +39,7 @@ export const Divider = ({
         >
             <Svg.Line
                 stroke={styles.line.color}
-                strokeWidth={1}
+                strokeWidth={strokeWidth}
                 strokeDasharray={`5, ${dashed ? '3' : '0'}`}
                 x1={isRow ? 0 : paddingLeft}
                 y1={isRow ? paddingTop : 0}
