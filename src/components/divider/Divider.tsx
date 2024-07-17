@@ -3,13 +3,13 @@ import { StyleSheet, ViewStyle } from 'react-native';
 import { useTheme } from '../../styles/themes';
 import * as Svg from 'react-native-svg';
 
-export interface Props {
+export interface DividerProps {
     style?: ViewStyle;
     orientation?: 'vertical' | 'horizontal';
     dashed?: boolean;
 }
 
-export const Divider = ({ style, orientation = 'horizontal', dashed = false }: Props) => {
+export const Divider = ({ style, orientation = 'horizontal', dashed = false }: DividerProps) => {
     const theme = useTheme();
     const [lineLength, setLineLength] = useState(0);
 
@@ -27,11 +27,15 @@ export const Divider = ({ style, orientation = 'horizontal', dashed = false }: P
     const paddingBottom = getPadding(style, 'paddingBottom');
     const paddingLeft = getPadding(style, 'paddingLeft');
     const paddingRight = getPadding(style, 'paddingRight');
-    const heigh = isRow ? paddingTop + paddingBottom + strokeWidth : '100%';
-    const width = !isRow ? paddingLeft + paddingRight + strokeWidth : '100%';
+    const computedHeight = paddingTop + paddingBottom + strokeWidth;
+    const computedWidth = paddingLeft + paddingRight + strokeWidth;
     return (
         <Svg.Svg
-            style={{ height: heigh, width: width }}
+            style={
+                isRow
+                    ? { height: computedHeight, width: '100%' }
+                    : { height: '100%', width: computedWidth }
+            }
             onLayout={(event) => {
                 const { width, height } = event.nativeEvent.layout;
                 setLineLength(isRow ? width : height);
@@ -41,10 +45,10 @@ export const Divider = ({ style, orientation = 'horizontal', dashed = false }: P
                 stroke={styles.line.color}
                 strokeWidth={strokeWidth}
                 strokeDasharray={`5, ${dashed ? '3' : '0'}`}
-                x1={isRow ? 0 : paddingLeft}
-                y1={isRow ? paddingTop : 0}
-                x2={isRow ? lineLength : paddingLeft}
-                y2={isRow ? paddingTop : lineLength}
+                x1={isRow ? 0 : paddingLeft + computedWidth / 2}
+                y1={isRow ? paddingTop + computedHeight / 2 : 0}
+                x2={isRow ? lineLength : paddingLeft + computedWidth / 2}
+                y2={isRow ? paddingTop + computedHeight / 2 : lineLength}
             />
         </Svg.Svg>
     );
