@@ -1,54 +1,187 @@
-import type { Meta, StoryObj } from '@storybook/react-native';
+import type { ComponentMeta, ComponentStory } from '@storybook/react-native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import { Button } from '../../../src/components/buttons/Button';
 
-import { Button } from 'smartway-react-native-ui';
+type ButtonType = typeof Button;
 
 export default {
     title: 'components/Button',
     component: Button,
-    argTypes: {
-        variant: {
-            control: { type: 'radio' },
-            options: ['filled', 'outlined', 'text'],
-        },
-        size: {
-            control: { type: 'radio' },
-            options: ['s', 'm', null],
-        },
-        status: {
-            control: { type: 'radio' },
-            options: ['primary', 'default', null],
-        },
-        onPress: { action: 'clicked' },
-    },
     decorators: [
         (Story) => {
-            const styles = StyleSheet.create({
-                container: { alignItems: 'center', justifyContent: 'center', flex: 1 },
-            });
             return (
-                <View style={styles.container}>
+                <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
                     <Story />
                 </View>
             );
         },
     ],
-    parameters: {
-        notes: `
-# Button
+} as ComponentMeta<ButtonType>;
 
-A simple button.
-
-`,
-    },
-} as Meta<typeof Button>;
-
-type Story = StoryObj<typeof Button>;
-
-export const Default: Story = {
-    args: {
-        children: 'Button',
-    },
+export const Default: ComponentStory<ButtonType> = (args) => {
+    return <Button {...args}>Button</Button>;
 };
-Default.parameters = { noSafeArea: false };
+Default.argTypes = {
+    size: {
+        control: { type: 'radio' },
+        options: ['s', 'm'],
+    },
+    variant: {
+        control: { type: 'radio' },
+        options: ['filled', 'outlined', 'text'],
+    },
+    status: {
+        control: { type: 'radio' },
+        options: ['default', 'primary', 'info', 'success', 'warning', 'error', 'inherit'],
+    },
+    disabled: {
+        control: { type: 'boolean' },
+    },
+    onPress: { action: 'clicked' },
+};
+
+export const Catalog: ComponentStory<ButtonType> = (args) => {
+    return (
+        <View style={{ gap: 8 }}>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Button {...args} variant="filled" status="default">
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="primary">
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="info">
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="success">
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="warning">
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="error">
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="inherit">
+                    Button
+                </Button>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Button {...args} variant="filled" status="default" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="primary" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="info" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="success" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="warning" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="error" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="filled" status="inherit" disabled>
+                    Button
+                </Button>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Button {...args} variant="outlined" status="default">
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="primary">
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="info">
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="success">
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="warning">
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="error">
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="inherit">
+                    Button
+                </Button>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Button {...args} variant="outlined" status="default" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="primary" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="info" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="success" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="warning" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="error" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="outlined" status="inherit" disabled>
+                    Button
+                </Button>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Button {...args} variant="text" status="default">
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="primary">
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="info">
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="success">
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="warning">
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="error">
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="inherit">
+                    Button
+                </Button>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Button {...args} variant="text" status="default" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="primary" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="info" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="success" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="warning" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="error" disabled>
+                    Button
+                </Button>
+                <Button {...args} variant="text" status="inherit" disabled>
+                    Button
+                </Button>
+            </View>
+        </View>
+    );
+};

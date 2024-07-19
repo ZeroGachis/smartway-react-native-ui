@@ -1,78 +1,123 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button as ButtonBase } from 'react-native-paper';
-import { useTheme } from '../../styles/themes';
+import { useTheme, Theme } from '../../styles/themes';
 
-type ButtonProps = React.ComponentProps<typeof ButtonBase>;
+type ButtonProps = Omit<
+    React.ComponentProps<typeof ButtonBase>,
+    'mode' &
+        'dark' &
+        'compact' &
+        'color' &
+        'buttonColor' &
+        'textColor' &
+        'rippleColor' &
+        'loading' &
+        'uppercase' &
+        'background'
+>;
+
+type ButtonVariant = 'filled' | 'outlined' | 'text';
+type ButtonStatus = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'inherit';
+
 export interface customButtonProps extends ButtonProps {
     size?: 's' | 'm';
-    variant?: 'filled' | 'outlined' | 'text';
-    status?: 'primary' | 'default';
+    variant?: ButtonVariant;
+    status?: ButtonStatus;
+    disabled?: boolean;
 }
-export const Button = (props: customButtonProps) => {
+export const Button = ({
+    size = 'm',
+    variant = 'filled',
+    status = 'default',
+    disabled = false,
+    ...props
+}: customButtonProps) => {
     const theme = useTheme();
-    const mode =
-        props.variant === 'filled' && props.status === 'primary'
-            ? 'contained-tonal'
-            : props.variant === 'filled'
-            ? 'contained'
-            : props.variant;
-    const style = StyleSheet.create({
+    const mode = variant === 'filled' ? 'contained' : variant;
+    const commonStyle = StyleSheet.create({
         button: {
-            borderRadius: props?.size === 's' ? 14 : 18,
-            height: props?.size === 's' ? 38 : 48,
+            justifyContent: 'center',
+            borderRadius: size === 's' ? theme.sw.borderRadius.s : theme.sw.borderRadius.m,
+            height: size === 's' ? 38 : 48,
         },
         label: {
-            marginVertical: props?.size === 's' ? 6 : 11,
-            marginHorizontal: props?.size === 's' ? 16 : 22,
-            lineHeight: props?.size === 's' ? 24 : 26,
-            fontSize: props?.size === 's' ? 14 : 16,
-            fontFamily: 'PublicSans-Bold',
+            marginVertical: size === 's' ? 6 : 11,
+            marginHorizontal: size === 's' ? 16 : 22,
+            fontSize:
+                size === 's'
+                    ? theme.sw.typography.button.n3!.fontSize
+                    : theme.sw.typography.button.n1.fontSize,
+            fontFamily:
+                size === 's'
+                    ? theme.sw.typography.button.n3!.fontFamily
+                    : theme.sw.typography.button.n1.fontFamily,
+            fontWeight:
+                size === 's'
+                    ? (theme.sw.typography.button.n3!.fontWeight as never)
+                    : (theme.sw.typography.button.n1.fontWeight as never),
         },
     });
-    let customStyle = undefined;
-    if (mode === 'contained' || mode === undefined) {
-        customStyle = StyleSheet.create({
-            button: {},
-            label: {
-                color: props.disabled
-                    ? theme.colors.onSurfaceDisabled
-                    : theme.sw.color.neutral[0],
-            },
-        });
-    }
-    if ((mode === 'text' || mode === 'outlined') && props.status === 'primary') {
-        customStyle = StyleSheet.create({
-            button: {
-                // TODO: use new tokens
-                borderColor: theme.sw.color.primary[500] + '7A',
-                backgroundColor: theme.sw.color.neutral[0],
-            },
-            label: {
-                color: theme.colors.secondaryContainer,
-            },
-        });
-    }
-    if (mode === 'outlined' && (props.status === undefined || props.status === 'default')) {
-        customStyle = StyleSheet.create({
-            button: {
-                borderColor: props.disabled
-                    ? theme.sw.color.neutral[500] + '3D'
-                    : theme.sw.color.neutral[800] + '7A',
-            },
-            label: {
-                color: props.disabled
-                    ? theme.colors.onSurfaceDisabled
-                    : theme.sw.color.neutral[800],
-            },
-        });
-    }
+
+    const customStyle = StyleSheet.create({
+        button: {
+            borderColor: variant !== 'text' ? getButtonColor(status, theme) : undefined,
+            backgroundColor: variant !== 'filled' ? undefined : getButtonColor(status, theme),
+        },
+        label: {
+            color: getTextColor(variant, status, theme),
+        },
+    });
+
+    const disabledStyle = StyleSheet.create({
+        button: {
+            borderColor: variant !== 'text' ? theme.sw.color.neutral[300] : undefined,
+            backgroundColor: variant !== 'filled' ? undefined : theme.sw.color.neutral[300],
+        },
+        label: {
+            color: theme.sw.color.neutral[500],
+        },
+    });
+
     return (
         <ButtonBase
             {...props}
-            mode={mode ?? 'contained'}
-            style={[style.button, props.style, customStyle ? customStyle.button : {}]}
-            labelStyle={[style.label, props.labelStyle, customStyle ? customStyle.label : {}]}
+            mode={mode}
+            style={[commonStyle.button, customStyle.button, disabled && disabledStyle.button]}
+            labelStyle={[commonStyle.label, customStyle.label, disabled && disabledStyle.label]}
+            disabled={disabled}
         />
     );
+};
+
+const getButtonColor = (status: ButtonStatus, theme: Theme) => {
+    switch (status) {
+        case 'default':
+            return theme.sw.color.neutral[700];
+        case 'primary':
+            return theme.sw.color.primary[500];
+        case 'info':
+            return theme.sw.color.info[500];
+        case 'success':
+            return theme.sw.color.success[500];
+        case 'warning':
+            return theme.sw.color.warning[500];
+        case 'error':
+            return theme.sw.color.error[500];
+        case 'inherit':
+            return theme.sw.color.neutral[300];
+    }
+};
+
+const getTextColor = (variant: ButtonVariant, status: ButtonStatus, theme: Theme) => {
+    if (status === 'inherit') {
+        if (variant === 'filled') {
+            return theme.sw.color.neutral[800];
+        }
+        return theme.sw.color.neutral[600];
+    }
+    if (variant === 'filled') {
+        return theme.sw.color.neutral[0];
+    }
+    return getButtonColor(status, theme);
 };
