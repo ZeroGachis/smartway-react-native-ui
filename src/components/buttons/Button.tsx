@@ -31,6 +31,8 @@ export const Button = ({
     variant = 'filled',
     status = 'default',
     disabled = false,
+    style,
+    labelStyle,
     ...props
 }: customButtonProps) => {
     const theme = useTheme();
@@ -83,8 +85,18 @@ export const Button = ({
         <ButtonBase
             {...props}
             mode={mode}
-            style={[commonStyle.button, customStyle.button, disabled && disabledStyle.button]}
-            labelStyle={[commonStyle.label, customStyle.label, disabled && disabledStyle.label]}
+            style={[
+                commonStyle.button,
+                customStyle.button,
+                disabled && disabledStyle.button,
+                style,
+            ]}
+            labelStyle={[
+                commonStyle.label,
+                customStyle.label,
+                disabled && disabledStyle.label,
+                labelStyle,
+            ]}
             disabled={disabled}
         />
     );
