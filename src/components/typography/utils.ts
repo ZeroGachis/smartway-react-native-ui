@@ -1,5 +1,13 @@
 import { Font } from '@zerogachis/smartway-design-token/dist/cjs/src/Tokens/TokensType';
 
+export const getLineHeight = (lineHeight: string, fontSize?: number) => {
+    if (fontSize === undefined) {
+        return undefined;
+    }
+    const lineHeightPercent = parseFloat(lineHeight) / 100;
+    return fontSize * lineHeightPercent;
+};
+
 export const getFontWeight = (fontWeight: number | undefined) => {
     if (fontWeight === 400) {
         return 'Regular';
