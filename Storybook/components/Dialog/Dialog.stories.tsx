@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Body, Dialog, useTheme } from 'smartway-react-native-ui';
+import { Body, Dialog } from 'smartway-react-native-ui';
 import { IconsName } from '../config/IconList';
 
 type DialogPropsAndCustomArgs = React.ComponentProps<typeof Dialog> & {
@@ -70,21 +70,15 @@ export default {
 type Story = StoryObj<DialogPropsAndCustomArgs>;
 
 const InsideDialog = ({ variantBody }: { variantBody?: 'left' | 'center' }) => {
-    const theme = useTheme();
-
     const styles = StyleSheet.create({
         content: {
-            color: theme.sw.color.neutral[600],
             textAlign: variantBody,
-            lineHeight: 22,
-            marginBottom: 0,
         },
     });
     return (
-        <Body style={styles.content} size='B2'>
-            A dialog is a type of modal window that appears in front of app
-            content to provide critical information. This is a dialog content
-            example.
+        <Body style={styles.content} typography={'n2'}>
+            A dialog is a type of modal window that appears in front of app content to provide
+            critical information. This is a dialog content example.
         </Body>
     );
 };

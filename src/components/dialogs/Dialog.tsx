@@ -117,13 +117,14 @@ function useStyles({
     const commonStyleSheet = StyleSheet.create({
         dialog: {
             borderRadius: theme.sw.borderRadius.l,
-            marginTop: 0,
+            marginVertical: 0,
             marginLeft: 'auto',
             marginRight: 'auto',
             backgroundColor: theme.sw.color.neutral[0],
             ...style,
         },
         dialogContent: {
+            paddingBottom: 0,
             paddingHorizontal: 0,
         },
         title: {
@@ -172,14 +173,15 @@ function useStyles({
                 paddingVertical: 40,
                 width: '80%',
                 maxWidth: 500,
+                gap: theme.sw.spacing.m,
             },
             dialogContent: commonStyleSheet.dialogContent,
             title: {
                 ...commonStyleSheet.title,
-                marginBottom: theme.sw.spacing.m,
+                marginBottom: 0,
             },
             actions: {
-                marginTop: theme.sw.spacing.m,
+                marginBottom: 0,
                 ...commonStyleSheet.actions,
             },
             leftOption: commonStyleSheet.leftOption,
