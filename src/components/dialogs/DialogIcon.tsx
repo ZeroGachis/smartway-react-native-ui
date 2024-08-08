@@ -24,7 +24,6 @@ export const DialogIcon = (props: DialogIconProps) => {
                 width: 100,
                 height: 100,
                 borderRadius: 50,
-                marginBottom: theme.sw.spacing.s,
             }}
         >
             <View

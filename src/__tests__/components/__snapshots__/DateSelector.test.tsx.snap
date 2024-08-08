@@ -84,6 +84,7 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
                   "color": "#212b36",
                   "fontFamily": "PublicSans-Bold",
                   "fontSize": 20,
+                  "lineHeight": 24,
                 },
                 {
                   "color": "#919eab",
@@ -142,6 +143,7 @@ exports[`MODULE | DateSelector component renders correctly with prefilled values
                   "color": "#212b36",
                   "fontFamily": "PublicSans-Bold",
                   "fontSize": 20,
+                  "lineHeight": 24,
                 },
                 {
                   "color": "#919eab",
