@@ -28,7 +28,7 @@ export const Body = ({
         fontFamily: getFont(tokens.typography.body[typography]),
         lineHeight: getLineHeight(
             tokens.lineHeight[lineHeight],
-            tokens.typography.headline[typography]?.fontSize,
+            tokens.typography.body[typography]?.fontSize,
         ),
     };
 
