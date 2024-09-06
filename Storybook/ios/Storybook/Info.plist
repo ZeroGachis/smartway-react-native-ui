@@ -53,7 +53,6 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>icomoon.ttf</string>
 		<string>PublicSans-Italic-VariableFont_wght.ttf</string>
 		<string>PublicSans-VariableFont_wght.ttf</string>
 		<string>PublicSans-Black.ttf</string>
@@ -74,6 +73,7 @@
 		<string>PublicSans-SemiBoldItalic.ttf</string>
 		<string>PublicSans-Thin.ttf</string>
 		<string>PublicSans-ThinItalic.ttf</string>
+		<string>icomoon.ttf</string>
 	</array>
 </dict>
 </plist>

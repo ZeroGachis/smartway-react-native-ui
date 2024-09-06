@@ -2,8 +2,20 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "../src/assets/fonts/icomoon.eot",
+      "sha1": "fe104da4e4d18cb50f8c459375ffbae7bbe70b0d"
+    },
+    {
+      "path": "../src/assets/fonts/icomoon.svg",
+      "sha1": "c9b3a1c48c05a59b2a2dde3e59a73df6926cce4e"
+    },
+    {
       "path": "../src/assets/fonts/icomoon.ttf",
-      "sha1": "2a9a4f98e164369e0cc2182fd7b6158baa438fc3"
+      "sha1": "d4a0a1ddf29395bca3978dc84386fd0e3f79a65b"
+    },
+    {
+      "path": "../src/assets/fonts/icomoon.woff",
+      "sha1": "df3bd36009bce7ac0ce6387f0b0e6ca93b282791"
     },
     {
       "path": "../src/assets/fonts/Public_Sans/OFL.txt",
@@ -95,7 +107,7 @@
     },
     {
       "path": "../src/assets/fonts/selection.json",
-      "sha1": "ea462458d88c7351ac62f65457ee0e0fb9ffe4db"
+      "sha1": "96c5af39d4e892f228e1cb88193d0030f48642a0"
     }
   ]
 }
