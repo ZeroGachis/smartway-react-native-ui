@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet, TextStyle, View, ViewStyle } from 'react-native
 import { Dialog as BaseDialog, Portal } from 'react-native-paper';
 import { Button } from '../buttons/Button';
 import { Headline } from '../typography/Headline';
-import { DialogIcon, DialogIconProps } from './DialogIcon';
+import { DialogIcon, DialogIconProps } from './ModalIcon';
 import { useTheme } from '../../styles/themes';
 import DeviceInfo from 'react-native-device-info';
 
@@ -14,12 +14,12 @@ interface Action {
     onPress: () => void;
 }
 
-interface DialogActions {
+interface ModalActions {
     confirm: Action;
     cancel?: Action;
 }
 
-export interface DialogProps extends PropsWithChildren {
+export interface ModalProps extends PropsWithChildren {
     visible: boolean;
     style?: ViewStyle;
     titleStyle?: TextStyle;
@@ -31,10 +31,10 @@ export interface DialogProps extends PropsWithChildren {
     variant?: 'left' | 'center';
     dismissable?: boolean;
     onDismiss?: () => void;
-    actions: DialogActions;
+    actions: ModalActions;
 }
 
-export const Dialog = (props: DialogProps) => {
+export const Modal = (props: ModalProps) => {
     const { style, actionsStyle, leftActionsStyle, rightActionsStyle, actions, variant } = props;
 
     const styles = useStyles({
@@ -98,10 +98,10 @@ export const Dialog = (props: DialogProps) => {
 };
 
 type UseStylesProps = Pick<
-    DialogProps,
+    ModalProps,
     'style' | 'actionsStyle' | 'leftActionsStyle' | 'rightActionsStyle' | 'variant'
 > & {
-    cancel: DialogProps['actions']['cancel'];
+    cancel: ModalProps['actions']['cancel'];
 };
 
 function useStyles({

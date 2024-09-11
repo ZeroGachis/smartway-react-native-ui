@@ -2,16 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react-native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Body, Dialog } from 'smartway-react-native-ui';
+import { Body, Modal } from 'smartway-react-native-ui';
 import { IconsName } from '../config/IconList';
 
-type DialogPropsAndCustomArgs = React.ComponentProps<typeof Dialog> & {
+type ModalPropsAndCustomArgs = React.ComponentProps<typeof Modal> & {
     haveSecondButton?: boolean;
 };
 
 export default {
     title: 'components/Dialog',
-    component: Dialog,
+    component: Modal,
     args: {
         variant: 'left',
         haveSecondButton: false,
@@ -65,9 +65,9 @@ export default {
     \`\`\`
     `,
     },
-} as Meta<DialogPropsAndCustomArgs>;
+} as Meta<ModalPropsAndCustomArgs>;
 
-type Story = StoryObj<DialogPropsAndCustomArgs>;
+type Story = StoryObj<ModalPropsAndCustomArgs>;
 
 const InsideDialog = ({ variantBody }: { variantBody?: 'left' | 'center' }) => {
     const styles = StyleSheet.create({
@@ -90,7 +90,7 @@ export const Default: Story = {
             color: args.color ?? undefined,
         };
         return (
-            <Dialog
+            <Modal
                 icon={iconprops ?? undefined}
                 {...args}
                 visible={true}
@@ -112,7 +112,7 @@ export const Default: Story = {
                 }}
             >
                 <InsideDialog variantBody={args?.variant ?? 'left'} />
-            </Dialog>
+            </Modal>
         );
     },
 };

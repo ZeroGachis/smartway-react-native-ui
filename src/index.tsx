@@ -2,7 +2,7 @@ export {
     Body,
     Button,
     IconButton,
-    Dialog,
+    Modal,
     Headline,
     Icon,
     Logo,

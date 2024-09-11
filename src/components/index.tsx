@@ -4,7 +4,7 @@ import { Logo } from './logos/Logo';
 import { Screen } from './Screen';
 import { Headline } from './typography/Headline';
 import { Body } from './typography/Body';
-import { Dialog } from './dialogs/Dialog';
+import { Modal } from './modals/Modal';
 import { TextField } from './fields/TextField';
 import { Icon } from './icons/Icon';
 import { TopAppBar } from './topAppBar/TopAppBar';
@@ -25,7 +25,7 @@ export {
     Body,
     Button,
     IconButton,
-    Dialog,
+    Modal,
     Headline,
     Icon,
     Logo,
