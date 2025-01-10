@@ -24,8 +24,9 @@ export default {
             control: { type: 'radio' },
             options: ['left', 'center'],
         },
-        haveSecondButton: {
-            control: { type: 'boolean' },
+        haveMoreButtons: {
+            control: { type: 'radio' },
+            options: ['0', '1', '2'],
         },
         name: { control: { type: 'select' }, options: IconsName },
         disabled: { control: { type: 'boolean' } },
@@ -53,7 +54,7 @@ export default {
     Controle des Bouton :
     \`\`\`
     {{
-      confirm: {
+      cta: {
         label: 'Valider',
         onPress: () => {},
       },
@@ -95,20 +96,29 @@ export const Default: Story = {
                 {...args}
                 visible={true}
                 actions={{
-                    confirm: {
-                        label: 'Valider',
+                    cta: {
+                        label: 'Confirm',
                         disabled: args.disabled,
                         loading: args.loading,
                         // eslint-disable-next-line @typescript-eslint/no-empty-function
                         onPress: () => {},
                     },
-                    cancel: args?.haveSecondButton
-                        ? {
-                              label: 'Annuler',
-                              // eslint-disable-next-line @typescript-eslint/no-empty-function
-                              onPress: () => {},
-                          }
-                        : undefined,
+                    cancel:
+                        args?.haveMoreButtons >= '1'
+                            ? {
+                                  label: 'Cancel',
+                                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                                  onPress: () => {},
+                              }
+                            : undefined,
+                    secondary:
+                        args?.haveMoreButtons >= '2'
+                            ? {
+                                  label: 'Verify',
+                                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                                  onPress: () => {},
+                              }
+                            : undefined,
                 }}
             >
                 <InsideDialog variantBody={args?.variant ?? 'left'} />
