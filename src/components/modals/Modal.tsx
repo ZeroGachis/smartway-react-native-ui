@@ -15,8 +15,9 @@ interface Action {
 }
 
 interface ModalActions {
-    confirm: Action;
+    cta: Action;
     cancel?: Action;
+    secondary?: Action;
 }
 
 export interface ModalProps extends PropsWithChildren {
@@ -80,16 +81,29 @@ export const Modal = (props: ModalProps) => {
                             {props.actions.cancel.label}
                         </Button>
                     )}
+                    {props.actions.secondary && (
+                        <Button
+                            variant="outlined"
+                            status={'default'}
+                            onPress={props.actions.secondary.onPress}
+                            testID={'PopupSecondaryButton'}
+                            style={styles.leftOption}
+                            loading={props.actions.secondary.loading ?? false}
+                            disabled={props.actions.secondary.disabled ?? false}
+                        >
+                            {props.actions.secondary.label}
+                        </Button>
+                    )}
                     <Button
                         variant="filled"
                         status={'primary'}
-                        onPress={props.actions.confirm.onPress}
+                        onPress={props.actions.cta.onPress}
                         testID={'PopupConfirmButton'}
                         style={styles.rightOption}
-                        loading={props.actions.confirm.loading ?? false}
-                        disabled={props.actions.confirm.disabled ?? false}
+                        loading={props.actions.cta.loading ?? false}
+                        disabled={props.actions.cta.disabled ?? false}
                     >
-                        {props.actions.confirm.label}
+                        {props.actions.cta.label}
                     </Button>
                 </View>
             </BaseDialog>
