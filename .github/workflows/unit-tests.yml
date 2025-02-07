@@ -41,7 +41,7 @@ jobs:
         run: npm run test -- --reporters=default --reporters=jest-junit
 
       - name: Test Report
-        uses: dorny/test-reporter@e9fa2f582c0ebbe2e263fd18fad744d52e0b0203
+        uses: dorny/test-reporter@41662db5cae40449eff81c63a9a8d0a8c34694bf
         id: test-report
         if: ${{ github.actor != 'dependabot[bot]' }}
         with:
