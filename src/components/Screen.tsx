@@ -2,19 +2,19 @@ import React from 'react';
 import { SafeAreaView, ViewStyle, StatusBar, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '../styles/themes';
-import DeviceInfo from 'react-native-device-info';
 import type { WithTestID } from 'src/shared/type';
 
 type Props = WithTestID<{
     children?: React.ReactNode;
     style?: ViewStyle;
     statusBarColor?: string;
+    isTablet?: boolean;
 }>;
 
-export const Screen = ({ children, style, testID, statusBarColor }: Props) => {
+export const Screen = ({ children, style, testID, statusBarColor, isTablet = true }: Props) => {
     const theme = useTheme();
     const insets = useSafeAreaInsets();
-    const isTablet = DeviceInfo.isTablet();
+
 
     const styles = StyleSheet.create({
         screen: {

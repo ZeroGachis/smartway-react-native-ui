@@ -75,7 +75,6 @@
     "@gorhom/bottom-sheet": "*",
     "react": "*",
     "react-native": "*",
-    "react-native-device-info": "*",
     "react-native-drop-shadow": "*",
     "react-native-gesture-handler": "*",
     "react-native-icomoon": "*",
