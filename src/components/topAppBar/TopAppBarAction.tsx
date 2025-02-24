@@ -1,13 +1,15 @@
 import React, { ComponentProps } from 'react';
 import { Appbar } from 'react-native-paper';
 import { Theme, useTheme } from '../../styles/themes';
-import DeviceInfo from 'react-native-device-info';
 import { StyleSheet } from 'react-native';
 
-type TopAppBarActionProps = ComponentProps<typeof Appbar.Action>;
+type TopAppBarActionProps = ComponentProps<typeof Appbar.Action> & {
+    isTablet?: boolean;
+};
 const TopAppBarAction = (props: TopAppBarActionProps) => {
+    const { isTablet = true } = props;
     const theme = useTheme();
-    const styles = useStyles(theme);
+    const styles = useStyles(theme, isTablet);
 
     return (
         <Appbar.Action
@@ -20,9 +22,7 @@ const TopAppBarAction = (props: TopAppBarActionProps) => {
     );
 };
 
-function useStyles(theme: Theme) {
-    const isTablet = DeviceInfo.isTablet();
-
+function useStyles(theme: Theme, isTablet: boolean) {
     return StyleSheet.create({
         button: {
             backgroundColor: theme.sw.color.neutral[300],

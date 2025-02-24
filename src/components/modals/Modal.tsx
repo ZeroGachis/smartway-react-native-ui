@@ -5,7 +5,6 @@ import { Button } from '../buttons/Button';
 import { Headline } from '../typography/Headline';
 import { DialogIcon, DialogIconProps } from './ModalIcon';
 import { useTheme } from '../../styles/themes';
-import DeviceInfo from 'react-native-device-info';
 
 interface Action {
     label: string;
@@ -33,10 +32,11 @@ export interface ModalProps extends PropsWithChildren {
     dismissable?: boolean;
     onDismiss?: () => void;
     actions: ModalActions;
+    isTablet?: boolean;
 }
 
 export const Modal = (props: ModalProps) => {
-    const { style, actionsStyle, leftActionsStyle, rightActionsStyle, actions, variant } = props;
+    const { style, actionsStyle, leftActionsStyle, rightActionsStyle, actions, variant, isTablet = true } = props;
 
     const styles = useStyles({
         style,
@@ -45,6 +45,7 @@ export const Modal = (props: ModalProps) => {
         rightActionsStyle,
         cancel: actions.cancel,
         variant,
+        isTablet,
     });
 
     return (
@@ -113,7 +114,7 @@ export const Modal = (props: ModalProps) => {
 
 type UseStylesProps = Pick<
     ModalProps,
-    'style' | 'actionsStyle' | 'leftActionsStyle' | 'rightActionsStyle' | 'variant'
+    'style' | 'actionsStyle' | 'leftActionsStyle' | 'rightActionsStyle' | 'variant' | 'isTablet'
 > & {
     cancel: ModalProps['actions']['cancel'];
 };
@@ -125,6 +126,7 @@ function useStyles({
     rightActionsStyle,
     cancel,
     variant,
+    isTablet,
 }: UseStylesProps) {
     const theme = useTheme();
 
@@ -202,5 +204,5 @@ function useStyles({
             rightOption: commonStyleSheet.rightOption,
         });
 
-    return DeviceInfo.isTablet() ? createTabletStyle() : createMobileStyle();
+    return isTablet ? createTabletStyle() : createMobileStyle();
 }

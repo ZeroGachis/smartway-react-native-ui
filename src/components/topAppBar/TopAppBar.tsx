@@ -3,7 +3,6 @@ import { Appbar } from 'react-native-paper';
 import { useTheme } from '../../styles/themes';
 import { StyleSheet, type ViewStyle } from 'react-native';
 import { Headline } from '../typography/Headline';
-import DeviceInfo from 'react-native-device-info';
 import type { WithTestID } from 'src/shared/type';
 import TopAppBarAction from './TopAppBarAction';
 import { TopAppBarMenu } from './Menu/TopAppBarMenu';
@@ -20,9 +19,8 @@ export type TopAppBarProps = WithTestID<{
     onBack?: () => void;
     style?: ViewStyle;
     action?: ReactNode;
+    isTablet?: boolean;
 }>;
-
-const isTablet = DeviceInfo.isTablet();
 
 // eslint-disable-next-line react/function-component-definition
 export function TopAppBar({
@@ -32,8 +30,9 @@ export function TopAppBar({
     style,
     testID,
     action,
+    isTablet = true,
 }: TopAppBarProps) {
-    const styles = useStyles(size, style);
+    const styles = useStyles(size, style, isTablet);
 
     const headlineSize = isTablet ? 'n1' : isTitleBelowTopAppBar(size) ? 'n2' : 'n1';
 
@@ -69,7 +68,7 @@ TopAppBar.Action = TopAppBarAction;
 TopAppBar.Menu = TopAppBarMenu;
 TopAppBar.MenuItem = TopAppBarMenuItem;
 
-function useStyles(size: TopAppBarProps['size'], style: TopAppBarProps['style']) {
+function useStyles(size: TopAppBarProps['size'], style: TopAppBarProps['style'], isTablet: TopAppBarProps['isTablet']) {
     const theme = useTheme();
 
     return StyleSheet.create({
