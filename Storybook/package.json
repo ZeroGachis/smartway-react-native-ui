@@ -54,7 +54,7 @@
     "@storybook/addon-ondevice-backgrounds": "^6.5.6",
     "@storybook/addon-ondevice-controls": "^6.5.6",
     "@storybook/addon-ondevice-notes": "^6.5.6",
-    "@storybook/addon-react-native-web": "^0.0.19",
+    "@storybook/addon-react-native-web": "^0.0.29",
     "@storybook/builder-webpack5": "^6.5.16",
     "@storybook/docs-tools": "^7.4.0",
     "@storybook/manager-webpack5": "^6.5.16",
