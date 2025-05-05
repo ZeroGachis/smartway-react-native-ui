@@ -7,10 +7,10 @@ on:
 
 jobs:
     format-version-code:
-        uses: ZeroGachis/.github/.github/workflows/android-format-version-code.yml@v3
+        uses: ZeroGachis/.github/.github/workflows/android-format-version-code.yml@v4
 
     create-apk:
-        uses: ZeroGachis/.github/.github/workflows/create-apk-artifact.yml@v3
+        uses: ZeroGachis/.github/.github/workflows/create-apk-artifact.yml@v4
         needs: [format-version-code]
         with:
             version-code: ${{ needs.format-version-code.outputs.version-code }}
@@ -26,7 +26,7 @@ jobs:
             environment: main
         secrets: inherit
     publish-bundle:
-        uses: ZeroGachis/.github/.github/workflows/publish-bundle-codepush.yml@v3
+        uses: ZeroGachis/.github/.github/workflows/publish-bundle-codepush.yml@v4
         needs: [create-apk]
         with:
             node-version: 18
@@ -38,7 +38,7 @@ jobs:
             working-directory: ./Storybook
         secrets: inherit
     publish-s3:
-        uses: ZeroGachis/.github/.github/workflows/publish-apk-s3.yml@v3
+        uses: ZeroGachis/.github/.github/workflows/publish-apk-s3.yml@v4
         needs: [create-apk]
         with:
             apk-artifact-name: ${{ needs.create-apk.outputs.apk-artifact-name }}
@@ -50,7 +50,7 @@ jobs:
         secrets: inherit
     publish-soti:
         needs: [create-apk]
-        uses: ZeroGachis/.github/.github/workflows/publish-apk-soti.yml@v3
+        uses: ZeroGachis/.github/.github/workflows/publish-apk-soti.yml@v4
         with:
             apk-name: ${{ needs.create-apk.outputs.apk-name }}
             apk-artifact-name: ${{ needs.create-apk.outputs.apk-artifact-name}}
