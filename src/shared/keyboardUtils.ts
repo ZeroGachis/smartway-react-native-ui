@@ -13,6 +13,6 @@ export function useListenerOnKeyboardHiding(listener: KeyboardEventListener) {
     }, [listener]);
 }
 
-export function hideKeyboard(ref: React.RefObject<TextInput>) {
+export function hideKeyboard(ref: React.RefObject<TextInput | null>) {
     ref?.current?.blur();
 }
