@@ -17,12 +17,6 @@ Rebuild app and you can use new added font with :
 ```
 <Text style={{fontFamily: 'FontFileNameWithoutExtension'}} />
 ```
-## In case of failure
-
-```
-cd android
-./gradlew clean
-```
 
 ## License
 
