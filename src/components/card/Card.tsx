@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import DropShadow from 'react-native-drop-shadow';
 import { useTheme } from '../../styles/themes';
 
 export interface Props {
@@ -46,9 +45,5 @@ export const Card = ({ children, style, bigShadowStyle, smallShadowStyle }: Prop
         },
     });
 
-    return (
-        <DropShadow style={styles.bigShadow}>
-            <View style={styles.container}>{children}</View>
-        </DropShadow>
-    );
+    return <View style={styles.container}>{children}</View>;
 };

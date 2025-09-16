@@ -64,23 +64,19 @@
     "prettier": "3.2.5",
     "prettier-eslint": "^16.3.0",
     "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2"
   },
   "resolutions": {
     "@types/react": "^18.0.24"
   },
   "peerDependencies": {
-    "@gorhom/bottom-sheet": "*",
     "react": "*",
     "react-native": "*",
-    "react-native-drop-shadow": "*",
-    "react-native-gesture-handler": "*",
     "react-native-icomoon": "*",
     "react-native-linear-gradient": "*",
     "react-native-paper": "*",
-    "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*",
-    "react-native-vector-icons": "*"
+    "react-native-svg": "*"
   }
 }
