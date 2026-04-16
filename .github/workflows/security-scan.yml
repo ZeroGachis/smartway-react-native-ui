@@ -3,7 +3,7 @@ name: Security scan
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 4 * * 1" # Everyday monday at 04:00AM
+    - cron: "0 4 * * 1" # Every monday at 04:00AM
 
 permissions:
   actions: read
