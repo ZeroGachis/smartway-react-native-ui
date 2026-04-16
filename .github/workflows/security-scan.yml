@@ -1,0 +1,25 @@
+name: Security scan
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 1" # Everyday monday at 04:00AM
+
+permissions:
+  actions: read
+  checks: write
+  contents: read
+  id-token: write
+  packages: read
+  pull-requests: write
+  security-events: write
+
+jobs:
+  security_scan:
+    uses: ZeroGachis/.github/.github/workflows/security-scan.yml@v7.3
+    secrets: inherit
+    with:
+      scan-image: false
+      scan-iac: false
+      scan-filesystem: true
+      skip-files: package-lock.json
